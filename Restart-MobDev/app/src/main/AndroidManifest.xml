@@ -10,6 +10,93 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
+            android:name=".ViewTasks"
+            android:exported="true" />
+        <activity
+            android:name=".ViewSupportGroups"
+            android:exported="true" />
+        <activity
+            android:name=".ViewSuggestedActivities"
+            android:exported="true" />
+        <activity
+            android:name=".ViewSelfHelp"
+            android:exported="true" />
+        <activity
+            android:name=".ViewSelectedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ViewProfile"
+            android:exported="true" />
+        <activity
+            android:name=".ViewPost"
+            android:exported="true" />
+        <activity
+            android:name=".ViewMoodTrackerData"
+            android:exported="true" />
+        <activity
+            android:name=".ViewMessages"
+            android:exported="true" />
+        <activity
+            android:name=".ViewJournalEntry"
+            android:exported="true" />
+        <activity
+            android:name=".ViewJournalData"
+            android:exported="true" />
+        <activity
+            android:name=".ViewDrugTest"
+            android:exported="true" />
+        <activity
+            android:name=".ViewConversation"
+            android:exported="true" />
+        <activity
+            android:name=".ViewComments"
+            android:exported="true" />
+        <activity
+            android:name=".VerifyCode"
+            android:exported="true" />
+        <activity
+            android:name=".SubsCravingQuestionnaire"
+            android:exported="true" />
+        <activity
+            android:name=".SubmitDrugTestResult"
+            android:exported="true" />
+        <activity
+            android:name=".PatientMainMenu"
+            android:exported="true" />
+        <activity
+            android:name=".MoodTracker"
+            android:exported="true" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".JournalEntry"
+            android:exported="true" />
+        <activity
+            android:name=".Journal"
+            android:exported="true" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="true" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="true" />
+        <activity
+            android:name=".CreateNewMessages"
+            android:exported="true" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
+        <activity
+            android:name=".AlumniMainMenu"
+            android:exported="true" />
+        <activity
+            android:name=".AccomplishTask"
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
