@@ -4,6 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="right"
     tools:context=".Journal">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="67dp"
+                android:layout_height="match_parent"
+                android:background="#064219"
+                app:srcCompat="@android:drawable/ic_menu_revert"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
+                android:layout_weight="1"
+                android:background="#064219"
+                android:text="Journal  "
+                android:textAlignment="viewEnd"
+                android:textColor="@color/white"
+                android:textSize="34sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ABF3DA"
+            android:text="   Previous Entries"
+            android:textSize="25sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E2EFE8">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/j_entry1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry2"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry3"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry4"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry5"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry6"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry7"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry8"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/j_entry9"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="TextView" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#064219"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/CreateJournal"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:backgroundTint="#064219"
+                app:srcCompat="@drawable/compose"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

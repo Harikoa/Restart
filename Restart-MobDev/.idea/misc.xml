@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/journal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/journal_entry.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_journal_entry.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_selected_activity.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_self_help.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_suggested_activities.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_support_groups.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_tasks.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
