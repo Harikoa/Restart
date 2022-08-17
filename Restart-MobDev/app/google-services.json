@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661573872148",
+    "project_id": "restart-aa1cc",
+    "storage_bucket": "restart-aa1cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661573872148:android:2bdc4a040037ae006ad501",
+        "android_client_info": {
+          "package_name": "com.meyvn.restart_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661573872148-ljfqp9sfvrst0sh4sl00ijf2nq995qe2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWYBz3EkIlq3gR31GY8-r1r1VOfGaMqsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661573872148-ljfqp9sfvrst0sh4sl00ijf2nq995qe2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
