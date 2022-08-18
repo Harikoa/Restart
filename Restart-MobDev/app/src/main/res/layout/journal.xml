@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="right"
+    android:background="@drawable/mobbg"
     tools:context=".Journal">
 
     <LinearLayout
@@ -22,11 +23,11 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="67dp"
+                android:id="@+id/imageButton2"
+                android:layout_width="73dp"
                 android:layout_height="match_parent"
-                android:background="#064219"
-                app:srcCompat="@android:drawable/ic_menu_revert"
+                android:background="#0DFFFFFF"
+                app:srcCompat="?attr/actionModeCloseDrawable"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -34,25 +35,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="79dp"
                 android:layout_weight="1"
-                android:background="#064219"
                 android:text="Journal  "
                 android:textAlignment="viewEnd"
-                android:textColor="@color/white"
                 android:textSize="34sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="#ABF3DA"
+            android:layout_height="62dp"
             android:text="   Previous Entries"
             android:textSize="25sp" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#E2EFE8">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,7 +116,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#064219"
             android:orientation="vertical">
 
             <ImageButton
@@ -127,7 +123,7 @@
                 android:layout_width="118dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:backgroundTint="#064219"
+                android:background="#0CFFFFFF"
                 app:srcCompat="@drawable/compose"
                 tools:ignore="SpeakableTextPresentCheck" />
 
