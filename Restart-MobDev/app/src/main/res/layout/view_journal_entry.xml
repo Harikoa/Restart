@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="right"
+    android:background="@drawable/mobbg"
     tools:context=".Journal">
 
     <LinearLayout
@@ -22,19 +23,18 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="67dp"
+                android:id="@+id/imageButton2"
+                android:layout_width="73dp"
                 android:layout_height="match_parent"
-                android:background="#064219"
-                app:srcCompat="@android:drawable/ic_menu_revert"
+                android:background="#0DFFFFFF"
+                app:srcCompat="?attr/actionModeCloseDrawable"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="90dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#064219" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -42,13 +42,11 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:background="#ABF3DA"
             android:textSize="25sp" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="568dp"
-            android:background="#E2EFE8">
+            android:layout_height="568dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,10 +65,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:background="#064219"
-            android:backgroundTint="#064219"
-            android:orientation="vertical" />
+            android:layout_height="51dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
