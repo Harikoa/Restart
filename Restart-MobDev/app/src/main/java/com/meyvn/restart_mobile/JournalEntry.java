@@ -38,18 +38,19 @@ public class JournalEntry extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 map.put("date", new Date().getDate());
-                map.put("Journal Entru",journal.getText().toString());
-            db.collection("Accounts").document("Edwin Manalaotao").collection("Journal").add(map)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                map.put("Journal Entry",journal.getText().toString());
+            db.collection("Accounts").document("Edwin Manalaotao").collection("Journal").document(""+LocalDate.now())
+                    .set(map)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully written!");
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error adding document", e);
+                            Log.w(TAG, "Error writing document", e);
                         }
                     });
             }
