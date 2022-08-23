@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +38,10 @@ public class JournalEntry extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                Intent i = getIntent();
                 map.put("date", new Date().getDate());
                 map.put("Journal Entry",journal.getText().toString());
+                map.put("Mood",i.getStringExtra("mood"));
             db.collection("Accounts").document("Edwin Manalaotao").collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
