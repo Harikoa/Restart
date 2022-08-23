@@ -39,15 +39,26 @@
             android:id="@+id/EmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_email"
             android:ems="10"
+            android:hint="Email Address"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
             android:ems="10"
+            android:hint="Password"
             android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot your password?"
+            android:textAlignment="viewEnd" />
 
         <Button
             android:id="@+id/SignInButton"

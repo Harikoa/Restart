@@ -57,7 +57,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="585dp"
-                    android:text="view entry"
+                    android:text="Journal Entry"
                     android:textAlignment="center" />
 
             </LinearLayout>

@@ -60,55 +60,55 @@
                     android:id="@+id/j_entry1"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 1" />
 
                 <TextView
                     android:id="@+id/j_entry2"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 2" />
 
                 <TextView
                     android:id="@+id/j_entry3"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 3" />
 
                 <TextView
                     android:id="@+id/j_entry4"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 4" />
 
                 <TextView
                     android:id="@+id/j_entry5"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 5" />
 
                 <TextView
                     android:id="@+id/j_entry6"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 6" />
 
                 <TextView
                     android:id="@+id/j_entry7"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 7" />
 
                 <TextView
                     android:id="@+id/j_entry8"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 8" />
 
                 <TextView
                     android:id="@+id/j_entry9"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="TextView" />
+                    android:text="Journal 9" />
 
             </LinearLayout>
         </ScrollView>
