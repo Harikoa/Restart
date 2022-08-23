@@ -45,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:text="   Previous Entries"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -60,55 +61,64 @@
                     android:id="@+id/j_entry1"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 1" />
+                    android:text="Journal 1"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry2"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 2" />
+                    android:text="Journal 2"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry3"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 3" />
+                    android:text="Journal 3"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry4"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 4" />
+                    android:text="Journal 4"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry5"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 5" />
+                    android:text="Journal 5"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry6"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 6" />
+                    android:text="Journal 6"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry7"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 7" />
+                    android:text="Journal 7"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry8"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 8" />
+                    android:text="Journal 8"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/j_entry9"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Journal 9" />
+                    android:text="Journal 9"
+                    android:textAlignment="center" />
 
             </LinearLayout>
         </ScrollView>
