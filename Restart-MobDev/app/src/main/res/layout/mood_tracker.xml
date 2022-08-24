@@ -120,6 +120,7 @@
                         android:layout_width="74dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:checked="true"
                         android:text="Very Sad"
                         android:textAlignment="viewStart" />
 
@@ -135,6 +136,7 @@
                         android:layout_width="74dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:checked="false"
                         android:text="Neutral" />
 
                     <RadioButton

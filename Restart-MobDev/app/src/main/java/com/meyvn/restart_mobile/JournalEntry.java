@@ -42,6 +42,10 @@ public class JournalEntry extends AppCompatActivity {
                 map.put("date", new Date().getDate());
                 map.put("Journal Entry",journal.getText().toString());
                 map.put("Mood",i.getStringExtra("mood"));
+                map.put("SubstanceIntensity",i.getStringExtra("intensity"));
+                map.put("SubstanceFrequency",i.getStringExtra("freq"));
+                map.put("SubstanceLength",i.getStringExtra("length"));
+                map.put("Substance number",i.getStringExtra("number"));
             db.collection("Accounts").document("Edwin Manalaotao").collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -21,9 +21,10 @@ public class MoodTracker extends AppCompatActivity {
             public void onClick(View view) {
                 RadioGroup rd = findViewById(R.id.moodRadioGroup);
                 RadioButton rb = findViewById(rd.getCheckedRadioButtonId());
-                Intent i = new Intent(getApplicationContext(),JournalEntry.class);
+                Intent i = new Intent(getApplicationContext(),SubsCravingQuestionnaire.class);
                 i.putExtra("mood",rb.getText());
                 startActivity(i);
+
             }
         });
 

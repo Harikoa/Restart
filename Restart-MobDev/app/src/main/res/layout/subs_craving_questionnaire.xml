@@ -140,7 +140,7 @@
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="The intensity of my craving, that is, how much i desired this drug in the past 24 hours was:"
+                    android:text="The INTENSITY of my craving, that is, how much i desired this drug in the past 24 hours was:"
                     android:textAlignment="center"
                     android:textColor="#000000" />
 
@@ -150,6 +150,7 @@
                     android:orientation="horizontal">
 
                     <RadioGroup
+                        android:id="@+id/substanceIntensity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -165,8 +166,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
+                            android:checked="true"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:password="false"
+                            android:text="1" />
 
                         <Space
                             android:layout_width="30dp"
@@ -179,7 +183,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="2" />
 
                         <Space
                             android:layout_width="30dp"
@@ -192,7 +197,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="3" />
 
                         <Space
                             android:layout_width="30dp"
@@ -205,7 +211,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="4" />
 
                         <Space
                             android:layout_width="30dp"
@@ -218,7 +225,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="5" />
 
                         <Space
                             android:layout_width="30dp"
@@ -254,6 +262,7 @@
                     android:orientation="horizontal">
 
                     <RadioGroup
+                        android:id="@+id/substanceFreq"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
@@ -268,8 +277,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
+                            android:checked="true"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="1" />
 
                         <Space
                             android:layout_width="30dp"
@@ -282,7 +293,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="2" />
 
                         <Space
                             android:layout_width="30dp"
@@ -295,7 +307,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="3" />
 
                         <Space
                             android:layout_width="30dp"
@@ -308,7 +321,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="4" />
 
                         <Space
                             android:layout_width="30dp"
@@ -321,7 +335,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="5" />
 
                         <Space
                             android:layout_width="30dp"
@@ -356,6 +371,7 @@
                     android:orientation="horizontal">
 
                     <RadioGroup
+                        android:id="@+id/substanceLength"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
@@ -370,8 +386,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
+                            android:checked="true"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="1" />
 
                         <Space
                             android:layout_width="30dp"
@@ -384,7 +402,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="2" />
 
                         <Space
                             android:layout_width="30dp"
@@ -397,7 +416,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="3" />
 
                         <Space
                             android:layout_width="30dp"
@@ -410,7 +430,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="4" />
 
                         <Space
                             android:layout_width="30dp"
@@ -423,7 +444,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:minWidth="48dp"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:text="5" />
 
                         <Space
                             android:layout_width="30dp"
@@ -453,7 +475,7 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/substanceNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -466,7 +488,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/submitSubstance"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
