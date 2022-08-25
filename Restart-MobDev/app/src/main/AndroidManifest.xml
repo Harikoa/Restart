@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
+            android:name=".PHQ9Questionnaire"
+            android:exported="false" />
+        <activity
             android:name=".ViewTasks"
             android:exported="true" />
         <activity
@@ -74,13 +77,11 @@
         </activity>
         <activity
             android:name=".Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".JournalEntry"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Journal"
             android:exported="true" />
@@ -107,9 +108,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
