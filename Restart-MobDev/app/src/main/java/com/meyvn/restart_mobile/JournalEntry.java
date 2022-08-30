@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,15 +39,16 @@ public class JournalEntry extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
                 Intent i = getIntent();
-                map.put("date", new Date().getDate());
+                map.put("date", LocalDate.now());
                 map.put("Journal Entry",journal.getText().toString());
                 map.put("Mood",i.getStringExtra("mood"));
                 map.put("SubstanceIntensity",i.getStringExtra("intensity"));
                 map.put("SubstanceFrequency",i.getStringExtra("freq"));
                 map.put("SubstanceLength",i.getStringExtra("length"));
                 map.put("Substance number",i.getStringExtra("number"));
-            db.collection("Accounts").document("Edwin Manalaotao").collection("Journal").document(""+LocalDate.now())
+            db.collection("Accounts").document(spf.getString("email","NULL")).collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

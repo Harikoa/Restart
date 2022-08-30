@@ -42,7 +42,8 @@
             android:drawableStart="@drawable/ic_email"
             android:ems="10"
             android:hint="Email Address"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/Password"
@@ -51,7 +52,8 @@
             android:drawableStart="@drawable/ic_lock"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <TextView
             android:id="@+id/textView8"
