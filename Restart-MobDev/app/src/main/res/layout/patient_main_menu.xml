@@ -20,31 +20,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView35"
+                android:id="@+id/welcomeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="Welcome, Boss D"
+                android:layout_weight="3"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/logoutButton"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:layout_gravity="end"
                 android:layout_weight="1"
                 android:background="#CA2F2F"
                 android:text="Logout" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/viewJournals"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -91,7 +89,7 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="#009688"
                 android:text="Self Help" />
 
             <Button
@@ -101,7 +99,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="#009688"
                 android:text="Data" />
         </LinearLayout>
 
@@ -117,8 +115,8 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
-                android:text="asdasd" />
+                android:background="#009688"
+                android:text="Profile" />
 
             <Button
                 android:id="@+id/button10"
@@ -127,7 +125,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="#009688"
                 android:text="MEsseges" />
         </LinearLayout>
 
