@@ -89,7 +89,7 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="#009688"
+                android:background="@drawable/rounded_shapes"
                 android:text="Self Help" />
 
             <Button
@@ -99,7 +99,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="#009688"
+                android:background="@drawable/rounded_shapes"
                 android:text="Data" />
         </LinearLayout>
 
@@ -115,7 +115,8 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="#009688"
+                android:background="@drawable/rounded_shapes"
+                android:textColor="#FFFFFF"
                 android:text="Profile" />
 
             <Button
@@ -125,7 +126,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="#009688"
+                android:background="@drawable/rounded_shapes"
+                android:textColor="#FFFFFF"
                 android:text="MEsseges" />
         </LinearLayout>
 
