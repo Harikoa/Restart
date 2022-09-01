@@ -47,7 +47,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="#95D199"
+            android:background="@drawable/rounded_light"
             android:text="Journal"
             android:textAlignment="center"
             android:textColor="#145950"
@@ -59,7 +59,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:background="#95D199"
+            android:background="@drawable/rounded_light"
             android:text="Tasks"
             android:textAlignment="center"
             android:textColor="#145950"
@@ -72,7 +72,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#95D199"
+            android:background="@drawable/rounded_light"
             android:text="Support Group Forum"
             android:textColor="#145950"
             android:textStyle="bold" />
@@ -89,7 +89,8 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="@drawable/rounded_dark"
+                android:textColor="#FFFFFF"
                 android:text="Self Help" />
 
             <Button
@@ -99,7 +100,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="@drawable/rounded_dark"
+                android:textColor="#FFFFFF"
                 android:text="Data" />
         </LinearLayout>
 
@@ -115,7 +117,7 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="@drawable/rounded_dark"
                 android:textColor="#FFFFFF"
                 android:text="Profile" />
 
@@ -126,7 +128,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_shapes"
+                android:background="@drawable/rounded_dark"
                 android:textColor="#FFFFFF"
                 android:text="MEsseges" />
         </LinearLayout>
