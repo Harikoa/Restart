@@ -47,6 +47,7 @@ public class JournalEntry extends AppCompatActivity {
                 map.put("SubstanceIntensity",i.getStringExtra("intensity"));
                 map.put("SubstanceFrequency",i.getStringExtra("freq"));
                 map.put("SubstanceLength",i.getStringExtra("length"));
+                System.out.println(map.get("date"));
                 map.put("Substance number",i.getStringExtra("number"));
             db.collection("Accounts").document(spf.getString("email","NULL")).collection("Journal").document(""+LocalDate.now())
                     .set(map)

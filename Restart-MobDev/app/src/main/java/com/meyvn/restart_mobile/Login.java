@@ -19,6 +19,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
 
 public class Login extends AppCompatActivity {
 
@@ -26,9 +27,11 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
-        Intent in = new Intent(getApplicationContext(),MoodTracker.class);
-        if (spf.contains("email"))
+        Intent in = new Intent(getApplicationContext(),PatientMainMenu.class);
+        Gson convert = new Gson();
+        if (spf.contains("Account")) {
             startActivity(in);
+        }
         setContentView(R.layout.login);
         EditText email = findViewById(R.id.EmailAddress);
         EditText password = findViewById(R.id.Password);
@@ -44,11 +47,15 @@ public class Login extends AppCompatActivity {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             String pw =document.get("password").toString();
+                            
                             if(password.getText().toString().equals(pw))
                             {
 
                                 SharedPreferences.Editor edit = spf.edit();
-                                edit.putString("email",email.getText().toString());
+                                Account acc = document.toObject(Account.class);
+                                String JSON = convert.toJson(acc);
+                                System.out.println(JSON);
+                                edit.putString("Account", JSON);
                                 edit.apply();
                                 startActivity(in);
                             }
@@ -62,5 +69,16 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
+        Intent in = new Intent(getApplicationContext(),PatientMainMenu.class);
+       
+        if (spf.contains("Account")) {
+            startActivity(in);
+        }
     }
 }
