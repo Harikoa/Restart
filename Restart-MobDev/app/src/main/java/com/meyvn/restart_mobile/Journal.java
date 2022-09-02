@@ -7,13 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class Journal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.journal);
-        ImageButton create = findViewById(R.id.CreateJournal);
+       FloatingActionButton create = findViewById(R.id.CreateJournal);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

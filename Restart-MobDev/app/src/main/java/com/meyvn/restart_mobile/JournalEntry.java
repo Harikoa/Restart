@@ -35,21 +35,21 @@ public class JournalEntry extends AppCompatActivity {
         EditText journal = findViewById(R.id.journalEntry);
         Button submit = findViewById(R.id.journalEntrySubmit);
         Map <String,Object> map = new HashMap<>();
+
         submit.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
+
             @Override
             public void onClick(View view) {
                 SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
                 Intent i = getIntent();
-                map.put("date", LocalDate.now());
+                map.put("date", ""+LocalDate.now());
                 map.put("Journal Entry",journal.getText().toString());
                 map.put("Mood",i.getStringExtra("mood"));
                 map.put("SubstanceIntensity",i.getStringExtra("intensity"));
                 map.put("SubstanceFrequency",i.getStringExtra("freq"));
                 map.put("SubstanceLength",i.getStringExtra("length"));
-                System.out.println(map.get("date"));
                 map.put("Substance number",i.getStringExtra("number"));
-            db.collection("Accounts").document(spf.getString("email","NULL")).collection("Journal").document(""+LocalDate.now())
+            db.collection("Accounts").document("restart@gmail.com").collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
