@@ -288,7 +288,7 @@
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#106E2E"
+                android:background="@drawable/round_btn"
                 android:layout_marginLeft="40dp"
                 android:text="Cancel"
                 android:textColor="@color/white" />
@@ -297,7 +297,7 @@
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#106E2E"
+                android:background="@drawable/round_btn"
                 android:layout_marginLeft="30dp"
                 android:text="Save"
                 android:textColor="@color/white" />

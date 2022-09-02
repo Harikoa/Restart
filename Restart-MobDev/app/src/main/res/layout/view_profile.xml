@@ -266,7 +266,7 @@
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#106E2E"
+                android:background="@drawable/round_btn"
                 android:layout_marginTop="40dp"
                 android:text="Edit Account"
                 android:textColor="@color/white" />
@@ -275,7 +275,7 @@
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#106E2E"
+                android:background="@drawable/round_btn"
                 android:layout_marginTop="20dp"
                 android:text="Logout"
                 android:textColor="@color/white" />

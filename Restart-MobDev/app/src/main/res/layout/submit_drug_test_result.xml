@@ -104,7 +104,7 @@
                 android:id="@+id/submitresult"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
-                android:background="#106E2E"
+                android:background="@drawable/round_btn"
                 android:layout_gravity="right"
                 android:text="Submit"
                 android:layout_marginRight="20dp"
