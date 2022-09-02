@@ -67,7 +67,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="#106E2E"
+            android:background="@drawable/round_btn"
             android:text="Sign in"
             android:textColor="@color/white" />
 
