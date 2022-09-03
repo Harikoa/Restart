@@ -56,29 +56,22 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/journalEntry"
                     android:layout_width="match_parent"
-                    android:layout_height="577dp"
-                    android:ems="10"
-                    android:hint="Enter Journal"
-                    android:inputType="textPersonName"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
+                    android:layout_height="600dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="start"
+                    android:hint="Type in your Journal here.."
+                    android:textColorHint="#757575" />
+            </com.google.android.material.textfield.TextInputLayout>
         </ScrollView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:orientation="vertical" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
