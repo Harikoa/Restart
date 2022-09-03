@@ -2,6 +2,8 @@ package com.meyvn.restart_mobile;
 
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
+import java.util.HashMap;
+
 @IgnoreExtraProperties
 public class Account {
     private Integer ID;
@@ -94,4 +96,6 @@ public class Account {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
+
 }
