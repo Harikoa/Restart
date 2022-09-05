@@ -26,7 +26,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@android:color/transparent"
-                app:srcCompat="@android:drawable/ic_menu_revert" />
+                app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,8 +47,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#8de7c9"
             android:orientation="vertical">
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="#000000" />
 
             <TextView
                 android:id="@+id/textView43"
@@ -56,14 +61,20 @@
                 android:layout_height="60dp"
                 android:gravity="center_vertical"
                 android:text="Task Title"
+                android:textColor="#000000"
                 android:textSize="30sp" />
 
         </LinearLayout>
 
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#000000" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#d1f2ea"
             android:orientation="vertical">
 
             <TextView
@@ -74,14 +85,20 @@
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName3"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="start"
-                android:hint="Type in your Journal here.."
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:gravity="start"
+                    android:hint="Type your Reflection here.." />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

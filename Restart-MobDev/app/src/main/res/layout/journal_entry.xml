@@ -19,32 +19,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="73dp"
-                android:layout_height="match_parent"
-                android:background="#0DFFFFFF"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
                 app:srcCompat="?attr/actionModeCloseDrawable"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="90dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/journalEntrySubmit"
-                android:layout_width="101dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:background="#0AFFFFFF"
-                android:text="DONE"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/journalEntrySubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"
+                    android:text="Done"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -52,6 +51,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:textColor="#000000"
             android:textSize="25sp" />
 
         <ScrollView
@@ -68,7 +68,7 @@
                     android:layout_height="600dp"
                     android:background="@android:color/transparent"
                     android:gravity="start"
-                    android:hint="Type in your Journal here.."
+                    android:hint="Type your Journal here.."
                     android:textColorHint="#757575" />
             </com.google.android.material.textfield.TextInputLayout>
         </ScrollView>
