@@ -22,15 +22,21 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
 public class Login extends AppCompatActivity {
-
+    public static  Account storedAcc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
-        Intent in = new Intent(getApplicationContext(),PatientMainMenu.class);
+        Intent patient = new Intent(getApplicationContext(),PatientMainMenu.class);
+        Intent alumni = new Intent(getApplicationContext(),AlumniMainMenu.class);
         Gson convert = new Gson();
         if (spf.contains("Account")) {
-            startActivity(in);
+            String savedJson = spf.getString("Account","{}");
+           storedAcc = convert.fromJson(savedJson,Account.class);
+            if(storedAcc.getRole().equalsIgnoreCase("patient"))
+                startActivity(patient);
+            else
+                startActivity(alumni);
         }
         setContentView(R.layout.login);
         EditText email = findViewById(R.id.EmailAddress);
@@ -50,14 +56,16 @@ public class Login extends AppCompatActivity {
                             
                             if(password.getText().toString().equals(pw))
                             {
-
                                 SharedPreferences.Editor edit = spf.edit();
                                 Account acc = document.toObject(Account.class);
+                                storedAcc = acc;
                                 String JSON = convert.toJson(acc);
-                                System.out.println(JSON);
                                 edit.putString("Account", JSON);
                                 edit.apply();
-                                startActivity(in);
+                                if(storedAcc.getRole().equalsIgnoreCase("patient"))
+                                    startActivity(patient);
+                                else
+                                    startActivity(alumni);
                             }
                             else
                                 Toast.makeText(Login.this,"Invalid Credentials",Toast.LENGTH_LONG).show();
@@ -71,14 +79,10 @@ public class Login extends AppCompatActivity {
 
     }
 
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
-        Intent in = new Intent(getApplicationContext(),PatientMainMenu.class);
-       
-        if (spf.contains("Account")) {
-            startActivity(in);
-        }
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

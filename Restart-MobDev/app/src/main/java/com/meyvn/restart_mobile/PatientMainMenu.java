@@ -21,8 +21,8 @@ public class PatientMainMenu extends AppCompatActivity {
         Gson gson = new Gson();
         SharedPreferences prf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
         TextView welcome = findViewById(R.id.welcomeText);
-        Account acc = gson.fromJson(prf.getString("Account","{}"),Account.class);
-        welcome.setText("Welcome! " + acc.getFirstName() + " " + acc.getLastName());
+
+        welcome.setText("Welcome! " + Login.storedAcc.getFirstName() + " " + Login.storedAcc.getLastName());
         SharedPreferences.Editor edit = prf.edit();
         Button logout  = findViewById(R.id.logoutButton);
         Button journals = findViewById(R.id.viewJournals);
@@ -34,6 +34,7 @@ public class PatientMainMenu extends AppCompatActivity {
             edit.apply();
             Intent i = new Intent(getApplicationContext(),Login.class);
             startActivity(i);
+            finish();
             }
         });
         journals.setOnClickListener(new View.OnClickListener() {
