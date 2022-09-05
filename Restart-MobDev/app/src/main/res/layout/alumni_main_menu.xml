@@ -27,6 +27,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <Button
@@ -35,8 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_weight="1"
-                android:background="@android:color/holo_red_dark"
+                android:backgroundTint="@android:color/holo_red_dark"
                 android:text="Logout" />
+
         </LinearLayout>
 
         <Button
