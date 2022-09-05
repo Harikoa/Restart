@@ -10,6 +10,7 @@
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/change_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/create_new_messages.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/drug_test_list.xml" value="0.3212962962962963" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/edit_profile.xml" value="0.36102564102564105" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/journal.xml" value="0.36666666666666664" />
@@ -23,10 +24,10 @@
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/verify_code.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_comments.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_conversation.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_drug_test.xml" value="0.1" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_drug_test.xml" value="0.33" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_journal_data.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_journal_entry.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_messages.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_messages.xml" value="0.33" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_mood_tracker_data.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_selected_activity.xml" value="0.35260416666666666" />
