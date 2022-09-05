@@ -64,8 +64,13 @@ public class Login extends AppCompatActivity {
                                 edit.apply();
                                 if(storedAcc.getRole().equalsIgnoreCase("patient"))
                                     startActivity(patient);
-                                else
+                                else if(storedAcc.getRole().equalsIgnoreCase("alumni"))
                                     startActivity(alumni);
+                                else {
+                                    Toast.makeText(Login.this, "Account can't be logged in the mobile app", Toast.LENGTH_LONG).show();
+                                    edit.remove("Account");
+                                    edit.apply();
+                                }
                             }
                             else
                                 Toast.makeText(Login.this,"Invalid Credentials",Toast.LENGTH_LONG).show();
