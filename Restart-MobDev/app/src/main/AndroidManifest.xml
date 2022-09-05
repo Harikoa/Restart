@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
+            android:name=".Task_list"
+            android:exported="false" />
+        <activity
+            android:name=".drug_test_list"
+            android:exported="false" />
+        <activity
             android:name=".PHQ9Questionnaire"
             android:exported="false" />
         <activity
@@ -68,14 +74,11 @@
             android:exported="true" />
         <activity
             android:name=".MoodTracker"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
-
             android:name=".Login"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +87,7 @@
         </activity>
         <activity
             android:name=".JournalEntry"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Journal"
             android:exported="true" />
@@ -111,7 +114,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
