@@ -84,6 +84,7 @@ public class ViewDrugTest extends AppCompatActivity {
         {
             uri = data.getData();
             drugPhoto.setImageURI(uri);
+            drugPhoto.setVisibility(View.VISIBLE);
         }
     }
 
