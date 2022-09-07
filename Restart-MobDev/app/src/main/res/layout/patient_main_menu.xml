@@ -44,7 +44,7 @@
         <Button
             android:id="@+id/viewJournals"
             android:layout_width="320dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@drawable/rounded_light"
@@ -56,7 +56,7 @@
         <Button
             android:id="@+id/button4"
             android:layout_width="320dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_light"
@@ -68,10 +68,9 @@
         <Button
             android:id="@+id/button5"
             android:layout_width="320dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_light"
             android:text="Support Group Forum"
             android:textColor="#145950"
@@ -80,7 +79,7 @@
         <Button
             android:id="@+id/drugTestPatient"
             android:layout_width="320dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
@@ -102,8 +101,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_dark"
-                android:textColor="#FFFFFF"
-                android:text="Self Help" />
+                android:text="Self Help"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/button8"
@@ -113,8 +112,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_dark"
-                android:textColor="#FFFFFF"
-                android:text="Data" />
+                android:text="Data"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
@@ -130,8 +129,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_dark"
-                android:textColor="#FFFFFF"
-                android:text="Profile" />
+                android:text="Profile"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/button10"
@@ -141,8 +140,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_dark"
-                android:textColor="#FFFFFF"
-                android:text="MEsseges" />
+                android:text="MEsseges"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>

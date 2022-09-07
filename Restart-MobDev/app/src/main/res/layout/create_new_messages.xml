@@ -19,6 +19,7 @@
             android:id="@+id/textView4"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:gravity="center_vertical"
             android:paddingStart="20dp"
             android:text="to:"
             android:textColor="#000000"
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="'@username'"
             android:textSize="20sp"
             android:textStyle="bold" />
