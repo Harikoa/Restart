@@ -4,6 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mobbg"
     tools:context=".ViewConversation">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bot_dark"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton12"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="username"
+                android:textColor="#95d199"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_dark"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Message"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_light"
+                android:gravity="center_vertical|end"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Message"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/rounded_top_dark"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_inputbox"
+            android:ems="10"
+            android:hint="Write your message.."
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton13"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@android:drawable/ic_menu_send" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
