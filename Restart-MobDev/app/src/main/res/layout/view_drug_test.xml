@@ -76,7 +76,7 @@
                 android:id="@+id/textView39"
                 android:layout_width="match_parent"
                 android:layout_height="153dp"
-                android:text="qwertyuiop"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
