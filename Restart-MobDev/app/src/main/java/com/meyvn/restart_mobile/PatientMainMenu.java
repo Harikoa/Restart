@@ -26,7 +26,7 @@ public class PatientMainMenu extends AppCompatActivity {
         SharedPreferences.Editor edit = prf.edit();
         Button logout  = findViewById(R.id.logoutButton);
         Button journals = findViewById(R.id.viewJournals);
-
+        Button drug = findViewById(R.id.drugTestPatient);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +41,14 @@ public class PatientMainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),Journal.class);
+                startActivity(i);
+            }
+        });
+
+        drug.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),ViewDrugTest.class);
                 startActivity(i);
             }
         });
