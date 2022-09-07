@@ -20,45 +20,36 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_bot_dark"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/backDrug"
-                android:layout_width="73dp"
-                android:layout_height="match_parent"
-                android:background="#0DFFFFFF"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
                 app:srcCompat="?attr/actionModeCloseDrawable"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:paddingRight="30dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical|end"
                 android:text="Drug Test"
-                android:textAlignment="textEnd"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="108dp"
-            android:paddingStart="30dp"
-            android:paddingTop="50dp"
-            android:text="Requests:"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
         <LinearLayout
             android:layout_width="343dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:background="@drawable/textview_border"
             android:orientation="vertical">
 
@@ -66,30 +57,59 @@
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingTop="10dp"
-                android:text="Details:"
-                android:textAlignment="textStart"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="Request Details:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Date Issued: "
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/drugDetails"
+                android:id="@+id/textView52"
                 android:layout_width="match_parent"
-                android:layout_height="153dp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-                android:textAlignment="center"
-                android:textSize="16sp" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Deadline: "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Name: "
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView40"
-                    android:layout_width="273dp"
-                    android:layout_height="57dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
                     android:text="Upload an image"
@@ -98,33 +118,36 @@
 
                 <ImageButton
                     android:id="@+id/uploadDrug"
-                    android:layout_width="68dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
                     android:background="#0761E390"
+                    android:src="@android:drawable/ic_menu_upload"
                     android:visibility="visible"
                     tools:ignore="SpeakableTextPresentCheck"
                     tools:srcCompat="@android:drawable/ic_menu_upload" />
+
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/drugImage"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            tools:srcCompat="@drawable/addimg" />
 
-            <ImageView
-                android:id="@+id/drugImage"
-                android:layout_width="300dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <Button
-                android:id="@+id/submitDrugTest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/submitDrugTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_btn"
+            android:text="Submit"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
