@@ -37,12 +37,12 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/backDrug"
+                android:id="@+id/journalBack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@android:color/transparent"
-                app:srcCompat="?attr/actionModeCloseDrawable"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:contentDescription="@string/app_name"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <TextView
                 android:id="@+id/textView3"

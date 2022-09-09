@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
-            android:name=".Task_list"
-            android:exported="false" />
-        <activity
             android:name=".drug_test_list"
             android:exported="false" />
         <activity

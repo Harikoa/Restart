@@ -21,6 +21,16 @@ public class Journal extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),MoodTracker.class);
                 startActivity(i);
+
+
+            }
+        });
+        ImageButton back = findViewById(R.id.journalBack);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
