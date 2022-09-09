@@ -33,10 +33,10 @@ public class SubsCravingQuestionnaire extends AppCompatActivity {
                 RadioButton length = findViewById(rgLength.getCheckedRadioButtonId());
                 String number = txt.getText().toString();
                 i.setClass(getApplicationContext(),JournalEntry.class);
-               i.putExtra("intensity",intensity.getText());
-               i.putExtra("freq",freq.getText());
-               i.putExtra("length",length.getText());
-               i.putExtra("number",number);
+               i.putExtra("intensity",Integer.parseInt(intensity.getText().toString()));
+               i.putExtra("freq",Integer.parseInt(freq.getText().toString()));
+               i.putExtra("length",Integer.parseInt(length.getText().toString()));
+               i.putExtra("number",Integer.parseInt(number));
                startActivity(i);
             }
         });

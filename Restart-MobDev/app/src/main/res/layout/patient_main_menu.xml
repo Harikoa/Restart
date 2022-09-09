@@ -107,7 +107,7 @@
                 android:textColor="#FFFFFF" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/viewData"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="20dp"
