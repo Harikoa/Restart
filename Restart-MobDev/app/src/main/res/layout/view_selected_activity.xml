@@ -45,7 +45,7 @@
             android:layout_height="250dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/textview_border"
+            android:background="@drawable/textview_border_light"
             android:orientation="vertical"
             android:padding="20dp">
 

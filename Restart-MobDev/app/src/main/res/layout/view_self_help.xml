@@ -42,20 +42,43 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="350dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
-            android:background="#0d524c"
-            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textview_border_dark"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView59"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DAILY MOTIVATIONAL QUOTES"
-                android:textColor="#009688"
+                android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:text="Today's Quote:"
+                android:textColor="#cdfce2"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#cdfce2"
                 android:textSize="15sp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_light"
+            android:text="Activity Suggestions"
+            android:textColor="#145950" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

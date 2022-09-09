@@ -58,7 +58,7 @@
             android:layout_width="343dp"
             android:layout_height="462dp"
             android:layout_gravity="center"
-            android:background="@drawable/textview_border"
+            android:background="@drawable/textview_border_light"
             android:orientation="vertical">
 
 
