@@ -64,9 +64,6 @@
             android:name=".SubsCravingQuestionnaire"
             android:exported="true" />
         <activity
-            android:name=".SubmitDrugTestResult"
-            android:exported="true" />
-        <activity
             android:name=".PatientMainMenu"
             android:exported="true" />
         <activity
