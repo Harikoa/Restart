@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@drawable/rounded_bot_dark"
         app:layout_constraintTop_toTopOf="@+id/linearLayout9">
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/subsBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
