@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SubmitDrugTestResult extends AppCompatActivity {
+public class view_urge_data extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.submit_drug_test_result);
+        setContentView(R.layout.view_urge_data);
     }
 }

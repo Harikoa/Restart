@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -45,8 +46,14 @@ public class SubsCravingQuestionnaire extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Enter the number of times of cravings for a drug",Toast.LENGTH_LONG).show();
             }
         });
+        ImageButton back = findViewById(R.id.subsBack);
 
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }
