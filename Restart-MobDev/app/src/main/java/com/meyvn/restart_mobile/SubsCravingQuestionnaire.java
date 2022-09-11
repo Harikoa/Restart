@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -32,12 +33,16 @@ public class SubsCravingQuestionnaire extends AppCompatActivity {
                 RadioButton freq = findViewById(rgFreq.getCheckedRadioButtonId());
                 RadioButton length = findViewById(rgLength.getCheckedRadioButtonId());
                 String number = txt.getText().toString();
-                i.setClass(getApplicationContext(),JournalEntry.class);
-               i.putExtra("intensity",Integer.parseInt(intensity.getText().toString()));
-               i.putExtra("freq",Integer.parseInt(freq.getText().toString()));
-               i.putExtra("length",Integer.parseInt(length.getText().toString()));
-               i.putExtra("number",Integer.parseInt(number));
-               startActivity(i);
+                if(!number.isEmpty()) {
+                    i.setClass(getApplicationContext(), JournalEntry.class);
+                    i.putExtra("intensity", Integer.parseInt(intensity.getText().toString()));
+                    i.putExtra("freq", Integer.parseInt(freq.getText().toString()));
+                    i.putExtra("length", Integer.parseInt(length.getText().toString()));
+                    i.putExtra("number", Integer.parseInt(number));
+                    startActivity(i);
+                }
+                else
+                    Toast.makeText(getApplicationContext(),"Enter the number of times of cravings for a drug",Toast.LENGTH_LONG).show();
             }
         });
 

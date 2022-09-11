@@ -1,4 +1,4 @@
-package com.meyvn.restart_mobile;
+package com.meyvn.restart_mobile.POJO;
 
 import com.google.firebase.firestore.IgnoreExtraProperties;
 

@@ -39,12 +39,12 @@ public class JournalEntry extends AppCompatActivity {
                 SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
                 Intent i = getIntent();
                 map.put("date", ""+LocalDate.now());
-                map.put("Journal Entry",journal.getText().toString());
-                map.put("Mood",i.getStringExtra("mood"));
-                map.put("SubstanceIntensity",i.getIntExtra("intensity",-1));
-                map.put("SubstanceFrequency",i.getIntExtra("freq",-1));
-                map.put("SubstanceLength",i.getIntExtra("length",-1));
-                map.put("Substance number",i.getIntExtra("number",-1));
+                map.put("journalEntry",journal.getText().toString());
+                map.put("mood",i.getStringExtra("mood"));
+                map.put("substanceIntensity",i.getIntExtra("intensity",-1));
+                map.put("substanceFrequency",i.getIntExtra("freq",-1));
+                map.put("substanceLength",i.getIntExtra("length",-1));
+                map.put("substanceNumber",i.getIntExtra("number",-1));
             db.collection("Accounts").document("restart@gmail.com").collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

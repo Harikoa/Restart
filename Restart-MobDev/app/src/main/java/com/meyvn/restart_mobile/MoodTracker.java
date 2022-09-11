@@ -26,17 +26,17 @@ public class MoodTracker extends AppCompatActivity {
                 i.putExtra("mood",rb.getText());
                 startActivity(i);
 
-                ImageButton back = findViewById(R.id.moodtrackerBack);
 
-                back.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        finish();
-                    }
-                });
             }
         });
+        ImageButton back = findViewById(R.id.moodtrackerBack);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }

@@ -1,6 +1,9 @@
 package com.meyvn.restart_mobile;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +11,14 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.meyvn.restart_mobile.POJO.JournalPojo;
+
+import java.util.ArrayList;
 
 public class Journal extends AppCompatActivity {
 
@@ -33,5 +44,25 @@ public class Journal extends AppCompatActivity {
                 finish();
             }
         });
+        RecyclerView rc = findViewById(R.id.journalRecycler);
+        rc.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseFirestore fs = FirebaseFirestore.getInstance();
+        ArrayList<JournalPojo> pojo = new ArrayList<JournalPojo>();
+        JournalAdapter adapter = new JournalAdapter(this,pojo);
+        rc.setAdapter(adapter);
+        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        for(DocumentSnapshot ds : value.getDocuments())
+                        {
+                            JournalPojo jp = ds.toObject(JournalPojo.class);
+                            pojo.add(jp);
+
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 }
