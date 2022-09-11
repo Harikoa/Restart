@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mobbg"
+    tools:context=".view_urge_data">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_bot_light"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Journal"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/button27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Mood"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/button26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Urge"
+            android:textColor="#009688"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bot_dark"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton19"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="10dp"
+                android:text="Urge Data"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_top_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button28"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            android:text="Export" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

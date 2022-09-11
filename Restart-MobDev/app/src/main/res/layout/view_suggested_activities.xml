@@ -4,6 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mobbg"
     tools:context=".ViewSuggestedActivities">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bot_dark"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton18"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="10dp"
+                android:text="Suggested Activities"
+                android:textColor="#95d199"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            tools:itemCount="3" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

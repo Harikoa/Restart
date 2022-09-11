@@ -36,7 +36,14 @@ public class MoodTracker extends AppCompatActivity {
                 });
             }
         });
+        ImageButton back = findViewById(R.id.moodtrackerBack);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }

@@ -20,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="@drawable/rounded_bot_dark"
             android:orientation="horizontal">
 
             <ImageButton
@@ -40,9 +41,12 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="   Before you start writing..."
-            android:textSize="24sp"
+            android:layout_height="60dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:text="Before you start writing..."
+            android:textColor="#009688"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -54,115 +58,144 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:text="     How did you feel today?"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="How did you feel today?"
                 android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_weight="1"
-                    tools:srcCompat="@tools:sample/avatars"
+                    android:padding="3dp"
+                    android:src="@drawable/verysad"
                     tools:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:layout_weight="1"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:src="@drawable/sad"
+                    tools:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:layout_weight="1"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:src="@drawable/neutral"
+                    tools:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:layout_weight="1"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:src="@drawable/happy"
+                    tools:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="74dp"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:layout_weight="1"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:src="@drawable/veryhappy"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                >
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <RadioGroup
                     android:id="@+id/moodRadioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal">
+
 
                     <RadioButton
                         android:id="@+id/rbtn1"
-                        android:layout_width="74dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:checked="true"
+                        android:button="@android:color/transparent"
+                        android:drawableTop="@android:drawable/btn_radio"
+                        android:gravity="center"
                         android:text="Very Sad"
-                        android:textAlignment="viewStart" />
+                        android:textSize="13sp" />
+
 
                     <RadioButton
                         android:id="@+id/rbtn2"
-                        android:layout_width="74dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:text="Sad" />
+                        android:button="@android:color/transparent"
+                        android:drawableTop="@android:drawable/btn_radio"
+                        android:gravity="center"
+                        android:text="Sad"
+                        android:textSize="13sp" />
 
                     <RadioButton
                         android:id="@+id/rbtn3"
-                        android:layout_width="74dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:checked="false"
-                        android:text="Neutral" />
+                        android:button="@android:color/transparent"
+                        android:checked="true"
+                        android:drawableTop="@android:drawable/btn_radio"
+                        android:gravity="center"
+                        android:text="Neutral"
+                        android:textSize="13sp" />
 
                     <RadioButton
                         android:id="@+id/rbtn4"
-                        android:layout_width="74dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:text="Happy" />
+                        android:button="@android:color/transparent"
+                        android:drawableTop="@android:drawable/btn_radio"
+                        android:gravity="center"
+                        android:text="Happy"
+                        android:textSize="13sp" />
 
                     <RadioButton
                         android:id="@+id/rbtn5"
-                        android:layout_width="74dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:text="Very Happy" />
+                        android:button="@android:color/transparent"
+                        android:drawableTop="@android:drawable/btn_radio"
+                        android:gravity="center"
+                        android:text="Very Happy"
+                        android:textSize="13sp" />
 
                 </RadioGroup>
 
             </LinearLayout>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="138dp"
-            android:orientation="vertical"></LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

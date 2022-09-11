@@ -4,6 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mobbg"
     tools:context=".ViewSelfHelp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bot_dark"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/selfBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="10dp"
+                android:text="Self Help"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textview_border_dark"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:text="Today's Quote:"
+                android:textColor="#cdfce2"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#cdfce2"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_light"
+            android:text="Activity Suggestions"
+            android:textColor="#145950" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
