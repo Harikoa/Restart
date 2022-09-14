@@ -50,7 +50,7 @@
             android:background="#000000" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/journalEntryDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

@@ -39,7 +39,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/journalEntryDate"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:textSize="25sp" />
@@ -54,11 +54,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/journalEntryBody"
                     android:layout_width="match_parent"
                     android:layout_height="585dp"
                     android:text="Journal Entry"
-                    android:layout_marginTop="100dp"
                     android:textAlignment="center" />
 
             </LinearLayout>

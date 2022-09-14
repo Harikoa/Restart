@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,7 +51,19 @@ public class JournalEntry extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                            Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getApplicationContext(),Journal.class);
+                            try {
+                             Thread.sleep(1500);
+                             startActivity(i);
+                             finish();
+                            }
+                            catch (Exception e)
+                             {
+                                e.printStackTrace();
+                                 startActivity(i);
+                                finish();
+                             }
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
