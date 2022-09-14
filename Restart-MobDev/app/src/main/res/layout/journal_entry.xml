@@ -17,15 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/journalEntrySubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:background="@android:color/transparent"
-            android:gravity="center"
-            android:text="Done"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bot_dark"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/journalEntrySubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:text="Done"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/journalEntryDate"

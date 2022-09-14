@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
+            android:name=".ViewTaskEntry"
+            android:exported="false" />
+        <activity
             android:name=".view_urge_data"
             android:exported="false" />
         <activity

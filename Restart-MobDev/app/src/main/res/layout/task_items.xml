@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardBackgroundColor="@android:color/transparent"
-    app:cardCornerRadius="3dp">
+    app:cardBackgroundColor="@color/border"
+    app:cardCornerRadius="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_border_light"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -25,10 +24,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Date of Journal Entry: " />
+                android:text="Date of task: " />
 
             <TextView
-                android:id="@+id/journalDate"
+                android:id="@+id/taskDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -45,13 +44,37 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mood: " />
+                android:text="Title of Task: " />
 
             <TextView
-                android:id="@+id/moodRating"
+                android:id="@+id/taskTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Task Deadline: " />
+
+            <TextView
+                android:id="@+id/taskDeadline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
