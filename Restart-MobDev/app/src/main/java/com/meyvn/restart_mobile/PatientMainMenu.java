@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ public class PatientMainMenu extends AppCompatActivity {
         Button tasks = findViewById(R.id.viewTasks);
         Button forums = findViewById(R.id.viewForum);
         Button drug = findViewById(R.id.drugTestPatient);
+        Button messages = findViewById(R.id.messages);
 
         Button selfhelp = findViewById(R.id.viewSelfhelp);
         Button profile = findViewById(R.id.viewProfile);
@@ -124,6 +126,13 @@ public class PatientMainMenu extends AppCompatActivity {
             }
         });
 
+        messages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),ViewMessages.class);
+                startActivity(i);
+            }
+        });
 
 
     }
