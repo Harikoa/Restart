@@ -16,12 +16,13 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
 import com.meyvn.restart_mobile.POJO.JournalPojo;
 
 import java.util.ArrayList;
 
-public class Journal extends AppCompatActivity {
-
+public class Journal extends AppCompatActivity implements RecyclerViewInterface{
+    ArrayList<JournalPojo> pojo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +48,8 @@ public class Journal extends AppCompatActivity {
         RecyclerView rc = findViewById(R.id.journalRecycler);
         rc.setLayoutManager(new LinearLayoutManager(this));
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        ArrayList<JournalPojo> pojo = new ArrayList<JournalPojo>();
-        JournalAdapter adapter = new JournalAdapter(this,pojo);
+        pojo = new ArrayList<JournalPojo>();
+        JournalAdapter adapter = new JournalAdapter(this,pojo,this);
         rc.setAdapter(adapter);
         fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -64,5 +65,15 @@ public class Journal extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                     }
                 });
+    }
+
+    @Override
+    public void onItemclick(int position) {
+        Intent i = new Intent(this, ViewJournalEntry.class);
+        Gson gson = new Gson();
+        JournalPojo poj = pojo.get(position);
+        String JSON = gson.toJson(poj);
+        i.putExtra("JSON",JSON);
+        startActivity(i);
     }
 }

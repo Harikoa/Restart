@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/journalEntryDate"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center_vertical"
