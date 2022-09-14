@@ -45,34 +45,50 @@
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
+            android:textColor="#000000"
             android:textSize="25sp" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#000000" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="568dp">
+            android:layout_height="500dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <View
-                    android:id="@+id/view4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dip"
-                    android:layout_weight="1"
-                    android:background="#000000" />
-
                 <TextView
                     android:id="@+id/journalEntryBody"
                     android:layout_width="match_parent"
-                    android:layout_height="585dp"
+                    android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="Journal Entry"
                     android:textSize="16sp" />
 
             </LinearLayout>
         </ScrollView>
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#000000" />
+
+        <Button
+            android:id="@+id/editJournal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_btn"
+            android:text="Edit Journal"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
