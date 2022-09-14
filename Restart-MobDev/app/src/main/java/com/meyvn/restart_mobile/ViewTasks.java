@@ -1,5 +1,6 @@
 package com.meyvn.restart_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,12 +11,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
+import com.meyvn.restart_mobile.POJO.JournalPojo;
 import com.meyvn.restart_mobile.POJO.ViewTaskPojo;
 
 import java.util.ArrayList;
@@ -35,24 +40,29 @@ public class ViewTasks extends AppCompatActivity implements RecyclerViewInterfac
                 finish();
             }
         });
-        RecyclerView rc = findViewById(R.id.journalRecycler);
+        RecyclerView rc = findViewById(R.id.taskRecycler);
         rc.setLayoutManager(new LinearLayoutManager(this));
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
         pojo = new ArrayList<ViewTaskPojo>();
         TaskAdapter adapter = new TaskAdapter(this,pojo,this);
         rc.setAdapter(adapter);
-        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Task")
+                .whereEqualTo("isComplete",false)
+                .orderBy("taskDate", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()) {
+                            for (DocumentSnapshot ds : task.getResult()) {
+                                ViewTaskPojo poj = ds.toObject(ViewTaskPojo.class);
+                                pojo.add(poj);
 
-                        for(DocumentSnapshot ds : value.getDocuments())
-                        {
-                            ViewTaskPojo vtp = ds.toObject(ViewTaskPojo.class);
-                            pojo.add(vtp);
-
+                            }
+                            adapter.notifyDataSetChanged();
                         }
-                        adapter.notifyDataSetChanged();
+                        else
+                            System.out.println("Task unsuccessful");
                     }
                 });
     }

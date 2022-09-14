@@ -28,7 +28,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="0"
                 android:background="@android:color/transparent"
-                app:srcCompat="?attr/actionModeCloseDrawable" />
+                app:srcCompat="?attr/actionModeCloseDrawable"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView36"
@@ -59,6 +60,7 @@
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/taskRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

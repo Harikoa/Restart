@@ -15,6 +15,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.meyvn.restart_mobile.POJO.JournalPojo;
@@ -33,8 +34,6 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),MoodTracker.class);
                 startActivity(i);
-
-
             }
         });
         ImageButton back = findViewById(R.id.journalBack);
@@ -52,6 +51,7 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
         JournalAdapter adapter = new JournalAdapter(this,pojo,this);
         rc.setAdapter(adapter);
         fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
+                .orderBy("date", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

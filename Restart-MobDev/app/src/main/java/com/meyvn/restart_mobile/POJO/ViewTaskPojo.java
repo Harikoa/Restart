@@ -1,5 +1,8 @@
 package com.meyvn.restart_mobile.POJO;
 
+import com.google.firebase.firestore.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class ViewTaskPojo {
     private String title;
     private String taskDate;
