@@ -41,7 +41,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/taskEntryTitle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
@@ -51,7 +51,7 @@
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView56"
+            android:id="@+id/taskEntryDate"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:gravity="center_vertical"
@@ -60,7 +60,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/textView58"
+            android:id="@+id/taskEntryDeadline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -84,12 +84,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/taskDetailBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="Task Details"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/taskDetailBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp" />
             </LinearLayout>
         </ScrollView>
 
