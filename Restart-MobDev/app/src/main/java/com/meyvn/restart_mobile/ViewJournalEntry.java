@@ -34,5 +34,7 @@ public class ViewJournalEntry extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 }

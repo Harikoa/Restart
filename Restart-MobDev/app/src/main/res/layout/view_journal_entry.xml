@@ -88,7 +88,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/round_btn"
             android:text="Edit Journal"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
