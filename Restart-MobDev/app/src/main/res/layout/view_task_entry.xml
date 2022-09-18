@@ -76,7 +76,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="500dp">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,11 +106,12 @@
             android:background="#000000" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/accomplishTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/round_btn"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"

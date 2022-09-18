@@ -64,7 +64,7 @@ public class ViewDrugTest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(uri!=null) {
-                  StorageReference drugTest = storage.child(Login.storedAcc.getEmail()+ "/" + LocalDate.now());
+                  StorageReference drugTest = storage.child(Login.storedAcc.getEmail()+ "/" + intent.getStringExtra("drugID"));
                     drugTest.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override

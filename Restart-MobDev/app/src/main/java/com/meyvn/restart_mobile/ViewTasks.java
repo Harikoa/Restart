@@ -56,8 +56,8 @@ public class ViewTasks extends AppCompatActivity implements RecyclerViewInterfac
                         if(task.isSuccessful()) {
                             for (DocumentSnapshot ds : task.getResult()) {
                                 ViewTaskPojo poj = ds.toObject(ViewTaskPojo.class);
+                                poj.setID(ds.getId());
                                 pojo.add(poj);
-
                             }
                             adapter.notifyDataSetChanged();
                         }
@@ -71,6 +71,7 @@ public class ViewTasks extends AppCompatActivity implements RecyclerViewInterfac
         @Override
         public void onItemclick(int position) {
             Intent i = new Intent(this, ViewTaskEntry.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             Gson gson = new Gson();
             ViewTaskPojo poj = pojo.get(position);
             String JSON = gson.toJson(poj);

@@ -34,7 +34,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/accomplishSubmit"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_gravity="end"
@@ -56,7 +56,7 @@
                 android:background="#000000" />
 
             <TextView
-                android:id="@+id/textView43"
+                android:id="@+id/accomplishTaskTitle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:gravity="center_vertical"
@@ -90,6 +90,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/accomplishReflection"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"

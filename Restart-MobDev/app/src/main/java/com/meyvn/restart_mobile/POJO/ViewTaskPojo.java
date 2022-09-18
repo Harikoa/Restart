@@ -8,8 +8,10 @@ public class ViewTaskPojo {
     private String taskDate;
     private String taskDeadline;
     private String taskDescription;
+    private String dateAccomplished;
     private boolean isComplete;
     private String taskReflection;
+    private String ID;
 
     public String getTitle() {
         return title;
@@ -57,5 +59,21 @@ public class ViewTaskPojo {
 
     public void setTaskReflection(String taskReflection) {
         this.taskReflection = taskReflection;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getDateAccomplished() {
+        return dateAccomplished;
+    }
+
+    public void setDateAccomplished(String dateAccomplished) {
+        this.dateAccomplished = dateAccomplished;
     }
 }
