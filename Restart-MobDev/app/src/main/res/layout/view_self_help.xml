@@ -72,7 +72,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/viewActSuggest"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_gravity="center"

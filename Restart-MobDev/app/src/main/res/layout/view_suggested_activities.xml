@@ -39,12 +39,34 @@
                 android:text="Suggested Activities"
                 android:textColor="#95d199"
                 android:textSize="20sp" />
+
         </LinearLayout>
 
+        <Switch
+            android:id="@+id/gpsSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="GPS" />
+
+        <TextView
+            android:id="@+id/suggestCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City:" />
+
+        <TextView
+            android:id="@+id/suggestActWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weather: " />
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activityRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
             tools:itemCount="3" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
