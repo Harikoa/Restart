@@ -12,7 +12,7 @@
     <!--Primary Navbar-->
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
         <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="logo.png"></a>
-        <h1 class="Welcoming">    Welcome <!--${Accountname }--></h1><h1 class="dicators">Patient</h1>
+        <h1 class="Welcoming"><b>ALUMNI</b>  <!--${Accountname }--></h1>
          <!--<%String path = request.getContextPath();%>-->
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
             <span class="navbar-toggler-icon"></span>
@@ -52,10 +52,10 @@
 <!--Secondary Navbar-->
 <div class="tabContainer">
     <div class="buttonContainer">
-        <button onclick="showPanel(0, '#')">Create Patient Account</button>
-        <button onclick="showPanel(1, '#')">Edit Patient Account</button>
-        <button onclick="showPanel(2, '#')">Delete Patient Account</button>
-        <button onclick="showPanel(3, '#')">Suspend Patient Account</button>
+        <button onclick="showPanel(0, '#')">Create Alumni Account</button>
+        <button onclick="showPanel(1, '#')">Edit Alumni Account</button>
+        <button onclick="showPanel(2, '#')">Delete Alumni Account</button>
+        <button onclick="showPanel(3, '#')">Suspend Alumni Account</button>
     </div>
 
     <!--Create Account-->
@@ -67,7 +67,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="p-3 border border-5 rounded-3 bg-light">
                         <div>
-                        <h3><b>Create Patient Account</b></h3>
+                        <h3><b>Create Alumni Account</b></h3>
                         <form class="form-group" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                         <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
@@ -93,7 +93,7 @@
                 <div class="col-sm-8">
                 <div class="p-3 border border-5 rounded-3 bg-light">
                     <div>
-                        <h1><b>List of Patients</b></h1>
+                        <h1><b>List of Alumni</b></h1>
                         <table id="table" class="table">
                         <tr>
                         <th>Last Name</th>
@@ -113,7 +113,7 @@
                         <div class="row">
     
                             <div>
-                                <h2>Query Patients</h2>
+                                <h2>Query Alumni</h2>
                                 <form class="form-group" method="post" action="#">
                                     <p>EmailL<input class="form-control" type="text" name="" required min=1></p>
                                     <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
@@ -126,7 +126,7 @@
                     <div class="col-sm">
                     <div class="p-3 mt-4 mb-5 border border-5 rounded-3 bg-light">
                             <div>
-                                <h2>Edit Patient Account</h2>
+                                <h2>Edit Alumni Account</h2>
                                 <form class="form-group" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
                                     <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                     <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
@@ -154,7 +154,7 @@
                 <div class="col-sm-8">
                 <div class="p-3 border border-5 rounded-3 bg-light">
                     <div>
-                        <h1><b>List of Patients</b></h1>
+                        <h1><b>List of Alumni</b></h1>
                         <table id="table" class="table">
                         <tr>
                         <th>Last Name</th>
@@ -174,7 +174,7 @@
                     <div class="row">
 
                         <div>
-                            <h2>Query Patients</h2>
+                            <h2>Query Alumni</h2>
                             <form class="form-group" method="post" action="#">
                                 <p>Email<input class="form-control" type="text" name="" required min=1></p>
                                 <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
@@ -186,7 +186,7 @@
                     <div class="col-sm">
                         <div class="p-3 mt-4 mb-5 border border-5 rounded-3 bg-light">
                                 <div>
-                                    <h2>Delete Patient Account</h2>
+                                    <h2>Delete Alumni Account</h2>
                                     <form class="form-group" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
                                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                         <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
@@ -208,7 +208,7 @@
                 <div class="col-sm-8">
                 <div class="p-3 border border-5 rounded-3 bg-light">
                     <div>
-                        <h1><b>List of Patients</b></h1>
+                        <h1><b>List of Alumni</b></h1>
                         <table id="table" class="table">
                         <tr>
                         <th>Last Name</th>
@@ -228,7 +228,7 @@
                     <div class="row">
 
                         <div>
-                            <h2>Query Patients</h2>
+                            <h2>Query Alumni</h2>
                             <form class="form-group" method="post" action="#">
                                 <p>Email<input class="form-control" type="text" name="" required min=1></p>
                                 <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
@@ -240,7 +240,7 @@
                     <div class="col-sm">
                         <div class="p-3 mt-4 mb-5 border border-5 rounded-3 bg-light">
                                 <div>
-                                    <h2>Suspend Patient Account</h2>
+                                    <h2>Suspend Alumni</h2>
                                     <form class="form-group" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
                                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                         <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
