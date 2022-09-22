@@ -212,6 +212,7 @@ public class ViewSuggestedActivities extends AppCompatActivity {
                             ActivityPojo pojo = ds.toObject(ActivityPojo.class);
                             pojo.setId(ds.getId());
                             act.add(pojo);
+
                         }
                         if(act.size()>3)
                         {
