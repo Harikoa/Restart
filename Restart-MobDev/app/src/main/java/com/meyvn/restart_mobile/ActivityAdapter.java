@@ -38,6 +38,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyActi
         ActivityPojo pojo = list.get(position);
         holder.title.setText(pojo.getActivityTitle());
         holder.venue.setText(pojo.getVenue());
+        holder.weather.setText(pojo.getWeather());
 
     }
 
@@ -47,11 +48,12 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyActi
     }
 
     public static class MyActivityHolder extends RecyclerView.ViewHolder{
-        TextView title,venue;
+        TextView title,venue,weather;
         public MyActivityHolder(@NonNull View itemView) {
             super(itemView);
             venue = itemView.findViewById(R.id.activityVenue);
             title = itemView.findViewById(R.id.activityTitle);
+            weather = itemView.findViewById(R.id.activityWeather);
 
         }
     }
