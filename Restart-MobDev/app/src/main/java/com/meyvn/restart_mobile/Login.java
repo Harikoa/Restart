@@ -2,6 +2,9 @@ package com.meyvn.restart_mobile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,7 +20,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
+import com.meyvn.restart_mobile.Notification.notificationWorker;
 import com.meyvn.restart_mobile.POJO.Account;
+
+import java.util.concurrent.TimeUnit;
 
 public class Login extends AppCompatActivity {
     public static Account storedAcc;
@@ -31,8 +37,10 @@ public class Login extends AppCompatActivity {
         if (spf.contains("Account")) {
             String savedJson = spf.getString("Account","{}");
            storedAcc = convert.fromJson(savedJson,Account.class);
-            if(storedAcc.getRole().equalsIgnoreCase("patient"))
+            if(storedAcc.getRole().equalsIgnoreCase("patient")) {
+                checkNotif();
                 startActivity(patient);
+            }
             else
                 startActivity(alumni);
         }
@@ -60,8 +68,10 @@ public class Login extends AppCompatActivity {
                                 String JSON = convert.toJson(acc);
                                 edit.putString("Account", JSON);
                                 edit.apply();
-                                if(storedAcc.getRole().equalsIgnoreCase("patient"))
+                                if(storedAcc.getRole().equalsIgnoreCase("patient")) {
+                                    checkNotif();
                                     startActivity(patient);
+                                }
                                 else if(storedAcc.getRole().equalsIgnoreCase("alumni"))
                                     startActivity(alumni);
                                 else {
@@ -87,5 +97,14 @@ public class Login extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         finish();
+    }
+
+    public void checkNotif()
+    {
+        PeriodicWorkRequest prd = new PeriodicWorkRequest.Builder(notificationWorker.class,1, TimeUnit.DAYS)
+                .build()
+                ;
+        WorkManager.getInstance(this)
+                .enqueueUniquePeriodicWork("notificationWork", ExistingPeriodicWorkPolicy.REPLACE,prd);
     }
 }

@@ -27,7 +27,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@android:color/transparent"
-                app:srcCompat="?attr/actionModeCloseDrawable" />
+                app:srcCompat="?attr/actionModeCloseDrawable"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView55"
@@ -78,11 +79,13 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editJournalText"
                         android:layout_width="match_parent"
                         android:layout_height="490dp"
                         android:background="@android:color/transparent"
                         android:gravity="start"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </ScrollView>

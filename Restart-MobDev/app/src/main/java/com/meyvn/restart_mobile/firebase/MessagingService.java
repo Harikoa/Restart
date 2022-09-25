@@ -1,6 +1,7 @@
 package com.meyvn.restart_mobile.firebase;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -19,6 +20,6 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        Log.d("FCM","Message: " + remoteMessage.getNotification().getBody());
+
     }
 }
