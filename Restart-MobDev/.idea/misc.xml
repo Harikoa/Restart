@@ -17,13 +17,19 @@
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/mood_tracker.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/patient_main_menu.xml" value="0.36102564102564105" />
+<<<<<<< Updated upstream
+=======
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/sg_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/sp_dashboard.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/sp_nav.xml" value="0.36666666666666664" />
+>>>>>>> Stashed changes
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/splash_screen.xml" value="0.33" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/submit_drug_test_result.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/subs_craving_questionnaire.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/verify_code.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_comments.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_conversation.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_drug_test.xml" value="0.1" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_drug_test.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_journal_data.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_journal_entry.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_messages.xml" value="0.36666666666666664" />
@@ -34,6 +40,11 @@
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_suggested_activities.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_support_groups.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/view_tasks.xml" value="0.36666666666666664" />
+<<<<<<< Updated upstream
+=======
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andre/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/menu/menu_nav.xml" value="0.36666666666666664" />
+>>>>>>> Stashed changes
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_bot_dark.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_bot_light.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_dark.xml" value="0.3435" />
