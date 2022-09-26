@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.meyvn.restart_mobile.Notification.notificationWorker;
 import com.meyvn.restart_mobile.POJO.Account;
 
+import java.time.LocalDate;
 import java.util.concurrent.TimeUnit;
 
 public class Login extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class Login extends AppCompatActivity {
            storedAcc = convert.fromJson(savedJson,Account.class);
             if(storedAcc.getRole().equalsIgnoreCase("patient")) {
                 checkNotif();
-                startActivity(patient);
+                checkAssessment(patient);
             }
             else
                 startActivity(alumni);
@@ -70,7 +71,7 @@ public class Login extends AppCompatActivity {
                                 edit.apply();
                                 if(storedAcc.getRole().equalsIgnoreCase("patient")) {
                                     checkNotif();
-                                    startActivity(patient);
+                                   checkAssessment(patient);
                                 }
                                 else if(storedAcc.getRole().equalsIgnoreCase("alumni"))
                                     startActivity(alumni);
@@ -106,5 +107,18 @@ public class Login extends AppCompatActivity {
                 ;
         WorkManager.getInstance(this)
                 .enqueueUniquePeriodicWork("notificationWork", ExistingPeriodicWorkPolicy.REPLACE,prd);
+    }
+    public void checkAssessment(Intent pt)
+    {
+        LocalDate lastAssPlusOne = LocalDate.parse(storedAcc.getLastAssessment());
+        lastAssPlusOne = lastAssPlusOne.plusMonths(1);
+        LocalDate today = LocalDate.now();
+        if(lastAssPlusOne.isBefore(today)|| lastAssPlusOne.equals(today)) {
+            pt = new Intent(getApplicationContext(),PHQ9Questionnaire.class);
+            pt.putExtra("isMonthly",true);
+            pt.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            Toast.makeText(getApplicationContext(),"Monthly Assessment",Toast.LENGTH_LONG).show();
+        }
+        startActivity(pt);
     }
 }

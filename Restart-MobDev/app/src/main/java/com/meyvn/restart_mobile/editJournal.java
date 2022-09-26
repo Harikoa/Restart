@@ -56,7 +56,6 @@ public class editJournal extends AppCompatActivity {
                         String J = convert.toJson(pojo);
                         i.putExtra("JSON",J);
                         startActivity(i);
-                
                     }
                 })
                 ;
