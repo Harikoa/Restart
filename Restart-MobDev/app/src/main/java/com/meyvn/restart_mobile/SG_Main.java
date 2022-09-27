@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class SupportGroupMain extends AppCompatActivity {
+public class SG_Main extends AppCompatActivity {
 
     private Toolbar mainToolbar;
     private FirebaseFirestore firestore;
@@ -25,7 +25,7 @@ public class SupportGroupMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.support_group_main);
+        setContentView(R.layout.activity_sg_main);
 
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
@@ -38,7 +38,7 @@ public class SupportGroupMain extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SupportGroupMain.this , SG_AddPost.class));
+                startActivity(new Intent(SG_Main.this , SG_Post.class));
             }
         });
     }
@@ -50,9 +50,9 @@ public class SupportGroupMain extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.my_profile){
-            startActivity(new Intent(SupportGroupMain.this , ViewProfile.class));
+            startActivity(new Intent(SG_Main.this , ViewProfile.class));
         }else if(item.getItemId() == R.id.main_menu){
-            startActivity(new Intent(SupportGroupMain.this , PatientMainMenu.class));
+            startActivity(new Intent(SG_Main.this , PatientMainMenu.class));
             finish();
         }
         return true;

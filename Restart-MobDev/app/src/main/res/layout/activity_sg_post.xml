@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mobbg"
-    tools:context=".SG_AddPost">
+    tools:context=".SG_Post">
 
     <LinearLayout
         android:layout_width="match_parent"

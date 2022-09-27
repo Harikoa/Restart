@@ -28,7 +28,7 @@ public class ViewSupportGroups extends AppCompatActivity {
         group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),SupportGroupMain.class);
+                Intent i = new Intent(getApplicationContext(),SG_Main.class);
                 startActivity(i);
 
             }
