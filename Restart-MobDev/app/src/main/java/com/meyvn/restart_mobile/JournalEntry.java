@@ -34,7 +34,6 @@ public class JournalEntry extends AppCompatActivity {
         Map <String,Object> map = new HashMap<>();
 
         submit.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
@@ -52,18 +51,16 @@ public class JournalEntry extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getApplicationContext(),Journal.class);
-                            try {
-                             Thread.sleep(1500);
-                             startActivity(i);
-                             finish();
+                            Intent in;
+                            if(i.getStringExtra("mood").equals("Very Sad")) {
+                                in = new Intent(getApplicationContext(), PHQ9Questionnaire.class);
+                                in.putExtra("isMonthly",false);
+                                in.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             }
-                            catch (Exception e)
-                             {
-                                e.printStackTrace();
-                                 startActivity(i);
-                                finish();
-                             }
+                            else
+                                in = new Intent(getApplicationContext(),Journal.class);
+                             startActivity(in);
+                             finish();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

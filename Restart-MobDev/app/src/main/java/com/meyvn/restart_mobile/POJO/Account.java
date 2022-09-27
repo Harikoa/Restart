@@ -16,6 +16,7 @@ public class Account {
     private String nickname;
     private String role;
     private String sex;
+    private String lastAssessment;
 
     public Integer getID() {
         return ID;
@@ -97,5 +98,11 @@ public class Account {
         this.sex = sex;
     }
 
+    public String getLastAssessment() {
+        return lastAssessment;
+    }
 
+    public void setLastAssessment(String lastAssessment) {
+        this.lastAssessment = lastAssessment;
+    }
 }

@@ -15,13 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@android:color/transparent"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,7 +56,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
-                    android:gravity="bottom"
+                    android:gravity="center"
                     android:text="Not at all"
                     android:textAlignment="center"
                     android:textStyle="bold" />
@@ -75,7 +68,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
-                    android:gravity="bottom"
+                    android:gravity="center"
                     android:text="Several days"
                     android:textAlignment="center"
                     android:textStyle="bold" />
@@ -87,7 +80,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
-                    android:gravity="bottom"
+                    android:gravity="center"
                     android:text="More than half the days"
                     android:textAlignment="center"
                     android:textStyle="bold" />
@@ -99,7 +92,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
-                    android:gravity="bottom"
+                    android:gravity="center"
                     android:text="Nearly Everyday"
                     android:textAlignment="center"
                     android:textStyle="bold" />
@@ -129,33 +122,36 @@
                     android:text="1. Little interest or pleasure in doing things" />
 
                 <RadioGroup
+                    android:id="@+id/phq1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton6"
+                        android:id="@+id/phqlvl1"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
+                        android:checked="true"
+                        android:tag="1"
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <RadioButton
-                        android:id="@+id/radioButton7"
+                        android:id="@+id/phqlvl2"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp"
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <RadioButton
-                        android:id="@+id/radioButton8"
+                        android:id="@+id/phqlvl3"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp"
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <RadioButton
-                        android:id="@+id/radioButton9"
+                        android:id="@+id/phqlvl4"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp"
@@ -171,30 +167,32 @@
                     android:text="2. Feeling down, depressed, or hopeless" />
 
                 <RadioGroup
+                    android:id="@+id/phq2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton10"
+                        android:id="@+id/phqlvl21"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton11"
+                        android:id="@+id/phqlvl22"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton12"
+                        android:id="@+id/phqlvl23"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton13"
+                        android:id="@+id/phqlvl24"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -208,30 +206,32 @@
                     android:text="3. Trouble falling or staying asleep, or sleeping too much" />
 
                 <RadioGroup
+                    android:id="@+id/phq3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton14"
+                        android:id="@+id/phqlvl31"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton15"
+                        android:id="@+id/phqlvl32"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton21"
+                        android:id="@+id/phqlvl33"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton22"
+                        android:id="@+id/phqlvl34"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -245,30 +245,32 @@
                     android:text="4. Feeling tired or having little energy" />
 
                 <RadioGroup
+                    android:id="@+id/phq4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton23"
+                        android:id="@+id/phqlvl41"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton24"
+                        android:id="@+id/phqlvl42"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton25"
+                        android:id="@+id/phqlvl43"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton31"
+                        android:id="@+id/phqlvl44"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -282,30 +284,32 @@
                     android:text="5. Poor appetite or overeating" />
 
                 <RadioGroup
+                    android:id="@+id/phq5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton32"
+                        android:id="@+id/phqlvl51"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton33"
+                        android:id="@+id/phqlvl52"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton34"
+                        android:id="@+id/phqlvl53"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton35"
+                        android:id="@+id/phqlvl54"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -319,30 +323,32 @@
                     android:text="6. Feeling bad about yourself - or that you are a failure or have let yourself or your family down" />
 
                 <RadioGroup
+                    android:id="@+id/phq6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton38"
+                        android:id="@+id/phqlvl61"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton39"
+                        android:id="@+id/phqlvl62"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton40"
+                        android:id="@+id/phqlvl63"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton41"
+                        android:id="@+id/phqlvl64"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -356,30 +362,32 @@
                     android:text="7. Trouble concentrating on things, such as reading the newspaper or watching television" />
 
                 <RadioGroup
+                    android:id="@+id/phq7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton42"
+                        android:id="@+id/phqlvl71"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton43"
+                        android:id="@+id/phqlvl72"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton44"
+                        android:id="@+id/phqlvl73"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton45"
+                        android:id="@+id/phqlvl74"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -393,30 +401,32 @@
                     android:text="8. Moving or speaking so slowly that people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual" />
 
                 <RadioGroup
+                    android:id="@+id/phq8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton46"
+                        android:id="@+id/phqlvl81"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton47"
+                        android:id="@+id/phqlvl82"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton48"
+                        android:id="@+id/phqlvl83"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton50"
+                        android:id="@+id/phqlvl84"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -430,30 +440,32 @@
                     android:text="9. Thoughts that you would be better off dead or hurting yourslef in some way" />
 
                 <RadioGroup
+                    android:id="@+id/phq9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioButton51"
+                        android:id="@+id/phqlvl91"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="40dp" />
+                        android:layout_marginStart="40dp"
+                        android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/radioButton52"
+                        android:id="@+id/phqlvl92"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton53"
+                        android:id="@+id/phqlvl93"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="60dp" />
 
                     <RadioButton
-                        android:id="@+id/radioButton54"
+                        android:id="@+id/phqlvl94"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="50dp" />
@@ -469,11 +481,12 @@
             android:background="#000000" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/phq9Submit"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/round_btn"
             android:text="Submit" />
 
