@@ -22,32 +22,30 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:ems="10"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:paddingStart="10dp"
+            android:hint="Title"
             android:inputType="text"
-            android:hint="Title" />
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:paddingStart="15dp" />
 
         <EditText
             android:id="@+id/caption"
             android:layout_width="match_parent"
-            android:layout_height="334dp"
+            android:layout_height="314dp"
+            android:layout_gravity="top"
             android:layout_margin="2dp"
-            android:ems="10"
-            android:minHeight="250dp"
             android:layout_marginTop="40dp"
-            android:layout_gravity="start"
+            android:ems="10"
+            android:hint="Description"
             android:inputType="textMultiLine|textCapSentences"
-            android:textColor="@color/black"
-            android:hint="Description"/>
+            android:minHeight="250dp"
+            android:padding="10dp"
+            android:gravity="start"
+            android:paddingStart="15dp"
+            android:textColor="@color/black" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
 
         <Button
             android:id="@+id/save_post_btn"
