@@ -3,6 +3,7 @@ package com.meyvn.restart_mobile;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -17,10 +18,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SG_Main extends AppCompatActivity {
 
-    private Toolbar mainToolbar;
+
     private FirebaseFirestore firestore;
     private RecyclerView rec;
     private FloatingActionButton fab;
+    private Toolbar mainToolbar;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +32,16 @@ public class SG_Main extends AppCompatActivity {
 
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
-        getSupportActionBar().setTitle("Support Group");
+
+        recyclerView = findViewById(R.id.recycleview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(SG_Main.this));
+
+
 
         firestore = FirebaseFirestore.getInstance();
         rec = findViewById(R.id.recycleview);
         fab = findViewById(R.id.fabp);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

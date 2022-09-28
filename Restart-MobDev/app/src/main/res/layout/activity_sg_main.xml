@@ -9,14 +9,23 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_bot_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/main_toolbar"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/rounded_bot_dark">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20dp"
+            android:paddingEnd="10dp"
+            android:text="Support Group"
+            android:textColor="@color/black"
+            android:gravity="center_vertical|end" >
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview"
@@ -26,6 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -37,6 +47,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add"
         app:tint="@color/white"
-        app:srcCompat="@drawable/ic_add" />
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
