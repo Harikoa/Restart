@@ -12,7 +12,7 @@
 <!--Primary Navbar-->
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
     <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="logo.png"></a>
-    <h1 class="Welcoming"><b>LINK PATIENT</b> <!--${Accountname }--></h1>
+    <h1 class="Welcoming">Welcome<!--${Accountname }--></h1>
      <!--<%String path = request.getContextPath();%>-->
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
         <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
 </nav>
 
 <!--Secondary Navbar-->
-<div class="tabContainer">
+<div class="tabContainer"><h3 class="namePatient border text-center border-3 bg-light border-success">Link Accounts</h3>
     <div class="buttonContainer">
         <button class="linknavbutton" onclick="showPanel(0, '#')">To Physician</button>
         <button class="linknavbutton" onclick="showPanel(1, '#')">To Alumni</button>
@@ -58,7 +58,7 @@
 
     <!--To Physician-->
     <div class="tabPanel">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
 
                 <div class="col-sm-6">
@@ -99,12 +99,32 @@
 
 
             </div>
+
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <div class="p-3 border border-5 rounded-3 bg-light">
+                        <div>
+                            <h2><b>Linked Accounts - Patient to Physician</b></h2>
+                            <table id="table" class="table">
+                            <tr>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Contact</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!--To ALumni-->
     <div class="tabPanel">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
 
                 <div class="col-sm-6">
@@ -145,6 +165,27 @@
 
 
             </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <div class="p-3 border border-5 rounded-3 bg-light">
+                        <div>
+                            <h2><b>Linked Accounts - Patient to Alumni</b></h2>
+                            <table id="table" class="table">
+                            <tr>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Contact</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

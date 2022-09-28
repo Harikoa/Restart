@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="commonStyle.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>testing tabs</title>
+    </head>
+
+<body>
+
+    <!--Primary Navbar-->
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="logo.png"></a>
+        <h1 class="Welcoming">Welcome <!--${Accountname }--></h1>
+         <!--<%String path = request.getContextPath();%>-->
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto text-center">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Patients</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="AdminLinkPatient.html">Support Groups</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">Manage Self-Help</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Messages</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Profile</a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="login.html"><button class="btn btn-outline-danger">Logout</button></a>
+            </li>
+            
+        </ul>
+        </div>
+    </nav>
+
+
+<script src="scriptTab.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,9 +1,12 @@
 .html,body{
-    background-image: url(webbg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-image: linear-gradient(#FFFFFF,#bdffd9);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
     font-family: cursive;
-    color: darkgreen;
+    color:seagreen;
 }
 
 .tabContainer{
@@ -20,25 +23,30 @@
     width: 25%;
     height: 100%;
     float: left;
-    border-top: 1px;
+    border-left: 1px;
     outline: none;
     cursor: pointer;
     padding: 10px;
-    color: white;
-    background-color: #013220;
+    color: black;
+    background-color: white;
 }
 
 .tabContainer .buttonContainer .linknavbutton{
-	width: 50%;
+	width: 49.96%;
+}
+
+.tabContainer .buttonContainer .physNav{
+	width: 16.66%;
 }
 
 .tabContainer .buttonContainer button:hover{
-    background-color: darkgreen;
+	color: white;
+    background-color: seagreen;
 }
 
 .tabContainer .tabPanel{
     height: 85%;
-    color: darkgreen;
+    color: seagreen;
     text-align: center;
     padding-top: 10px;
     box-sizing: border-box;
@@ -46,13 +54,28 @@
 }
 
 .Welcoming{
-	position: absolute;
-	left: 5%;
+	position: relative;
 }
 
-.dicators{
-	position: fixed;
-	left: 40%;
+.namePatient{
+	padding: 10px;
+}
+
+.loginForm{
+	background: rgba(255,255,255, 0.5);
+	border-width: fit-content;
+	border-radius: 20px;
+	padding: 40px;
+	box-shadow: 5px 5px 20px seagreen;
+	margin-bottom: 50px;
+}
+
+.noAcc{
+	text-align: center;
+}
+
+.formAlign{
+	text-align: left;
 }
 
 .navbar{
@@ -74,7 +97,7 @@ ul.navbar-nav li.profile-dropdown{
 	border-left-width: 0;
 	border-right-width: 0;
 	border-style: solid;
-	border-color: darkgreen;
+	border-color: Green;
 	margin-top: 17px;
 	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
 	box-shadow: 0 6px 12px rgba(0,0,0,.175);
@@ -87,7 +110,7 @@ ul.navbar-nav li.profile-dropdown{
 }
 
 #navbarMenu ul li ul.dropdown-menu li a:hover{
-	background-color: #013220;
+	background-color: seagreen;
 	color: #ffffff;
 	transition: .4s;
 }
