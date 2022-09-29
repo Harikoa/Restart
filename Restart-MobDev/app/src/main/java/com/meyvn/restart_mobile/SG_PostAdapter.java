@@ -64,5 +64,9 @@ public class SG_PostAdapter extends RecyclerView.Adapter <SG_PostAdapter.PostVie
             title = view.findViewById(R.id.ptitle);
             title.setText(ptitle);
         }
+        public void setpostdescription(String pdesc) {
+            description = view.findViewById(R.id.pdescription);
+            description.setText(pdesc);
+        }
     }
 }
