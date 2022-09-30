@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="commonStyle.css">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restart: Login</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="logo.png"></a>
+        <h1 class="Welcoming">Welcome  <!--${Accountname }--></h1>
+         <!--<%String path = request.getContextPath();%>-->
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto text-center">
+            
+            <li class="navbar-item dropdown profile-dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Accounts</a>
+                    <ul class="dropdown-menu animate slideDown" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Physician</a></li>
+                        <li><a class="dropdown-item" href="#">Alumni</a></li>
+                        <li><a class="dropdown-item" href="#">Patient</a></li>
+                    </ul>
+                </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">Manage Forums</a>
+            </li>
+            
+            <li class="navbar-item dropdown profile-dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Link Patient</a>
+                    <ul class="dropdown-menu animate slideDown" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Physician</a></li>
+                        <li><a class="dropdown-item" href="#">Alumni</a></li>
+                        <li><a class="dropdown-item" href="#">Patient</a></li>
+                    </ul>
+                </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Profile</a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="login.html"><button class="btn btn-outline-danger">Logout</button></a>
+            </li>
+            
+        </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-sm-8">
+            <div class="p-3 border border-5 rounded-3 bg-light">
+                <div>
+                    <h1><b>List of Patients</b></h1>
+                    <table id="table" class="table">
+                    <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Contact</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+
+                <div class="col-sm-4">
+                    <div class="p-3 border border-5 rounded-3 bg-light">
+                    <div class="row">
+
+                        <div>
+                            <h2>Query Patients</h2>
+                            <form class="form-group" method="post" action="#">
+                                <p>EMAIL<input class="form-control" type="text" name="" required min=1></p>
+                                <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+                <div class="col-sm">
+                <div class="p-3 mt-4 border border-5 rounded-3 bg-light">
+                        <div>
+                            <h2>Edit Patient Account</h2>
+                            <form class="form-group" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
+                                <p>First Name: <input class="form-control" id="fname" name = "firstname" required></p>
+                                <p>Last Name: <input class="form-control" id="lname" name = "lastname" required></p>
+                                <p>Middle Name: <input class="form-control" id="mname" name = "middlename" required></p>
+                                <p>Contact: <input class="form-control" id="contact" name = "contact" required></p>
+                                <p>Age: <input class="form-control" id="age" name = "age" type="number" required min=1 max=99></p>
+                                <p>Email: <input class="form-control" id="email" name = "email" required type="email"></p>
+                                <p>Password: <input class="form-control" name ="pw" type="password"> </p>
+                                <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
+                            </form>
+                        </div>
+                </div>
+                </div>
+                </div>
+
+        </div>
+    </div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
