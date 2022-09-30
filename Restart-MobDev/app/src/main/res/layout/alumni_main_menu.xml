@@ -42,18 +42,18 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/alumniMessage"
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="120dp"
             android:background="@drawable/rounded_light"
-            android:text="Messeges"
+            android:text="Messages"
             android:textColor="#145950"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/alumniSupportGroup"
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:layout_gravity="center"

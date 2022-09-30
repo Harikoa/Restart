@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mobbg"
-    tools:context=".CreateNewMessages">
+    tools:context=".chatActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/rounded_bot_light"
@@ -16,22 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/journalEntryDate"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="to:"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textView41"
+            android:id="@+id/chatNickname"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="'@username'"
+            android:paddingLeft="10dp"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -71,21 +62,10 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView42"
-                android:layout_width="match_parent"
-                android:layout_height="500dp" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/rounded_top_dark"
@@ -93,7 +73,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout4">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/createMessage"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_margin="10dp"
@@ -101,12 +81,12 @@
             android:background="@drawable/rounded_inputbox"
             android:ems="10"
             android:hint="Message"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine|textPersonName"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/sendMessage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -115,6 +95,21 @@
             android:background="@android:color/transparent"
             app:srcCompat="@android:drawable/ic_menu_send"
             tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

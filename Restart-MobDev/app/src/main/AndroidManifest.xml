@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.meyvn.restart_mobile">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -38,8 +38,8 @@
             android:exported="true" />
         <activity
             android:name=".ViewSuggestedActivities"
-            android:networkSecurityConfig ="@xml/network_security_config"
-            android:exported="true" />
+            android:exported="true"
+            android:networkSecurityConfig="@xml/network_security_config" />
         <activity
             android:name=".ViewSelfHelp"
             android:exported="true" />
@@ -108,7 +108,7 @@
             android:name=".EditProfile"
             android:exported="true" />
         <activity
-            android:name=".CreateNewMessages"
+            android:name=".chatActivity"
             android:exported="true" />
         <activity
             android:name=".ChangePassword"
@@ -129,6 +129,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <service
             android:name=".firebase.MessagingService"
             android:exported="false">
@@ -136,8 +137,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
     </application>
 
 </manifest>

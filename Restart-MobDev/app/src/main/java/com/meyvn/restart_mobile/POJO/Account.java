@@ -3,6 +3,7 @@ package com.meyvn.restart_mobile.POJO;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.HashMap;
+import java.util.List;
 
 @IgnoreExtraProperties
 public class Account {
@@ -17,6 +18,9 @@ public class Account {
     private String role;
     private String sex;
     private String lastAssessment;
+    private String FCM;
+    private List<String> connectedUser;
+    private String substanceUsed;
 
     public Integer getID() {
         return ID;
@@ -104,5 +108,30 @@ public class Account {
 
     public void setLastAssessment(String lastAssessment) {
         this.lastAssessment = lastAssessment;
+    }
+
+    public String getFCM() {
+        return FCM;
+    }
+
+    public void setFCM(String FCM) {
+        this.FCM = FCM;
+    }
+
+
+    public String getSubstanceUsed() {
+        return substanceUsed;
+    }
+
+    public void setSubstanceUsed(String substanceUsed) {
+        this.substanceUsed = substanceUsed;
+    }
+
+    public List<String> getConnectedUser() {
+        return connectedUser;
+    }
+
+    public void setConnectedUser(List<String> connectedUser) {
+        this.connectedUser = connectedUser;
     }
 }

@@ -1,7 +1,6 @@
-package com.meyvn.restart_mobile;
+package com.meyvn.restart_mobile.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.meyvn.restart_mobile.POJO.ActivityPojo;
-import com.meyvn.restart_mobile.POJO.ViewTaskPojo;
+import com.meyvn.restart_mobile.R;
 
 import java.util.ArrayList;
 
