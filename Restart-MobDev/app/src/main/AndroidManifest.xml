@@ -114,7 +114,7 @@
             android:name=".EditProfile"
             android:exported="true" />
         <activity
-            android:name=".CreateNewMessages"
+            android:name=".chatActivity"
             android:exported="true" />
         <activity
             android:name=".ChangePassword"

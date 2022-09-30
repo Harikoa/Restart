@@ -27,6 +27,8 @@ import com.meyvn.restart_mobile.POJO.JournalPojo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import com.meyvn.restart_mobile.Adapter.JournalAdapter;
+
 public class Journal extends AppCompatActivity implements RecyclerViewInterface{
     ArrayList<JournalPojo> pojo;
     @Override
