@@ -77,10 +77,29 @@
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/view_support_groups.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/view_task_entry.xml" value="0.33645833333333336" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/view_tasks.xml" value="0.33" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/custom_input.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/ic_email.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/ic_lock.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/receive_message_bg.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_bot_dark.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_bot_light.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_inputbox.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_light.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_top_dark.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/sent_message_bg.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/textview_border_dark.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/drawable/textview_border_light.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/accomplish_task.xml" value="0.27708333333333335" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/account_items.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/activity_chat.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/activity_items.xml" value="0.33" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/activity_main.xml" value="0.17725752508361203" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/alumni_main_menu.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/chat_activity.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/create_new_messages.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/edit_journal.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/item.xml" value="0.3079710144927536" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/journal.xml" value="0.2359375" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/journalItem.xml" value="0.28396739130434784" />
@@ -89,6 +108,8 @@
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/mood_tracker.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/patient_main_menu.xml" value="0.3283514492753623" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/phq9_questionnaire.xml" value="0.333786231884058" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/receive_messages_items.xml" value="0.5" />
+        <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/sent_message_items.xml" value="0.33" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/submit_drug_test_result.xml" value="0.3020833333333333" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/subs_craving_questionnaire.xml" value="0.33" />
         <entry key="..\:/Users/Edwin PC/Documents/GitHub/Restart/Restart-MobDev/app/src/main/res/layout/task_items.xml" value="0.18072916666666666" />
@@ -113,7 +134,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.2916666666666667" />
+        <option name="scale" value="0.5" />
       </ProjectState>
     </option>
   </component>

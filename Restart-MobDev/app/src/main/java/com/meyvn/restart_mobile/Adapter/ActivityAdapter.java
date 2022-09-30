@@ -1,7 +1,6 @@
-package com.meyvn.restart_mobile;
+package com.meyvn.restart_mobile.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.meyvn.restart_mobile.POJO.ActivityPojo;
-import com.meyvn.restart_mobile.POJO.ViewTaskPojo;
+import com.meyvn.restart_mobile.R;
 
 import java.util.ArrayList;
 
@@ -38,6 +37,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyActi
         ActivityPojo pojo = list.get(position);
         holder.title.setText(pojo.getActivityTitle());
         holder.venue.setText(pojo.getVenue());
+        holder.weather.setText(pojo.getWeather());
 
     }
 
@@ -47,11 +47,12 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyActi
     }
 
     public static class MyActivityHolder extends RecyclerView.ViewHolder{
-        TextView title,venue;
+        TextView title,venue,weather;
         public MyActivityHolder(@NonNull View itemView) {
             super(itemView);
             venue = itemView.findViewById(R.id.activityVenue);
             title = itemView.findViewById(R.id.activityTitle);
+            weather = itemView.findViewById(R.id.activityWeather);
 
         }
     }

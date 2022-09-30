@@ -1,7 +1,6 @@
 package com.meyvn.restart_mobile;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,16 +13,15 @@ import android.widget.ImageButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
-import com.meyvn.restart_mobile.POJO.JournalPojo;
 import com.meyvn.restart_mobile.POJO.ViewTaskPojo;
 
 import java.util.ArrayList;
+
+import com.meyvn.restart_mobile.Adapter.TaskAdapter;
 
 public class ViewTasks extends AppCompatActivity implements RecyclerViewInterface{
     ArrayList<ViewTaskPojo> pojo;

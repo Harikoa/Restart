@@ -1,5 +1,6 @@
 package com.meyvn.restart_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -20,7 +24,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.meyvn.restart_mobile.POJO.JournalPojo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import com.meyvn.restart_mobile.Adapter.JournalAdapter;
 
 public class Journal extends AppCompatActivity implements RecyclerViewInterface{
     ArrayList<JournalPojo> pojo;
@@ -28,14 +35,7 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.journal);
-       FloatingActionButton create = findViewById(R.id.CreateJournal);
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),MoodTracker.class);
-                startActivity(i);
-            }
-        });
+
         ImageButton back = findViewById(R.id.journalBack);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,32 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
                         adapter.notifyDataSetChanged();
                     }
                 });
+
+        FloatingActionButton create = findViewById(R.id.CreateJournal);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
+                        .whereEqualTo("date", LocalDate.now().toString())
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                           if (task.isSuccessful())
+                           {
+                               if(!task.getResult().getDocuments().isEmpty())
+                                   Toast.makeText(getApplicationContext(),"You already have journal for today!",Toast.LENGTH_LONG).show();
+                               else
+                               {
+                                   Intent i = new Intent(getApplicationContext(),MoodTracker.class);
+                                   startActivity(i);
+                               }
+                           }
+                            }
+                        });
+
+            }
+        });
     }
 
     @Override
