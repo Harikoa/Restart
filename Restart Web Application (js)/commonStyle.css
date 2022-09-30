@@ -5,7 +5,7 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-    font-family: cursive;
+    font-family:'Courier New', Courier, monospace;
     color:seagreen;
 }
 
@@ -72,6 +72,15 @@
 
 .noAcc{
 	text-align: center;
+}
+
+.formDesign{
+	background: rgba(255,255,255, 0.5);
+	border-width: fit-content;
+	border-radius: 30px;
+	padding: 40px;
+	box-shadow: 5px 5px 20px seagreen;
+	margin-bottom: 50px;
 }
 
 .formAlign{
