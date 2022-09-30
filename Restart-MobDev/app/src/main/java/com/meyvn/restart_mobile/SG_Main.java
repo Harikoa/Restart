@@ -86,6 +86,7 @@ public class SG_Main extends AppCompatActivity {
                  modelList.add(model);
                 }
                 adapter = new SG_PostAdapter(SG_Main.this,modelList);
+                recyclerView.setAdapter(adapter);
 
             }
         });
