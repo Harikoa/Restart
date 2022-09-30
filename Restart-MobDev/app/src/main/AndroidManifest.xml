@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
+            android:name=".SG_Post"
+            android:exported="true" />
+        <activity
+            android:name=".SG_Main"
+            android:exported="true" />
+        <activity
             android:name=".editJournal"
             android:exported="false" />
         <activity
