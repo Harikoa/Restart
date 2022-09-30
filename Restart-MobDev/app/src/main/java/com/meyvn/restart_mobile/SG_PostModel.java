@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class SG_PostModel {
 
-    private String user, title, caption;
+    private String user, title, description;
     private Date time;
 
     public String getUser() {
@@ -17,8 +17,8 @@ public class SG_PostModel {
         return title;
     }
 
-    public String getCaption() {
-        return caption;
+    public String getDescription() {
+        return description;
     }
 
     public Date getTime() {

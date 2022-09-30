@@ -49,6 +49,7 @@ public class SG_Main extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
 
         recyclerView = findViewById(R.id.recycleview);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(SG_Main.this));
 
         adapter = new SG_PostAdapter(SG_Main.this, list);
@@ -68,6 +69,7 @@ public class SG_Main extends AppCompatActivity {
                 startActivity(new Intent(SG_Main.this , SG_Post.class));
             }
         });
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -77,18 +79,17 @@ public class SG_Main extends AppCompatActivity {
                     Toast.makeText(SG_Main.this, "Reached Bottom", Toast.LENGTH_SHORT);
             }
         });
+
         query = firestore.collection("Support Groups").document("SGForAlcoholics").collection("Post").orderBy("time", Query.Direction.DESCENDING);
         listenerRegistration = query.addSnapshotListener(SG_Main.this, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for(DocumentChange doc : value.getDocumentChanges()){
-                   if (doc.getType() == DocumentChange.Type.ADDED){
-                       SG_PostModel post = doc.getDocument().toObject(SG_PostModel.class);
-                       list.add(post);
-                       adapter.notifyDataSetChanged();
-                   }else {
-                       adapter.notifyDataSetChanged();
-                   }
+                    if (doc.getType() == DocumentChange.Type.ADDED){
+                        SG_PostModel post = doc.getDocument().toObject(SG_PostModel.class);
+                        list.add(post);
+                    }
+                    adapter.notifyDataSetChanged();
                 }
                 listenerRegistration.remove();
             }

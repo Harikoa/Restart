@@ -18,6 +18,7 @@ import android.widget.Toolbar;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -80,9 +81,10 @@ public class SG_Post extends AppCompatActivity {
         pd.show();
 
         Map<String, Object> post = new HashMap<>();
-        post.put("user", Login.storedAcc.getEmail());
+        post.put("user", Login.storedAcc.getNickname());
         post.put("title",title);
         post.put("description", caption);
+        post.put("time", FieldValue.serverTimestamp());
 
         firestore.collection("Support Groups").document("SGForAlcoholics").collection("Post").add(post)
               .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
