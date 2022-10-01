@@ -15,13 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/pname"
-            android:textSize="20sp"
-            android:text="Nickname"
-            android:textColor="@color/black"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,6 +23,15 @@
             android:textSize="22sp"
             android:text="Title"
             android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/pname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -43,12 +46,6 @@
             android:text="Date"
             android:textColor="@color/black"
             android:textSize="12sp"/>
-        <ImageView
-            android:id="@+id/pcomment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_comment"
-            android:clickable="false"/>
 
     </LinearLayout>
 

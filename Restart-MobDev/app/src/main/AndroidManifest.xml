@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
-            android:name=".SG_Post"
+            android:name=".SG_CreatePost"
             android:exported="true" />
         <activity
             android:name=".SG_Main"

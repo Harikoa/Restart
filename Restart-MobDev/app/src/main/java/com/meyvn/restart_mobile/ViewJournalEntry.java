@@ -1,5 +1,6 @@
 package com.meyvn.restart_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.meyvn.restart_mobile.POJO.JournalPojo;
 
@@ -50,5 +55,26 @@ public class ViewJournalEntry extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        Intent i = getIntent();
+        String JSON= i.getStringExtra("JSON");
+        Gson convert = new Gson();
+        TextView Date = findViewById(R.id.journalEntryDate);
+        TextView body = findViewById(R.id.journalEntryBody);
+        JournalPojo pojo = convert.fromJson(JSON,JournalPojo.class);
+        FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail())
+                .collection("Journal").document(pojo.getDate()).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        JournalPojo newPojo=task.getResult().toObject(JournalPojo.class);
+                        Date.setText(newPojo.getDate());
+                        body.setText(newPojo.getJournalEntry());
+                    }
+                });
     }
 }

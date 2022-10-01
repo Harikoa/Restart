@@ -52,10 +52,7 @@ public class editJournal extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"UNSUCCESSFUL",Toast.LENGTH_LONG).show();
                             pojo.setJournalEntry(contentb4);
                         }
-                        Intent i = new Intent(getApplicationContext(),ViewJournalEntry.class);
-                        String J = convert.toJson(pojo);
-                        i.putExtra("JSON",J);
-                        startActivity(i);
+                        finish();
                     }
                 })
                 ;

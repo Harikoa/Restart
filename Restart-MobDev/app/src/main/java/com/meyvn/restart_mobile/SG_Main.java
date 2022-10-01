@@ -8,103 +8,83 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+import com.meyvn.restart_mobile.Adapter.SG_PostAdapter;
+import com.meyvn.restart_mobile.POJO.SGPostPOJO;
+import com.meyvn.restart_mobile.POJO.SG_Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SG_Main extends AppCompatActivity {
+public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
 
 
     private FirebaseFirestore firestore;
-    private RecyclerView rec;
     private FloatingActionButton fab;
-    private Toolbar mainToolbar;
     private RecyclerView recyclerView;
 
     List<SG_Model> modelList = new ArrayList<>();
     RecyclerView.LayoutManager layoutManager;
     SG_PostAdapter adapter;
-    ProgressDialog pd;
-
+    ArrayList<SGPostPOJO> array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sg_main);
-
-        mainToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mainToolbar);
-
-
-        recyclerView = findViewById(R.id.recycleview);
+        Gson gson  = new Gson();
+        Intent i = getIntent();
+        String JSON = i .getStringExtra("JSON");
+        SG_Model pojo = gson.fromJson(JSON,SG_Model.class);
+        recyclerView = findViewById(R.id.sgmainRecycler);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        
-        showData();
-
-
-
-
         firestore = FirebaseFirestore.getInstance();
-        rec = findViewById(R.id.recycleview);
+        array = new ArrayList<>();
+        adapter = new SG_PostAdapter(this,array,this);
+        recyclerView.setAdapter(adapter);
         fab = findViewById(R.id.fabp);
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SG_Main.this , SG_Post.class));
+                Intent i = new Intent(getApplicationContext(), SG_CreatePost.class);
+                i.putExtra("SGID",pojo.getSgID());
+                startActivity(i);
             }
         });
+        firestore.collection("Support Groups").document(pojo.getSgID()).collection("Post")
+                .whereEqualTo("reported",false)
+                .orderBy("datePosted", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful())
+                    {
+                        for(DocumentSnapshot ds : task.getResult())
+                        {
+                        array.add(ds.toObject(SGPostPOJO.class));
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                    }
+                });
     }
 
-    private void showData() {
-        firestore.collection("Support Groups").document("SGForAlcoholics").collection("Post")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                pd.dismiss();
-                for (DocumentSnapshot doc: task.getResult()) {
-                 SG_Model model = new SG_Model(doc.getString("id"),
-                         doc.getString("description"),
-                         doc.getString("title"),
-                         doc.getString("name"));
-                 modelList.add(model);
-                }
-                adapter = new SG_PostAdapter(SG_Main.this,modelList);
-                recyclerView.setAdapter(adapter);
 
-            }
-        });
-    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu , menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.my_profile){
-            startActivity(new Intent(SG_Main.this , ViewProfile.class));
-        }else if(item.getItemId() == R.id.main_menu){
-            startActivity(new Intent(SG_Main.this , PatientMainMenu.class));
-            finish();
-        }
-        return true;
+    public void onItemclick(int position) {
+
     }
 }
