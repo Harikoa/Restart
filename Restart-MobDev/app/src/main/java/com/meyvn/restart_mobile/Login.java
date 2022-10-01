@@ -55,43 +55,45 @@ public class Login extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DocumentReference doc = db.collection("Accounts").document(email.getText().toString());
-                doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            String pw =document.get("password").toString();
-                            
-                            if(password.getText().toString().equals(pw))
-                            {
-                                SharedPreferences.Editor edit = spf.edit();
-                                Account acc = document.toObject(Account.class);
-                                storedAcc = acc;
-                                String JSON = convert.toJson(acc);
-                                edit.putString("Account", JSON);
-                                edit.apply();
-                                if(storedAcc.getRole().equalsIgnoreCase("patient")) {
-                                    checkNotif();
-                                   checkAssessment(patient);
-                                }
-                                else if(storedAcc.getRole().equalsIgnoreCase("alumni"))
-                                    startActivity(alumni);
-                                else {
-                                    Toast.makeText(Login.this, "Account can't be logged in the mobile app", Toast.LENGTH_LONG).show();
-                                    edit.remove("Account");
+                if (!(email.getText().toString().isEmpty() || email.getText().toString().isEmpty())) {
+                    DocumentReference doc = db.collection("Accounts").document(email.getText().toString());
+                    doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String pw = document.get("password").toString();
+
+                                if (password.getText().toString().equals(pw)) {
+                                    SharedPreferences.Editor edit = spf.edit();
+                                    Account acc = document.toObject(Account.class);
+                                    storedAcc = acc;
+                                    String JSON = convert.toJson(acc);
+                                    edit.putString("Account", JSON);
                                     edit.apply();
-                                }
+                                    if (storedAcc.getRole().equalsIgnoreCase("patient")) {
+                                        checkNotif();
+                                        checkAssessment(patient);
+                                    } else if (storedAcc.getRole().equalsIgnoreCase("alumni"))
+                                        startActivity(alumni);
+                                    else {
+                                        Toast.makeText(Login.this, "Account can't be logged in the mobile app", Toast.LENGTH_LONG).show();
+                                        edit.remove("Account");
+                                        edit.apply();
+                                    }
+                                } else
+                                    Toast.makeText(Login.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(Login.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
                             }
-                            else
-                                Toast.makeText(Login.this,"Invalid Credentials",Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(Login.this,"Invalid Credentials",Toast.LENGTH_LONG).show();
                         }
-                    }
-                });
+                    });
+                }//if
+                else
+                    Toast.makeText(getApplicationContext(),"Enter all fields!",Toast.LENGTH_LONG).show();
             }
         });
+
 
     }
 

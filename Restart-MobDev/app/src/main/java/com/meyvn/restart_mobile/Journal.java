@@ -31,6 +31,8 @@ import com.meyvn.restart_mobile.Adapter.JournalAdapter;
 
 public class Journal extends AppCompatActivity implements RecyclerViewInterface{
     ArrayList<JournalPojo> pojo;
+    JournalAdapter adapter;
+    FirebaseFirestore fs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +48,9 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
         });
         RecyclerView rc = findViewById(R.id.journalRecycler);
         rc.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseFirestore fs = FirebaseFirestore.getInstance();
+        fs = FirebaseFirestore.getInstance();
         pojo = new ArrayList<JournalPojo>();
-        JournalAdapter adapter = new JournalAdapter(this,pojo,this);
+        adapter = new JournalAdapter(this,pojo,this);
         rc.setAdapter(adapter);
         fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
                 .orderBy("date", Query.Direction.DESCENDING)
@@ -101,5 +103,25 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
         String JSON = gson.toJson(poj);
         i.putExtra("JSON",JSON);
         startActivity(i);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
+                .orderBy("date", Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        for(DocumentSnapshot ds : value.getDocuments())
+                        {
+                            JournalPojo jp = ds.toObject(JournalPojo.class);
+                            pojo.add(jp);
+
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 }
