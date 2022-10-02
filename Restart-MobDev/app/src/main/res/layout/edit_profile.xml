@@ -38,110 +38,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_fn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="55dp"
-                    android:text="First Name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/pt_fn"
-                    android:layout_width="308dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/custom_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            </LinearLayout>
+                android:orientation="vertical"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_mn"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="55dp"
-                    android:text="Middle Name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/pt_mn"
-                    android:layout_width="308dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/custom_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
+                    android:orientation="vertical"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_ln"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="55dp"
-                    android:text="Last Name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/pt_ln"
-                    android:layout_width="308dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/custom_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_bd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="55dp"
-                    android:text="Birthday"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/pt_bd"
-                    android:layout_width="308dp"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/custom_input"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -153,12 +63,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="55dp"
-                    android:text="Username"
+                    android:text="Nickname"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/pt_un"
+                    android:id="@+id/editNickname"
                     android:layout_width="308dp"
                     android:layout_height="34dp"
                     android:layout_gravity="center"
@@ -169,33 +79,33 @@
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_email"
+                    android:id="@+id/tv_bd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="55dp"
-                    android:text="Email"
+                    android:text="Contact"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/pt_email"
+                    android:id="@+id/editContact"
                     android:layout_width="308dp"
                     android:layout_height="34dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/custom_input"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,7 +122,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/pt_cnopt"
+                    android:id="@+id/editPassword"
                     android:layout_width="308dp"
                     android:layout_height="34dp"
                     android:layout_gravity="center"
@@ -220,6 +130,7 @@
                     android:background="@drawable/custom_input"
                     android:ems="10"
                     android:inputType="textPersonName"
+                    android:password="true"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
@@ -234,12 +145,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="55dp"
-                    android:text="Re-enter Change Password"
+                    android:text="Re-enter New Password"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/pt_reenter"
+                    android:id="@+id/editReEnter"
                     android:layout_width="308dp"
                     android:layout_height="34dp"
                     android:layout_gravity="center"
@@ -247,6 +158,7 @@
                     android:background="@drawable/custom_input"
                     android:ems="10"
                     android:inputType="textPersonName"
+                    android:password="true"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
@@ -266,7 +178,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/pt_confirm"
+                    android:id="@+id/editConfirmPW"
                     android:layout_width="308dp"
                     android:layout_height="34dp"
                     android:layout_gravity="center"
@@ -274,6 +186,7 @@
                     android:background="@drawable/custom_input"
                     android:ems="10"
                     android:inputType="textPersonName"
+                    android:password="true"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>

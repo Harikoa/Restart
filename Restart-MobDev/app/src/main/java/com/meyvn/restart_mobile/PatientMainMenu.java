@@ -131,7 +131,8 @@ public class PatientMainMenu extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              System.out.println(Login.storedAcc.getConnectedUser().get(0));
+                Intent i = new Intent(getApplicationContext(),ViewProfile.class);
+                startActivity(i);
             }
         });
 

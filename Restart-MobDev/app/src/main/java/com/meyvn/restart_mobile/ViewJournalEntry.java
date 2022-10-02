@@ -21,6 +21,7 @@ import java.time.LocalDate;
 
 public class ViewJournalEntry extends AppCompatActivity {
 
+    String JSON;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,7 @@ public class ViewJournalEntry extends AppCompatActivity {
         TextView body = findViewById(R.id.journalEntryBody);
         Button edit = findViewById(R.id.editJournal);
         Intent i = getIntent();
-        String JSON= i.getStringExtra("JSON");
+       JSON= i.getStringExtra("JSON");
         Gson convert = new Gson();
         JournalPojo pojo = convert.fromJson(JSON,JournalPojo.class);
         Date.setText(pojo.getDate());
@@ -61,7 +62,7 @@ public class ViewJournalEntry extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
         Intent i = getIntent();
-        String JSON= i.getStringExtra("JSON");
+        JSON= i.getStringExtra("JSON");
         Gson convert = new Gson();
         TextView Date = findViewById(R.id.journalEntryDate);
         TextView body = findViewById(R.id.journalEntryBody);
@@ -74,7 +75,9 @@ public class ViewJournalEntry extends AppCompatActivity {
                         JournalPojo newPojo=task.getResult().toObject(JournalPojo.class);
                         Date.setText(newPojo.getDate());
                         body.setText(newPojo.getJournalEntry());
+                        JSON = convert.toJson(newPojo);
                     }
                 });
+
     }
 }

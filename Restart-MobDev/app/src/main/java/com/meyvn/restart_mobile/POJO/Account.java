@@ -2,6 +2,7 @@ package com.meyvn.restart_mobile.POJO;
 
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Account {
     private String FCM;
     private List<String> connectedUser;
     private String substanceUsed;
-
+    private String birthDay;
     public Integer getID() {
         return ID;
     }
@@ -118,7 +119,6 @@ public class Account {
         this.FCM = FCM;
     }
 
-
     public String getSubstanceUsed() {
         return substanceUsed;
     }
@@ -133,5 +133,13 @@ public class Account {
 
     public void setConnectedUser(List<String> connectedUser) {
         this.connectedUser = connectedUser;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 }
