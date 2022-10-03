@@ -22,9 +22,7 @@
         <activity
             android:name=".SG_Main"
             android:exported="true" />
-        <activity
-            android:name=".specific_post_items"
-            android:exported="false" />
+
         <activity
             android:name=".view_specific_post"
             android:exported="false" />

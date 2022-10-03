@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".specific_post_items">
 
     <LinearLayout
@@ -28,15 +28,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView56"
+                    android:id="@+id/commentNickName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
+                    android:layout_weight="3"
                     android:padding="10dp"
                     android:text="'@'user nickname" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/commentDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -44,9 +44,10 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView43"
+                android:id="@+id/commentContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
                 android:padding="10dp"
                 android:text="user comment" />
         </LinearLayout>
