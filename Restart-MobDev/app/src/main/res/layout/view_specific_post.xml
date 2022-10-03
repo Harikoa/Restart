@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mobbg"
+    android:background="@android:color/transparent"
     tools:context=".view_specific_post">
 
     <LinearLayout
@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@drawable/rounded_bot_dark"
             android:orientation="horizontal">
 
@@ -27,8 +27,18 @@
                 android:id="@+id/imageButton5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_gravity="start"
                 android:background="@android:color/transparent"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent"
+                app:srcCompat="@android:drawable/stat_notify_error" />
+
         </LinearLayout>
 
         <TextView
@@ -46,7 +56,8 @@
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +67,7 @@
                 <TextView
                     android:id="@+id/specific_Content"
                     android:layout_width="380dp"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_light"
@@ -68,7 +79,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/comment_Recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
