@@ -98,6 +98,7 @@ public class view_specific_post extends AppCompatActivity implements RecyclerVie
                         }
 
                         adapter.notifyDataSetChanged();
+                        if(array.size()>0)
                             rc.smoothScrollToPosition(array.size() - 1);
 
                     }
