@@ -87,6 +87,10 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
 
     @Override
     public void onItemclick(int position) {
-
+    Intent i = new Intent(getApplicationContext(),view_specific_post.class);
+    Gson convert = new Gson();
+    String JSON = convert.toJson(array.get(position));
+    i.putExtra("JSON",JSON);
+    startActivity(i);
     }
 }

@@ -10,9 +10,9 @@
     <LinearLayout
         android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView58"
+            android:id="@+id/specific_Title"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -44,6 +44,7 @@
             android:textSize="20dp" />
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="300dp">
 
@@ -53,28 +54,28 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/specific_Content"
                     android:layout_width="380dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="300dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_light"
-                    android:padding="10dp"
-                    android:text="postpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpostpost" />
+                    android:padding="10dp" />
 
             </LinearLayout>
         </ScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/comment_Recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="bottom"
@@ -85,7 +86,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/writeComment"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_margin="10dp"
@@ -98,7 +99,7 @@
             android:paddingEnd="10dp" />
 
         <ImageButton
-            android:id="@+id/imageButton13"
+            android:id="@+id/commentSend"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"

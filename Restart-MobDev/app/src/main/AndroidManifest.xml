@@ -16,19 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestartMobile">
         <activity
-<<<<<<< Updated upstream
+
             android:name=".SG_CreatePost"
             android:exported="true" />
         <activity
             android:name=".SG_Main"
             android:exported="true" />
-=======
-            android:name=".specific_post_items"
-            android:exported="false" />
+
         <activity
             android:name=".view_specific_post"
             android:exported="false" />
->>>>>>> Stashed changes
+
         <activity
             android:name=".editJournal"
             android:exported="false" />

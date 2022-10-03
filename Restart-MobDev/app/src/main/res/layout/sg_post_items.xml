@@ -33,12 +33,12 @@
             android:textSize="20sp" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
             android:id="@+id/pdescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:text="Description"
-            android:textSize="18sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="18sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
