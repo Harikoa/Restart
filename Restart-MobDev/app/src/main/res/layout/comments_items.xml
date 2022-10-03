@@ -20,7 +20,7 @@
             android:layout_width="390dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/rounded_dark"
+            android:background="@drawable/bordered"
             android:orientation="vertical">
 
             <LinearLayout
