@@ -40,8 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#CA2F2F"
-                android:text="Logout" />
+                android:background="@drawable/redborder"
+                android:text="Logout"
+                android:textColor="#DC143C"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button

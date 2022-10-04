@@ -51,7 +51,7 @@
             android:layout_width="350dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/rounded_light"
             android:drawableLeft="@drawable/profileicon2"
             android:paddingStart="20dp"
