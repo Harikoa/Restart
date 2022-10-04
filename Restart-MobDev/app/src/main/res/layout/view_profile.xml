@@ -39,8 +39,7 @@
                 android:paddingEnd="10dp"
                 android:text="My Profile"
                 android:textColor="#95d199"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,20 +58,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="First Name"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewProfileFN"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingRight="10dp"
                     android:text="FN"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -87,20 +89,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Middle Name"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewProfileMN"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="MN"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -115,20 +120,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Last Name"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewProfileLN"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="LN"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -143,20 +151,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Birthday"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewProfileBD"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="BD"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -171,20 +182,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Nickname"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewProfileNickname"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="UN"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -199,20 +213,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Email"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewProfileEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="EM"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
             <LinearLayout
@@ -225,20 +242,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Sex"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewSex"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="Sex"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
             <LinearLayout
@@ -251,20 +271,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Contact"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="Contact"
-                    android:textSize="24sp" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -280,20 +303,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="end"
                     android:paddingStart="10dp"
                     android:text="Last Assessment"
                     android:textColor="#0d524c"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewLastAssessment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text=""
-                    android:textSize="24sp" />
+                    android:textSize="20sp"
+                    android:textColor="#000000" />
 
             </LinearLayout>
         </LinearLayout>
