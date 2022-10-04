@@ -52,21 +52,6 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
         pojo = new ArrayList<JournalPojo>();
         adapter = new JournalAdapter(this,pojo,this);
         rc.setAdapter(adapter);
-        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
-                .orderBy("date", Query.Direction.DESCENDING)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                        for(DocumentSnapshot ds : value.getDocuments())
-                        {
-                            JournalPojo jp = ds.toObject(JournalPojo.class);
-                            pojo.add(jp);
-
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                });
 
         FloatingActionButton create = findViewById(R.id.CreateJournal);
         create.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +93,8 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
     @Override
     protected void onPostResume() {
         super.onPostResume();
+        while(!pojo.isEmpty())
+            pojo.remove(0);
         fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
                 .orderBy("date", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {

@@ -2,10 +2,12 @@ package com.meyvn.restart_mobile;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,8 +37,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class view_specific_post extends AppCompatActivity implements RecyclerViewInterface {
+public class view_specific_post extends AppCompatActivity implements commentRecyclerInterface {
     ArrayList<commentPOJO> array;
+    SGPostPOJO pojo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +48,12 @@ public class view_specific_post extends AppCompatActivity implements RecyclerVie
         TextView content = findViewById(R.id.specific_Content);
         Intent i = getIntent();
         Gson convert = new Gson();
-        SGPostPOJO pojo = convert.fromJson(i.getStringExtra("JSON"),SGPostPOJO.class);
+         pojo = convert.fromJson(i.getStringExtra("JSON"),SGPostPOJO.class);
         Title.setText(pojo.getTitle() + " by " + pojo.getUserNickname());
         content.setText(pojo.getContent());
         EditText comment = findViewById(R.id.writeComment);
         ImageButton send = findViewById(R.id.commentSend);
+        ImageButton report = findViewById(R.id.postReport);
         RecyclerView rc = findViewById(R.id.comment_Recycler);
         array = new ArrayList<>();
         commentAdapter adapter = new commentAdapter(this,array,this);
@@ -92,11 +96,29 @@ public class view_specific_post extends AppCompatActivity implements RecyclerVie
                         {
                             if(ds.getType().equals(DocumentChange.Type.ADDED)) {
                                 commentPOJO poj = ds.getDocument().toObject(commentPOJO.class);
-                                if (!poj.isReported() && !array.contains(poj))
+                                if (!poj.isReported() && !array.contains(poj)) {
+                                    poj.setCommentID(ds.getDocument().getId());
                                     array.add(poj);
+
+                                }
+                            }
+                            if(ds.getType().equals(DocumentChange.Type.MODIFIED))
+                            {
+                                commentPOJO poj = ds.getDocument().toObject(commentPOJO.class);
+                                if (poj.isReported()) {
+                                    poj.setCommentID(ds.getDocument().getId());
+                                    int index = -1;
+                                    for(int ctr = 0;ctr<array.size();ctr++)
+                                    {
+                                        if(array.get(ctr).getCommentID().equals(poj.getCommentID())) {
+                                            index = ctr;
+                                        }
+                                    }
+                                    if(index>-1)
+                                    array.remove(index);
+                                }
                             }
                         }
-
                         adapter.notifyDataSetChanged();
                         if(array.size()>0)
                             rc.smoothScrollToPosition(array.size() - 1);
@@ -105,10 +127,65 @@ public class view_specific_post extends AppCompatActivity implements RecyclerVie
 
                     }
                 });
+        DialogInterface.OnClickListener listen = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == DialogInterface.BUTTON_POSITIVE)
+                {
+                    FirebaseFirestore.getInstance().collection("Support Groups").document(pojo.getSGID()).collection("Post")
+                            .document(pojo.getPostID()).update("reported",true)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                               if(task.isSuccessful())
+                               {
+                                   Toast.makeText(getApplicationContext(),"Successfully reported",Toast.LENGTH_LONG).show();
+                                   finish();
+                               }
+                                }
+                            });
+                }
+            }
+        };
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Are you sure to report this post?").setPositiveButton("Yes",listen)
+                        .setNegativeButton("No",listen).show();
+            }
+        });
+
     }
 
     @Override
-    public void onItemclick(int position) {
+    public void onItemclick(int position,View view) {
+        DialogInterface.OnClickListener listen = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+          if(i==DialogInterface.BUTTON_POSITIVE){
+              FirebaseFirestore.getInstance().collection("Support Groups").document(pojo.getSGID()).collection("Post")
+                      .document(pojo.getPostID()).collection("Comments").document(array.get(position).getCommentID())
+                      .update("reported",true)
+                      .addOnCompleteListener(new OnCompleteListener<Void>() {
+                          @Override
+                          public void onComplete(@NonNull Task<Void> task) {
+                              if(task.isSuccessful())
+                              {
+                                  Toast.makeText(getApplicationContext(),"Comment reported",Toast.LENGTH_LONG).show();
+                              }
+                          }
+                      });
+          }
+            }
+
+        };
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(view.getContext());
+        builder.setMessage("Do you want to report this comment?")
+                .setNegativeButton("No",listen)
+                .setPositiveButton("Yes",listen)
+                .show();
 
     }
 }

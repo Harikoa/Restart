@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,7 +38,7 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
     RecyclerView.LayoutManager layoutManager;
     SG_PostAdapter adapter;
     ArrayList<SGPostPOJO> array;
-
+    SG_Model pojo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
         Gson gson  = new Gson();
         Intent i = getIntent();
         String JSON = i .getStringExtra("JSON");
-        SG_Model pojo = gson.fromJson(JSON,SG_Model.class);
+        pojo = gson.fromJson(JSON,SG_Model.class);
         recyclerView = findViewById(R.id.sgmainRecycler);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -62,25 +63,6 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
                 startActivity(i);
             }
         });
-        firestore.collection("Support Groups").document(pojo.getSgID()).collection("Post")
-                .whereEqualTo("reported",false)
-                .orderBy("datePosted", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if(task.isSuccessful())
-                    {
-                        for(DocumentSnapshot ds : task.getResult())
-                        {
-                            SGPostPOJO pojo = ds.toObject(SGPostPOJO.class);
-                            pojo.setPostID(ds.getId());
-                        array.add(pojo);
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                    }
-                });
     }
 
 
@@ -92,5 +74,31 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
     String JSON = convert.toJson(array.get(position));
     i.putExtra("JSON",JSON);
     startActivity(i);
+    }
+
+    @Override
+    protected void onPostResume() {
+        while(!array.isEmpty())
+            array.remove(0);
+        firestore.collection("Support Groups").document(pojo.getSgID()).collection("Post")
+                .whereEqualTo("reported",false)
+                .orderBy("datePosted", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful())
+                        {
+                            for(DocumentSnapshot ds : task.getResult())
+                            {
+                                SGPostPOJO pojo = ds.toObject(SGPostPOJO.class);
+                                pojo.setPostID(ds.getId());
+                                array.add(pojo);
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+        super.onPostResume();
     }
 }

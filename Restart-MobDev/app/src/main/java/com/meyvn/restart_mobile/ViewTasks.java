@@ -45,8 +45,8 @@ public class ViewTasks extends AppCompatActivity implements RecyclerViewInterfac
         TaskAdapter adapter = new TaskAdapter(this,pojo,this);
         rc.setAdapter(adapter);
         fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Task")
-                .whereEqualTo("isComplete",false)
-                .orderBy("taskDate", Query.Direction.DESCENDING)
+                .whereEqualTo("complete",false)
+                .orderBy("taskDeadline", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

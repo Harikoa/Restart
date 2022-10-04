@@ -33,6 +33,7 @@ public class ViewSupportGroups extends AppCompatActivity implements RecyclerView
 
         ImageButton back = findViewById(R.id.supportBack);
         RecyclerView rc = findViewById(R.id.sgListRecycler);
+        ImageButton report = findViewById(R.id.postReport);
        array  = new ArrayList<>();
         SG_Adapter adapter = new SG_Adapter(this,array,this);
         rc.setLayoutManager(new LinearLayoutManager(this));
