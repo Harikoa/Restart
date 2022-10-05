@@ -9,13 +9,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="1"
+        app:layout_constraintWidth_percent="1"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
@@ -40,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/redborder"
                 android:text="Logout"
@@ -49,57 +52,57 @@
 
         <Button
             android:id="@+id/viewJournals"
-            android:layout_width="380dp"
+            android:layout_width="360dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_light"
             android:drawableLeft="@drawable/journalicon"
             android:drawableRight="@drawable/rarroricon2"
-            android:paddingStart="20dp"
             android:paddingHorizontal="20dp"
+            android:paddingStart="20dp"
             android:text="Journal"
-            android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="#145950"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/viewTasks"
-            android:layout_width="380dp"
+            android:layout_width="360dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_light"
             android:drawableLeft="@drawable/taskicon2"
             android:drawableRight="@drawable/rarroricon2"
-            android:paddingStart="20dp"
             android:paddingHorizontal="20dp"
+            android:paddingStart="20dp"
             android:text="Tasks"
-            android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="#145950"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/viewForum"
-            android:layout_width="380dp"
+            android:layout_width="360dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_light"
             android:drawableLeft="@drawable/commicon"
             android:drawableRight="@drawable/rarroricon2"
-            android:paddingStart="20dp"
             android:paddingHorizontal="20dp"
+            android:paddingStart="20dp"
             android:text="Support Group Forum"
-            android:textSize="20sp"
             android:textColor="#145950"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/drugTestPatient"
-            android:layout_width="380dp"
+            android:layout_width="360dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -107,40 +110,42 @@
             android:background="@drawable/rounded_light"
             android:drawableLeft="@drawable/dgicon"
             android:drawableRight="@drawable/rarroricon2"
-            android:paddingStart="20dp"
             android:paddingHorizontal="20dp"
+            android:paddingStart="20dp"
             android:text="Drug Test"
-            android:textSize="20sp"
             android:textColor="#145950"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/viewSelfhelp"
-                android:layout_width="150dp"
+                android:layout_width="175dp"
                 android:layout_height="150dp"
                 android:background="@drawable/rounded_dark"
                 android:drawableTop="@drawable/selfhelpicon"
                 android:paddingTop="20dp"
                 android:text="Self Help"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/viewData"
-                android:layout_width="150dp"
+                android:layout_width="175dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/rounded_dark"
                 android:drawableTop="@drawable/dataicon"
                 android:paddingTop="20dp"
                 android:text="Data"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,24 +156,26 @@
 
             <Button
                 android:id="@+id/viewProfile"
-                android:layout_width="150dp"
+                android:layout_width="175dp"
                 android:layout_height="150dp"
                 android:background="@drawable/rounded_dark"
                 android:drawableTop="@drawable/profileicon"
                 android:paddingTop="30dp"
                 android:text="Profile"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/messages"
-                android:layout_width="150dp"
+                android:layout_width="175dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="20dp"
-                android:drawableTop="@drawable/messageicon"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/rounded_dark"
+                android:drawableTop="@drawable/messageicon"
                 android:paddingTop="30dp"
                 android:text="MEssages"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
