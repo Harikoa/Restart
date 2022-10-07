@@ -23,6 +23,8 @@ public class Account {
     private List<String> connectedUser;
     private String substanceUsed;
     private String birthDay;
+    private Date lastSuspensionDay;
+    private boolean activated;
     public Integer getID() {
         return ID;
     }
@@ -141,5 +143,21 @@ public class Account {
 
     public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public Date getLastSuspensionDay() {
+        return lastSuspensionDay;
+    }
+
+    public void setLastSuspensionDay(Date lastSuspensionDay) {
+        this.lastSuspensionDay = lastSuspensionDay;
     }
 }

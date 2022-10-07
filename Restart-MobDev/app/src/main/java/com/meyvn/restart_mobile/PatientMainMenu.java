@@ -143,6 +143,15 @@ public class PatientMainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),ViewJournalData.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(i);
+            }
+        });
     }
 
     public void updateInfo()
@@ -167,6 +176,14 @@ public class PatientMainMenu extends AppCompatActivity {
                                         SharedPreferences.Editor edit = spf.edit();
                                         edit.putString("Account",JSON);
                                         edit.apply();
+                                        if(!Login.storedAcc.isActivated()) {
+                                            edit.remove("Account");
+                                            edit.apply();
+                                            Toast.makeText(getApplicationContext(),"Account is deactivated!",Toast.LENGTH_LONG).show();
+                                            Intent i = new Intent(getApplicationContext(), Login.class);
+                                            startActivity(i);
+                                            finish();
+                                        }
                                     }
                                 });
                     }

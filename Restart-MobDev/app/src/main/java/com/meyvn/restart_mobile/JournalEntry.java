@@ -45,7 +45,7 @@ public class JournalEntry extends AppCompatActivity {
                 map.put("substanceFrequency",i.getIntExtra("freq",-1));
                 map.put("substanceLength",i.getIntExtra("length",-1));
                 map.put("substanceNumber",i.getIntExtra("number",-1));
-            db.collection("Accounts").document("restart@gmail.com").collection("Journal").document(""+LocalDate.now())
+            db.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

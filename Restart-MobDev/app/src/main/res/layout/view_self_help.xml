@@ -61,12 +61,22 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView60"
+                android:id="@+id/motivationalQuote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:gravity="center"
-                android:text="TextView"
+                android:text="Motiv Quote"
+                android:textColor="#cdfce2"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/motivationalAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_8sdp"
+                android:gravity="bottom|left"
+                android:text="Author"
                 android:textColor="#cdfce2"
                 android:textSize="15sp" />
         </LinearLayout>
