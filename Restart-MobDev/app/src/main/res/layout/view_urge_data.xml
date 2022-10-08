@@ -8,17 +8,18 @@
     tools:context=".view_urge_data">
 
     <LinearLayout
+        android:id="@+id/linearLayout15"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="@drawable/rounded_bot_light"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/rounded_bot_light"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button25"
+            android:id="@+id/journalDataButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -28,7 +29,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/button27"
+            android:id="@+id/moodDataButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,9 +52,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -85,10 +85,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout16"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="vertical"
         android:background="@drawable/rounded_top_dark"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -100,5 +101,51 @@
             android:layout_gravity="end"
             android:background="@android:color/transparent"
             android:text="Export" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/urgeChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="5">
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+        <TextView
+            android:id="@+id/totalIntensity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NO DATA AVAILABLE"/>
+
+        <TextView
+            android:id="@+id/totalFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NO DATA AVAILABLE"/>
+
+        <TextView
+            android:id="@+id/totalLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NO DATA AVAILABLE"/>
+
+        <TextView
+            android:id="@+id/totalNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NO DATA AVAILABLE"/>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

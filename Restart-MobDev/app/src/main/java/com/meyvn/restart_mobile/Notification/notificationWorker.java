@@ -61,8 +61,8 @@ public class notificationWorker extends Worker {
                 .createNotificationChannelGroup(new NotificationChannelGroup("TaskGrp","TaskGrp"));
 
         fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Task")
-                .whereEqualTo("isComplete",false)
-                .orderBy("taskDate", Query.Direction.DESCENDING)
+                .whereEqualTo("complete",false)
+                .orderBy("taskDeadline", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

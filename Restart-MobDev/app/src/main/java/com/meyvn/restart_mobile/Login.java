@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,6 +34,8 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+       
         SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
         Intent patient = new Intent(getApplicationContext(),PatientMainMenu.class);
         Intent alumni = new Intent(getApplicationContext(),AlumniMainMenu.class);

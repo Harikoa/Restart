@@ -24,7 +24,7 @@ public class ViewProfile extends AppCompatActivity {
         setText();
         Button edit = findViewById(R.id.editaccount);
         ImageButton back = findViewById(R.id.profileBack);
-
+        Button deac = findViewById(R.id.requestDeactivateAccount);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +36,13 @@ public class ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        deac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),deactivate_acc_page.class);
+                startActivity(i);
             }
         });
     }

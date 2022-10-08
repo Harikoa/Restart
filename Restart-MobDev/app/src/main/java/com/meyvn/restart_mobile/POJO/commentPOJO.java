@@ -3,8 +3,9 @@ package com.meyvn.restart_mobile.POJO;
 import java.util.Date;
 
 public class commentPOJO {
-    String userEmail, commentContent,nickName;
+    String userEmail, commentContent,nickName,commentID;
     Date datePosted;
+
     boolean isReported;
 
     public String getUserEmail() {
@@ -45,5 +46,13 @@ public class commentPOJO {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getCommentID() {
+        return commentID;
+    }
+
+    public void setCommentID(String commentID) {
+        this.commentID = commentID;
     }
 }

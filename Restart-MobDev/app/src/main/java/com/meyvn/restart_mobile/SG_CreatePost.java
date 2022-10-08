@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.meyvn.restart_mobile.POJO.SGPostPOJO;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,13 +61,18 @@ public class SG_CreatePost extends AppCompatActivity {
             public void onClick(View view) {
                 String title = addTitle.getText().toString().trim();
                 String caption = addCaption.getText().toString().trim();
-                if(!(title.isEmpty()||caption.isEmpty()))
-                uploadData (title, caption);
-                else
-                    Toast.makeText(getApplicationContext(),"Input all fields",Toast.LENGTH_LONG).show();
+                if(Login.storedAcc.getLastSuspensionDay()!=null && Login.storedAcc.getLastSuspensionDay().before(new Date())) {
+                    if (!(title.isEmpty() || caption.isEmpty()))
+                        uploadData(title, caption);
+                    else
+                        Toast.makeText(getApplicationContext(), "Input all fields", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "You are currently suspended", Toast.LENGTH_LONG).show();
+                    finish();
+                }
             }
         });
-
     }
     private void uploadData(String title, String caption) {
 
