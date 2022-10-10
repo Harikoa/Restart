@@ -44,7 +44,7 @@ public class AccomplishTask extends AppCompatActivity {
                     pojo.setDateAccomplished(""+ LocalDate.now());
                     pojo.setTaskReflection(reflection.getText().toString());
 
-                fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Task").document(pojo.getID())
+                fs.collection("Accounts").document(Login.authACC).collection("Task").document(pojo.getID())
                         .set(pojo)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

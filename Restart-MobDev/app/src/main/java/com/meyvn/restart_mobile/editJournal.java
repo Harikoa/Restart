@@ -39,7 +39,7 @@ public class editJournal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 pojo.setJournalEntry(content.getText().toString());
-                FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal").document(pojo.getDate())
+                FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC).collection("Journal").document(pojo.getDate())
                         .set(pojo, SetOptions.merge())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

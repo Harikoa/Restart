@@ -34,7 +34,6 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
 
-    List<SG_Model> modelList = new ArrayList<>();
     RecyclerView.LayoutManager layoutManager;
     SG_PostAdapter adapter;
     ArrayList<SGPostPOJO> array;
@@ -92,6 +91,7 @@ public class SG_Main extends AppCompatActivity implements RecyclerViewInterface{
                             for(DocumentSnapshot ds : task.getResult())
                             {
                                 SGPostPOJO pojo = ds.toObject(SGPostPOJO.class);
+
                                 pojo.setPostID(ds.getId());
                                 array.add(pojo);
                             }

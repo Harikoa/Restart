@@ -8,7 +8,7 @@ import java.util.List;
 
 @IgnoreExtraProperties
 public class Account {
-    private Integer ID;
+    private String ID;
     private String contact;
     private String email;
     private String password;
@@ -25,11 +25,12 @@ public class Account {
     private String birthDay;
     private Date lastSuspensionDay;
     private boolean activated;
-    public Integer getID() {
+
+    public String getID() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

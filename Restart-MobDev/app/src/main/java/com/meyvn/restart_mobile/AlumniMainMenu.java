@@ -58,7 +58,7 @@ public class AlumniMainMenu extends AppCompatActivity {
     {
         Gson gson = new Gson();
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        String email = Login.storedAcc.getEmail();
+        String email = Login.authACC;
         FirebaseMessaging.getInstance().getToken()
                 .addOnSuccessListener(new OnSuccessListener<String>() {
                     @Override

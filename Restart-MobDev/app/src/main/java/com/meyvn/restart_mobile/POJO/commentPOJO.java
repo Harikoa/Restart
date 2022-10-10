@@ -3,17 +3,17 @@ package com.meyvn.restart_mobile.POJO;
 import java.util.Date;
 
 public class commentPOJO {
-    String userEmail, commentContent,nickName,commentID;
+    String userID, commentContent,nickName,commentID;
     Date datePosted;
 
     boolean isReported;
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getCommentContent() {

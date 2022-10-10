@@ -45,13 +45,14 @@ public class JournalEntry extends AppCompatActivity {
                 map.put("substanceFrequency",i.getIntExtra("freq",-1));
                 map.put("substanceLength",i.getIntExtra("length",-1));
                 map.put("substanceNumber",i.getIntExtra("number",-1));
-            db.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal").document(""+LocalDate.now())
+            db.collection("Accounts").document(Login.authACC).collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
                             Intent in;
+
                             if(i.getStringExtra("mood").equals("Very Sad")) {
                                 in = new Intent(getApplicationContext(), PHQ9Questionnaire.class);
                                 in.putExtra("isMonthly",false);
@@ -59,6 +60,7 @@ public class JournalEntry extends AppCompatActivity {
                             }
                             else
                                 in = new Intent(getApplicationContext(),Journal.class);
+                            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                              startActivity(in);
                              finish();
                         }

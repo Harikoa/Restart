@@ -226,7 +226,7 @@ public class PHQ9Questionnaire extends AppCompatActivity {
         map.put("isMonthly", monthly);
         map.put("isInterpreted",false);
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Assessment")
+        fs.collection("Accounts").document(Login.authACC).collection("Assessment")
                 .add(map)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -238,7 +238,7 @@ public class PHQ9Questionnaire extends AppCompatActivity {
         if(monthly)
         {
             Login.storedAcc.setLastAssessment(""+LocalDate.now());
-            fs.collection("Accounts").document(Login.storedAcc.getEmail())
+            fs.collection("Accounts").document(Login.authACC)
                     .set(Login.storedAcc, SetOptions.merge());
 
         }

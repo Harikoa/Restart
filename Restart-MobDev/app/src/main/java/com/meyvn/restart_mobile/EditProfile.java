@@ -53,7 +53,7 @@ public class EditProfile extends AppCompatActivity {
                         }
                             acc.setContact(contact.getText().toString());
                             acc.setNickname(nickname.getText().toString());
-                            FirebaseFirestore.getInstance().collection("Accounts").document(acc.getEmail())
+                            FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
                                     .set(acc, SetOptions.merge())
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
