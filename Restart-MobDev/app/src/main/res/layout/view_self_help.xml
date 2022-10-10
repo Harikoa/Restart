@@ -66,16 +66,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Motiv Quote"
                 android:textColor="#cdfce2"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/motivationalAuthor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_8sdp"
+                android:layout_marginTop="5dp"
                 android:gravity="bottom|left"
+                android:paddingStart="@dimen/_8sdp"
                 android:text="Author"
                 android:textColor="#cdfce2"
                 android:textSize="15sp" />
@@ -88,7 +91,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_light"
+            android:drawableRight="@drawable/rarroricon2"
+            android:paddingHorizontal="20dp"
             android:text="Activity Suggestions"
-            android:textColor="#145950" />
+            android:textColor="#145950"
+            android:textSize="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

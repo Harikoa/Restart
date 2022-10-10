@@ -488,7 +488,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/round_btn"
-            android:text="Submit" />
+            android:text="Submit"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

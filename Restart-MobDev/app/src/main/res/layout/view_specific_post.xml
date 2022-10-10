@@ -57,8 +57,9 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Title"
-            android:textColor="#000"
-            android:textSize="20dp" />
+            android:textColor="#0d524c"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -75,14 +76,28 @@
 
                 <TextView
                     android:id="@+id/specific_Content"
-                    android:layout_width="380dp"
+                    android:layout_width="360dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/textView43"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="5dp"
+            android:text="Comments:"
+            android:textColor="#009688"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/comment_Recycler"

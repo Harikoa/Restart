@@ -54,14 +54,18 @@
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_shapes.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_top.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/rounded_top_dark.xml" value="0.3435" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/sent_message_bg.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/textview_border.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/textview_border_dark.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/drawable/textview_border_light.xml" value="0.3435" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/accomplish_task.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/account_items.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/activity_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/activity_main.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/alumni_main_menu.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/bordered.xml" value="0.3494791666666667" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/change_password.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/chat_activity.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/comments_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/create_new_messages.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/deactivate_acc_page.xml" value="0.35052083333333334" />
@@ -70,17 +74,21 @@
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/edit_profile.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/forgot_password.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/idk.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/item.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/journal.xml" value="0.33" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/journal_entry.xml" value="0.33" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/login.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/mood_tracker.xml" value="0.35" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/patient_main_menu.xml" value="0.33" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/phq9_questionnaire.xml" value="0.33" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/receive_messages_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/sent_message_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/sg_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/sg_post_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/specific_post_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/subs_craving_questionnaire.xml" value="0.33" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/support_group_main.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/task_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/task_list.xml" value="0.33645833333333336" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/verify_code.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Dominic Yu/Desktop/Restart/Restart-MobDev/app/src/main/res/layout/view_comments.xml" value="0.35052083333333334" />
