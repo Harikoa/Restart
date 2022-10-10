@@ -67,7 +67,7 @@ public class ViewJournalEntry extends AppCompatActivity {
         TextView Date = findViewById(R.id.journalEntryDate);
         TextView body = findViewById(R.id.journalEntryBody);
         JournalPojo pojo = convert.fromJson(JSON,JournalPojo.class);
-        FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail())
+        FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
                 .collection("Journal").document(pojo.getDate()).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override

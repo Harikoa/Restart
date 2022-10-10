@@ -68,7 +68,7 @@ public class ViewMoodTrackerData extends AppCompatActivity {
     {
         bar = new ArrayList<>();
 
-        FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail())
+        FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
                          .collection("Journal").get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override

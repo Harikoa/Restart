@@ -58,7 +58,7 @@ public class ViewJournalData extends AppCompatActivity {
         MaterialCalendarView mcv = findViewById(R.id.calendarView);
         mcv.setEnabled(false);
         ld = new ArrayList<>();
-        FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail())
+        FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
                 .collection("Journal").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

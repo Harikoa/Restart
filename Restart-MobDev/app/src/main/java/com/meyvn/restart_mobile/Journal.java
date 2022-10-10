@@ -57,7 +57,7 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
+                fs.collection("Accounts").document(Login.authACC).collection("Journal")
                         .whereEqualTo("date", LocalDate.now().toString())
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -95,7 +95,7 @@ public class Journal extends AppCompatActivity implements RecyclerViewInterface{
         super.onPostResume();
         while(!pojo.isEmpty())
             pojo.remove(0);
-        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Journal")
+        fs.collection("Accounts").document(Login.authACC).collection("Journal")
                 .orderBy("date", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override

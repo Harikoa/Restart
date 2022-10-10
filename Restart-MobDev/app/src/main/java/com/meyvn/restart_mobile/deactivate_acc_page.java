@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.OAuthCredential;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -26,33 +32,42 @@ public class deactivate_acc_page extends AppCompatActivity {
     CollectionReference fs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deactivate_acc_page);
         fs = FirebaseFirestore.getInstance().collection("AccountDeactivation");
         Button deactivate = findViewById(R.id.deactivateButton);
         EditText pw  = findViewById(R.id.deletionPassword);
+
         deactivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pw.getText().toString().equals(Login.storedAcc.getPassword())) {
-                    accountDeletion pojo = new accountDeletion();
-                    pojo.setFinished(false);
-                    pojo.setUserEmail(Login.storedAcc.getEmail());
-                    pojo.setDateRequested(new Date());
-                    fs.add(pojo)
-                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentReference> task) {
-                                    Toast.makeText(getApplicationContext(),"Request submitted",Toast.LENGTH_LONG).show();
-                                    finish();
-                                }
-                            })
-                    ;
-                }
-                else
-                    Toast.makeText(getApplicationContext(),"WRONG PASSWORD",Toast.LENGTH_LONG).show();
-            }
-        });
+                AuthCredential credential = EmailAuthProvider.getCredential(Login.storedAcc.getEmail(), pw.getText().toString());
+                auth.getCurrentUser().reauthenticate(credential)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    accountDeletion pojo = new accountDeletion();
+                                    pojo.setFinished(false);
+                                    pojo.setUserID(Login.authACC);
+                                    pojo.setDateRequested(new Date());
+                                    fs.add(pojo)
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                    Toast.makeText(getApplicationContext(), "Request submitted", Toast.LENGTH_LONG).show();
+                                                    finish();
+                                                }
+                                            })
+                                    ;
+                                } else
+                                    Toast.makeText(getApplicationContext(), "WRONG PASSWORD", Toast.LENGTH_LONG).show();
+                            }
+                        });
 
+
+    }
+});
     }
 }
