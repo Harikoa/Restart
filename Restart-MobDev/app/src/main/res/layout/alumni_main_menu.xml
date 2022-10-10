@@ -47,7 +47,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/viewProfile"
+            android:id="@+id/alumniViewProfile"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
