@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.meyvn.restart_mobile.POJO.Account;
@@ -19,7 +22,7 @@ import com.meyvn.restart_mobile.POJO.Account;
 import org.w3c.dom.Text;
 
 public class EditProfile extends AppCompatActivity {
-
+    FirebaseAuth auth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,35 +44,39 @@ public class EditProfile extends AppCompatActivity {
                 || oldpw.getText().toString().isEmpty())
                     Toast.makeText(getApplicationContext(),"Please enter all necessary fields",Toast.LENGTH_LONG).show();
                 else {
-                    if (oldpw.getText().toString().equals(acc.getPassword())) {
-
-                        if (!pw.getText().toString().isEmpty()) {
-                            if (pw.getText().toString().equals(cpw.getText().toString()))
-                                acc.setPassword(pw.getText().toString());
-                            else {
-                                Toast.makeText(getApplicationContext(), "Passwords are not matching", Toast.LENGTH_LONG).show();
-                                return;
-                            }
-                        }
-                            acc.setContact(contact.getText().toString());
-                            acc.setNickname(nickname.getText().toString());
-                            FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
-                                    .set(acc, SetOptions.merge())
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                       if(task.isSuccessful())
-                                       {
-                                           Toast.makeText(getApplicationContext(),"Successfully updated!",Toast.LENGTH_LONG).show();
-                                           Login.storedAcc = acc;
-                                           finish();
-                                       }
+                    AuthCredential credential = EmailAuthProvider.getCredential(Login.storedAcc.getEmail(), oldpw.getText().toString());
+                    auth.getCurrentUser().reauthenticate(credential)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        if (!pw.getText().toString().isEmpty()) {
+                                            if (pw.getText().toString().equals(cpw.getText().toString()))
+                                                auth.getCurrentUser().updatePassword(pw.getText().toString());
+                                            else {
+                                                Toast.makeText(getApplicationContext(), "Passwords are not matching", Toast.LENGTH_LONG).show();
+                                                return;
+                                            }
                                         }
-                                    });
-
-                    }
-                    else
-                        Toast.makeText(getApplicationContext(),"Wrong current password!",Toast.LENGTH_LONG).show();
+                                        acc.setContact(contact.getText().toString());
+                                        acc.setNickname(nickname.getText().toString());
+                                        FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
+                                                .set(acc, SetOptions.merge())
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(getApplicationContext(), "Successfully updated!", Toast.LENGTH_LONG).show();
+                                                            Login.storedAcc = acc;
+                                                            finish();
+                                                        }
+                                                    }
+                                                });
+                                    }
+                                    else
+                                        Toast.makeText(getApplicationContext(),"Wrong current password",Toast.LENGTH_LONG).show();
+                                }
+                            });
                 }
             }
         });
