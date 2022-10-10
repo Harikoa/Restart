@@ -71,7 +71,7 @@ public class view_urge_data extends AppCompatActivity {
     {
         bar = new ArrayList<>();
 
-        FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail())
+        FirebaseFirestore.getInstance().collection("Accounts").document(Login.authACC)
                 .collection("Journal").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

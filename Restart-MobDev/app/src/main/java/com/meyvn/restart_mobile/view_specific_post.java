@@ -69,8 +69,8 @@ public class view_specific_post extends AppCompatActivity implements commentRecy
                     commentPOJO poj = new commentPOJO();
                     poj.setDatePosted(new Date());
                     poj.setCommentContent(comment.getText().toString().trim());
-                    poj.setNickName(pojo.getUserNickname());
-                    poj.setUserEmail(pojo.getUserID());
+                    poj.setNickName(Login.storedAcc.getNickname());
+                    poj.setUserID(Login.authACC);
                     poj.setReported(false);
                     FirebaseFirestore.getInstance().collection("Support Groups").document(pojo.getSGID()).collection("Post")
                             .document(pojo.getPostID()).collection("Comments").add(poj)

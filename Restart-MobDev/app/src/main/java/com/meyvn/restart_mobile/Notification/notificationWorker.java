@@ -17,6 +17,7 @@ import androidx.work.WorkerParameters;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -32,7 +33,7 @@ import java.time.LocalDate;
 
 public class notificationWorker extends Worker {
 
-
+FirebaseAuth auth = FirebaseAuth.getInstance();
     public notificationWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
@@ -40,11 +41,9 @@ public class notificationWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        Gson convert = new Gson();
-        SharedPreferences prf = getApplicationContext().getSharedPreferences("AccountLogged",getApplicationContext().MODE_PRIVATE);
-        Account acc  = convert.fromJson(prf.getString("Account","{}"),Account.class);
+
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        fs.collection("Accounts").document(acc.getEmail()).collection("DrugTest")
+        fs.collection("Accounts").document(auth.getCurrentUser().getUid()).collection("DrugTest")
                 .whereEqualTo("completion",false)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -60,7 +59,7 @@ public class notificationWorker extends Worker {
         getApplicationContext().getSystemService(NotificationManager.class)
                 .createNotificationChannelGroup(new NotificationChannelGroup("TaskGrp","TaskGrp"));
 
-        fs.collection("Accounts").document(Login.storedAcc.getEmail()).collection("Task")
+        fs.collection("Accounts").document(auth.getCurrentUser().getUid()).collection("Task")
                 .whereEqualTo("complete",false)
                 .orderBy("taskDeadline", Query.Direction.ASCENDING)
                 .get()

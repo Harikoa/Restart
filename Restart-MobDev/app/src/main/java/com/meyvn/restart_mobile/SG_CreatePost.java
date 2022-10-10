@@ -85,7 +85,7 @@ public class SG_CreatePost extends AppCompatActivity {
         pojo.setSGID(SGID);
         pojo.setUserNickname(Login.storedAcc.getNickname());
         pojo.setReported(false);
-        pojo.setUserID(Login.storedAcc.getEmail());
+        pojo.setUserID(Login.authACC);
         firestore.collection("Support Groups").document(SGID).collection("Post").add(pojo)
               .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                   @Override

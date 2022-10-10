@@ -49,7 +49,7 @@ public class ViewSupportGroups extends AppCompatActivity implements RecyclerView
                         {
                             SG_Model model = ds.toObject(SG_Model.class);
                             model.setSgID(ds.getId());
-                            if(model.getMembers().contains(Login.storedAcc.getEmail()))
+                            if(model.getMembers().contains(Login.authACC))
                                 array.add(model);
                         }
                         adapter.notifyDataSetChanged();

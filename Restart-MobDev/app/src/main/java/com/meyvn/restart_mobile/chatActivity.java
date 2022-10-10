@@ -65,7 +65,7 @@ public class chatActivity extends AppCompatActivity implements RecyclerViewInter
         Account receiverAcc = gson.fromJson(JSON,Account.class);
         Account senderAcc = Login.storedAcc;
         nickname.setText("@ " + receiverAcc.getNickname());
-        adapter  = new chatAdapter(this,array,this,senderAcc.getEmail(),receiverAcc.getEmail());
+        adapter  = new chatAdapter(this,array,this,senderAcc.getID(),receiverAcc.getID());
         rc.setAdapter(adapter);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +74,8 @@ public class chatActivity extends AppCompatActivity implements RecyclerViewInter
                 {
                     MessagePOJO message = new MessagePOJO();
                     message.setMsgContent(newMessage.getText().toString().trim());
-                    message.setSenderEmail(senderAcc.getEmail());
-                    message.setReceiverEmail(receiverAcc.getEmail());
+                    message.setSenderEmail(senderAcc.getID());
+                    message.setReceiverEmail(receiverAcc.getID());
                     message.setDate(new Date());
                     cf.add(message);
                     JSONObject object = new JSONObject();
@@ -123,12 +123,12 @@ public class chatActivity extends AppCompatActivity implements RecyclerViewInter
             newMessage.setText("");
             }
         });
-        cf.whereEqualTo("senderEmail",senderAcc.getEmail())
-                .whereEqualTo("receiverEmail",receiverAcc.getEmail())
+        cf.whereEqualTo("senderEmail",senderAcc.getID())
+                .whereEqualTo("receiverEmail",receiverAcc.getID())
                 .orderBy("date")
                 .addSnapshotListener(eventListener);
-        cf.whereEqualTo("senderEmail",receiverAcc.getEmail())
-                .whereEqualTo("receiverEmail", senderAcc.getEmail())
+        cf.whereEqualTo("senderEmail",receiverAcc.getID())
+                .whereEqualTo("receiverEmail", senderAcc.getID())
                 .orderBy("date")
                 .addSnapshotListener(eventListener);
 

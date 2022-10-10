@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,17 +30,14 @@ import com.meyvn.restart_mobile.POJO.Account;
 import java.util.List;
 
 public class PatientMainMenu extends AppCompatActivity {
-
+    FirebaseAuth auth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_main_menu);
-        Gson gson = new Gson();
-        SharedPreferences prf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
         TextView welcome = findViewById(R.id.welcomeText);
         updateInfo();
         welcome.setText("Welcome! " + Login.storedAcc.getFirstName() + " " + Login.storedAcc.getLastName());
-        SharedPreferences.Editor edit = prf.edit();
         Button data = findViewById(R.id.viewData);
         Button logout  = findViewById(R.id.logoutButton);
         Button journals = findViewById(R.id.viewJournals);
@@ -52,13 +51,13 @@ public class PatientMainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Login.storedAcc.setFCM(null);
-                FirebaseFirestore.getInstance().collection("Accounts").document(Login.storedAcc.getEmail())
+                FirebaseFirestore.getInstance().collection("Accounts").document(auth.getCurrentUser().getUid())
                         .set(Login.storedAcc, SetOptions.merge())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        edit.remove("Account");
-                        edit.apply();
+                        auth.signOut();
+
                         Intent i = new Intent(getApplicationContext(),Login.class);
                         startActivity(i);
                         finish();
@@ -95,7 +94,7 @@ public class PatientMainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseFirestore ref = FirebaseFirestore.getInstance();
-                CollectionReference crf = ref.collection("Accounts").document(Login.storedAcc.getEmail()).collection("DrugTest");
+                CollectionReference crf = ref.collection("Accounts").document(Login.authACC).collection("DrugTest");
             Query query =   crf.whereEqualTo("completion",false);
                                 query.get()
                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -156,33 +155,27 @@ public class PatientMainMenu extends AppCompatActivity {
 
     public void updateInfo()
     {
-        Gson gson = new Gson();
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        String email = Login.storedAcc.getEmail();
+        String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseMessaging.getInstance().getToken()
                 .addOnSuccessListener(new OnSuccessListener<String>() {
                     @Override
                     public void onSuccess(String s) {
                         System.out.println("token"+ s);
-                        fs.collection("Accounts").document(email).update("fcm",s);
-                        fs.collection("Accounts").document(email)
-                                .get()
-                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        Login.storedAcc.setFCM(s);
+                        Login.storedAcc.setID(UID);
+                        fs.collection("Accounts").document(UID).set(Login.storedAcc,SetOptions.merge())
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        Login.storedAcc = documentSnapshot.toObject(Account.class);
-                                        String JSON = gson.toJson(Login.storedAcc,Account.class);
-                                        SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
-                                        SharedPreferences.Editor edit = spf.edit();
-                                        edit.putString("Account",JSON);
-                                        edit.apply();
-                                        if(!Login.storedAcc.isActivated()) {
-                                            edit.remove("Account");
-                                            edit.apply();
-                                            Toast.makeText(getApplicationContext(),"Account is deactivated!",Toast.LENGTH_LONG).show();
-                                            Intent i = new Intent(getApplicationContext(), Login.class);
-                                            startActivity(i);
-                                            finish();
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful())
+                                        {
+                                            if(!Login.storedAcc.isActivated())
+                                            {
+                                                Toast.makeText(getApplicationContext(),"Account is Deactivated",Toast.LENGTH_LONG).show();
+                                                auth.signOut();
+                                                finish();
+                                            }
                                         }
                                     }
                                 });

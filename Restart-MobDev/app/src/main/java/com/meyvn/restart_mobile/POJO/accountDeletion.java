@@ -3,16 +3,17 @@ package com.meyvn.restart_mobile.POJO;
 import java.util.Date;
 
 public class accountDeletion {
-    private String userEmail;
+    private String userID;
     private Date  dateRequested;
     private boolean finished;
 
-    public String getUserEmail() {
-        return userEmail;
+
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public Date getDateRequested() {

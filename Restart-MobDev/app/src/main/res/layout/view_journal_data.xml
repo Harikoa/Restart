@@ -115,7 +115,10 @@
             android:id="@+id/calendarView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:saveEnabled="false"
+            app:mcv_selectionMode="none" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

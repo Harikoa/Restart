@@ -64,7 +64,7 @@ public class ViewDrugTest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(uri!=null) {
-                  StorageReference drugTest = storage.child(Login.storedAcc.getEmail()+ "/" + intent.getStringExtra("drugID"));
+                  StorageReference drugTest = storage.child(Login.authACC+ "/" + intent.getStringExtra("drugID"));
                     drugTest.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -127,7 +127,7 @@ public class ViewDrugTest extends AppCompatActivity {
         TextView deadline = findViewById(R.id.drugDeadline);
         String docID = i.getStringExtra("drugID");
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        doc = firestore.collection("Accounts").document(Login.storedAcc.getEmail()).collection("DrugTest").document(docID);
+        doc = firestore.collection("Accounts").document(Login.authACC).collection("DrugTest").document(docID);
         doc.get()
 
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

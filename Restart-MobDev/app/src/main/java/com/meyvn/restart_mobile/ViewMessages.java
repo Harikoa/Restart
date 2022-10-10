@@ -34,7 +34,7 @@ public class ViewMessages extends AppCompatActivity implements RecyclerViewInter
         AccountListAdapter adapter = new AccountListAdapter(this,array,this);
         rc.setAdapter(adapter);
         FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        List<String> email = Login.storedAcc.getConnectedUser();
+        List<String> UID = Login.storedAcc.getConnectedUser();
         fs.collection("Accounts").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -43,9 +43,11 @@ public class ViewMessages extends AppCompatActivity implements RecyclerViewInter
                         {
                             for(DocumentSnapshot ds : task.getResult())
                             {
-                                if(email.contains(ds.get("email")))
+                                if(UID!=null && UID.contains(ds.getId()))
                                 {
-                                    array.add(ds.toObject(Account.class));
+                                    Account acc = ds.toObject(Account.class);
+                                    acc.setID(ds.getId());
+                                    array.add(acc);
                                 }
                             }
                             adapter.notifyDataSetChanged();

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,73 +32,47 @@ import java.util.concurrent.TimeUnit;
 
 public class Login extends AppCompatActivity {
     public static Account storedAcc;
+    public static String authACC;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-       
-        SharedPreferences spf = getSharedPreferences("AccountLogged",MODE_PRIVATE);
-        Intent patient = new Intent(getApplicationContext(),PatientMainMenu.class);
-        Intent alumni = new Intent(getApplicationContext(),AlumniMainMenu.class);
-        Gson convert = new Gson();
-        if (spf.contains("Account")) {
-            String savedJson = spf.getString("Account","{}");
-           storedAcc = convert.fromJson(savedJson,Account.class);
-            if(storedAcc.getRole().equalsIgnoreCase("patient")) {
-                checkNotif();
-                checkAssessment(patient);
-            }
-            else
-                startActivity(alumni);
+
+        if(auth.getCurrentUser()!=null) {
+            getAcc(auth.getCurrentUser().getUid());
         }
-        setContentView(R.layout.login);
-        EditText email = findViewById(R.id.EmailAddress);
-        EditText password = findViewById(R.id.Password);
-        Button submit = findViewById(R.id.SignInButton);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!(email.getText().toString().isEmpty() || email.getText().toString().isEmpty())) {
-                    DocumentReference doc = db.collection("Accounts").document(email.getText().toString());
-                    doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                String pw = document.get("password").toString();
-
-                                if (password.getText().toString().equals(pw)) {
-                                    SharedPreferences.Editor edit = spf.edit();
-                                    Account acc = document.toObject(Account.class);
-                                    storedAcc = acc;
-                                    String JSON = convert.toJson(acc);
-                                    edit.putString("Account", JSON);
-                                    edit.apply();
-                                    if (storedAcc.getRole().equalsIgnoreCase("patient")) {
-                                        checkNotif();
-                                        checkAssessment(patient);
-                                    } else if (storedAcc.getRole().equalsIgnoreCase("alumni"))
-                                        startActivity(alumni);
-                                    else {
-                                        Toast.makeText(Login.this, "Account can't be logged in the mobile app", Toast.LENGTH_LONG).show();
-                                        edit.remove("Account");
-                                        edit.apply();
+        else {
+            setContentView(R.layout.login);
+            EditText email = findViewById(R.id.EmailAddress);
+            EditText password = findViewById(R.id.Password);
+            Button submit = findViewById(R.id.SignInButton);
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!(email.getText().toString().isEmpty() || email.getText().toString().isEmpty())) {
+                        auth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                   if(task.isSuccessful())
+                                   {
+                                       String UID = task.getResult().getUser().getUid();
+                                       getAcc(UID);
+                                   }
+                                   else
+                                       Toast.makeText(getApplicationContext(),"Invalid Credentials~!",Toast.LENGTH_LONG).show();
                                     }
-                                } else
-                                    Toast.makeText(Login.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(Login.this, "Invalid Credentials", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-                }//if
-                else
-                    Toast.makeText(getApplicationContext(),"Enter all fields!",Toast.LENGTH_LONG).show();
-            }
-        });
+                                });
 
 
+                    }//if
+                    else
+                        Toast.makeText(getApplicationContext(), "Enter all fields!", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
 
@@ -129,5 +104,39 @@ public class Login extends AppCompatActivity {
         startActivity(pt);
     }
 
+    public void getAcc(String UID)
+    {
+        Intent patient = new Intent(getApplicationContext(),PatientMainMenu.class);
+        Intent alumni = new Intent(getApplicationContext(),AlumniMainMenu.class);
+        FirebaseFirestore.getInstance().collection("Accounts")
+                .document(UID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful())
+                    {
+                        DocumentSnapshot ds = task.getResult();
+                        Account acc  = ds.toObject(Account.class);
+                        if(acc.getRole().equals("patient")) {
+                            storedAcc = acc;
+                            acc.setID(auth.getCurrentUser().getUid());
+                            authACC = auth.getCurrentUser().getUid();
+                            checkAssessment(patient);
+                        }
+                        else if (acc.getRole().equals("alumni")) {
+                            acc.setID(auth.getCurrentUser().getUid());
+                            storedAcc = acc;
+                            authACC = auth.getCurrentUser().getUid();
+                            startActivity(alumni);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Account can't be logged in the Mobile APP", Toast.LENGTH_LONG).show();
+                            auth.signOut();
+                        }
+                    }
+                    }
+                });
+    }
 
 }
