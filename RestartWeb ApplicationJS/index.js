@@ -1,14 +1,15 @@
 const express = require("express")
 const cors = require('cors')
 const app = express()
+app.set('view engine', 'ejs');
 const firebase = require("./config")
+const Accrouter = require("./routes/accountRoutes")
+const loginrouter = require("./routes/loginRoute")
+app.use('/public',express.static("public"))
+
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
-app.get("/account",async(req,res)=>{
-    const data = await firebase.collection("Accounts").get();
-    if(data!=null)
-    {
-     res.send(data)
-    }
-})
+app.use("/",loginrouter)
+app.use("/account",Accrouter)
 app.listen(8080,()=>console.log("Listening at port 8080"))
