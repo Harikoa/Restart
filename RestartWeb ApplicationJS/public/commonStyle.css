@@ -1,20 +1,97 @@
 .html,body{
-    background-image: url(webbg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: cursive;
-    color: green;
+    background-attachment: fixed;
+	background-image: linear-gradient(#FFFFFF,#bdffd9);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+    font-family:'Courier New', Courier, monospace;
+    color:seagreen;
 }
 
-.logos{
-    margin-top: 50px;
+.tabContainer{
+    width: 100%;
+    height: 350px;
+}
+
+.buttonContainer{
+    height: 15%;
+    box-shadow: 5px 5px 20px grey;
+}
+
+.tabContainer .buttonContainer button{
+    width: 25%;
+    height: 100%;
+    float: left;
+    border-left: 1px;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    color: black;
+    background-color: white;
+}
+
+.tabContainer .buttonContainer .linknavbutton{
+	width: 49.96%;
+}
+
+.tabContainer .buttonContainer .physNav{
+	width: 16.66%;
+}
+
+.tabContainer .buttonContainer button:hover{
+	color: white;
+    background-color: seagreen;
+}
+
+.tabContainer .tabPanel{
+    height: 85%;
+    color: seagreen;
+    text-align: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+    display: none;
+}
+
+.Welcoming{
+	position: relative;
+}
+
+.namePatient{
+	padding: 10px;
+}
+
+.loginForm{
+	background: rgba(255,255,255, 0.5);
+	border-width: fit-content;
+	border-radius: 20px;
+	padding: 40px;
+	box-shadow: 5px 5px 20px seagreen;
+	margin-bottom: 50px;
+}
+
+.noAcc{
+	text-align: center;
+}
+
+.formDesign{
+	background: rgba(255,255,255, 0.5);
+	border-width: fit-content;
+	border-radius: 30px;
+	padding: 40px;
+	box-shadow: 5px 5px 20px seagreen;
+	margin-bottom: 50px;
+}
+
+.formAlign{
+	text-align: left;
 }
 
 .navbar{
 	padding: 10px;
-	margin-bottom: 40px;
+	
 	font-family: cursive;
-	box-shadow: 5px 5px 20px lightgrey;
+	
 }
 
 ul.navbar-nav li.profile-dropdown{
@@ -29,7 +106,7 @@ ul.navbar-nav li.profile-dropdown{
 	border-left-width: 0;
 	border-right-width: 0;
 	border-style: solid;
-	border-color: aquamarine    ;
+	border-color: Green;
 	margin-top: 17px;
 	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
 	box-shadow: 0 6px 12px rgba(0,0,0,.175);
@@ -42,7 +119,7 @@ ul.navbar-nav li.profile-dropdown{
 }
 
 #navbarMenu ul li ul.dropdown-menu li a:hover{
-	background-color: lightseagreen;
+	background-color: seagreen;
 	color: #ffffff;
 	transition: .4s;
 }
@@ -52,6 +129,11 @@ ul.navbar-nav li.profile-dropdown{
 	padding-top: 8px;
 	padding-bottom: 8px;
 }
+
+#navbarMenu ul li a:hover{
+	color: green;
+}
+
 .animate{
 	animation-duration: 0.6s;
 	-webkit-animation-duration: 0.6s;
@@ -91,8 +173,4 @@ ul.navbar-nav li.profile-dropdown{
 	animation-name: slideDown;
 	-webkit-animation-name: slideDown;
 	
-}
-
-.carousel-item{
-    height: 100%;
 }
