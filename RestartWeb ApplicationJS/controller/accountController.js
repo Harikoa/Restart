@@ -48,6 +48,7 @@ const getAllAcc = async(req,res) =>{
         }
         
 }
+
 module.exports = {
     addAcc,
     getAllAcc

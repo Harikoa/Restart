@@ -1,6 +1,6 @@
 class Account{
    
-    constructor(id,email,password,firstName,lastName,middleName,nickname,role,sex,lastAssessment,FCM,connectedUser,substanceUsed,birthDay,lastSuspensionDay,activated,important)
+    constructor(id,email,password,firstName,lastName,middleName,nickname,role,sex,lastAssessment,FCM,connectedUser,substanceUsed,birthDay,lastSuspensionDay,activated)
     {
         this.id = id;
         this.email = email;
@@ -18,7 +18,6 @@ class Account{
         this.birthDay = birthDay
         this.lastSuspensionDay = lastSuspensionDay
         this.activated = activated
-        this.important = important
     }
     
 }

@@ -244,5 +244,6 @@ public class PHQ9Questionnaire extends AppCompatActivity {
         }
      Intent i = new Intent(getApplicationContext(),PatientMainMenu.class);
     startActivity(i);
+    finish();
     }//end  function
 }
