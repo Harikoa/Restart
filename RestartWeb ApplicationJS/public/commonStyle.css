@@ -9,6 +9,30 @@
     color:seagreen;
 }
 
+.scroll-bar{
+	padding: 10px;
+	height: 38rem;
+	width: 100%;
+	border: 1px solid gray;
+	overflow: auto;
+	background-color: white;
+}
+
+.rowDesign{	
+	background: rgba(1, 182, 80, 0.5);
+	box-shadow: 0px 0px 20px seagreen;
+	border-width: fit-content;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.journalContent{
+	height: 100%;
+	background-color: white;
+	text-align: justify;
+	padding: 10px;
+}
+
 .tabContainer{
     width: 100%;
     height: 350px;
@@ -75,6 +99,15 @@
 	margin-bottom: 50px;
 }
 
+.profileDesign{
+	background: rgba(255,255,255, 0.5);
+	border-width: fit-content;
+	border-radius: 30px;
+	padding: 50px;
+	box-shadow: 5px 5px 20px seagreen;
+	margin-top: 50px;
+}
+
 .noAcc{
 	text-align: center;
 }
@@ -94,7 +127,8 @@
 
 .navbar{
 	padding: 10px;
-	
+	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
 	font-family: cursive;
 	
 }
