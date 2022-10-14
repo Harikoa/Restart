@@ -11,7 +11,7 @@ public class JournalPojo {
     private String date;
     private String journalEntry;
     private String mood;
-
+    private boolean important;
     public int getSubstanceNumber() {
         return substanceNumber;
     }
@@ -66,5 +66,13 @@ public class JournalPojo {
 
     public void setMood(String mood) {
         this.mood = mood;
+    }
+
+    public boolean isImportant() {
+        return important;
+    }
+
+    public void setImportant(boolean important) {
+        this.important = important;
     }
 }

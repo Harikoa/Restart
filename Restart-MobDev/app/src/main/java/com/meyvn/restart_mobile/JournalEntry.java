@@ -45,6 +45,7 @@ public class JournalEntry extends AppCompatActivity {
                 map.put("substanceFrequency",i.getIntExtra("freq",-1));
                 map.put("substanceLength",i.getIntExtra("length",-1));
                 map.put("substanceNumber",i.getIntExtra("number",-1));
+                map.put("important",false);
             db.collection("Accounts").document(Login.authACC).collection("Journal").document(""+LocalDate.now())
                     .set(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -56,11 +57,10 @@ public class JournalEntry extends AppCompatActivity {
                             if(i.getStringExtra("mood").equals("Very Sad")) {
                                 in = new Intent(getApplicationContext(), PHQ9Questionnaire.class);
                                 in.putExtra("isMonthly",false);
-                                in.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             }
                             else
                                 in = new Intent(getApplicationContext(),Journal.class);
-                            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                              startActivity(in);
                              finish();
                         }

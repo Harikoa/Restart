@@ -25,7 +25,6 @@ public class Account {
     private String birthDay;
     private Date lastSuspensionDay;
     private boolean activated;
-    private boolean important;
 
     public String getID() {
         return ID;
@@ -163,11 +162,4 @@ public class Account {
         this.lastSuspensionDay = lastSuspensionDay;
     }
 
-    public boolean isImportant() {
-        return important;
-    }
-
-    public void setImportant(boolean important) {
-        this.important = important;
-    }
 }

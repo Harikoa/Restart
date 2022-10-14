@@ -10,10 +10,11 @@
 <body>
 
     <!--Primary Navbar-->
+ 
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
         <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
-        <h1 class="Welcoming">    Welcome <!--${Accountname }--></h1>
-         <!--<%String path = request.getContextPath();%>-->
+        <h1 class="Welcoming">    Welcome</h1>
+       
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,19 +64,25 @@
         
         <div class="container mt-5">
             <div class="row justify-content-center">
-
+                <h4><%=locals.msg%></h4>
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="formDesign">
                         <div>
+                 
                         <h3><b>Create Patient Account</b></h3>
-                        <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
+                        <form class="form-group formAlign" method="post" action="/admin/create">
+                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                         <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                         <p>Middle Name <input class="form-control" id="mname" name = "middlename" required></p>
                         <p>Contact <input class="form-control" id="contact" name = "contact" required></p>
+                        <p>Nickname <input class="form-control" name ="nickname" required type="text"> </p>
                         <p>Age <input class="form-control" id="age" name = "age" type="number" required min=1 max=99></p>
-                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                        <p>Password <input class="form-control" name ="pw" type="password"> </p>
+                        <p>Password <input class="form-control" minlength="6" required name ="pw" type="password"> </p>
+                        <p>Sex: Male <input name ="sex" type="radio" value="male" checked>
+                            Female <input  name ="sex" type="radio" value="female"> </p>
+                        <p>Birthday <input class="form-control" required name ="bday" type="date"> </p>
+                        <p>Substance Used: <input class="form-control" name ="substance" required type="text"> </p>
                         <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                         </form>
                         </div>
@@ -102,7 +109,7 @@
                         <th>Contact</th>
                         <th>Age</th>
                         <th>Email</th>
-                        </tr>
+                        </tr><%locals.accs[0].firstName%>
                         </table>
                     </div>
                 </div>
@@ -127,7 +134,7 @@
                     <div class="formDesign">
                             <div>
                                 <h2>Edit Patient Account</h2>
-                                <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
+                                <form class="form-group formAlign" method="post" action="">
                                     <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                     <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                                     <p>Middle Name <input class="form-control" id="mname" name = "middlename" required></p>
@@ -187,7 +194,7 @@
                         <div class="formDesign">
                                 <div>
                                     <h2>Delete Patient Account</h2>
-                                    <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
+                                    <form class="form-group formAlign" method="post" action="">
                                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                         <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                                         <p><button class="form-control btn btn-success" type="submit">Delete</button></p>
@@ -241,7 +248,7 @@
                         <div class="formDesign">
                                 <div>
                                     <h2>Suspend Patient Account</h2>
-                                    <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
+                                    <form class="form-group formAlign" method="post" action="">
                                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                         <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                                         <p><button class="form-control btn btn-success" type="submit">Suspend</button></p>
@@ -254,10 +261,9 @@
         </div>
     </div>
 </div>
-
-
-
+<script src="../controller/accountController.js"></script>
 <script src="../public/scriptTab.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

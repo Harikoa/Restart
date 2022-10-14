@@ -16,3 +16,19 @@ function showPanel(panelIndex, colorCode){
     tabPanels[panelIndex].style.backgroundColor=colorCode;
 }
 showPanel(0, '#');
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+var panel = getParameterByName('panel');
+console.log(panel)
+if(panel!=null)
+{
+showPanel(panel,'#')
+
+}
