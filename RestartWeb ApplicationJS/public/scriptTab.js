@@ -28,4 +28,7 @@ function getParameterByName(name, url = window.location.href) {
 var panel = getParameterByName('panel');
 console.log(panel)
 if(panel!=null)
+{
 showPanel(panel,'#')
+
+}
