@@ -32,8 +32,6 @@ router.get("/",(req,res)=>
 })
 
 router.post("/",(req,res)=>{
-    console.log("HELLOW")
-   
     
     const email = req.body.email
     const pw = req.body.pw

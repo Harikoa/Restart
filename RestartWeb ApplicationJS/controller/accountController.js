@@ -29,8 +29,22 @@ const accConverter = {
     },
     fromFirestore: function(snapshot, options){
         const data = snapshot.data(options);
-        return new City(data.name, data.state, data.country);
-    }
+        return new acc( data.id,data().email,
+        data().password,
+        data().firstName,
+        data().lastName,
+        data().middleName,
+        data().nickname,
+        data().role,
+        data().sex,
+        data().lastAssessment,
+        data().fcm,
+        data().connectedUser,
+        data().substanceUsed,
+        data().birthDay,
+        data().lastSuspensionDay,
+        data().activated,
+        data().contact)}
 };
 
 const addAcc = async(req,res)=>
@@ -71,10 +85,10 @@ const addAcc = async(req,res)=>
 
 }
 
-const getAllAcc = async function(req,res){      
+const getAllAcc = async function(role){      
             const allAccs = []    
             await firestore.collection("Accounts").
-            where('role','==', 'patient')
+            where('role','==', role)
             .get()            
             .then((data)=>{
             
@@ -100,22 +114,18 @@ const getAllAcc = async function(req,res){
                             doc.data().activated,
                             doc.data().contact
                         )
+                        
                       allAccs.push(account)  
+                    
                     })
-                   console.log(allAccs)
+                  
             }
         
         })
             .catch((e)=>{
                 console.log(e.message)
             })
-            var type= req.query.type
-            var msg =''
-            if(type=='1')
-            msg = "Success!"
-            else if (type=='email')
-            msg = "Email is already in use!"
-            res.render("../htmlFiles/AdminManagePatient",{msg,accs: allAccs})
+          return allAccs
             }
         
       
