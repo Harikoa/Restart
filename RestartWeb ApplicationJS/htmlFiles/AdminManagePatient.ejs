@@ -122,7 +122,8 @@
                             <div>
                                 <h2>Query Patients</h2>
                                 <form class="form-group formAlign" method="post" action="#">
-                                    <p>Email<input class="form-control" type="text" name="" required min=1></p>
+                                    <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                                     <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
                                 </form>
                             </div>
@@ -135,13 +136,18 @@
                             <div>
                                 <h2>Edit Patient Account</h2>
                                 <form class="form-group formAlign" method="post" action="">
+                                    <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                                     <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                                     <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                                     <p>Middle Name <input class="form-control" id="mname" name = "middlename" required></p>
                                     <p>Contact <input class="form-control" id="contact" name = "contact" required></p>
+                                    <p>Nickname <input class="form-control" name ="nickname" required type="text"> </p>
                                     <p>Age <input class="form-control" id="age" name = "age" type="number" required min=1 max=99></p>
-                                    <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                                    <p>Password <input class="form-control" name ="pw" type="password"> </p>
+                                    <p>Password <input class="form-control" minlength="6" required name ="pw" type="password"> </p>
+                                    <p>Sex:  <input name ="sex" type="radio" value="male" checked> Male
+                                        <input  name ="sex" type="radio" value="female"> Female </p>
+                                    <p>Birthday <input class="form-control" required name ="bday" type="date"> </p>
+                                    <p>Substance Used: <input class="form-control" name ="substance" required type="text"> </p>
                                     <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                                 </form>
                             </div>
@@ -183,7 +189,8 @@
                         <div>
                             <h2>Query Patients</h2>
                             <form class="form-group formAlign" method="post" action="#">
-                                <p>Email<input class="form-control" type="text" name="" required min=1></p>
+                                <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
+                                <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                                 <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
                             </form>
                         </div>
@@ -237,7 +244,8 @@
                         <div>
                             <h2>Query Patients</h2>
                             <form class="form-group formAlign" method="post" action="#">
-                                <p>Email<input class="form-control" type="text" name="" required min=1></p>
+                                <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
+                                <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                                 <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
                             </form>
                         </div>
