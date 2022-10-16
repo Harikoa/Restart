@@ -4,12 +4,7 @@ const {addAcc,getAllAcc} = require("../controller/accountController")
 const firebase = require('../config.js')
 
 router.get("/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
-    {
-        res.redirect('/')
-    }
-    else
-    {
+   
     var type= req.query.type
     var msg =''
     if(type=='1')
@@ -17,7 +12,7 @@ router.get("/",(req,res)=>{
     else if (type=='email')
     msg = "Email is already in use!"
     res.render("../htmlFiles/AdminManagePatient",{msg})
-    }
+    
 })
 router.get("/getTable",async (req,res)=>{
     var role = req.query.role
