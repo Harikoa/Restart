@@ -33,4 +33,3 @@ function getParameterByName(name, url = window.location.href) {
 var panel = getParameterByName('panel');
 if(panel!=null)
 showPanel(panel,'#')
-

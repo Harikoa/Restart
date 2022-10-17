@@ -126,14 +126,56 @@ const getAllAcc = async function(role){
                 console.log(e.message)
             })
           return allAccs
-            }
+            }//getAllAcc
+
+const editAcc = async (req,res)=>{
+    const data = req.body
+    var pw = data.pw
+  
+    await firestore.collection("Accounts").where('email',"==", data.email)
+    .get()
+    .then((dozc)=>{
+        dozc.forEach(async (doc)=>{
+            await doc.ref.update(data)
+            .then((result)=>{
+                res.redirect('/admin/?panel=1')
+            })
+            .catch((e)=>{
+                console.log(e.message)
+            })
+        })
         
-      
+    })
+    .catch((e)=>{
+        console.log(e.message)
+    })
+ 
+}
+        
+const activate = async (bool,email)=>{
+    await firestore.collection("Accounts").where('email','==',email)
+    .get()
+    .then((doc)=>{
+        doc.forEach(async(snap)=>{
+            await snap.ref.update({
+                activated:bool
+            })  
+        })
+        return {msg:"Success"}
+    })
+    .catch((e)=>{
+        console.log(e.message)
+        return {msg:"Failed!"}
+    })
+}
         
 
 
 
 module.exports = {
     addAcc,
-    getAllAcc
+    getAllAcc,
+    editAcc,
+    activate
+
 }
