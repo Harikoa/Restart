@@ -25,8 +25,8 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Accounts</a>
                     <ul class="dropdown-menu animate slideDown" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="/admin/">Patient</a></li>
-                        <li><a class="dropdown-item" href="AdminManagePhysician.html">Physician</a></li>
-                        <li><a class="dropdown-item" href="AdminManageAlumni.html">Alumni</a></li>
+                        <li><a class="dropdown-item" href="/admin/physician">Physician</a></li>
+                        <li><a class="dropdown-item" href="/admin/alumni">Alumni</a></li>
                     </ul>
                 </li>
             
@@ -70,7 +70,7 @@
                         <div>
                            
                         <h3><b>Create Physician Account</b></h3>
-                        <form class="form-group formAlign" method="post" action="/admin/create">
+                        <form class="form-group formAlign" method="post" action="/admin/physician/create?role=physician">
                         <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                         <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
@@ -80,7 +80,7 @@
                         <p>Password <input class="form-control" minlength="6" required name ="pw" type="password"> </p>
                         <p>Sex:  <input name ="sex" type="radio" value="male" checked> Male
                              <input  name ="sex" type="radio" value="female"> Female </p>
-                        <p>Birthday <input class="form-control" required name ="bday" type="date"> </p>
+                        <p>Birthday <input class="form-control" required name ="birthDay" type="date"> </p>
                         <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                         </form>
                         
@@ -133,7 +133,7 @@
                     <div class="formDesign">
                             <div>
                                 <h2>Edit Physician Account</h2>
-                                <form class="form-group formAlign" method="post" action="/admin/edit">
+                                <form class="form-group formAlign" method="post" action="/admin/physician/edit">
                                     <p>Email <input class="form-control" id="Editemail" name = "email" readonly type="email"></p>
                                     <p>First Name <input class="form-control" id="Editfname" name = "firstName" required></p>
                                     <p>Last Name <input class="form-control" id="Editlname" name = "lastName" required></p>
@@ -237,7 +237,7 @@
                         <div class="formDesign">
                                 <div>
                                     <h2>Suspend Physician Account</h2>
-                                    <form class="form-group formAlign" method="post" action="/admin/suspend">
+                                    <form class="form-group formAlign" method="post" action="/admin/physician/suspend">
                                         <p>Email <input class="form-control" readonly id="Suspendemail" name = "email" required type="email"></p>
                                         <p>Suspend until <input class="form-control" required name ="suspend" type="date"> </p>
                                         <p><button class="form-control btn btn-success" type="submit">Suspend</button></p>
@@ -254,7 +254,7 @@
 
 <script src="../public/scriptTab.js"></script>
 <script src="../public/js/filter.js"></script>
-<script src="../public/js/adminPatient.js"></script>
+<script src="../public/js/adminPhysician.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
