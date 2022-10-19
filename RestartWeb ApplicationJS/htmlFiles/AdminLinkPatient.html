@@ -11,7 +11,7 @@
 
 <!--Primary Navbar-->
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-    <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="photos/logo.png"></a>
+    <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
     <h1 class="Welcoming">Welcome<!--${Accountname }--></h1>
      <!--<%String path = request.getContextPath();%>-->
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
@@ -92,17 +92,17 @@
                 </div>  
 
                 <div class="col-sm-3">
-                        <div class="formDesign">
+                    <div class="formDesign">
                         <div class="row">
-                                <div>
-                                    <h2>Query Patients</h2>
-                                    <form class="form-group formAlign" method="post" action="#">
-                                        <p>Email<input class="form-control" type="text" name="" required min=1></p>
-                                        <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                                    </form>
-                                </div>
+    
+                            <div>
+                                <h2><b>Query Records</b></h2>     
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
+                            </div>
                         </div>
-                        </div>
+                    </div>
 
                     <div class="col-sm-12">
                         <div class="formDesign">
@@ -111,7 +111,7 @@
                                 <form class="form-group formAlign" method="post" action="#">
                                     <p>Patient<input class="form-control" id="fname" name = "firstname" required></p>
                                     <p>Physician<input class="form-control" id="email" name = "email" required type="email"></p>
-                                    <p><button class="form-control btn btn-success" type="submit">Suspend</button></p>
+                                    <p><button class="form-control btn btn-success" type="submit">Link</button></p>
                                 </form>
                             </div>
                         </div>
@@ -152,10 +152,10 @@
 
     <!--To ALumni-->
     <div class="tabPanel">
-        <div class="container">
+        <div class="container-fluid mt-5">
             <div class="row justify-content-center">
 
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="formDesign">
                         <div>
                             <h1><b>List of Patients</b></h1>
@@ -163,9 +163,6 @@
                             <tr>
                             <th>Last Name</th>
                             <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Contact</th>
-                            <th>Age</th>
                             <th>Email</th>
                             </tr>
                             </table>
@@ -173,72 +170,79 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="formDesign">
                         <div>
-                            <h1><b>List of Alumnus</b></h1>
+                            <h1><b>List of Alumni</b></h1>
                             <table id="table" class="table">
                             <tr>
                             <th>Last Name</th>
                             <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Contact</th>
-                            <th>Age</th>
                             <th>Email</th>
                             </tr>
                             </table>
                         </div>
                     </div>
+                </div>  
+
+                <div class="col-sm-3">
+                    <div class="formDesign">
+                        <div class="row">
+    
+                            <div>
+                                <h2><b>Query Records</b></h2>     
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="formDesign">
+                            <div>
+                                <h2>Link Accounts</h2>
+                                <form class="form-group formAlign" method="post" action="#">
+                                    <p>Patient<input class="form-control" id="fname" name = "firstname" required></p>
+                                    <p>Physician<input class="form-control" id="email" name = "email" required type="email"></p>
+                                    <p><button class="form-control btn btn-success" type="submit">Link</button></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-
             </div>
-            
+
             <div class="row justify-content-center">
                 <div class="col-sm-8">
                     <div class="formDesign">
                         <div>
                             <h2><b>Linked Accounts - Patient to Alumni</b></h2>
-                            <table id="table" class="table">
-                            <tr>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Contact</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            </tr>
-                            </table>
+                            <!--<table class="align-center">
+                                <tr>
+                                    <th><h2>Patient </h2></th>
+                                    <th><h2>Physician</h2></th>
+                                </tr>
+                            </table>-->
+
+                                <table id="table" class="table">
+                                    <td>
+                                        <th>Last Name</th>
+                                        <th>First Name</th>
+                                    </td>
+
+                                    <td>
+                                        <th>Last Name</th>
+                                        <th>First Name</th>
+                                    </td>
+                                </table>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="formDesign">
-                        <div class="row">
-    
-                            <div>
-                                <h2>Query Patients</h2>
-                                <form class="form-group formAlign" method="post" action="#">
-                                    <p>Email<input class="form-control" type="text" name="" required min=1></p>
-                                    <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                                </form>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-            </div>
-
         </div>
     </div>
-
-
-</div>
 
 
 <script src="../public/scriptTab.js"></script>
