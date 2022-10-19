@@ -50,7 +50,6 @@ const accConverter = {
 const addAcc = async(req,res)=>
 {
     const data = req.body;
-    console.log(data)
     await auth.createUserWithEmailAndPassword(data.email,data.pw)
     .then((userCred)=>{
         
@@ -61,7 +60,7 @@ const addAcc = async(req,res)=>
             data.lastname,
             data.middlename,
             data.nickname,
-            "patient",data.sex,new Date().toISOString().substring(0,10)
+            req.query.role,data.sex,new Date().toISOString().substring(0,10)
             ,null,null,data.substance,
             data.bday,
             null,true,data.contact
