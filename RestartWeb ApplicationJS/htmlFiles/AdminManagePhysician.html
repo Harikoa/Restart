@@ -51,12 +51,12 @@
     </nav>
 
 <!--Secondary Navbar-->
-<div class="tabContainer"><h3 class="namePatient border text-center border-3 bg-light border-success">PATIENT</h3>
+<div class="tabContainer"><h3 class="namePatient border text-center border-3 bg-light border-success">PHYSICIAN</h3>
     <div class="buttonContainer">
-        <button onclick="showPanel(0, '#')">Create Patient Account</button>
-        <button onclick="showPanel(1, '#')">Edit Patient Account</button>
-        <button onclick="showPanel(2, '#')">Delete Patient Account</button>
-        <button onclick="showPanel(3, '#')">Suspend Patient Account</button>
+        <button onclick="showPanel(0, '#')">Create Physician Account</button>
+        <button onclick="showPanel(1, '#')">Edit Physician Account</button>
+        <button onclick="showPanel(2, '#')">Delete Physician Account</button>
+        <button onclick="showPanel(3, '#')">Suspend Physician Account</button>
     </div>
 
     <!--Create Account-->
@@ -69,7 +69,7 @@
                     <div class="formDesign">
                         <div>
                            
-                        <h3><b>Create Patient Account</b></h3>
+                        <h3><b>Create Physician Account</b></h3>
                         <form class="form-group formAlign" method="post" action="/admin/create">
                         <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
@@ -81,7 +81,6 @@
                         <p>Sex:  <input name ="sex" type="radio" value="male" checked> Male
                              <input  name ="sex" type="radio" value="female"> Female </p>
                         <p>Birthday <input class="form-control" required name ="bday" type="date"> </p>
-                        <p>Substance Used: <input class="form-control" name ="substance" required type="text"> </p>
                         <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                         </form>
                         
@@ -100,7 +99,7 @@
                 <div class="col-sm-9">
                 <div class="formDesign">
                     <div>
-                        <h1><b>List of Patients</b></h1>
+                        <h1><b>List of Physician</b></h1>
                         <table id="tableEdit" class="table">
                         <tr class="tableRow">
                         <th>Last Name</th>
@@ -109,7 +108,6 @@
                         <th>Contact</th>
                         <th>Birthday</th>
                         <th>Nickname</th>
-                        <th>Substance Used</th>
                         <th>Email</th>
                         </tr>
                         </table>
@@ -122,7 +120,7 @@
                         <div class="row">
     
                             <div>
-                                <h2>Query Patients</h2>     
+                                <h2>Query Physician</h2>     
                                     <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
                                     <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
                                     <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
@@ -134,7 +132,7 @@
                     <div class="col-sm-12">
                     <div class="formDesign">
                             <div>
-                                <h2>Edit Patient Account</h2>
+                                <h2>Edit Physician Account</h2>
                                 <form class="form-group formAlign" method="post" action="/admin/edit">
                                     <p>Email <input class="form-control" id="Editemail" name = "email" readonly type="email"></p>
                                     <p>First Name <input class="form-control" id="Editfname" name = "firstName" required></p>
@@ -143,7 +141,6 @@
                                     <p>Contact <input class="form-control" id="Editcontact" name = "contact" required></p>
                                     <p>Nickname <input class="form-control" id = 'Editnickname'name ="nickname" required type="text"> </p>
                                     <p>Birthday <input class="form-control" id="Editbday" required name ="bday" type="date"> </p>
-                                    <p>Substance Used: <input class="form-control" id="Editsubstance" name ="substance" required type="text"> </p>
                                     <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                                 </form>
                             </div>
@@ -163,7 +160,7 @@
                 <div class="col-sm-9">
                 <div class="formDesign">
                     <div>
-                        <h1><b>List of Patients</b></h1>
+                        <h1><b>List of Physician</b></h1>
                         <table id="table" class="table">
                         <tr class="tableRow">
                         <th>Last Name</th>
@@ -184,7 +181,7 @@
                     <div class="row">
 
                         <div>
-                            <h2>Query Patients</h2>
+                            <h2>Query Physician</h2>
                      
                                 <p>First Name <input class="form-control" id="fname1" name = "firstname" required></p>
                                 <p>Last Name <input class="form-control" id="lname1" name = "lastname" required></p>
@@ -192,18 +189,6 @@
                        
                         </div>
                     </div>
-                    </div>
-
-                    <div class="col-sm">
-                        <div class="formDesign">
-                                <div>
-                                    <h2>Delete Patient Account</h2>
-                                    <form class="form-group formAlign" method="post" action="">
-                                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                                        <p><button class="form-control btn btn-success" type="submit">Delete</button></p>
-                                    </form>
-                                </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -218,7 +203,7 @@
                 <div class="col-sm-9">
                 <div class="formDesign">
                     <div>
-                        <h1><b>List of Patients</b></h1>
+                        <h1><b>List of Physician</b></h1>
                         <table id="table" class="table suspend">
                             <tr class="tableRow">
                         <th>Last Name</th>
@@ -238,7 +223,7 @@
                     <div class="row">
 
                         <div>
-                            <h2>Query Patients</h2>
+                            <h2>Query Physician</h2>
                             
                                 <p>First Name <input class="form-control" id="fname2" name = "firstname" required></p>
                                 <p>Last Name <input class="form-control" id="lname2" name = "lastname" required></p>
@@ -251,7 +236,7 @@
                     <div class="col-sm">
                         <div class="formDesign">
                                 <div>
-                                    <h2>Suspend Patient Account</h2>
+                                    <h2>Suspend Physician Account</h2>
                                     <form class="form-group formAlign" method="post" action="/admin/suspend">
                                         <p>Email <input class="form-control" readonly id="Suspendemail" name = "email" required type="email"></p>
                                         <p>Suspend until <input class="form-control" required name ="suspend" type="date"> </p>
