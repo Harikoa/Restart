@@ -53,8 +53,7 @@ const addAcc = async(req,res)=>
     console.log(data)
     await auth.createUserWithEmailAndPassword(data.email,data.pw)
     .then((userCred)=>{
-        var lastSus = new Date()
-        lastSus.setDate(lastSus.getDate()-1)
+        
         var account = new acc(
             userCred.user.uid,
             data.email,
@@ -65,7 +64,7 @@ const addAcc = async(req,res)=>
             "patient",data.sex,new Date().toISOString().substring(0,10)
             ,null,null,data.substance,
             data.bday,
-            lastSus,true,data.contact
+            null,true,data.contact
         )
         console.log(account)
         firestore.collection("Accounts").doc(userCred.user.uid)
@@ -94,7 +93,13 @@ const getAllAcc = async function(role){
             
                 if(!data.empty)
                 {
+                    
                     data.forEach((doc)=>{
+                        var sus = doc.data().lastSuspensionDay
+                        if(sus!=null)
+                        sus = sus.toDate().toISOString().substring(0,10)
+                        else
+                        sus = "never"
                         const account = new acc(
                             doc.id,
                             doc.data().email,
@@ -110,7 +115,7 @@ const getAllAcc = async function(role){
                             doc.data().connectedUser,
                             doc.data().substanceUsed,
                             doc.data().birthDay,
-                            doc.data().lastSuspensionDay,
+                            sus,
                             doc.data().activated,
                             doc.data().contact
                         )
@@ -153,6 +158,10 @@ const editAcc = async (req,res)=>{
 }
         
 const activate = async (bool,email)=>{
+    if(bool=="true")
+    bool = true
+    else
+    bool = false
     await firestore.collection("Accounts").where('email','==',email)
     .get()
     .then((doc)=>{
@@ -168,14 +177,36 @@ const activate = async (bool,email)=>{
         return {msg:"Failed!"}
     })
 }
-        
+       
 
+    const suspend = async(req,res)=>{
+        var data = req.body
+        await firestore.collection('Accounts').where('email','==',data.email)
+        .get()
+        .then(async (snap)=>{
+            snap.forEach(async(doc)=>{
+               doc.ref.update({
+                lastSuspensionDay: new Date(data.suspend)
+            })
+            })
+            
+        })
+        res.redirect("/admin/?panel=3")
+    }
+
+    const signOut = async(req,res)=>{
+        await auth.signOut()
+        .then(()=>{
+            res.redirect("/")
+        })
+    }
 
 
 module.exports = {
     addAcc,
     getAllAcc,
     editAcc,
-    activate
-
+    activate,
+    suspend,
+    signOut
 }

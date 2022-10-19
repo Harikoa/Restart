@@ -64,7 +64,7 @@ public class view_specific_post extends AppCompatActivity implements commentRecy
             public void onClick(View view) {
                 if(comment.getText().toString().isEmpty())
                     return;
-                else if(Login.storedAcc.getLastSuspensionDay()!=null&&Login.storedAcc.getLastSuspensionDay().before(new Date()))
+                else if(Login.storedAcc.getLastSuspensionDay()==null||Login.storedAcc.getLastSuspensionDay().before(new Date()))
                 {
                     commentPOJO poj = new commentPOJO();
                     poj.setDatePosted(new Date());

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut} = require("../controller/accountController")
 const firebase = require('../config.js')
 
 router.get("/",(req,res)=>{
@@ -31,6 +31,8 @@ router.get("/activate",async(req,res)=>{
     await activate(bool,email)
 
 })
+router.get("/signOut",signOut)
+router.post("/suspend",suspend)
 router.post("/create",addAcc)
 router.post('/edit',editAcc)
 
