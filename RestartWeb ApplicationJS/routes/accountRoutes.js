@@ -74,5 +74,8 @@ router.get("/profile",(req,res)=>{
     res.render('../htmlFiles/AdminProfile')
     }
 })
+router.get('/link',(req,res)=>{
+    res.render("../htmlFiles/AdminLinkPatient")
+})
 router.get('/fetchProfile',profile)
 module.exports = router
