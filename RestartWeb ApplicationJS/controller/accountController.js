@@ -200,6 +200,15 @@ const activate = async (bool,email)=>{
         })
     }
 
+    const profile = async(req,res)=>{
+        var id = auth.currentUser.uid
+        await firestore.collection("Accounts").doc(id)
+        .get()
+        .then(async (doc)=>{
+            var data = doc.data()
+            await res.json(data)
+        })
+    }
 
 module.exports = {
     addAcc,
@@ -207,5 +216,6 @@ module.exports = {
     editAcc,
     activate,
     suspend,
-    signOut
+    signOut,
+    profile
 }

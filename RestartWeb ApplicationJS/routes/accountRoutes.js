@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
@@ -65,4 +65,14 @@ router.get("/alumni/",(req,res)=>{
 router.post("/alumni/suspend",suspendAl)
 router.post("/alumni/create",addAccAl)
 router.post('/alumni/edit',editAccAl)
+
+router.get("/profile",(req,res)=>{
+    if(firebase.auth().currentUser==null)
+    res.redirect('/')
+    else
+    {
+    res.render('../htmlFiles/AdminProfile')
+    }
+})
+router.get('/fetchProfile',profile)
 module.exports = router
