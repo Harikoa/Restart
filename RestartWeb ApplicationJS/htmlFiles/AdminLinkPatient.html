@@ -11,9 +11,9 @@
 
 <!--Primary Navbar-->
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-    <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
-    <h1 class="Welcoming">Welcome<!--${Accountname }--></h1>
-     <!--<%String path = request.getContextPath();%>-->
+    <a href="/admin/" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
+    <h1 class="Welcoming">    Welcome</h1>
+   
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,26 +23,26 @@
         <li class="navbar-item dropdown profile-dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Accounts</a>
                 <ul class="dropdown-menu animate slideDown" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="AdminManagePatient.html">Patient</a></li>
-                    <li><a class="dropdown-item" href="AdminManagePhysician.html">Physician</a></li>
-                    <li><a class="dropdown-item" href="AdminManageAlumni.html">Alumni</a></li>
+                    <li><a class="dropdown-item" href="/admin/">Patient</a></li>
+                    <li><a class="dropdown-item" href="/admin/physician">Physician</a></li>
+                    <li><a class="dropdown-item" href="/admin/alumni">Alumni</a></li>
                 </ul>
             </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="#">Manage Forums</a>
+            <a class="nav-link" href="/sg">Manage Forums</a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="AdminLinkPatient.html">Link Patient</a>
+            <a class="nav-link" href="/admin/link">Link Patient</a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="#">My Profile</a>
+            <a class="nav-link" href="/admin/profile">My Profile</a>
         </li>
         
         <li class="nav-item">
-            <a href="login.html"><button class="btn btn-outline-danger">Logout</button></a>
+            <a href="/admin/signOut"><button class="btn btn-outline-danger">Logout</button></a>
         </li>
         
     </ul>
