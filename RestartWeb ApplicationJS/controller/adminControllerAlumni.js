@@ -47,7 +47,7 @@ const accConverter = {
         data().contact)}
 };
 
-const addAcc = async(req,res)=>
+const addAccAl = async(req,res)=>
 {
     const data = req.body;
     await auth.createUserWithEmailAndPassword(data.email,data.pw)
@@ -61,7 +61,7 @@ const addAcc = async(req,res)=>
             data.middlename,
             data.nickname,
             req.query.role,data.sex,new Date().toISOString().substring(0,10)
-            ,null,null,data.substance,
+            ,null,null,null,
             data.bday,
             null,true,data.contact
         )
@@ -70,7 +70,7 @@ const addAcc = async(req,res)=>
             .withConverter(accConverter)
             .set(account)
             .then((userAcc)=>{
-                res.redirect('/admin?type=1')
+                res.redirect('/admin/alumni?type=1')
             })
             .catch((e)=>{
                 console.log(e.message)
@@ -78,12 +78,13 @@ const addAcc = async(req,res)=>
     })
     .catch((e)=>
     {
-        res.redirect('/admin?type=email')
+        console.log(e.message)
+        res.redirect('/admin/alumni?type=email')
     })
 
 }
 
-const getAllAcc = async function(role){      
+const getAllAccAl = async function(role){      
             const allAccs = []    
             await firestore.collection("Accounts").
             where('role','==', role)
@@ -132,7 +133,7 @@ const getAllAcc = async function(role){
           return allAccs
             }//getAllAcc
 
-const editAcc = async (req,res)=>{
+const editAccAl = async (req,res)=>{
     const data = req.body
     var pw = data.pw
   
@@ -142,7 +143,7 @@ const editAcc = async (req,res)=>{
         dozc.forEach(async (doc)=>{
             await doc.ref.update(data)
             .then((result)=>{
-                res.redirect('/admin/?panel=1')
+                res.redirect('/admin/alumni?panel=1')
             })
             .catch((e)=>{
                 console.log(e.message)
@@ -156,7 +157,7 @@ const editAcc = async (req,res)=>{
  
 }
         
-const activate = async (bool,email)=>{
+const activateAl = async (bool,email)=>{
     if(bool=="true")
     bool = true
     else
@@ -169,6 +170,7 @@ const activate = async (bool,email)=>{
                 activated:bool
             })  
         })
+        console.log(bool)
         return {msg:"Success"}
     })
     .catch((e)=>{
@@ -178,7 +180,7 @@ const activate = async (bool,email)=>{
 }
        
 
-    const suspend = async(req,res)=>{
+    const suspendAl= async(req,res)=>{
         var data = req.body
         await firestore.collection('Accounts').where('email','==',data.email)
         .get()
@@ -190,22 +192,14 @@ const activate = async (bool,email)=>{
             })
             
         })
-        res.redirect("admin/?panel=3")
+        res.redirect("/admin/alumni?panel=3")
     }
-
-    const signOut = async(req,res)=>{
-        await auth.signOut()
-        .then(()=>{
-            res.redirect("/")
-        })
-    }
-
 
 module.exports = {
-    addAcc,
-    getAllAcc,
-    editAcc,
-    activate,
-    suspend,
-    signOut
+    addAccAl,
+    getAllAccAl,
+    editAccAl,
+    activateAl,
+    suspendAl
+    
 }

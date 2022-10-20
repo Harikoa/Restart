@@ -1,6 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const {addAcc,getAllAcc,editAcc,activate,suspend,signOut} = require("../controller/accountController")
+const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
+const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
 
 router.get("/",(req,res)=>{
@@ -36,4 +38,31 @@ router.post("/suspend",suspend)
 router.post("/create",addAcc)
 router.post('/edit',editAcc)
 
+router.get("/physician/",(req,res)=>{
+    if(firebase.auth().currentUser==null)
+    {
+        res.redirect('/')
+    }
+    else
+    {
+    res.render('../htmlFiles/AdminManagePhysician')
+    }
+})
+router.post("/physician/suspend",suspendPhy)
+router.post("/physician/create",addAccPhy)
+router.post('/physician/edit',editAccPhy)
+
+router.get("/alumni/",(req,res)=>{
+    if(firebase.auth().currentUser==null)
+    {
+        res.redirect('/')
+    }
+    else
+    {
+    res.render('../htmlFiles/AdminManageAlumni')
+    }
+})
+router.post("/alumni/suspend",suspendAl)
+router.post("/alumni/create",addAccAl)
+router.post('/alumni/edit',editAccAl)
 module.exports = router
