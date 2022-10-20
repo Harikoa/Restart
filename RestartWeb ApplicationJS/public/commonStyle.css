@@ -113,6 +113,14 @@
 	margin-top: 50px;
 }
 
+.actBtn{
+	background-color: lightblue;
+}
+
+.deacBtn{
+	background-color: lightcoral;
+}
+
 .noAcc{
 	text-align: center;
 }
