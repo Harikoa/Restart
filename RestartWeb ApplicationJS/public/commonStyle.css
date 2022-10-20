@@ -59,6 +59,11 @@
 	width: 49.96%;
 }
 
+.tabContainer .buttonContainer .datanavbutton{
+	justify-content: center;
+	width: 20%;
+}
+
 .tabContainer .buttonContainer .physNav{
 	width: 16.66%;
 }
