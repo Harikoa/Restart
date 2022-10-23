@@ -46,23 +46,73 @@ async function updatePhy()
 async function updateLinkp2a()
 {
     var table = document.querySelector(".linkp2a")
-    var pt
-    var al
-    await fetch('/admin/getTable?role=patient')
+    await fetch('/admin/alumnilink')
     .then(async (response)=>{
         var data = await response.json()
-        
-        pt = data
-    })
-    await fetch('/admin/getTable?role=alumni')
-    .then(async (response)=>{
-        var data = await response.json()
-        
-        al = data
+      for(const accs of data.accs)
+    {
+        table.insertAdjacentHTML('afterend',
+        "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + 
+        accs.allname + "</td><td>" + accs.alfname + "</td></tr>"
+        )
+      
+    }
     })
 }
 
+async function updateLinkp2p()
+{
+    var table = document.querySelector(".linkp2p")
+    await fetch('/admin/phylink')
+    .then(async (response)=>{
+        var data = await response.json()
+      for(const accs of data.accs)
+    {
+        table.insertAdjacentHTML('afterend',
+        "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + 
+        accs.allname + "</td><td>" + accs.alfname + "</td></tr>"
+        )
+      
+    }
+    clickable()
+    })
+}
+function clickable()
+{
+var tables = document.querySelectorAll(".table")
+var phypt = document.getElementById('phypt')
+var phyphy = document.getElementById('phyphy')
+var alpt = document.getElementById('alpt')
+var alal = document.getElementById('alal')
+for(var x = 0; x<tables.length;x++)
+{
+console.log(tables[x].rows.length)
+for(var y =1;y<tables[x].rows.length;y++)
+{
+    console.log(tables[x].rows[y])
+    if(x==0)
+    tables[x].rows[y].onclick=function(){
+        console.log(this)
+        phypt.value =this.cells[2].innerHTML
+    }
+    if(x==1)
+    tables[x].rows[y].onclick=function(){
+        phyphy.value =this.cells[2].innerHTML
+    }
+    if(x==3)
+    tables[x].rows[y].onclick=function(){
+        alpt.value =this.cells[2].innerHTML
+    }
+    if(x==4)
+    tables[x].rows[y].onclick=function(){
+        alal.value =this.cells[2].innerHTML
+    }
+}
+}
+}
 updatePatient()
 updatePhy()
 updateAl()
 updateLinkp2a()
+updateLinkp2p()
+
