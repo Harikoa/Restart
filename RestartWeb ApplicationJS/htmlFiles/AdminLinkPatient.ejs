@@ -59,6 +59,7 @@
     <!--To Physician-->
     <div class="tabPanel">
         <div class="container-fluid mt-5">
+            <h4><%=locals.phymsg%></h4>
             <div class="row justify-content-center">
 
                 <div class="col-sm-4">
@@ -107,9 +108,9 @@
                         <div class="formDesign">
                             <div>
                                 <h2><b>Link Accounts</b></h2>
-                                <form class="form-group formAlign" method="post" action="#">
-                                    <p>Patient<input class="form-control" id="fname" name = "firstname" required></p>
-                                    <p>Physician<input class="form-control" id="email" name = "email" required type="email"></p>
+                                <form class="form-group formAlign" method="post" action="/admin/link?to=phy">
+                                    <p>Patient<input class="form-control" id="phypt" readonly name = "patient" required></p>
+                                    <p>Physician<input class="form-control" id="phyphy" readonly name = "someone" required type="email"></p>
                                     <p><button class="form-control btn btn-success" type="submit">Link</button></p>
                                 </form>
                             </div>
@@ -133,15 +134,15 @@
 
                                 <table id="table" class="table">
                                     <tr class="linkp2p">
-                                    <td>
+                                    
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                    </td>
+                                  
 
-                                    <td>
+                                   
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                    </td>
+                                   
                                 </tr>
                                 </table>
                         </div>
@@ -154,6 +155,7 @@
     <!--To ALumni-->
     <div class="tabPanel">
         <div class="container-fluid mt-5">
+            <h4><%=locals.almsg%></h4>
             <div class="row justify-content-center">
 
                 <div class="col-sm-4">
@@ -202,9 +204,9 @@
                         <div class="formDesign">
                             <div>
                                 <h2><b>Link Accounts</b></h2>
-                                <form class="form-group formAlign" method="post" action="#">
-                                    <p>Patient<input class="form-control" id="fname" name = "firstname" required></p>
-                                    <p>Alumni<input class="form-control" id="email" name = "email" required type="email"></p>
+                                <form class="form-group formAlign" method="post" action="/admin/link?to=alumni">
+                                    <p>Patient<input class="form-control" id="alpt" name = "patient" readonly required></p>
+                                    <p>Alumni<input class="form-control" id="alal" name = "someone" readonly required type="email"></p>
                                     <p><button class="form-control btn btn-success" type="submit">Link</button></p>
                                 </form>
                             </div>
@@ -228,15 +230,15 @@
 
                                 <table id="table" class="table">
                                     <tr class="linkp2a">
-                                    <td>
+                                  
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                    </td>
+                                  
 
-                                    <td>
+                                  
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                    </td>
+                                  
                                 </tr>
                                 </table>
                         </div>

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
@@ -75,7 +75,30 @@ router.get("/profile",(req,res)=>{
     }
 })
 router.get('/link',(req,res)=>{
-    res.render("../htmlFiles/AdminLinkPatient")
+    var r = req.query.res  
+    var panel = req.query.panel
+    var almsg = ''
+    var phymsg = ''
+    if(panel==0)
+        {
+            if(r==-1)
+                phymsg="Accounts are already connected!"
+            else
+                phymsg="Accounts successfully connected"
+        }
+    else{
+        if(r==-1)
+        almsg="Accounts are already connected!"
+    else
+        almsg="Accounts successfully connected"
+    }
+    res.render("../htmlFiles/AdminLinkPatient",{
+        almsg:almsg,
+        phymsg:phymsg
+    })
 })
 router.get('/fetchProfile',profile)
+router.post('/link',link)
+router.get('/alumnilink',getAlumniLinked)
+router.get('/phylink',getPhyLinked)
 module.exports = router

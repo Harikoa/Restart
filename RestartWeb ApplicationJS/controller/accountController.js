@@ -210,6 +210,123 @@ const activate = async (bool,email)=>{
         })
     }
 
+    const link = async (req,res)=>
+    {
+        var to = req.query.to
+        var data = req.body
+        var pid;
+        var sid;
+        var patient = data.patient
+        var someone = data.someone
+        await firestore.collection("Accounts").get()
+        .then((snap)=>{
+            snap.forEach((doc)=>{
+                if(doc.data().email==patient)
+                    pid = doc.data().id
+                else if(doc.data().email==someone)
+                    sid = doc.data().id
+                
+            })
+        })
+        console.log(sid)
+        console.log(pid)
+       if(to=="phy")
+       {
+        await firestore.collection("PhyLink")
+        .where('patient','==',pid)
+        .where('phy','==',sid)
+        .get()
+        .then(async(snap)=>{
+            if(snap.empty)
+            {
+                await firestore.collection("PhyLink").add({
+                    patient:pid,
+                    phy:sid
+                })
+                res.redirect("/admin/link?panel=0&res=1")
+            }
+            else{
+                res.redirect("/admin/link?panel=0&res=-1")
+            }
+        })
+       }
+       else{
+        await firestore.collection("AlumniLink")
+        .where('patient','==',pid)
+        .where('al','==',sid)
+        .get()
+        .then(async(snap)=>{
+            if(snap.empty)
+            {
+                await firestore.collection("AlumniLink").add({
+                    patient:pid,
+                    al:sid
+                })
+                res.redirect("/admin/link?panel=1&res=1")
+            }
+            else{
+                res.redirect("/admin/link?panel=1&res=-1")
+            }
+        })
+       }
+    }
+    const getAlumniLinked = async(req,res)=>{
+        var linked=[]
+        await firestore.collection("AlumniLink").get()
+        .then(async (snap)=>{
+            for(const doc of snap.docs)
+        {
+                var data = doc.data()            
+             await firestore.collection("Accounts").doc(data.patient)
+                .get()
+                .then((pt)=>{
+                    data.ptfname = pt.data().firstName
+                    data.ptlname = pt.data().lastName
+                    data.ptemail=pt.data().email
+                })
+                
+              await firestore.collection("Accounts").doc(data.al)
+                .get()
+                .then((al)=>{
+                    data.alfname = al.data().firstName
+                    data.allname = al.data().lastName
+                    data.alemail=al.data().email
+                })
+                
+                linked.push(data)
+            }
+        })
+        await res.json({accs:linked})
+       }
+
+       const getPhyLinked = async(req,res)=>{
+        var linked=[]
+        await firestore.collection("PhyLink").get()
+        .then(async (snap)=>{
+            for(const doc of snap.docs)
+        {
+                var data = doc.data()            
+             await firestore.collection("Accounts").doc(data.patient)
+                .get()
+                .then((pt)=>{
+                    data.ptfname = pt.data().firstName
+                    data.ptlname = pt.data().lastName
+                    data.ptemail=pt.data().email
+                })
+                
+              await firestore.collection("Accounts").doc(data.phy)
+                .get()
+                .then((al)=>{
+                    data.alfname = al.data().firstName
+                    data.allname = al.data().lastName
+                    data.alemail=al.data().email
+                })
+                
+                linked.push(data)
+            }
+        })
+        await res.json({accs:linked})
+       }
 module.exports = {
     addAcc,
     getAllAcc,
@@ -217,5 +334,8 @@ module.exports = {
     activate,
     suspend,
     signOut,
-    profile
+    profile,
+    link,
+    getAlumniLinked,
+    getPhyLinked
 }
