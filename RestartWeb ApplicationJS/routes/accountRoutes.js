@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
@@ -98,6 +98,8 @@ router.get('/link',(req,res)=>{
         phymsg:phymsg
     })
 })
+
+router.get('/unlink',unlink)
 router.get('/fetchProfile',profile)
 router.post('/link',link)
 router.get('/alumnilink',getAlumniLinked)
