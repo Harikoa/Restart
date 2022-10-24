@@ -20,7 +20,7 @@ router.get("/",(req,res)=>
         firestore.collection("Accounts").doc(user.uid).get()
         .then((query)=>{
             const data = query.data()
-            if(data.role=="patient")
+            if(data.role=="admin")
             {
                 res.redirect('/admin')
             }
@@ -39,7 +39,7 @@ router.post("/",(req,res)=>{
         firestore.collection("Accounts").doc(user.user.uid).get()
         .then((query)=>{
             const data = query.data()
-            if(data.role=="patient")
+            if(data.role=="admin")
             {
                 res.redirect('/admin')
             }

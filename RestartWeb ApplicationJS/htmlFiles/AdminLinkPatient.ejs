@@ -11,9 +11,9 @@
 
 <!--Primary Navbar-->
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-    <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="photos/logo.png"></a>
-    <h1 class="Welcoming">Welcome<!--${Accountname }--></h1>
-     <!--<%String path = request.getContextPath();%>-->
+    <a href="/admin/" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
+    <h1 class="Welcoming">    Welcome</h1>
+   
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,26 +23,26 @@
         <li class="navbar-item dropdown profile-dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Accounts</a>
                 <ul class="dropdown-menu animate slideDown" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="AdminManagePatient.html">Patient</a></li>
-                    <li><a class="dropdown-item" href="AdminManagePhysician.html">Physician</a></li>
-                    <li><a class="dropdown-item" href="AdminManageAlumni.html">Alumni</a></li>
+                    <li><a class="dropdown-item" href="/admin/">Patient</a></li>
+                    <li><a class="dropdown-item" href="/admin/physician">Physician</a></li>
+                    <li><a class="dropdown-item" href="/admin/alumni">Alumni</a></li>
                 </ul>
             </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="#">Manage Forums</a>
+            <a class="nav-link" href="/sg">Manage Forums</a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="AdminLinkPatient.html">Link Patient</a>
+            <a class="nav-link" href="/admin/link">Link Patient</a>
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="#">My Profile</a>
+            <a class="nav-link" href="/admin/profile">My Profile</a>
         </li>
         
         <li class="nav-item">
-            <a href="login.html"><button class="btn btn-outline-danger">Logout</button></a>
+            <a href="/admin/signOut"><button class="btn btn-outline-danger">Logout</button></a>
         </li>
         
     </ul>
@@ -59,6 +59,7 @@
     <!--To Physician-->
     <div class="tabPanel">
         <div class="container-fluid mt-5">
+            <h4><%=locals.phymsg%></h4>
             <div class="row justify-content-center">
 
                 <div class="col-sm-4">
@@ -66,7 +67,7 @@
                         <div>
                             <h1><b>List of Patients</b></h1>
                             <table id="table" class="table">
-                            <tr>
+                            <tr class="patient">
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Email</th>
@@ -81,7 +82,7 @@
                         <div>
                             <h1><b>List of Physicians</b></h1>
                             <table id="table" class="table">
-                            <tr>
+                            <tr class="phy">
                             <th>Last Name</th>
                             <th>First Name</th>
                             <th>Email</th>
@@ -94,28 +95,28 @@
                 <div class="col-sm-3">
                         <div class="formDesign">
                         <div class="row">
-                                <div>
-                                    <h2>Query Patients</h2>
-                                    <form class="form-group formAlign" method="post" action="#">
-                                        <p>Email<input class="form-control" type="text" name="" required min=1></p>
-                                        <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                                    </form>
-                                </div>
-                        </div>
-                        </div>
-
-                    <div class="col-sm-12">
-                        <div class="formDesign">
+                            <!--<div>
+                                <h2><b>Query Records</b></h2>     
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
+                                </div>-->
                             <div>
-                                <h2>Link Accounts</h2>
-                                <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
-                                    <p>Patient<input class="form-control" id="fname" name = "firstname" required></p>
-                                    <p>Physician<input class="form-control" id="email" name = "email" required type="email"></p>
-                                    <p><button class="form-control btn btn-success" type="submit">Suspend</button></p>
+                                <h2><b>Link Accounts</b></h2>
+                                <form class="form-group formAlign" method="post" action="/admin/link?to=phy">
+                                    <p>Patient<input class="form-control" id="phypt" readonly name = "patient" required></p>
+                                    <p>Physician<input class="form-control" id="phyphy" readonly name = "someone" required type="email"></p>
+                                    <p><button class="form-control btn btn-success" type="submit">Link</button></p>
                                 </form>
                             </div>
                         </div>
-                    </div>
+                        </div>
+
+                    <!--<div class="col-sm-12">
+                        <div class="formDesign">
+                            
+                        </div>
+                    </div>-->
                 </div>
 
             </div>
@@ -133,15 +134,17 @@
                             </table>-->
 
                                 <table id="table" class="table">
-                                    <td>
+                                    <tr class="linkp2p">
+                                    
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                    </td>
-
-                                    <td>
+                                        <th>Email</th>
+                                        <th>-</th>
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                    </td>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                </tr>
                                 </table>
                         </div>
                     </div>
@@ -152,20 +155,18 @@
 
     <!--To ALumni-->
     <div class="tabPanel">
-        <div class="container">
+        <div class="container-fluid mt-5">
+            <h4><%=locals.almsg%></h4>
             <div class="row justify-content-center">
 
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="formDesign">
                         <div>
                             <h1><b>List of Patients</b></h1>
                             <table id="table" class="table">
-                            <tr>
+                            <tr class="patient">
                             <th>Last Name</th>
                             <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Contact</th>
-                            <th>Age</th>
                             <th>Email</th>
                             </tr>
                             </table>
@@ -173,75 +174,85 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="formDesign">
                         <div>
-                            <h1><b>List of Alumnus</b></h1>
+                            <h1><b>List of Alumni</b></h1>
                             <table id="table" class="table">
-                            <tr>
+                            <tr class="alumni">
                             <th>Last Name</th>
                             <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Contact</th>
-                            <th>Age</th>
                             <th>Email</th>
                             </tr>
                             </table>
                         </div>
                     </div>
+                </div>  
+
+                <div class="col-sm-3">
+                        <div class="formDesign">
+                        <div class="row">
+                            <!--<div>
+                                <h2><b>Query Records</b></h2>     
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
+                                </div>-->
+                            <div>
+                                <h2><b>Link Accounts</b></h2>
+                                <form class="form-group formAlign" method="post" action="/admin/link?to=alumni">
+                                    <p>Patient<input class="form-control" id="alpt" name = "patient" readonly required></p>
+                                    <p>Alumni<input class="form-control" id="alal" name = "someone" readonly required type="email"></p>
+                                    <p><button class="form-control btn btn-success" type="submit">Link</button></p>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!--<div class="col-sm-12">
+                        <div class="formDesign">
+                            
+                        </div>
+                    </div>-->
                 </div>
 
-
             </div>
-            
+
             <div class="row justify-content-center">
                 <div class="col-sm-8">
                     <div class="formDesign">
                         <div>
                             <h2><b>Linked Accounts - Patient to Alumni</b></h2>
-                            <table id="table" class="table">
-                            <tr>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Contact</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            </tr>
-                            </table>
+                            <!--<table class="align-center">
+                                <tr>
+                                    <th><h2>Patient </h2></th>
+                                    <th><h2>Physician</h2></th>
+                                </tr>
+                            </table>-->
+
+                                <table id="table" class="table">
+                                    <tr class="linkp2a">
+                                  
+                                        <th>Last Name</th>
+                                        <th>First Name</th>
+                                        <th>Email</th>
+                                        <th>-</th>
+                                        <th>Last Name</th>
+                                        <th>First Name</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                </tr>
+                                </table>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="formDesign">
-                        <div class="row">
-    
-                            <div>
-                                <h2>Query Patients</h2>
-                                <form class="form-group formAlign" method="post" action="#">
-                                    <p>Email<input class="form-control" type="text" name="" required min=1></p>
-                                    <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                                </form>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
 
-</div>
-
-
 <script src="../public/scriptTab.js"></script>
+<script src="../public/js/linkpatient.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

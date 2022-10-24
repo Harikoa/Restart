@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<link rel="stylesheet" href="commonStyle.css">
+<link rel="stylesheet" href="../public/commonStyle.css">
     <head>
         <meta charset="UTF-8">
         <title>testing tabs</title>
@@ -10,10 +10,11 @@
 <body>
 
     <!--Primary Navbar-->
+ 
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-        <a href="login.html" class="navbar-brand"><img width= "60px"; height="60px"; src="photos/logo.png"></a>
-        <h1 class="Welcoming">Welcome<!--${Accountname }--></h1>
-         <!--<%String path = request.getContextPath();%>-->
+        <a href="/admin/" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
+        <h1 class="Welcoming">    Welcome</h1>
+       
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,26 +24,26 @@
             <li class="navbar-item dropdown profile-dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Accounts</a>
                     <ul class="dropdown-menu animate slideDown" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="AdminManagePatient.html">Patient</a></li>
-                        <li><a class="dropdown-item" href="AdminManagePhysician.html">Physician</a></li>
-                        <li><a class="dropdown-item" href="AdminManageAlumni.html">Alumni</a></li>
+                        <li><a class="dropdown-item" href="/admin/">Patient</a></li>
+                        <li><a class="dropdown-item" href="/admin/physician">Physician</a></li>
+                        <li><a class="dropdown-item" href="/admin/alumni">Alumni</a></li>
                     </ul>
                 </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="#">Manage Forums</a>
+                <a class="nav-link" href="/sg">Manage Forums</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="AdminLinkPatient.html">Link Patient</a>
+                <a class="nav-link" href="/admin/link">Link Patient</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="#">My Profile</a>
+                <a class="nav-link" href="/admin/profile">My Profile</a>
             </li>
             
             <li class="nav-item">
-                <a href="login.html"><button class="btn btn-outline-danger">Logout</button></a>
+                <a href="/admin/signOut"><button class="btn btn-outline-danger">Logout</button></a>
             </li>
             
         </ul>
@@ -60,47 +61,53 @@
 
     <!--Create Account-->
     <div class="tabPanel">
-
+        
         <div class="container mt-5">
             <div class="row justify-content-center">
-
+                <h4><%=locals.msg%></h4>
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="formDesign">
                         <div>
+                           
                         <h3><b>Create Alumni Account</b></h3>
-                        <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
+                        <form class="form-group formAlign" method="post" action="/admin/alumni/create?role=alumni">
+                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
                         <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
                         <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
                         <p>Middle Name <input class="form-control" id="mname" name = "middlename" required></p>
                         <p>Contact <input class="form-control" id="contact" name = "contact" required></p>
-                        <p>Age <input class="form-control" id="age" name = "age" type="number" required min=1 max=99></p>
-                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                        <p>Password <input class="form-control" name ="pw" type="password"> </p>
+                        <p>Nickname <input class="form-control" name ="nickname" required type="text"> </p>
+                        <p>Password <input class="form-control" minlength="6" required name ="pw" type="password"> </p>
+                        <p>Sex:  <input name ="sex" type="radio" value="male" checked> Male
+                             <input  name ="sex" type="radio" value="female"> Female </p>
+                        <p>Birthday <input class="form-control" required name ="bday" type="date"> </p>
                         <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                         </form>
+                        
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 
     <!--Edit Account-->
     <div class="tabPanel">
-        <div class="container mt-5">
+        <div class="container-fluid mt-5">
             <div class="row justify-content-center">
     
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                 <div class="formDesign">
                     <div>
                         <h1><b>List of Alumni</b></h1>
-                        <table id="table" class="table">
-                        <tr>
+                        <table id="tableEdit" class="table">
+                        <tr class="tableRow">
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
                         <th>Contact</th>
-                        <th>Age</th>
+                        <th>Birthday</th>
+                        <th>Nickname</th>
                         <th>Email</th>
                         </tr>
                         </table>
@@ -108,33 +115,32 @@
                 </div>
                 </div>
     
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="formDesign">
                         <div class="row">
     
                             <div>
-                                <h2>Query Alumni</h2>
-                                <form class="form-group formAlign" method="post" action="#">
-                                    <p>EmailL<input class="form-control" type="text" name="" required min=1></p>
-                                    <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                                </form>
+                                <h2>Query Alumni</h2>     
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
                             </div>
                         </div>
                         </div>
     
     
-                    <div class="col-sm">
+                    <div class="col-sm-12">
                     <div class="formDesign">
                             <div>
                                 <h2>Edit Alumni Account</h2>
-                                <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
-                                    <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
-                                    <p>Last Name <input class="form-control" id="lname" name = "lastname" required></p>
-                                    <p>Middle Name <input class="form-control" id="mname" name = "middlename" required></p>
-                                    <p>Contact <input class="form-control" id="contact" name = "contact" required></p>
-                                    <p>Age <input class="form-control" id="age" name = "age" type="number" required min=1 max=99></p>
-                                    <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                                    <p>Password <input class="form-control" name ="pw" type="password"> </p>
+                                <form class="form-group formAlign" method="post" action="/admin/alumni/edit">
+                                    <p>Email <input class="form-control" id="Editemail" name = "email" readonly type="email"></p>
+                                    <p>First Name <input class="form-control" id="Editfname" name = "firstName" required></p>
+                                    <p>Last Name <input class="form-control" id="Editlname" name = "lastName" required></p>
+                                    <p>Middle Name <input class="form-control" id="Editmname" name = "middleName" required></p>
+                                    <p>Contact <input class="form-control" id="Editcontact" name = "contact" required></p>
+                                    <p>Nickname <input class="form-control" id = 'Editnickname'name ="nickname" required type="text"> </p>
+                                    <p>Birthday <input class="form-control" id="Editbday" required name ="birthDay" type="date"> </p>
                                     <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
                                 </form>
                             </div>
@@ -148,52 +154,41 @@
 
     <!--Delete Account-->
     <div class="tabPanel">
-        <div class="container mt-5">
+        <div class="container-fluid mt-5">
             <div class="row justify-content-center">
     
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                 <div class="formDesign">
                     <div>
                         <h1><b>List of Alumni</b></h1>
                         <table id="table" class="table">
-                        <tr>
+                        <tr class="tableRow">
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
-                        <th>Contact</th>
-                        <th>Age</th>
+                        <th>Nickname</th>
                         <th>Email</th>
+                        <th>Activated</th>
+                        <th>Action</th>
                         </tr>
                         </table>
                     </div>
                 </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="formDesign">
                     <div class="row">
 
                         <div>
                             <h2>Query Alumni</h2>
-                            <form class="form-group formAlign" method="post" action="#">
-                                <p>Email<input class="form-control" type="text" name="" required min=1></p>
-                                <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                            </form>
+                     
+                                <p>First Name <input class="form-control" id="fname1" name = "firstname" required></p>
+                                <p>Last Name <input class="form-control" id="lname1" name = "lastname" required></p>
+                                <p><button class="form-control btn btn-outline-success" onclick="search(1)">Search</button></p>
+                       
                         </div>
                     </div>
-                    </div>
-
-                    <div class="col-sm">
-                        <div class="formDesign">
-                                <div>
-                                    <h3>Delete Alumni Account</h3>
-                                    <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
-                                        <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
-                                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                                        <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
-                                    </form>
-                                </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -202,37 +197,38 @@
 
     <!--Suspend Account-->
     <div class="tabPanel">
-        <div class="container mt-5">
+        <div class="container-fluid mt-5">
             <div class="row justify-content-center">
     
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                 <div class="formDesign">
                     <div>
                         <h1><b>List of Alumni</b></h1>
-                        <table id="table" class="table">
-                        <tr>
+                        <table id="table" class="table suspend">
+                            <tr class="tableRow">
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Middle Name</th>
-                        <th>Contact</th>
-                        <th>Age</th>
+                        <th>Nickname</th>
                         <th>Email</th>
+                        <th>Suspended Till</th>
                         </tr>
                         </table>
                     </div>
                 </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="formDesign">
                     <div class="row">
 
                         <div>
                             <h2>Query Alumni</h2>
-                            <form class="form-group formAlign" method="post" action="#">
-                                <p>Email<input class="form-control" type="text" name="" required min=1></p>
-                                <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                            </form>
+                            
+                                <p>First Name <input class="form-control" id="fname2" name = "firstname" required></p>
+                                <p>Last Name <input class="form-control" id="lname2" name = "lastname" required></p>
+                                <p><button class="form-control btn btn-outline-success" onclick="search(2)">Search</button></p>
+                        
                         </div>
                     </div>
                     </div>
@@ -240,11 +236,11 @@
                     <div class="col-sm">
                         <div class="formDesign">
                                 <div>
-                                    <h2>Suspend Alumni</h2>
-                                    <form class="form-group formAlign" method="post" action="<%=path%>/admin/update?table=admin&UID=1">
-                                        <p>First Name <input class="form-control" id="fname" name = "firstname" required></p>
-                                        <p>Email <input class="form-control" id="email" name = "email" required type="email"></p>
-                                        <p><button class="form-control btn btn-success" type="submit">Submit</button></p>
+                                    <h2>Suspend Alumni Account</h2>
+                                    <form class="form-group formAlign" method="post" action="/admin/alumni/suspend">
+                                        <p>Email <input class="form-control" readonly id="Suspendemail" name = "email" required type="email"></p>
+                                        <p>Suspend until <input class="form-control" required name ="suspend" type="date"> </p>
+                                        <p><button class="form-control btn btn-success" type="submit">Suspend</button></p>
                                     </form>
                                 </div>
                         </div>
@@ -256,8 +252,9 @@
 </div>
 
 
-
-<script src="scriptTab.js"></script>
+<script src="../public/scriptTab.js"></script>
+<script src="../public/js/filter.js"></script>
+<script src="../public/js/adminAlumni.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

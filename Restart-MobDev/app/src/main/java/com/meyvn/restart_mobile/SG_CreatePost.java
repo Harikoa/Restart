@@ -61,7 +61,7 @@ public class SG_CreatePost extends AppCompatActivity {
             public void onClick(View view) {
                 String title = addTitle.getText().toString().trim();
                 String caption = addCaption.getText().toString().trim();
-                if(Login.storedAcc.getLastSuspensionDay()!=null && Login.storedAcc.getLastSuspensionDay().before(new Date())) {
+                if(Login.storedAcc.getLastSuspensionDay()==null || Login.storedAcc.getLastSuspensionDay().before(new Date())) {
                     if (!(title.isEmpty() || caption.isEmpty()))
                         uploadData(title, caption);
                     else

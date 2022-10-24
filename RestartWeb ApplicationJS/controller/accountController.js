@@ -50,11 +50,9 @@ const accConverter = {
 const addAcc = async(req,res)=>
 {
     const data = req.body;
-    console.log(data)
     await auth.createUserWithEmailAndPassword(data.email,data.pw)
     .then((userCred)=>{
-        var lastSus = new Date()
-        lastSus.setDate(lastSus.getDate()-1)
+        
         var account = new acc(
             userCred.user.uid,
             data.email,
@@ -62,10 +60,10 @@ const addAcc = async(req,res)=>
             data.lastname,
             data.middlename,
             data.nickname,
-            "patient",data.sex,new Date().toISOString().substring(0,10)
+            req.query.role,data.sex,new Date().toISOString().substring(0,10)
             ,null,null,data.substance,
             data.bday,
-            lastSus,true,data.contact
+            null,true,data.contact
         )
         console.log(account)
         firestore.collection("Accounts").doc(userCred.user.uid)
@@ -94,7 +92,13 @@ const getAllAcc = async function(role){
             
                 if(!data.empty)
                 {
+                    
                     data.forEach((doc)=>{
+                        var sus = doc.data().lastSuspensionDay
+                        if(sus!=null)
+                        sus = sus.toDate().toISOString().substring(0,10)
+                        else
+                        sus = "never"
                         const account = new acc(
                             doc.id,
                             doc.data().email,
@@ -110,7 +114,7 @@ const getAllAcc = async function(role){
                             doc.data().connectedUser,
                             doc.data().substanceUsed,
                             doc.data().birthDay,
-                            doc.data().lastSuspensionDay,
+                            sus,
                             doc.data().activated,
                             doc.data().contact
                         )
@@ -126,14 +130,276 @@ const getAllAcc = async function(role){
                 console.log(e.message)
             })
           return allAccs
-            }
+            }//getAllAcc
+
+const editAcc = async (req,res)=>{
+    const data = req.body
+    var pw = data.pw
+  
+    await firestore.collection("Accounts").where('email',"==", data.email)
+    .get()
+    .then((dozc)=>{
+        dozc.forEach(async (doc)=>{
+            await doc.ref.update(data)
+            .then((result)=>{
+                res.redirect('/admin/?panel=1')
+            })
+            .catch((e)=>{
+                console.log(e.message)
+            })
+        })
         
+    })
+    .catch((e)=>{
+        console.log(e.message)
+    })
+ 
+}
+        
+const activate = async (bool,email)=>{
+    if(bool=="true")
+    bool = true
+    else
+    bool = false
+    await firestore.collection("Accounts").where('email','==',email)
+    .get()
+    .then((doc)=>{
+        doc.forEach(async(snap)=>{
+            await snap.ref.update({
+                activated:bool
+            })  
+        })
+        return {msg:"Success"}
+    })
+    .catch((e)=>{
+        console.log(e.message)
+        return {msg:"Failed!"}
+    })
+}
+       
+
+    const suspend = async(req,res)=>{
+        var data = req.body
+        await firestore.collection('Accounts').where('email','==',data.email)
+        .get()
+        .then(async (snap)=>{
+            snap.forEach(async(doc)=>{
+               doc.ref.update({
+                lastSuspensionDay: new Date(data.suspend)
+            })
+            })
+            
+        })
+        res.redirect("admin/?panel=3")
+    }
+
+    const signOut = async(req,res)=>{
+        await auth.signOut()
+        .then(()=>{
+            res.redirect("/")
+        })
+    }
+
+    const profile = async(req,res)=>{
+        var id = auth.currentUser.uid
+        await firestore.collection("Accounts").doc(id)
+        .get()
+        .then(async (doc)=>{
+            var data = doc.data()
+            await res.json(data)
+        })
+    }
+
+    const link = async (req,res)=>
+    {
+        var to = req.query.to
+        var data = req.body
+        var pid;
+        var sid;
+        var patient = data.patient
+        var someone = data.someone
+        console.log(patient.length)
+        if(patient.length==0 || someone.length==0)
+        {
+            res.redirect("/admin/link") 
+            console.log("RAWR")
+        }
+        else{
+        await firestore.collection("Accounts").get()
+        .then((snap)=>{
+            snap.forEach((doc)=>{
+                if(doc.data().email==patient)
+                    pid = doc.data().id
+                else if(doc.data().email==someone)
+                    sid = doc.data().id
+                
+            })
+        })
       
-        
+       if(to=="phy")
+       {
+        await firestore.collection("PhyLink")
+        .where('patient','==',pid)
+        .where('phy','==',sid)
+        .get()
+        .then(async(snap)=>{
+            if(snap.empty)
+            {
+                await firestore.collection("PhyLink").add({
+                    patient:pid,
+                    phy:sid
+                })
+                res.redirect("/admin/link?panel=0&res=1")
+            }
+            else{
+                res.redirect("/admin/link?panel=0&res=-1")
+            }
+        })
+       }
+       else{
+        await firestore.collection("AlumniLink")
+        .where('patient','==',pid)
+        .where('al','==',sid)
+        .get()
+        .then(async(snap)=>{
+            if(snap.empty)
+            {
+                await firestore.collection("AlumniLink").add({
+                    patient:pid,
+                    al:sid
+                })
+                res.redirect("/admin/link?panel=1&res=1")
+            }
+            else{
+                res.redirect("/admin/link?panel=1&res=-1")
+            }
+        })
+       }
+    }
+}
+    const getAlumniLinked = async(req,res)=>{
+        var linked=[]
+        await firestore.collection("AlumniLink").get()
+        .then(async (snap)=>{
+            for(const doc of snap.docs)
+        {
+                var data = doc.data()            
+             await firestore.collection("Accounts").doc(data.patient)
+                .get()
+                .then((pt)=>{
+                    data.ptfname = pt.data().firstName
+                    data.ptlname = pt.data().lastName
+                    data.ptemail=pt.data().email
+                })
+                
+              await firestore.collection("Accounts").doc(data.al)
+                .get()
+                .then((al)=>{
+                    data.alfname = al.data().firstName
+                    data.allname = al.data().lastName
+                    data.alemail=al.data().email
+                })
+                
+                linked.push(data)
+            }
+        })
+        await res.json({accs:linked})
+       }
 
+       const getPhyLinked = async(req,res)=>{
+        var linked=[]
+        await firestore.collection("PhyLink").get()
+        .then(async (snap)=>{
+            for(const doc of snap.docs)
+        {
+                var data = doc.data()            
+             await firestore.collection("Accounts").doc(data.patient)
+                .get()
+                .then((pt)=>{
+                    data.ptfname = pt.data().firstName
+                    data.ptlname = pt.data().lastName
+                    data.ptemail=pt.data().email
+                })
+                
+              await firestore.collection("Accounts").doc(data.phy)
+                .get()
+                .then((al)=>{
+                    data.alfname = al.data().firstName
+                    data.allname = al.data().lastName
+                    data.alemail=al.data().email
+                })
+                
+                linked.push(data)
+            }
+        })
+        await res.json({accs:linked})
+       }
 
-
+       const unlink= async(req,res)=>
+       {
+            var pt = req.query.pt
+            var some = req.query.someone
+            var role = "physician"
+        await firestore.collection("Accounts").get()
+        .then((snap)=>{
+            for(const docs of snap.docs)
+            {
+                var data = docs.data()
+                if(data.email==pt)
+                {
+                pt=data.id
+                }
+                if(data.email==some)
+                {
+                some=data.id
+                if(data.role=="alumni")
+                role ='alumni'
+                }
+            }
+        })
+  
+        if(role=="physician")
+        {
+            await firestore.collection("PhyLink").where("patient","==",pt)
+            .where("phy","==",some)
+            .get()
+            .then(async (snap)=>{
+                for(const sn of snap.docs)
+                {
+                    await sn.ref.delete()
+                }
+            })
+            .catch((e)=>{
+                console.log(e.message)
+            })
+            
+        }
+        else{
+            await firestore.collection("AlumniLink").where("patient","==",pt)
+            .where("al","==",some)
+            .get()
+            .then(async(snap)=>{
+                for(const sn of snap.docs)
+                {
+                    await sn.ref.delete()
+                }
+            })
+            .catch((e)=>{
+                console.log(e.message)
+            })
+        }
+        res.send("")
+       }
 module.exports = {
     addAcc,
-    getAllAcc
+    getAllAcc,
+    editAcc,
+    activate,
+    suspend,
+    signOut,
+    profile,
+    link,
+    getAlumniLinked,
+    getPhyLinked,
+    unlink
 }

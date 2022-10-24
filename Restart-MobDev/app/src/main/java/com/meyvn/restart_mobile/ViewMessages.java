@@ -19,11 +19,16 @@ import com.meyvn.restart_mobile.POJO.Account;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import com.meyvn.restart_mobile.Adapter.AccountListAdapter;
 
 public class ViewMessages extends AppCompatActivity implements RecyclerViewInterface{
     ArrayList<Account>  array;
+    int ctr = 0;
+    FirebaseFirestore fs;
+    ArrayList<String> arr;
+    AccountListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +36,32 @@ public class ViewMessages extends AppCompatActivity implements RecyclerViewInter
         RecyclerView rc = findViewById(R.id.msgRecycler);
         rc.setLayoutManager(new LinearLayoutManager(this));
         array = new ArrayList<>();
-        AccountListAdapter adapter = new AccountListAdapter(this,array,this);
+       arr= new ArrayList<>();
+        adapter= new AccountListAdapter(this,array,this);
         rc.setAdapter(adapter);
-        FirebaseFirestore fs = FirebaseFirestore.getInstance();
-        List<String> UID = Login.storedAcc.getConnectedUser();
-        fs.collection("Accounts").get()
+       fs = FirebaseFirestore.getInstance();
+        if(Login.storedAcc.getRole().equals("patient"))
+        {
+        fs.collection("PhyLink").whereEqualTo("patient",Login.storedAcc.getID())
+                .orderBy("phy")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                         if(task.isSuccessful())
+                         {
+                             System.out.println(Login.storedAcc.getID());
+                             for(DocumentSnapshot ds : task.getResult())
+                             {
+                                 arr.add(ds.get("phy").toString());
+                             }
+                            doStuff();
+                         }
+                    }
+                });
+        fs.collection("AlumniLink").whereEqualTo("patient",Login.storedAcc.getID())
+                .orderBy("al")
+                .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -43,17 +69,36 @@ public class ViewMessages extends AppCompatActivity implements RecyclerViewInter
                         {
                             for(DocumentSnapshot ds : task.getResult())
                             {
-                                if(UID!=null && UID.contains(ds.getId()))
-                                {
-                                    Account acc = ds.toObject(Account.class);
-                                    acc.setID(ds.getId());
-                                    array.add(acc);
-                                }
+                                arr.add(ds.get("al").toString());
                             }
-                            adapter.notifyDataSetChanged();
+                            doStuff();
                         }
                     }
                 });
+        }
+        else
+        {
+            fs.collection("AlumniLink").whereEqualTo("al",Login.storedAcc.getID())
+                    .orderBy("patient")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful())
+                            {
+                                for(DocumentSnapshot ds : task.getResult())
+                                {
+                                    arr.add(ds.get("patient").toString());
+                                }
+                                doStuff();
+                                doStuff();
+                            }
+                        }
+                    });
+        }
+
+
+
     }
 
     @Override
@@ -65,4 +110,31 @@ public class ViewMessages extends AppCompatActivity implements RecyclerViewInter
         i.putExtra("JSON",JSON);
         startActivity(i);
     }
+    public void doStuff()
+    {
+        ctr++;
+        if(ctr==2)
+        {
+            if(arr.isEmpty())
+                arr.add("");
+            fs.collection("Accounts").whereIn("id",arr)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful())
+                            {
+                                for(DocumentSnapshot ds : task.getResult())
+                                {
+                                    array.add(ds.toObject(Account.class));
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    });
+
+        }
+    }
+
+
 }
