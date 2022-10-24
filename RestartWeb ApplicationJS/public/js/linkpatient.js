@@ -1,3 +1,4 @@
+
 async function updatePatient()
 {
     var patient = document.querySelectorAll(".patient")
@@ -52,8 +53,9 @@ async function updateLinkp2a()
       for(const accs of data.accs)
     {
         table.insertAdjacentHTML('afterend',
-        "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + 
-        accs.allname + "</td><td>" + accs.alfname + "</td></tr>"
+        "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + accs.ptemail + "</td><td></td><td>" + 
+        accs.allname + "</td><td>"  + accs.alemail + "</td><td>"+ accs.alfname + "</td><td><button class='deactBtn' onclick='unlink(\""+ accs.ptemail + "\",\"" + accs.alemail + 
+        "\",1)'>Unlink</button></td></tr>" 
         )
       
     }
@@ -69,8 +71,9 @@ async function updateLinkp2p()
       for(const accs of data.accs)
     {
         table.insertAdjacentHTML('afterend',
-        "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + 
-        accs.allname + "</td><td>" + accs.alfname + "</td></tr>"
+        "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + accs.ptemail + "</td><td></td><td>" + 
+        accs.allname + "</td><td>"  + accs.alemail + "</td><td>"+ accs.alfname + "</td><td><button class='deactBtn' onclick='unlink(\""+ accs.ptemail + "\",\"" + accs.alemail + 
+        "\",0)'>Unlink</button></td></tr>" 
         )
       
     }
@@ -86,10 +89,10 @@ var alpt = document.getElementById('alpt')
 var alal = document.getElementById('alal')
 for(var x = 0; x<tables.length;x++)
 {
-console.log(tables[x].rows.length)
+
 for(var y =1;y<tables[x].rows.length;y++)
 {
-    console.log(tables[x].rows[y])
+   
     if(x==0)
     tables[x].rows[y].onclick=function(){
         console.log(this)
@@ -109,6 +112,12 @@ for(var y =1;y<tables[x].rows.length;y++)
     }
 }
 }
+}
+
+async function unlink(pt,someone,panel)
+{
+    await fetch("/admin/unlink?pt="+ pt + "&someone=" + someone)
+    window.location.href="/admin/link?panel="+panel
 }
 updatePatient()
 updatePhy()

@@ -235,9 +235,7 @@ const activate = async (bool,email)=>{
                 
             })
         })
-        console.log("BAYAG")
-        console.log(sid)
-        console.log(pid)
+      
        if(to=="phy")
        {
         await firestore.collection("PhyLink")
@@ -336,6 +334,62 @@ const activate = async (bool,email)=>{
         })
         await res.json({accs:linked})
        }
+
+       const unlink= async(req,res)=>
+       {
+            var pt = req.query.pt
+            var some = req.query.someone
+            var role = "physician"
+        await firestore.collection("Accounts").get()
+        .then((snap)=>{
+            for(const docs of snap.docs)
+            {
+                var data = docs.data()
+                if(data.email==pt)
+                {
+                pt=data.id
+                }
+                if(data.email==some)
+                {
+                some=data.id
+                if(data.role=="alumni")
+                role ='alumni'
+                }
+            }
+        })
+  
+        if(role=="physician")
+        {
+            await firestore.collection("PhyLink").where("patient","==",pt)
+            .where("phy","==",some)
+            .get()
+            .then(async (snap)=>{
+                for(const sn of snap.docs)
+                {
+                    await sn.ref.delete()
+                }
+            })
+            .catch((e)=>{
+                console.log(e.message)
+            })
+            
+        }
+        else{
+            await firestore.collection("AlumniLink").where("patient","==",pt)
+            .where("al","==",some)
+            .get()
+            .then(async(snap)=>{
+                for(const sn of snap.docs)
+                {
+                    await sn.ref.delete()
+                }
+            })
+            .catch((e)=>{
+                console.log(e.message)
+            })
+        }
+        res.send("")
+       }
 module.exports = {
     addAcc,
     getAllAcc,
@@ -346,5 +400,6 @@ module.exports = {
     profile,
     link,
     getAlumniLinked,
-    getPhyLinked
+    getPhyLinked,
+    unlink
 }
