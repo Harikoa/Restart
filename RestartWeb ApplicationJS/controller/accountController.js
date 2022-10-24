@@ -218,6 +218,13 @@ const activate = async (bool,email)=>{
         var sid;
         var patient = data.patient
         var someone = data.someone
+        console.log(patient.length)
+        if(patient.length==0 || someone.length==0)
+        {
+            res.redirect("/admin/link") 
+            console.log("RAWR")
+        }
+        else{
         await firestore.collection("Accounts").get()
         .then((snap)=>{
             snap.forEach((doc)=>{
@@ -228,6 +235,7 @@ const activate = async (bool,email)=>{
                 
             })
         })
+        console.log("BAYAG")
         console.log(sid)
         console.log(pid)
        if(to=="phy")
@@ -270,6 +278,7 @@ const activate = async (bool,email)=>{
         })
        }
     }
+}
     const getAlumniLinked = async(req,res)=>{
         var linked=[]
         await firestore.collection("AlumniLink").get()
