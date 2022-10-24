@@ -83,14 +83,15 @@ router.get('/link',(req,res)=>{
         {
             if(r==-1)
                 phymsg="Accounts are already connected!"
-            else
+            else if(r==1)
                 phymsg="Accounts successfully connected"
         }
-    else{
+    else if(panel==1)
+    {
         if(r==-1)
-        almsg="Accounts are already connected!"
-    else
-        almsg="Accounts successfully connected"
+            almsg="Accounts are already connected!"
+        else if(r==1)
+            almsg="Accounts successfully connected"
     }
     res.render("../htmlFiles/AdminLinkPatient",{
         almsg:almsg,
