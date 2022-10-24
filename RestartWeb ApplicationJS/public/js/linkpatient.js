@@ -54,7 +54,7 @@ async function updateLinkp2a()
     {
         table.insertAdjacentHTML('afterend',
         "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + accs.ptemail + "</td><td></td><td>" + 
-        accs.allname + "</td><td>"  + accs.alemail + "</td><td>"+ accs.alfname + "</td><td><button class='deactBtn' onclick='unlink(\""+ accs.ptemail + "\",\"" + accs.alemail + 
+        accs.allname + "</td><td>"  + accs.alemail + "</td><td>"+ accs.alfname + "</td><td><button class='deacBtn' onclick='unlink(\""+ accs.ptemail + "\",\"" + accs.alemail + 
         "\",1)'>Unlink</button></td></tr>" 
         )
       
@@ -72,7 +72,7 @@ async function updateLinkp2p()
     {
         table.insertAdjacentHTML('afterend',
         "<tr><td>" + accs.ptlname + "</td><td>" + accs.ptfname + "</td><td>" + accs.ptemail + "</td><td></td><td>" + 
-        accs.allname + "</td><td>"  + accs.alemail + "</td><td>"+ accs.alfname + "</td><td><button class='deactBtn' onclick='unlink(\""+ accs.ptemail + "\",\"" + accs.alemail + 
+        accs.allname + "</td><td>"  + accs.alemail + "</td><td>"+ accs.alfname + "</td><td><button class='deacBtn' onclick='unlink(\""+ accs.ptemail + "\",\"" + accs.alemail + 
         "\",0)'>Unlink</button></td></tr>" 
         )
       
