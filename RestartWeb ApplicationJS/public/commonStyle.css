@@ -115,14 +115,42 @@
 
 .actBtn{
 	background-color: lightblue;
+	border-radius: 15px;
+	margin-right: 1px;
 }
 
 .deacBtn{
 	background-color: lightcoral;
+	border-radius: 15px;
+	margin-left: 1px;
 }
 
 .noAcc{
 	text-align: center;
+}
+
+.center{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.SGItems ul li{
+	list-style: none;
+	color: black;
+	text-align: center;
+	font-size: 35px;
+	margin: 5px;
+	padding: 20px;
+	padding-left: 200px;
+	padding-right: 200px;
+	border: 2px solid green;
+	border-radius: 15px;
+}
+
+.SGItems ul li:hover{
+	background-color: #bdffd9;
 }
 
 .taskDescription{

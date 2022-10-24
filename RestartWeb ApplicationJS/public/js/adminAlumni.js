@@ -31,7 +31,7 @@ await fetch('/admin/getTable?role=alumni')
                     root.insertAdjacentHTML("afterend","<tr class='accRow'><td class='accounts'>" +
                     acc.lastName +"</td><td class='accounts'>" + acc.firstName + "</td><td class='accounts'>" + 
                     acc.middleName + "</td><td class='accounts'>"+ acc.nickname + "</td><td class='accounts'>" + acc.email +  "</td><td class='accounts'>" +
-                    acc.activated + "</td><td class='accounts'><button onclick='activate(true,\""+ acc.email + "\")'>Activate</button><button onclick='activate(false,\""+ acc.email + 
+                    acc.activated + "</td><td class='accounts'><button class='actBtn' onclick='activate(true,\""+ acc.email + "\")'>Activate</button><button class='deacBtn' onclick='activate(false,\""+ acc.email + 
                     "\")'>Deactivate</button>" + "</td></tr>"
                     ) 
                   
