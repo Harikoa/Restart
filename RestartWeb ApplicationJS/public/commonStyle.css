@@ -115,10 +115,14 @@
 
 .actBtn{
 	background-color: lightblue;
+	border-radius: 15px;
+	margin-right: 1px;
 }
 
 .deacBtn{
 	background-color: lightcoral;
+	border-radius: 15px;
+	margin-left: 1px;
 }
 
 .noAcc{

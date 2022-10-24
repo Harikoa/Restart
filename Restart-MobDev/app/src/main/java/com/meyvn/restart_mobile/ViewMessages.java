@@ -115,6 +115,8 @@ public class ViewMessages extends AppCompatActivity implements RecyclerViewInter
         ctr++;
         if(ctr==2)
         {
+            if(arr.isEmpty())
+                arr.add("");
             fs.collection("Accounts").whereIn("id",arr)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
