@@ -48,45 +48,112 @@
         </div>
 </nav>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
+<!--Secondary Navbar-->
+<div class="tabContainer"><h2 class="namePatient border text-center border-5 bg-light border-success">Patient Name</h2>
+    <div class="buttonContainer">
+        
+        <button class="linknavbutton" onclick="showPanel(0, '#')">Connected Patients</button>
+        <button class="linknavbutton" onclick="showPanel(1, '#')">Master List</button>
+    </div>
 
-        <div class="col-sm-8">
-        <div class="formDesign">
-            <div>
-                <h1><b>Master List of Patients</b></h1>
-                <table id="table" class="table">
-                    <tr class="tableRow">
-                        <th>Last Name</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Contact</th>
-                        <th>Birthday</th>
-                        <th>Nickname</th>
-                        <th>Substance Used</th>
-                        <th>Email</th>
-                        </tr>
-                </table>
-            </div>
-        </div>
-        </div>
+    <!--Connected Patients-->
+    <div class="tabPanel">
+        <div class="container-fluid mt-1">
+            <div class="row justify-content-center">
+                <div class="col-sm-9">
+                    <div class="formDesign">
+                        <div>
+                            <h1><b>Connected Patients</b></h1>
+                            <table id="table" class="table">
+                                <tr class="tableRow">
+                                    <th>Last Name</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Contact</th>
+                                    <th>Birthday</th>
+                                    <th>Nickname</th>
+                                    <th>Substance Used</th>
+                                    <th>Email</th>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="col-sm-4">
-            <div class="formDesign">
-            <div class="row">
+                <div class="col-sm-3">
+                    <div class="formDesign">
+                        <div class="row">
+                            <div>
+                                <h2><b>Query Patients</b></h2>
+                                <form class="form-group formAlign" method="post" action="#">  
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <div>
-                    <h2>Search Patient</h2>
-                    <form class="form-group formAlign" method="post" action="#">
-                        <p>Email<input class="form-control" type="email" name="" required min=1></p>
-                        <p><button class="form-control btn btn-outline-success" type="submit">Search</button></p>
-                    </form>
                 </div>
             </div>
-            </div>
+        </div>
 
+    <!--Master List-->
+    <div class="tabPanel">
+        <div class="container-fluid mt-1">
+            <div class="row justify-content-center">
+
+                <div class="col-sm-9">
+                    <div class="formDesign">
+                        <div>
+                            <h1><b>Master List of Patients</b></h1>
+                            <table id="table" class="table">
+                                <tr class="tableRow">
+                                    <th>Last Name</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Contact</th>
+                                    <th>Birthday</th>
+                                    <th>Nickname</th>
+                                    <th>Substance Used</th>
+                                    <th>Email</th>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="formDesign">
+                        <div class="row">
+                            <div>
+                                <h2><b>Query Patients</b></h2>
+                                <form class="form-group formAlign" method="post" action="#">  
+                                    <p>First Name <input class="form-control" id="fname0" name = "firstname" required></p>
+                                    <p>Last Name <input class="form-control" id="lname0" name = "lastname" required></p>
+                                    <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formDesign">
+                        <div class="row">
+                            <div>
+                                <h2><b>Link Patient</b></h2>
+                                <form class="form-group formAlign" method="post" action="#">
+                                    <p>Email<input class="form-control" type="email" name="" required min=1></p>
+                                    <p><button class="form-control btn btn-outline-success" type="submit">Link</button></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+
 
 <script src="../public/js/adminPatient.js"></script>
 <script src="../public/scriptTab.js"></script>
