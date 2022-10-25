@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink,getResolved,resolve,getUnresolved} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
@@ -104,4 +104,10 @@ router.get('/fetchProfile',profile)
 router.post('/link',link)
 router.get('/alumnilink',getAlumniLinked)
 router.get('/phylink',getPhyLinked)
+router.get("/sg",(req,res)=>{
+    res.render("../htmlFiles/SGreported")
+})
+router.get("/sg/action",resolve)
+router.get("/sg/resolved",getResolved)
+router.get("/sg/unresolved",getUnresolved)
 module.exports = router

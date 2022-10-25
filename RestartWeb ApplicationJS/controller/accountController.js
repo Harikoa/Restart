@@ -390,6 +390,129 @@ const activate = async (bool,email)=>{
         }
         res.send("")
        }
+
+       const getResolved = async(req,res)=>{
+        var posts = []
+        var comments = []
+        await firestore.collection("Support Groups").get()
+        .then(async(snap)=>{
+            for(var docz of snap.docs)
+            {
+                await docz.ref.collection("Post")
+                .get()
+                .then(async(snaps)=>{
+                    
+                    for (var docs of snaps.docs)
+                    {
+                        if(docs.data().reported==true&& docs.data().resolved==false)
+                        {
+                            var post= docs.data()
+                            post.id=docs.id
+                        posts.push(post)
+                        }
+                        await docs.ref.collection("Comments").where("reported","==",true)
+                        .where("resolved","==",false)
+                        .get()
+                        .then(async(snap)=>{
+                            for(var doc of snap.docs)
+                            {
+                                var comm = doc.data()
+                                comm.postID = docs.id
+                                comm.sgid=docs.data().sgid
+                                comm.id =doc.id
+                               comments.push(comm)
+                            }
+                        })
+                        
+                    }
+                })
+            }
+          
+        })
+       res.json({posts: posts,comments:comments})
+       }
+
+
+       const resolve = async(req,res)=>{
+        var data = req.query
+        var rep = true
+        if(data.action=="ignore")
+            rep=false
+        
+        console.log(data)
+        if(data.type=="comment")
+        {
+           await firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.postid)
+           .collection("Comments").doc(data.commentid.trim()).update({
+            resolved:true,
+            reported:rep
+           })
+           .then(async (snap)=>{
+            await res.json({message:"SUCCESS!"})
+           })
+           .catch(async(e)=>{
+            await res.json({message:"Failed!"})
+            console.log(e.message)
+           })
+        }
+        else if(data.type=="post")
+        {
+            console.log(data.postid)
+            await firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.postid).update({
+             resolved:true,
+             reported:rep
+            })
+            .then(async (snap)=>{
+             await res.json({message:"SUCCESS!"})
+            })
+            .catch(async(e)=>{
+             await res.json({message:"Failed!"})
+             console.log(e.message)
+            })
+        }
+       
+       }
+
+       const getUnresolved = async(req,res)=>{
+        var posts = []
+        var comments = []
+        await firestore.collection("Support Groups").get()
+        .then(async(snap)=>{
+            for(var docz of snap.docs)
+            {
+                await docz.ref.collection("Post")
+                .get()
+                .then(async(snaps)=>{
+                    
+                    for (var docs of snaps.docs)
+                    {
+                        if(docs.data().resolved==true)
+                        {
+                            var post= docs.data()
+                            post.id=docs.id
+                        posts.push(post)
+                        }
+                        await docs.ref.collection("Comments")
+                        .where("resolved","==",true)
+                        .get()
+                        .then(async(snap)=>{
+                            for(var doc of snap.docs)
+                            {
+                                var comm = doc.data()
+                                comm.postID = docs.id
+                                comm.sgid=docs.data().sgid
+                                comm.id =doc.id
+                               comments.push(comm)
+                            }
+                        })
+                        
+                    }
+                })
+            }
+          
+        })
+       res.json({posts: posts,comments:comments})
+       }
 module.exports = {
     addAcc,
     getAllAcc,
@@ -401,5 +524,8 @@ module.exports = {
     link,
     getAlumniLinked,
     getPhyLinked,
-    unlink
+    unlink,
+    getResolved,
+    resolve,
+    getUnresolved
 }
