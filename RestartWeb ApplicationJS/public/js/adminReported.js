@@ -16,8 +16,8 @@ async function getResolved()
                     st.insertAdjacentHTML("afterbegin",
                     "      <div class='col-xl-8 rowDesign'><h5><b>Comment by " + doc.nickName + "</b></h5><p>" +
                      doc.commentContent+"</p><button onclick='action(\"" + doc.sgid + "\",\""+ doc.postID + "\",\""+ doc.id + "\",\"remove\")'"+
-                     "class='btn btn-info'>Remove</button><button onclick='action(\"" + doc.sgid + "\",\""+ doc.postID + "\",\""+ doc.id + "\",\"ignore\")'"+ 
-                     "class='btn btn-warning'>ignore</button></div>")
+                     "class='btn btnRev btn-info'>Remove</button><button onclick='action(\"" + doc.sgid + "\",\""+ doc.postID + "\",\""+ doc.id + "\",\"ignore\")'"+ 
+                     "class='btn btnIgn btn-warning'>ignore</button></div>")
                      
                 }
                 for(var doc of data.posts)
@@ -25,8 +25,8 @@ async function getResolved()
             st.insertAdjacentHTML("afterbegin",
             "      <div class='col-xl-8 rowDesign'><h5><b>" + doc.title +  " by " + doc.userNickname + "</b></h5><p>" +
              doc.content+"</p><button onclick='actionPost(\"" + doc.sgid + "\",\""+ doc.id + "\",\"remove\")'"+
-             "class='btn btn-info'>Remove</button><button onclick='actionPost(\"" + doc.sgid + "\",\""+ doc.id + "\",\"ignore\")'"+ 
-             "class='btn btn-warning'>ignore</button></div>")
+             "class='btn btnRev btn-info'>Remove</button><button onclick='actionPost(\"" + doc.sgid + "\",\""+ doc.id + "\",\"ignore\")'"+ 
+             "class='btn btnIgn btn-warning'>ignore</button></div>")
                 }
             })
             }

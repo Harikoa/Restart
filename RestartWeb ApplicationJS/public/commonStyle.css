@@ -125,6 +125,14 @@
 	margin-left: 1px;
 }
 
+.btnRev{
+	margin-right: 5px;
+}
+
+.btnIgn{
+	margin-left: 5px;
+}
+
 .noAcc{
 	text-align: center;
 }
