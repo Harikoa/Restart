@@ -26,7 +26,7 @@ router.get("/",(req,res)=>
             }
             else if(data.role=="physician")
             {
-                res.redirect('/physician')
+                res.redirect('/phy')
             }});
     }
 })
@@ -45,7 +45,7 @@ router.post("/",(req,res)=>{
             }
             else if(data.role=="physician")
             {
-                res.redirect('/physician')
+                res.redirect('/phy')
             }
             else{
                 auth.signOut()
