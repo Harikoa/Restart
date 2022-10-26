@@ -7,7 +7,7 @@ var allTables = document.querySelectorAll(".table")
 
     var table = allTables[x]
 
-    for(var ctr = 0; ctr<table.rows.length;ctr++)
+    for(var ctr = 1; ctr<table.rows.length;ctr++)
     {
         var tblLN = table.rows[ctr].cells[0].innerHTML.toUpperCase().trim()
         var tblFN = table.rows[ctr].cells[1].innerHTML.toUpperCase().trim()

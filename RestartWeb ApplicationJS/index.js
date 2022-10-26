@@ -5,6 +5,7 @@ app.set('view engine', 'ejs');
 const firebase = require("./config")
 const adminrouter = require("./routes/accountRoutes")
 const loginrouter = require("./routes/loginRoute")
+const phyRouter = require("./routes/phyRoutes")
 app.use('/public',express.static("public"))
 
 app.use(express.urlencoded({extended:true}))
@@ -12,4 +13,5 @@ app.use(express.json())
 app.use(cors())
 app.use("/",loginrouter)
 app.use("/admin",adminrouter)
+app.use("/phy",phyRouter)
 app.listen(8080,()=>console.log("Listening at port 8080"))
