@@ -49,7 +49,44 @@ const link = async(req,res)=>{
     })
     res.json({msg:msg})
 }
+
+const getJournal = async(req,res)=>{
+    var id = req.query.id
+    var journals = []
+
+    await firestore.collection("Accounts").doc(id).collection("Journal").get()
+    .then(async(snap)=>{
+        await snap.forEach((doc)=>{
+            journals.push(doc.data())
+          
+        })
+        res.json({journals:journals})    
+    })
+}
+
+const createTask = async(req,res)=>{
+    req.body.taskDate = new Date().toISOString().substring(0,10)
+    req.body.complete=false
+    await firestore.collection("Accounts").doc(req.query.id).collection("Task")
+    .add(req.body)
+    .then((snap)=>{
+       
+        res.redirect("/phy/managePatient?id=" + req.query.id + "&panel=1")
+    })
+    .catch((e)=>{
+        console.log(e.message)
+        res.redirect("/phy/managePatient?id=" + req.query.id + "&panel=1")
+    })
+}
+const createDrugTest = async (req,res)=>{
+    var id = req.query.id
+    req.body.dateAssigned = new Date().toISOString().substring(0,10)
+    await firestore.collection("Accounts").doc(id).collection("DrugTest")
+}
 module.exports ={
     getConnectedPatients,
-    link
+    link,
+    getJournal,
+    createTask,
+    createDrugTest
 }
