@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(auth.getCurrentUser()!=null) {
+            checkNotif();
             getAcc(auth.getCurrentUser().getUid());
         }
         else {
@@ -59,6 +60,7 @@ public class Login extends AppCompatActivity {
                                    if(task.isSuccessful())
                                    {
                                        String UID = task.getResult().getUser().getUid();
+                                       checkNotif();
                                        getAcc(UID);
                                    }
                                    else
@@ -84,6 +86,7 @@ public class Login extends AppCompatActivity {
 
     public void checkNotif()
     {
+        System.out.println("HELLO");
         PeriodicWorkRequest prd = new PeriodicWorkRequest.Builder(notificationWorker.class,1, TimeUnit.DAYS)
                 .build()
                 ;
