@@ -86,33 +86,65 @@
 
     <!--Tasks-->
     <div class="tabPanel">
-        <div class="container mt-4">
-            <div class="row justify-content-center rowDesign">
-                <div class="col-sm-3">
-                
-                    <div class="scroll-bar">
-                        <div class="sidebar">
-                            <ul class="navbar-nav ms-auto text-center ">
-                               
-                            </ul>
-                        </div> 
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="rowDesign">
+                        <div class="row">
+                            <h2><b>Pending Tasks</b></h2>
+                            <div class="col-sm-3">
+                                    <div class="scroll-bar">
+                                        <div class="sidebar">
+                                            <ul class="navbar-nav ms-auto text-center ">
+                                            
+                                            </ul>
+                                        </div> 
+                                    </div>
+                            </div>
+                            
+                            <div class="col-sm-9 journalContent">
+                                    <div class="scroll-bar">
+                                        <h2><b>Task Title</b></h2>
+                                        <h4><b>Deadline: </b></h4><h5><b>Date</b></h5>
+                                        <h4><b>Decription: </b></h4>
+                                        <p>Contents</p>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="col-sm-9 journalContent">
-                    <div class="scroll-bar">
-                        <h2><b>Task Title</b></h2>
-                        <h4><b>Task Decription: </b></h4>
-                        <p>Contents
-                           
-                        </p>
 
-                        <h4><b>Patient's Reflection:</b></h4>
-                        <p>Reflection</p>
+                <div class="col-sm-6">
+                    <div class="rowDesign">
+                        <div class="row">
+                        <h2><b>Accomplished Tasks</b></h2>
+                        <div class="col-3">
+                            <div class="scroll-bar">
+                                <div class="sidebar">
+                                    <ul class="navbar-nav ms-auto text-center ">
+                                    
+                                    </ul>
+                                </div> 
+                            </div>
+                        </div>
+                    
+                        <div class="col-9 journalContent">
+                            <div class="scroll-bar">
+                                <h2><b>Task Title</b></h2>
+                                <h4><b>Date Accomplished: </b></h4>
+                                <p>Date</p>
+                                <h4><b>Patient's Reflection:</b></h4>
+                                <p>Reflection</p>
+                            </div>
+                        </div>
+                        
+                        </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+            
+        <div class="container">
             <div class="row justify-content-center rowDesign">
                 <h1><b>Create Task</b></h1>
                 <div class="col-9 journalContent">
@@ -129,33 +161,34 @@
 
     <!--Support Group-->
     <div class="tabPanel">
-        <div class="container">
-            <div class="row justify-content-center rowDesign mt-4">
-                <div class="col-12">
-                    <h1><b>List of Patient's Support Groups</b></h1>
-                    <table id="table" class="table">
-                        <tr class="tableRow">
-                            <th>Support Group Name</th>
-                        </tr>
-                    </table>
+        <div class="container-fluid mt-4">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="rowDesign">
+                        <h2><b>List of Patient's Support Groups</b></h2>
+                        <table id="table" class="table">
+                            <tr class="tableRow">
+                                <th>Support Group Name</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="rowDesign">
+                        <h2><b>Other Support Groups</b></h2>
+                        <table id="table" class="table">
+                            <tr class="tableRow">
+                                <th>Support group Name</th>
+                                <th>Members</th>
+                                <th>Desciption</th>
+                                <th>Action</th>
+                            </tr>
+                        </table>
+  
+                    </div>
                 </div>
             </div>
-
-            <div class="row justify-content-center rowDesign">
-                <div class="col-12">
-                    <h1><b>Add Patient to Support Groups</b></h1>
-                    <h3><b>All Support groups</b></h3>
-                    <table id="table" class="table">
-                        <tr class="tableRow">
-                            <th>Support group Name</th>
-                            <th>Members</th>
-                            <th>Desciption</th>
-                        </tr>
-                    </table>
-                    <p><button class="form-control btn btn-outline-success" type="submit">Add Member</button></p>   
-                </div>
-            </div>
-
         </div>
     </div>
 

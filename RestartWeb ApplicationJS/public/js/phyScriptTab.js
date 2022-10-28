@@ -5,6 +5,7 @@ function showPanel(panelIndex, colorCode){
     tabButtons.forEach(function(node){
         node.style.backgroundColor="";
         node.style.color="";
+
     });
     tabButtons[panelIndex].style.backgroundColor="seagreen";
     tabButtons[panelIndex].style.color="white";
@@ -52,7 +53,7 @@ async function getJournal()
         journalContents.insertAdjacentHTML("afterbegin",
         "<div class='scroll-bar subPanel'><h3><b>"  + doc.date + "</b></h3><p>Mood: " + doc.mood + "</p><p>Substance Frequency: " + doc.substanceFrequency + 
         "</p><p>Substance Intensity: " + doc.substanceIntensity + "<p>Substance Length: " + doc.substanceLength + "<p>Substance Number: " + doc.substanceNumber + 
-        "</p><h3><b>Journal Contents</b></h3><p>" + doc.journalEntry + "</p></div>")
+        "</p><h4><b>Journal Contents</b></h4><p>" + doc.journalEntry + "</p></div>")
        })
     })
     subPanel(0,"#")
@@ -65,9 +66,14 @@ var panels = document.querySelectorAll(".subPanel")
     
     buttons.forEach(function(node){
         node.style.backgroundColor="";
+        node.style.borderRadius="50px";
+        node.style.paddingLeft="25%";
+        node.style.paddingRight="25%";
+        node.style.marginBottom="5px";
+        node.style.fontSize="20px";
         node.style.color="";
     });
-    buttons[panelIndex].style.backgroundColor="seagreen";
+    buttons[panelIndex].style.backgroundColor="forestgreen";
     buttons[panelIndex].style.color="white";
     panels.forEach(function(node) {
         node.style.display="none";
