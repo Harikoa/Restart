@@ -89,58 +89,55 @@
         <div class="container-fluid mt-4">
             <div class="row">
 
-                <!--Pending Tasks-->
-                <div class="col-sm-6">
-                    <div class="rowDesign">
+                <div class="col-6">
+                    <div class="rowDesign"><h2><b>Pending Tasks</b></h2>
                         <div class="row">
-                            <h2><b>Pending Tasks</b></h2>
-                            <div class="col-sm-3">
-                                    <div class="scroll-bar">
-                                        <div class="sidebar">
-                                            <ul class="navbar-nav ms-auto text-center ">
+                            <div class="col-3">
+                                <div class="scroll-bar">
+                                    <div class="sidebar">
+                                        <ul class="navbar-nav ms-auto text-center ">
                                             
-                                            </ul>
-                                        </div> 
-                                    </div>
+                                        </ul>
+                                    </div> 
+                                </div>
                             </div>
                             
-                            <div class="col-sm-9 journalContent">
-                                    <div class="scroll-bar">
-                                        <h2><b>Task Title</b></h2>
-                                        <h4><b>Deadline: </b></h4><h5><b>Date+</h5>
-                                        <h4><b>Decription: </b></h4>
-                                        <p>Contents</p>
-                                    </div>
+                            <div class="col-9 journalContent">
+                                <div class="scroll-bar">
+                                    <h2><b>Task Title</b></h2>
+                                    <h4><b>Deadline: </b></h4><h5><b>Date</b></h5>
+                                    <h4><b>Decription: </b></h4>
+                                    <p>Contents</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!--Accomplished Tasks-->
-                <div class="col-sm-6">
-                    <div class="rowDesign">
+                <div class="col-6">
+                    <div class="rowDesign"><h2><b>Accomplished Tasks</b></h2>
                         <div class="row">
-                        <h2><b>Accomplished Tasks</b></h2>
-                        <div class="col-3">
-                            <div class="scroll-bar">
-                                <div class="sidebar">
-                                    <ul class="navbar-nav ms-auto text-center ">
-                                    
-                                    </ul>
-                                </div> 
+                            
+                            <div class="col-3">
+                                <div class="scroll-bar">
+                                    <div class="sidebar">
+                                        <ul class="navbar-nav ms-auto text-center ">
+                                        
+                                        </ul>
+                                    </div> 
+                                </div>
                             </div>
-                        </div>
-                    
-                        <div class="col-9 journalContent">
-                            <div class="scroll-bar">
-                                <h2><b>Task Title</b></h2>
-                                <h4><b>Date Accomplished: </b></h4>
-                                <p>Date</p>
-                                <h4><b>Patient's Reflection:</b></h4>
-                                <p>Reflection</p>
-                            </div>
-                        </div>
                         
+                            <div class="col-9 journalContent">
+                                <div class="scroll-bar">
+                                    <h2><b>Task Title</b></h2>
+                                    <h4><b>Date Accomplished: </b></h4>
+                                    <p>Date</p>
+                                    <h5><b>Patient's Reflection:</b></h5>
+                                    <p>Reflection</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -151,12 +148,12 @@
         <div class="container">
             <div class="row justify-content-center rowDesign">
                 <h1><b>Create Task</b></h1>
-                <div class="col-9 journalContent">
+                <div class="col-10 journalContent">
                         <form class="form-group formAlign" method="post" action="/phy/createTask?id=<%=locals.id%>">
                             <h4><b>Task Title</b><input class="form-control" id="tasktitle"name="title" required></h4>
                             <h4><b>Task Description</b><textarea required class="taskDescription" name="taskDescription" rows="12"></textarea></h4>
-                            <h4><b>Task Deadline<input min="<%=new Date().toISOString().substring(0,10);%>"required name="taskDeadline" type="date"></b></h4>
-                            <p><button class="btn btn-outline-success" type="submit">Submit</button></p>
+                            <h4><b>Task Deadline <input min="<%=new Date().toISOString().substring(0,10);%>"required name="taskDeadline" type="date"></b></h4>
+                            <p><button class="btn btn-success" type="submit">Submit</button></p>
                         </form>
                 </div>
             </div>
@@ -203,7 +200,8 @@
 
                 <!--Peding Drug TEst-->
                 <div class="col-6">
-                    <div class="rowDesign">
+                    
+                    <div class="rowDesign"><h2><b>Pending Requests</b></h2>
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="scroll-bar">
@@ -220,13 +218,7 @@
                                 <div class="scroll-bar">
                                     <div class="sidebar">
                                         <h2><b>Due Date</b></h2>
-                                        <p>Drug test details</p>
-                                        <h4><b>Patient's Drug Test Result</b></h4>
-                                        <img src="">
-                                        <form class="form-group formAlign" method="post" action="#">
-                                        <h4 class="formAlign"><b>Test Evaluation</b><textarea class="taskDescription" rows="12" required></textarea></h4>
-                                        <p><button class="btn btn-outline-success" type="submit">Submit</button></p>
-                                        </form>
+                                        <h4><b>Drug test details</b></h4>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +228,8 @@
 
                 <!--Accomplished Srug Tests-->
                 <div class="col-6">
-                    <div class="rowDesign">
+                    
+                    <div class="rowDesign"><h2><b>Accomplished Requests</b></h2>
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="scroll-bar">
@@ -276,7 +269,7 @@
                     <div class="col-9 journalContent">
                             <form class="form-group formAlign" method="post" action="/phy/createDrugTest?id=<%=locals.id%>">
                                 <h4><b>Due Date</b><input min="<%=new Date().toISOString().substring(0,10);%>" class="form-control" name="deadline"id="tasktitle" type="date" required></h4>
-                                <p><button class="btn btn-outline-success" type="submit">Create</button></p>
+                                <p><button class="btn btn-success" type="submit">Create</button></p>
                             </form>
                     </div>
                 </div>
@@ -295,10 +288,12 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h1>Journal Calendar</h1>
-                                    <img src="../public/heawon.jfif">
+                            <div class="rowdesign">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1>Journal Calendar</h1>
+                                        <img src="../public/heawon.jfif" width="400" height="500">
+                                    </div>
                                 </div>
                             </div>
                         </div>
