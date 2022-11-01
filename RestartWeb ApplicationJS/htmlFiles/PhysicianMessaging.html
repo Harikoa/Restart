@@ -48,6 +48,143 @@
         </div>
     </nav>
 
+    <!--
+    <div class="container-fluid mt-4">
+        <div class="rowDesign">
+            <div class="row">
+
+                <div class="col-2">
+                    <div class="sidebar">
+                        <div class="scroll-bar chatItems">
+                            <h4><b>Connected Persons</b></h4>
+                            <ul>
+                                <li>Sana</li>
+                                <li>Jihyo</li>
+                                <li>Chaeyoung</li>
+                                <li>Dahyun</li>
+                                <li>Momo</li>
+                                <li>Tzuyu</li>
+                                <li>Mina</li>
+                                <li>Jeongyeon</li>
+                                <li>Nayeon</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <div class="scroll-bar">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    -->
+
+    <div class="container chatContainer">
+        <div class="msg-header">
+            <div class="msg-header-img">
+                <img class="msgIcon" src="../public/messageicon.png">
+            </div>
+            <div class="chatActive">
+                <h4>Park Jihyo</h4>
+                <h6>3 hours ago...</h6>
+            </div>
+        </div>
+
+        <div class="chat-page">
+        <div class="msg-inbox">
+                <div class="chats">
+                <div class="msg-page">
+
+                    <div class="received-chats">
+                        <div class="received-chats-img">
+                            <img src="../public/messageicon.png">
+                        </div>
+
+                        <div class="received-msg">
+                            <div class="received-msg-inbox">
+                                <p>Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                    Hi! This is message from Park Jihyo
+                                </p>
+                                <span class="time">11:01 PM | Nov 1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="outgoing-chats-chats">
+                        <div class="outgoing-chats-msg">
+                            <div class="outgoing-msg-inbox">
+                                <p>Hi! This is message from Domzyu</p>
+                                <span class="time">11:01 PM | Nov 1</span>
+                            </div>
+                        </div>
+                    
+                        <div class="outgoing-chats-img">
+                            <img src="../public/messageicon.png">
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="outgoing-chats">
+                        <div class="outgoing-chats-msg">
+                            <p>Hi! This is message from Domzyu
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                                Hi! This is message from Park Jihyo
+                            </p>
+                            <span class="time">11:01 PM | Nov 1</span>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+                </div>   
+        </div>
+        
+            <div class="msg-bottom">
+                <div class="input-group">
+                <textarea class="form-control inputChat" placeholder="write message..." rows="2" required></textarea>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><img src="../public/send.png"></span>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const textarea = document.querySelector("textarea");
+                textarea.addEventListener("keyup", e =>{
+                    textarea.style.height = 'auto';
+                    let scHeight = e.target.scrollHeight;
+                    textarea.style.height = '${scHeight}px';
+                });
+            </script>
+
+        </div>
+    </div>
     
 
 <script src="../public/scriptTab.js"></script>
