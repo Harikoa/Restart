@@ -100,8 +100,20 @@
                         <h2><b>Add new Suggested Activity</b></h2>
                         
                             <form class="form-group formAlign" method="post" action="#">
-                                <h4><b>Title</b><input class="form-control" id="" required></h4>
-                                <h4><b>Description</b><textarea class="taskDescription" rows="8"></textarea></h4>
+                                <h4><b>Activity</b><input class="form-control" id="" required></h4>
+                                <h4><b>Venue</b><input class="form-control" id="" required></h4>
+
+                                <h4><b>Choose Weather:
+                                <div class="search_select_box">
+                                    <select class="form-control" data-live-search="true">
+                                        <option>Thunderstorm</option>
+                                        <option>Drizzle</option>
+                                        <option>Rain</option>
+                                        <option>Clear</option>
+                                        <option>Clouds</option>
+                                        <option>Snow</option>
+                                    </select>
+                                </div></b></h4>
                                 <p><button class="btn btn-outline-success" type="submit">Submit</button></p>
                             </form>
                         
@@ -113,8 +125,9 @@
                             <h2><b>Suggested Activities</b></h2>
                             <table id="tableEdit" class="table">
                             <tr class="tableRow act">
-                            <th>Title</th>
-                            <th>Description</th>
+                            <th>Activity</th>
+                            <th>Venue</th>
+                            <th>Weather</th>
                             <th>Action</th>
                             </tr>
                             </table>

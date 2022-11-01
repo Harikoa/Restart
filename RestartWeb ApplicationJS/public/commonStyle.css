@@ -184,14 +184,14 @@
 	height: 10%;
 	border-bottom: none;
 	display: inline-block;
-	background-color: lightblue;
+	background-color: #466d1d;
 }
 
 .msg-header-img{
 	border-radius: 50%;
 	width: 40px;
 	margin-left: 5%;
-	margin-top: 12px;
+	margin-top: 8px;
 	float: left;
 }
 
@@ -206,14 +206,14 @@
 	margin-left: 10px;
 	color: #fff;
 }
-
+/*
 .chatActive h6{
 	font-size: 10px;
 	margin-left: 10px;
 	line-height: 2px;
 	color: #fff;
 }
-
+*/
 .chat-page{
 	padding: 0 0 50px 0;
 }
@@ -279,7 +279,7 @@
 }
 
 .outgoing-chats-msg p{
-	background: green none repeat scroll 0 0;
+	background: #32612d none repeat scroll 0 0;
 	color: #fff;
 	border-radius: 10px;
 	font-size: 14px;
@@ -299,7 +299,7 @@
 	position: relative;
 	height: 50%;
 	padding: 20px;
-	background-color: green;
+	background-color: #466d1d;
 }
 
 .input-group{
@@ -308,7 +308,7 @@
 	outline: none !important;
 	border-radius: 20px;
 	width: 100%;
-	background-color: lightgreen;
+	background-color: lightseagreen;
 
 }
 
