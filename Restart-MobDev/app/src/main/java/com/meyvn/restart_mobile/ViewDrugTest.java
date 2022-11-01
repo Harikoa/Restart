@@ -69,22 +69,26 @@ public class ViewDrugTest extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            details.put("completion",true);
-                            details.put("dateAccomplished",""+LocalDate.now());
-                            doc.update(details)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            drugTest.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    try {
-                                        Thread.sleep(3000);
-                                        Toast.makeText(getApplicationContext(),"Success! Returning to main menu",Toast.LENGTH_LONG).show();
-                                        finish();
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
+                                public void onSuccess(Uri uri) {
+                                    details.put("completion",true);
+                                    details.put("dateAccomplished",""+LocalDate.now());
+                                    details.put("URL",uri.toString());
+                                    doc.update(details)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                        Toast.makeText(getApplicationContext(),"Success! Returning to main menu",Toast.LENGTH_LONG).show();
+                                                        finish();
+
+                                                }
+                                            })
+                                    ;
                                 }
-                            })
-                            ;
+                            });
+
 
                         }
                     })

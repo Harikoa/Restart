@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const firebase = require("../config")
-const {getConnectedPatients,link,getJournal,createTask,createDrugTest}  = require("../controller/phyController")
+const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess}  = require("../controller/phyController")
 router.get("/",(req,res)=>{
     if(firebase.auth().currentUser==null)
     {
@@ -20,7 +20,7 @@ router.get("/managePatient",async(req,res)=>{
     await firebase.firestore().collection("Accounts").doc(req.query.id)
     .get()
     .then((snap)=>{
-        console.log(id)
+        
        var name = snap.data().firstName + " " + snap.data().lastName
        res.render("../htmlFiles/PhysicianManagePatient",{whole:name,id:id})
     })
@@ -32,8 +32,13 @@ router.get("/managePatient",async(req,res)=>{
 router.get("/profile",(req,res)=>{
     res.render("../htmlFiles/PhysicianProfile")
 })
+router.post("/getSGs",getSGs)
 router.get("/getJournal",getJournal)
 router.get("/link",link)
 router.post("/createTask",createTask)
+router.post("/getDrugTest",getDrugTest)
 router.post("/createDrugTest",createDrugTest)
+router.post("/getTasks",getTasks)
+router.post("/sgAction",sgAction)
+router.post("/drugAssess",drugAssess)
 module.exports=router

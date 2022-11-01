@@ -97,20 +97,15 @@
                             <div class="col-sm-3">
                                     <div class="scroll-bar">
                                         <div class="sidebar">
-                                            <ul class="navbar-nav ms-auto text-center ">
+                                            <ul class="navbar-nav ms-auto text-center taskPendingButton">
                                             
                                             </ul>
                                         </div> 
                                     </div>
                             </div>
                             
-                            <div class="col-sm-9 journalContent">
-                                    <div class="scroll-bar">
-                                        <h2><b>Task Title</b></h2>
-                                        <h4><b>Deadline: </b></h4><h5><b>Date+</h5>
-                                        <h4><b>Decription: </b></h4>
-                                        <p>Contents</p>
-                                    </div>
+                            <div class="col-sm-9 journalContent taskPendingContent">
+                               
                             </div>
                         </div>
                     </div>
@@ -124,22 +119,15 @@
                         <div class="col-3">
                             <div class="scroll-bar">
                                 <div class="sidebar">
-                                    <ul class="navbar-nav ms-auto text-center ">
+                                    <ul class="navbar-nav ms-auto text-center taskDoneButton">
                                     
                                     </ul>
                                 </div> 
                             </div>
                         </div>
                     
-                        <div class="col-9 journalContent">
-                            <div class="scroll-bar">
-                                <h2><b>Task Title</b></h2>
-                                <h4><b>Date Accomplished: </b></h4>
-                                <p>Date</p>
-                                <h4><b>Patient's Reflection:</b></h4>
-                                <p>Reflection</p>
-                            </div>
-                        </div>
+                        <div class="col-9 journalContent taskDoneContent">
+                         
                         
                         </div>
                     </div>
@@ -162,7 +150,7 @@
             </div>
         </div>
     </div>
-
+</div>
     <!--Support Group-->
     <div class="tabPanel">
         <div class="container-fluid mt-4">
@@ -171,8 +159,10 @@
                     <div class="rowDesign">
                         <h2><b>List of Patient's Support Groups</b></h2>
                         <table id="table" class="table">
-                            <tr class="tableRow">
+                            <tr class="tableRow currentSupport">
                                 <th>Support Group Name</th>
+                                <th>Desciption</th>
+                                <th>Action</th>
                             </tr>
                         </table>
                     </div>
@@ -182,9 +172,8 @@
                     <div class="rowDesign">
                         <h2><b>Other Support Groups</b></h2>
                         <table id="table" class="table">
-                            <tr class="tableRow">
+                            <tr class="tableRow otherSupport">
                                 <th>Support group Name</th>
-                                <th>Members</th>
                                 <th>Desciption</th>
                                 <th>Action</th>
                             </tr>
@@ -198,7 +187,7 @@
 
     <!--Drug Test-->
     <div class="tabPanel">
-        <div class="container-fluid mt-4">
+        <div class="container-fluid mt-8">
             <div class="row justify-content-center">
 
                 <!--Peding Drug TEst-->
@@ -208,7 +197,14 @@
                             <div class="col-sm-3">
                                 <div class="scroll-bar">
                                     <div class="sidebar">
-                                        <ul class="navbar-nav ms-auto text-center">
+                                        <h4><b>Pending Drug Tests</b></h4>
+                                        
+                                        <ul class="pendingDrug navbar-nav ms-auto text-center ">
+                                            
+                                        </ul>
+
+                                        <h4><b>Completed Drug Tests</b></h4>
+                                        <ul class="navbar-nav ms-auto text-center completeDrug">
                                                     
 
                                         </ul>
@@ -216,56 +212,13 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-9 journalContent">
-                                <div class="scroll-bar">
-                                    <div class="sidebar">
-                                        <h2><b>Due Date</b></h2>
-                                        <p>Drug test details</p>
-                                        <h4><b>Patient's Drug Test Result</b></h4>
-                                        <img src="">
-                                        <form class="form-group formAlign" method="post" action="#">
-                                        <h4 class="formAlign"><b>Test Evaluation</b><textarea class="taskDescription" rows="12" required></textarea></h4>
-                                        <p><button class="btn btn-outline-success" type="submit">Submit</button></p>
-                                        </form>
-                                    </div>
-                                </div>
+                            <div class="col-sm-9 journalContent drugContent">
+                               
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!--Accomplished Srug Tests-->
-                <div class="col-6">
-                    <div class="rowDesign">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="scroll-bar">
-                                    <div class="sidebar">
-                                        <ul class="navbar-nav ms-auto text-center">
-                                                    
-
-                                        </ul>
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class="col-sm-9 journalContent">
-                                <div class="scroll-bar">
-                                    <div class="sidebar">
-                                        <h2><b>Due Date</b></h2>
-                                        <p>Drug test details</p>
-                                        <h4><b>Patient's Drug Test Result</b></h4>
-                                        <img src="">
-                                        <form class="form-group formAlign" method="post" action="#">
-                                        <h4 class="formAlign"><b>Test Evaluation</b><textarea class="taskDescription" rows="12" required></textarea></h4>
-                                        <p><button class="btn btn-outline-success" type="submit">Submit</button></p>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>    
         </div>

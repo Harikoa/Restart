@@ -1,3 +1,4 @@
+const e = require("express")
 const firebase = require("../config")
 const firestore = firebase.firestore()
 const auth = firebase.auth()
@@ -81,12 +82,129 @@ const createTask = async(req,res)=>{
 const createDrugTest = async (req,res)=>{
     var id = req.query.id
     req.body.dateAssigned = new Date().toISOString().substring(0,10)
-    await firestore.collection("Accounts").doc(id).collection("DrugTest")
+    req.body.completion=false
+    await firestore.collection("Accounts").doc(id).collection("DrugTest").where('completion',"==",false)
+    .get()
+    .then(async(snap)=>{
+            if(snap.empty)
+            {
+                await firestore.collection("Accounts").doc(id).collection("DrugTest").add(req.body)
+                res.send("<script>window.location.href='/phy/managePatient?id="+ id + "&panel=3';alert('Success!');</script>")
+            }
+            else{
+                res.send("<script>window.location.href='/phy/managePatient?id="+ id + "&panel=3';alert('Already has a pending drug test request');</script>")
+            }
+    })
+}
+const getTasks = async (req,res)=>{
+    var id = req.body.id
+    var done = []
+    var notdone=[]
+    await firestore.collection("Accounts").doc(id).collection("Task")
+    .get()
+    .then(async(snap)=>{
+        await snap.forEach((doc)=>{
+            var data = doc.data()
+            if(data.complete==true)
+                done.push(data)
+            else
+                notdone.push(data)
+        })
+        res.json({done:done,notdone:notdone})
+    })
+
+}
+
+const getSGs = async(req,res)=>{
+    var id = req.body.id
+    var included = []
+    var notIncluded=[]
+    await firestore.collection("Support Groups").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.id = doc.id
+            var members = data.Members
+            if(members.includes(id))
+                included.push(data)
+            else
+                notIncluded.push(data)
+        })
+    })
+    res.json({included:included,
+        not:notIncluded
+    })
+}
+const sgAction = async(req,res)=>{
+    var id =req.body.id
+    var link =req.body.bool
+    var pid = req.body.pid
+    if(!link){
+        await firestore.collection("Support Groups").doc(id).get()
+        .then(async(snap)=>{
+            var data = snap.data()
+            var members = data.Members
+            var index = members.indexOf(pid)
+            members.splice(index,1)
+            await firestore.collection('Support Groups').doc(id).update({Members:members})
+            res.json({msg:"Success"})
+        })
+        .catch((e)=>{
+            res.json({msg:"FAILED"})
+        })
+    }
+    else{
+        await firestore.collection("Support Groups").doc(id).get()
+        .then(async(snap)=>{
+            var data= snap.data()
+            var members = data.Members
+            members.push(pid)
+            await firestore.collection("Support Groups").doc(id).update({Members:members})
+            res.json({msg:"Success"})
+        })
+        .catch((e)=>{
+            res.json({msg:"FAILED"})
+        })
+    }
+}
+const getDrugTest = async(req,res)=>{
+    var id = req.body.id
+    var done = []
+    var notdone=[]
+    await firestore.collection("Accounts").doc(id).collection("DrugTest").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.id = doc.id
+            if(data.assessment==null)
+                data.assessment = 'None'
+            if(data.completion==true)
+                done.push(data)
+            else
+                notdone.push(data)
+        })
+    })
+    res.json({done:done,notdone:notdone})
+}
+
+const drugAssess = async(req,res)=>{
+    var pid = req.query.id
+    var did = req.query.did
+    var assess = req.body.assessment
+    await firestore.collection("Accounts").doc(pid).collection("DrugTest").doc(did).update({
+        assessment:assess
+    })
+    res.send("<script>window.location.href='/phy/managePatient?id="+ pid + "&panel=3';alert('Success!');</script>")
 }
 module.exports ={
     getConnectedPatients,
     link,
     getJournal,
     createTask,
-    createDrugTest
+    createDrugTest,
+    getTasks,
+    getSGs,
+    sgAction,
+    getDrugTest,
+    drugAssess
 }
