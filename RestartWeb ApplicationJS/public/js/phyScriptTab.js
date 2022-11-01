@@ -159,8 +159,8 @@ async function getDrugTests()
                 )        
                 content.insertAdjacentHTML("afterbegin",
                 '<div class="scroll-bar drugContents"><div class="sidebar"><h2><b>Due Date</b> ' + x.deadline + '</h2><p>Date Assigned:' + x.dateAssigned + '</p>'+ 
-                '<h4><b>Patient\'s Drug Test Result</b></h4><img src ="'+ x.URL + '"><form class="form-group formAlign" method="post" action="/phy/drugAssess?did='+x.id +'&id=' + id +'">' +
-                '<h4 class="formAlign"><b>Test Evaluation</b></h4><p>Current Evaluation:' + x.assessment + '</p><input type="radio" name="assessment" value="Positive" checked>Positive <input type="radio" name="assessment" value="Negative">Negative</p><p><button class="btn btn-outline-success" type="submit">Submit</button></p></form></div></div>'
+                '<h4><b>Patient\'s Drug Test Result</b></h4><img src ="'+ x.URL + '" width="500px" height="500px" ><form class="form-group formAlign" method="post" action="/phy/drugAssess?did='+x.id +'&id=' + id +'">' +
+                '<h4 class="formAlign"><b>Test Evaluation</b></h4><p><b>Current Evaluation: ' + x.assessment + '</b></p><input type="radio" name="assessment" value="Positive" checked> Positive <input type="radio" name="assessment" value="Negative"> Negative</p><p><button class="btn btn-outline-success" type="submit">Submit</button></p></form></div></div>'
                 )
                 length--
             }
@@ -213,13 +213,10 @@ function subPanel(panelIndex, colorCode){
         {
             buttons.forEach(function(node){
                 node.style.backgroundColor="";
-                node.style.borderRadius="50px";
-                node.style.paddingLeft="25%";
-                node.style.paddingRight="25%";
-                node.style.paddingTop="3%";
-                node.style.paddingBottom="3%";
+                node.style.borderRadius="20px";
+                node.style.padding="3px 20% 3px 20%"
                 node.style.marginBottom="5px";
-                node.style.fontSize="20px";
+                node.style.fontSize="15px";
                 node.style.color="";
             });
             buttons[panelIndex].style.backgroundColor="forestgreen";
