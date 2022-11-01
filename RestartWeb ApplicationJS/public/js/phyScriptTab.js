@@ -82,7 +82,7 @@ async function getTasks()
         "<li ><button class='subTaskButton' onclick='subTaskPanel(" + notCtr + ",true)'>"+ doc.title + "<br>" + doc.taskDate + "</button></li>"
         )
         taskPContent.insertAdjacentHTML("afterbegin",
-        "<div class='scroll-bar subTaskPanel'><h3><b>"  + doc.title + "</b></h3>" + "<p>Deadline: " +  doc.taskDeadline + "</p><p>Task Description: " + doc.taskDescription + "</p> </div>" 
+        "<div class='scroll-bar subTaskPanel'><h3><b>"  + doc.title + "</b></h3>" + "<h5><b>Deadline: " +  doc.taskDeadline + "</b></h5><p><b>Task Description: </b>" + doc.taskDescription + "</p> </div>" 
         )
         notCtr--
     }//notdone
@@ -92,8 +92,8 @@ async function getTasks()
     "<li ><button class='subTaskDButton' onclick='subTaskPanel(" + ctr + ",false)' >"+ doc.title + "<br>" + doc.taskDate + "</button></li>"
     )
     taskDContent.insertAdjacentHTML("afterbegin",
-    "<div class='scroll-bar subTaskDPanel'><h3><b>"  + doc.title + "</b></h3>" + "<p>Deadline: " +  doc.taskDeadline + "</p><p>Task Description: " + doc.taskDescription + "</p><p>" + 
-    "Date Accomplished: " + doc.dateAccomplished + "</p><h4>Patient's Reflection<h4><p>" + doc.taskReflection + "</p></div>" 
+    "<div class='scroll-bar subTaskDPanel'><h3><b>"  + doc.title + "</b></h3>" + "<p><b>Deadline: </b>" +  doc.taskDeadline + "</p><p><b>Task Description: </b>" + doc.taskDescription + "</p><h5><b>" + 
+    "Date Accomplished: </b>" + doc.dateAccomplished + "</h5><h4><b>Patient's Reflection</b></h4><h5>" + doc.taskReflection + "</h5></div>" 
     )
     ctr--
 }//done
@@ -148,7 +148,7 @@ async function getDrugTests()
                 "<li><button class='drugButton' onclick='drugSubPanel(" + length + ")'>" + x.dateAssigned + "</button></li>"
                 )
                 content.insertAdjacentHTML("afterbegin",
-                '<div class="scroll-bar drugContents"><div class="sidebar"><h2><b>Due Date</b> ' + x.deadline + '</h2><p>Date Assigned:' + x.dateAssigned + '</p></div></div>'
+                '<div class="scroll-bar drugContents"><div class="sidebar"><h2><b>Due Date: ' + x.deadline + '</b></h2><h5><b>Date Assigned: ' + x.dateAssigned + '</b></h5></div></div>'
                 )
                 length--
             }
@@ -158,9 +158,9 @@ async function getDrugTests()
                 "<li><button class='drugButton' onclick='drugSubPanel("+ length +")'>" + x.dateAssigned + "</button></li>"
                 )        
                 content.insertAdjacentHTML("afterbegin",
-                '<div class="scroll-bar drugContents"><div class="sidebar"><h2><b>Due Date</b> ' + x.deadline + '</h2><p>Date Assigned:' + x.dateAssigned + '</p>'+ 
+                '<div class="scroll-bar drugContents"><div class="sidebar"><h2><b>Due Date: </b> ' + x.deadline + '</h2><h5>Date Assigned: ' + x.dateAssigned + '</h5>'+ 
                 '<h4><b>Patient\'s Drug Test Result</b></h4><img src ="'+ x.URL + '" width="500px" height="500px" ><form class="form-group formAlign" method="post" action="/phy/drugAssess?did='+x.id +'&id=' + id +'">' +
-                '<h4 class="formAlign"><b>Test Evaluation</b></h4><p><b>Current Evaluation: ' + x.assessment + '</b></p><input type="radio" name="assessment" value="Positive" checked> Positive <input type="radio" name="assessment" value="Negative"> Negative</p><p><button class="btn btn-outline-success" type="submit">Submit</button></p></form></div></div>'
+                '<h4 class="formAlign"><b>Test Evaluation</b></h4><h5><b>Current Evaluation: ' + x.assessment + '</b></h5><input type="radio" name="assessment" value="Positive" checked> Positive <input type="radio" name="assessment" value="Negative"> Negative</p><p><button class="btn btn-outline-success" type="submit">Submit</button></p></form></div></div>'
                 )
                 length--
             }
@@ -237,13 +237,10 @@ function subPanel(panelIndex, colorCode){
         {
             buttons.forEach(function(node){
                 node.style.backgroundColor="";
-                node.style.borderRadius="50px";
-                node.style.paddingLeft="25%";
-                node.style.paddingRight="25%";
-                node.style.paddingTop="3%";
-                node.style.paddingBottom="3%";
+                node.style.borderRadius="20px";
+                node.style.padding="3px 20% 3px 20%"
                 node.style.marginBottom="5px";
-                node.style.fontSize="20px";
+                node.style.fontSize="15px";
                 node.style.color="";
             });
             buttons[panelIndex].style.backgroundColor="forestgreen";
@@ -282,12 +279,9 @@ function drugSubPanel(panelIndex){
         buttons.forEach(function(node){
             node.style.backgroundColor="";
             node.style.borderRadius="50px";
-            node.style.paddingLeft="25%";
-            node.style.paddingRight="25%";
-            node.style.paddingTop="3%";
-            node.style.paddingBottom="3%";
+            node.style.padding="3px 20% 3px 20%"
             node.style.marginBottom="5px";
-            node.style.fontSize="20px";
+            node.style.fontSize="16px";
             node.style.color="";
         });
         panels.forEach(function(node) {
