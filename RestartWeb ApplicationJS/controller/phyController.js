@@ -196,6 +196,42 @@ const drugAssess = async(req,res)=>{
     })
     res.send("<script>window.location.href='/phy/managePatient?id="+ pid + "&panel=3';alert('Success!');</script>")
 }
+
+const getMotiv = async(req,res)=>{
+    var motiv = []
+    await firestore.collection("MotivQuotes").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.id = doc.id
+            motiv.push(data)
+        })
+    })
+    res.json({quotes:motiv})
+}
+const addQuote = async(req,res)=>{
+
+    var data = req.body
+    var time = new Date()
+    await firestore.collection("MotivQuotes").add({
+        author:data.author,
+        body:data.body,
+        timeAccessed:time
+    })
+    res.redirect("/phy/selfHelp?panel=0")
+}
+
+const deleteQuote=async(req,res)=>{
+    var id = req.query.id
+    await firestore.collection("MotivQuotes").doc(id).delete()
+    .then(()=>{
+        res.json({msg:"SUCCESS"})
+    })
+    .catch((e)=>{
+        console.log(e.message)
+        res.json({msg:"FAILED"})
+    })
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -206,5 +242,8 @@ module.exports ={
     getSGs,
     sgAction,
     getDrugTest,
-    drugAssess
+    drugAssess,
+    getMotiv,
+    addQuote,
+    deleteQuote
 }
