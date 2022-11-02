@@ -192,7 +192,7 @@ async function getEvaluations()
             "<div class='scroll-bar subEvalPPanel'><h3><b>"  + doc.dateAccomplished + "</b></h3>" + "<p><b>Monthly: </b>" +  doc.isMonthly + "</p><p><b>1)Little interest: </b>" + doc.phq1 + "</p><p>" +
             "<b>2)Feeling down: </b>" + doc.phq2 + "</p><p>" + "<b>3)Trouble Falling asleep: </b>" + doc.phq3 + "</p><p>" + "<b>4)Feeling Tired: </b>" + doc.phq4 + "</p><p>" + "<b>5)Poor appetite: </b>" + doc.phq5 + "</p><p>"+ 
             "<b>6)Feeling bad: </b>" + doc.phq6 + "</p><p>" + "<b>7)Trouble concentrating: </b>" + doc.phq7 + "</p><p>" + "<b>8)Moving or speaking slowly: </b>" + doc.phq8 + "</p><p>" + "<b>8)Thoughts that you would be better off dead: </b>" + doc.phq9 + "</p><p>" +
-            "<b>Total: </b>" + doc.total + "</p><h4><b>Interpretation:</b></h4><form class='form-group formAlign' method='post' action='/phy/makeAssessment?id=" + id + "&aid=" + doc.id + "'><p><textarea required rows ='5' name='assessment'></textarea></p><button class='btn btn-outline-success' type='submit'>Submit</button></form></div>"
+            "<b>Total: </b>" + doc.total + "</p><h4><b>Interpretation:</b></h4><form class='form-group formAlign' method='post' action='/phy/makeAssessment?id=" + id + "&aid=" + doc.id + "'><p><textarea class='taskDescription' required rows ='5' name='assessment'></textarea></p><button class='btn btn-outline-success' type='submit'>Submit</button></form></div>"
             )
             pending--
         })
