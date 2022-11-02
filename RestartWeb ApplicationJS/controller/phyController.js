@@ -284,7 +284,7 @@ const makeAssessment = async(req,res)=>{
     data.isInterpreted = true
     await firestore.collection("Accounts").doc(id).collection("Assessment").doc(aid)
             .update(data)
-    res.redirect("/phy/managePatient?id="+id)
+    res.redirect("/phy/managePatient?id="+id + "&panel=5")
 }
 module.exports ={
     getConnectedPatients,

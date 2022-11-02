@@ -52,4 +52,8 @@ router.post("/getAct",getAct)
 router.post("/deleteAct",deleteAct)
 router.post("/getEval",getEval)
 router.post("/makeAssessment",makeAssessment)
+router.get("/messageList",(req,res)=>{
+    res.render("../htmlFiles/PhyMsgList")
+})
+
 module.exports=router
