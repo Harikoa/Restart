@@ -99,13 +99,13 @@
                     <div class="col-sm-12">
                         <h2><b>Add new Suggested Activity</b></h2>
                         
-                            <form class="form-group formAlign" method="post" action="#">
-                                <h4><b>Activity</b><input class="form-control" id="" required></h4>
-                                <h4><b>Venue</b><input class="form-control" id="" required></h4>
+                            <form class="form-group formAlign" method="post" action="/phy/addActivity">
+                                <h4><b>Activity</b><input class="form-control" name="activityTitle" required></h4>
+                                <h4><b>Venue</b><input class="form-control" name="venue" required></h4>
 
                                 <h4><b>Choose Weather:
                                 <div class="search_select_box">
-                                    <select class="form-control" data-live-search="true">
+                                    <select name="weather" class="form-control" data-live-search="true">
                                         <option>Thunderstorm</option>
                                         <option>Drizzle</option>
                                         <option>Rain</option>

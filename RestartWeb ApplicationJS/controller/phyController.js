@@ -232,6 +232,34 @@ const deleteQuote=async(req,res)=>{
         res.json({msg:"FAILED"})
     })
 }
+const addActivity = async(req,res)=>{
+    await firestore.collection("SuggestedActivities").add(req.body)
+    res.redirect("/phy/selfHelp?panel=1")
+}
+const getAct = async(req,res)=>{
+    activities=[]
+    await firestore.collection("SuggestedActivities").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.id = doc.id
+            activities.push(data)
+        })
+    })
+    res.json({act:activities})
+}
+
+const deleteAct=async(req,res)=>{
+    var id = req.query.id
+    await firestore.collection("SuggestedActivities").doc(id).delete()
+    .then(()=>{
+        res.json({msg:"SUCCESS"})
+    })
+    .catch((e)=>{
+        console.log(e.message)
+        res.json({msg:"FAILED"})
+    })
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -245,5 +273,8 @@ module.exports ={
     drugAssess,
     getMotiv,
     addQuote,
-    deleteQuote
+    deleteQuote,
+    addActivity,
+    getAct,
+    deleteAct
 }
