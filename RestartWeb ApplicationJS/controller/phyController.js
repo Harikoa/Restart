@@ -260,6 +260,32 @@ const deleteAct=async(req,res)=>{
         res.json({msg:"FAILED"})
     })
 }
+const getEval = async (req,res)=>{
+    var id = req.query.id
+    var evalDone = []
+    var eval=[]
+    await firestore.collection("Accounts").doc(id).collection("Assessment").get()
+    .then((snap)=>{
+            snap.forEach((doc)=>{
+                var data = doc.data()
+                data.id=doc.id
+                if(data.isInterpreted==false)
+                    eval.push(data)
+                else
+                evalDone.push(data)
+            })
+    })
+    res.json({done:evalDone,notdone:eval})
+}
+const makeAssessment = async(req,res)=>{
+    var id = req.query.id
+    var aid = req.query.aid
+    var data = req.body
+    data.isInterpreted = true
+    await firestore.collection("Accounts").doc(id).collection("Assessment").doc(aid)
+            .update(data)
+    res.redirect("/phy/managePatient?id="+id)
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -276,5 +302,7 @@ module.exports ={
     deleteQuote,
     addActivity,
     getAct,
-    deleteAct
+    deleteAct,
+    getEval,
+    makeAssessment
 }

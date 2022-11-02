@@ -170,11 +170,53 @@ async function getDrugTests()
     drugSubPanel(0)
 }
 
+async function getEvaluations()
+{
+    var id = getParameterByName("id")
+    var pbutton = document.querySelector(".evalPendingButton")
+    var pcontent = document.querySelector(".evalPendingContent")
+    var dbutton = document.querySelector(".evalDoneButton")
+    var dContent = document.querySelector(".evalDoneContent")
+    var id =getParameterByName('id')
+    await fetch("/phy/getEval?id="+id,{method:"POST"})
+    .then(async(res)=>{
+        var data = await res.json()
+        console.log(data)
+        var pending = data.notdone.length-1
+        var done = data.done.length-1
+        data.notdone.forEach((doc)=>{
+            pbutton.insertAdjacentHTML("afterbegin",
+            "<li><button onclick='subAssessment("+pending + ",true)' class='pAssessBtn'>" + doc.dateAccomplished + "</button><li>"
+            )
+            pcontent.insertAdjacentHTML("afterbegin",
+            "<div class='scroll-bar subEvalPPanel'><h3><b>"  + doc.dateAccomplished + "</b></h3>" + "<p><b>Monthly: </b>" +  doc.isMonthly + "</p><p><b>1)Little interest: </b>" + doc.phq1 + "</p><p>" +
+            "<b>2)Feeling down: </b>" + doc.phq2 + "</p><p>" + "<b>3)Trouble Falling asleep: </b>" + doc.phq3 + "</p><p>" + "<b>4)Feeling Tired: </b>" + doc.phq4 + "</p><p>" + "<b>5)Poor appetite: </b>" + doc.phq5 + "</p><p>"+ 
+            "<b>6)Feeling bad: </b>" + doc.phq6 + "</p><p>" + "<b>7)Trouble concentrating: </b>" + doc.phq7 + "</p><p>" + "<b>8)Moving or speaking slowly: </b>" + doc.phq8 + "</p><p>" + "<b>8)Thoughts that you would be better off dead: </b>" + doc.phq9 + "</p><p>" +
+            "<b>Total: </b>" + doc.total + "</p><h4><b>Interpretation:</b></h4><form class='form-group formAlign' method='post' action='/phy/makeAssessment?id=" + id + "&aid=" + doc.id + "'><p><textarea required rows ='5' name='assessment'></textarea></p><button class='btn btn-outline-success' type='submit'>Submit</button></form></div>"
+            )
+            pending--
+        })
+        data.done.forEach((doc)=>{
+            dbutton.insertAdjacentHTML("afterbegin",
+            "<li><button onclick='subAssessment("+done + ",false)' class='dAssessBtn'>" + doc.dateAccomplished + "</button><li>"
+            )
+            dContent.insertAdjacentHTML("afterbegin",
+            "<div class='scroll-bar subEvalDPanel'><h3><b>"  + doc.dateAccomplished + "</b></h3>" + "<p><b>Monthly: </b>" +  doc.isMonthly + "</p><p><b>1)Little interest: </b>" + doc.phq1 + "</p><p>" +
+            "<b>2)Feeling down: </b>" + doc.phq2 + "</p><p>" + "<b>3)Trouble Falling asleep: </b>" + doc.phq3 + "</p><p>" + "<b>4)Feeling Tired: </b>" + doc.phq4 + "</p><p>" + "<b>5)Poor appetite: </b>" + doc.phq5 + "</p><p>"+ 
+            "<b>6)Feeling bad: </b>" + doc.phq6 + "</p><p>" + "<b>7)Trouble concentrating: </b>" + doc.phq7 + "</p><p>" + "<b>8)Moving or speaking slowly: </b>" + doc.phq8 + "</p><p>" + "<b>8)Thoughts that you would be better off dead: </b>" + doc.phq9 + "</p><p>" +
+            "<b>Total: </b>" + doc.total + "</p><h4><b>Interpretation:</b></h4><p>" + doc.assessment + "</p></div>"
+            ) 
+            done--
+        })
+        subAssessment(0,true)
+        subAssessment(0,false)
+    })
+}
 getJournal()
 getTasks()
 getSGs()
 getDrugTests()
-
+getEvaluations()
 
 
 function subPanel(panelIndex, colorCode){
@@ -312,4 +354,56 @@ function drugSubPanel(panelIndex){
     }
     }
     }
+
+    function subAssessment(panelIndex, bool){
+        if(bool)
+        {
+          
+        var buttons = document.querySelectorAll(".pAssessBtn")
+        var panels = document.querySelectorAll(".subEvalPPanel")
+         if(buttons.length>0)  
+        {
+            buttons.forEach(function(node){
+                node.style.backgroundColor="";
+                node.style.borderRadius="20px";
+                node.style.padding="3px 20% 3px 20%"
+                node.style.marginBottom="5px";
+                node.style.fontSize="15px";
+                node.style.color="";
+            });
+            buttons[panelIndex].style.backgroundColor="forestgreen";
+            buttons[panelIndex].style.color="white";
+            panels.forEach(function(node) {
+                node.style.display="none";
+        
+            });
+            panels[panelIndex].style.display="block";
+            panels[panelIndex].style.backgroundColor="#";   
+        }
+    }else
+    {
+       
+        var buttons = document.querySelectorAll(".dAssessBtn")
+        var panels = document.querySelectorAll(".subEvalDPanel")
+        if(buttons.length>0)  
+        {
+            buttons.forEach(function(node){
+                node.style.backgroundColor="";
+                node.style.borderRadius="20px";
+                node.style.padding="3px 20% 3px 20%"
+                node.style.marginBottom="5px";
+                node.style.fontSize="15px";
+                node.style.color="";
+            });
+            buttons[panelIndex].style.backgroundColor="forestgreen";
+            buttons[panelIndex].style.color="white";
+            panels.forEach(function(node) {
+                node.style.display="none";
+        
+            });
+            panels[panelIndex].style.display="block";
+            panels[panelIndex].style.backgroundColor="#";   
+        }
+    }
+        }
     
