@@ -154,7 +154,7 @@
 	left: 50%;
 	transform: translate(-50%,-50%);
 }
-
+/*
 .chatItems ul li{
 	list-style: none;
 	color:black;
@@ -164,7 +164,7 @@
 	padding: 10px;
 	margin-bottom: 10px;
 }
-
+*/
 .msgIcon{
 	max-width: 100%;
 	border-radius: 50%;
@@ -336,6 +336,28 @@
 .input-group .fa{
 	color: green;
 	float: right;
+}
+
+.ptntMsgLst{
+	height: fit-content;
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.ptntMsgLst ul li{
+	font-weight: bold;
+	font-size: 26px;
+	color: #fff;
+	border-radius: 30px;
+	border: 2px solid black;
+	list-style: none;
+	text-align: center;
+	margin-bottom: 5px;
+	background-color: forestgreen;
+}
+
+.ptntMsgLst ul li:hover{
+	background: lightseagreen;
 }
 
 .SGItems ul li{
