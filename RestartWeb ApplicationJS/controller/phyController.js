@@ -2,7 +2,6 @@ const e = require("express")
 const firebase = require("../config")
 const firestore = firebase.firestore()
 const auth = firebase.auth()
-
 const getConnectedPatients = async(req,res)=>{
     const id =await auth.currentUser.uid
     var patients = []
@@ -286,6 +285,24 @@ const makeAssessment = async(req,res)=>{
             .update(data)
     res.redirect("/phy/managePatient?id="+id + "&panel=5")
 }
+const getMessages = async(req,res)=>{
+    var name = ""
+    if(firebase.auth().currentUser==null)
+    {
+   
+        res.redirect('/')
+    }
+    else{
+    await firebase.firestore().collection("Accounts").doc(req.query.id).get()
+    .then((snap)=>{
+        var data = snap.data()
+        name = data.firstName + " " + data.lastName
+    })
+    res.render("../htmlFiles/PhySpecificMsg",{name:name})
+
+}
+}
+
 module.exports ={
     getConnectedPatients,
     link,
@@ -304,5 +321,7 @@ module.exports ={
     getAct,
     deleteAct,
     getEval,
-    makeAssessment
+    makeAssessment,
+    getMessages
+
 }
