@@ -35,6 +35,14 @@
 	margin-bottom: 10px;
 }
 
+.inputComment{
+	resize: none;
+	transition: all 2;
+	width: 500px;
+	border-radius: 20px;
+	padding: 5px;
+}
+
 .journalContent{
 	height: 100%;
 	text-align: justify;

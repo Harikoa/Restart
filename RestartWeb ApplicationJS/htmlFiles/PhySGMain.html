@@ -48,52 +48,71 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <h1 class="rowDesign" style="text-align: center;"><b>(Support Group) Posts</b></h1>
-        <div class="row justify-content-center">
-            <div class="col-10">
-
-                <!--Repeat-->
-                <div class="formDesign">
-                    <h3 style="text-align: center;"><b>Post Title</b></h3>
-                    <div class="SGMainPost">
-                        <!--Main Post-->
-                        <div >
-                            
-                            <h5 class="ptntMsgLst">Post Centent</h5>
-                            <textarea class="inputCOmmant" placeholder="Write a comment.." rows="1"></textarea><button class="btn btn-success my-3">Comment</button>
-                            <h5><b>Comments:</b></h5>
-                        </div>
-
-                        <!--Comments-->
-                        <div class="commentBox">
-                            <h6><b>@UserNickname</b></h6>
-                            <p class="SGMainComment">Comment 1</p>
-                        </div>
-                        <div class="commentBox">
-                            <h6><b>@UserNickname</b></h6>
-                            <p class="SGMainComment">COmment 2</p>
-                        </div>
-                        <div class="commentBox">
-                            <h6><b>@UserNickname</b></h6>
-                            <p class="SGMainComment">Comment 3</p>
-                        </div>
-                        <div class="commentBox">
-                            <h6><b>@UserNickname</b></h6>
-                            <p class="SGMainComment">comment 4</p>
-                        </div>
-                        <div class="commentBox">
-                            <h6><b>@UserNickname</b></h6>
-                            <p class="SGMainComment">Comment 5</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
+    <!--Secondary Navbar-->
+<div class="tabContainer">
+    <div class="buttonContainer">
+        
+        <button class="linknavbutton" onclick="showPanel(0, '#')">Main</button>
+        <button class="linknavbutton nav-item"><a href="PhySpecificPost.html">List of Patient</a></button>
     </div>
 
+    <!--Main Psots-->
+    <div class="tabPanel">
 
+        <div class="container mt-4">
+            <h1 class="rowDesign" style="text-align: center;"><b>(Support Group) Posts</b></h1>
+            <div class="row justify-content-center">
+                <div class="col-10">
+    
+                    <!--Repeat-->
+                    <div class="formDesign">
+                        <h3 style="text-align: center;"><b>Post Title</b></h3>
+                        <div class="SGMainPost">
+                            <!--Main Post-->
+                            <div >
+                                
+                                <h5 class="ptntMsgLst">Post Centent</h5>
+                                <textarea class="inputComment" placeholder="Write a comment.." rows="1"></textarea>
+                                <p><button class="btn btn-success" type="submit">Comment</button></p>
+                                <h5><b>Comments:</b></h5>
+                            </div>
+    
+                            <!--Comments repeat din?-->
+                            <div class="commentBox">
+                                <h6><b>@UserNickname</b></h6>
+                                <p class="SGMainComment">Comment 1</p>
+                            </div>
+                            
+                            <div class="commentBox">
+                                <h6><b>@UserNickname</b></h6>
+                                <p class="SGMainComment">COmment 2</p>
+                            </div>
+                            <div class="commentBox">
+                                <h6><b>@UserNickname</b></h6>
+                                <p class="SGMainComment">Comment 3</p>
+                            </div>
+                            <div class="commentBox">
+                                <h6><b>@UserNickname</b></h6>
+                                <p class="SGMainComment">comment 4</p>
+                            </div>
+                            <div class="commentBox">
+                                <h6><b>@UserNickname</b></h6>
+                                <p class="SGMainComment">Comment 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Main Psots-->
+    <div class="tabPanel"></div>
+</div>
+
+<script src="../public/scriptTab.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
