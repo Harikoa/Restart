@@ -27,6 +27,14 @@
 	margin-bottom: 50px
 }
 
+.commentBox{
+	background-color: rgb(214, 255, 231);
+	border: 2px solid orange;
+	border-radius: 20px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
 .journalContent{
 	height: 100%;
 	text-align: justify;
@@ -345,6 +353,22 @@
 .ptntMsgLst{
 	height: fit-content;
 	max-height: 600px;
+	overflow-y: auto;
+}
+
+.SGMainPost{
+	height: fit-content;
+	max-height: 720px;
+	overflow-y: auto;
+}
+
+.SGMainPost::-webkit-scrollbar{
+	width: 0px;
+}
+
+.SGMainComment{
+	height: fit-content;
+	max-height: 200px;
 	overflow-y: auto;
 }
 
