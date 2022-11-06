@@ -48,48 +48,13 @@
         </div>
     </nav>
 
-    <!--
-    <div class="container-fluid mt-4">
-        <div class="rowDesign">
-            <div class="row">
-
-                <div class="col-2">
-                    <div class="sidebar">
-                        <div class="scroll-bar chatItems">
-                            <h4><b>Connected Persons</b></h4>
-                            <ul>
-                                <li>Sana</li>
-                                <li>Jihyo</li>
-                                <li>Chaeyoung</li>
-                                <li>Dahyun</li>
-                                <li>Momo</li>
-                                <li>Tzuyu</li>
-                                <li>Mina</li>
-                                <li>Jeongyeon</li>
-                                <li>Nayeon</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-10">
-                    <div class="scroll-bar">
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    -->
-
     <div class="container chatContainer">
         <div class="msg-header">
             <div class="msg-header-img">
                 <img class="msgIcon" src="../public/messageicon.png">
             </div>
             <div class="chatActive">
-                <h4>Park Jihyo</h4>
+                <h4><%=locals.name%></h4>
             </div>
         </div>
 
@@ -119,15 +84,26 @@
                         </div>
                     </div>
 
-                </div>
+                    <div class="received-chats">
+                        <div class="received-chats-img">
+                            <img src="../public/messageicon.png">
+                        </div>
+                        <div class="received-msg">
+                            <div class="received-msg-inbox">
+                                <p>Hi! This is message from Park Jihyo</p>
+                                <span class="time">11:01 PM | Nov 1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end-->
                 </div>   
         </div>
         
             <div class="msg-bottom">
                 <div class="input-group">
-                <textarea class="form-control inputChat" placeholder="write message..." rows="1" required></textarea>
+                <textarea class="form-control id='sms' inputChat" id="inputChat" placeholder="write message..." rows="1" required></textarea>
                     <div class="input-group-append">
-                        <span class="input-group-text"><img src="../public/send.png"></span>
+                        <span onclick="send()" class="input-group-text"><img src="../public/send.png"></span>
                     </div>
                 </div>
             </div>
@@ -143,9 +119,9 @@
 
         </div>
     </div>
-    
+    <script src="/socket.io/socket.io.js"></script>
 
-
+<script src="../public/js/messaging.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
