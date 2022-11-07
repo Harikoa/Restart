@@ -27,6 +27,21 @@
 	margin-bottom: 50px
 }
 
+.commentBox{
+	background-color: rgb(214, 255, 231);
+	border: 2px solid orange;
+	border-radius: 20px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.inputComment{
+	resize: none;
+	width: 500px;
+	border-radius: 20px;
+	padding: 5px;
+}
+
 .journalContent{
 	height: 100%;
 	text-align: justify;
@@ -146,6 +161,10 @@
 
 .noAcc{
 	text-align: center;
+}
+
+.toRight{
+	float: right;
 }
 
 .center{
@@ -344,6 +363,22 @@
 	overflow-y: auto;
 }
 
+.SGMainPost{
+	height: fit-content;
+	max-height: 720px;
+	overflow-y: auto;
+}
+
+.SGMainPost::-webkit-scrollbar{
+	width: 0px;
+}
+
+.SGMainComment{
+	height: fit-content;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
 .ptntMsgLst ul li{
 	font-weight: bold;
 	font-size: 26px;
@@ -353,7 +388,7 @@
 	list-style: none;
 	text-align: center;
 	margin-bottom: 5px;
-	background-color: forestgreen;
+	background-color: seagreen;
 }
 
 .ptntMsgLst ul li:hover{
@@ -398,6 +433,7 @@
 
 .table{
 	cursor: pointer;
+	text-align: left;
 }
 
 .navbar{
