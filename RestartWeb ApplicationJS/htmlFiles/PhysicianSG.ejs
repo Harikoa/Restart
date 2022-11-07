@@ -63,18 +63,8 @@
                     <div class="formDesign">
                         <h1 class="noAcc"><b>Support Group Forums</b></h1>
                         <div class="scroll-bar SGItems">
-                            <ul>
-                                <li><a class="nav-link" href="#"><b>Support Group 1</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 2</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 3</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 4</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 5</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 6</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 7</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 8</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 9</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 10</b></a></li>
-                                <li><a class="nav-link" href="#"><b>Support Group 11</b></a></li>
+                            <ul class="sgUL">
+                      
                             </ul>
                         </div>
                     </div>
@@ -91,9 +81,9 @@
                     <div class="formDesign">
                         <div>
                             <h3><b>Create Support Group</b></h3>
-                            <form class="form-group formAlign" method="post" action="">
-                            <p>Support Group Name<input class="form-control" id="" name = "" required></p>
-                            <p>Description<input class="form-control" id="" name = "" required></p>
+                            <form class="form-group formAlign" method="post" action="/phy/sgCreate">
+                            <p>Support Group Name<input class="form-control" id="" name = "Title" required></p>
+                            <p>Description<input class="form-control" id="" name = "Description" required></p>
                             <p><button class="form-control btn btn-success" type="submit">Create</button></p>
                             </form>
                         </div>
@@ -108,6 +98,7 @@
 
 
 <script src="../public/scriptTab.js"></script>
+<script src="../public/js/sgList.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

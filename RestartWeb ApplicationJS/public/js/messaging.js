@@ -32,9 +32,10 @@ async function getMessages()
                     )
             }
         })
+        msg.scrollTop=msg.scrollHeight
     })
     
-   
+  
 }
 function send()
 {

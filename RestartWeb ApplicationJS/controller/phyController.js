@@ -302,7 +302,33 @@ const getMessages = async(req,res)=>{
 
 }
 }
+const getSGList = async (req,res)=>{
+    var sglists = []
+    await firestore.collection("Support Groups").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.id=doc.id
+            sglists.push(data)
+        })
+    })
+    res.json({list:sglists})
+}
+const createSG = async(req,res)=>{
+    if(auth.currentUser==null)
+    {
+        res.redirect("/")
+    }
+    else{
+    var data = req.body
+    data.Members = []
+    data.creatorEmail = auth.currentUser.uid
+    data.dateCreated = new Date()
+    await firestore.collection("Support Groups").add(data)
+    res.redirect("/phy/SGList?panel=1")
+    }
 
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -322,6 +348,7 @@ module.exports ={
     deleteAct,
     getEval,
     makeAssessment,
-    getMessages
-
+    getMessages,
+    getSGList,
+    createSG
 }

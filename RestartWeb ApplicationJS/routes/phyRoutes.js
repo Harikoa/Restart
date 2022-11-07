@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const firebase = require("../config")
-const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages}  = require("../controller/phyController")
+const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages, getSGList, createSG}  = require("../controller/phyController")
 router.get("/",(req,res)=>{
     if(firebase.auth().currentUser==null)
     {
@@ -61,4 +61,18 @@ router.get("/messageList",(req,res)=>{
     res.render("../htmlFiles/PhyMsgList")
 })
 router.get("/message",getMessages)
+router.get("/SGList",(req,res)=>{
+    res.render("../htmlFiles/PhysicianSG")
+})
+router.post("/getSGList",getSGList)
+router.post("/sgCreate",createSG)
+router.get("/SG",async(req,res)=>{
+    var id = req.query.id
+    var title = ""
+    await firestore.collection("Support Groups").doc(id).get()
+    .then((snap)=>{
+        title = snap.data().Title
+    })
+    res.render("../htmlFiles/")
+})
 module.exports=router
