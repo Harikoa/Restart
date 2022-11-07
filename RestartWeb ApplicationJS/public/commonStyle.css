@@ -370,7 +370,20 @@
 }
 
 .SGMainPost::-webkit-scrollbar{
-	width: 0px;
+	width: 5px;
+}
+
+.SGMainPost::-webkit-scrollbar-track{
+	background: hsl(120 75% 50% / 1);
+}
+
+.SGMainPost::-webkit-scrollbar-thumb{
+	background: hsl(120 100% 20% / 1);
+	border-radius: 20px;
+}
+
+.SGMainPost::-webkit-scrollbar-hover{
+	background: hsl(120 100% 10% / 1);
 }
 
 .SGMainComment{
