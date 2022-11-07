@@ -37,9 +37,10 @@
 
 .inputComment{
 	resize: none;
-	width: 500px;
+	width: 100%;
+	height: fit-content;
 	border-radius: 20px;
-	padding: 5px;
+	padding: 10px;
 }
 
 .journalContent{
@@ -95,6 +96,43 @@
     padding-top: 10px;
     box-sizing: border-box;
     display: none;
+}
+/*
+.createPostBtn{
+	float: right;
+	font-weight: bolder;
+	font-size: 20px;
+	border: 2px solid lightblue;
+	border-radius: 30px;
+	padding: 10px;
+}	
+*/
+
+.floating-parent{
+	top: 20%;
+	right: 70px;
+	text-align: center;
+	margin-right: 50px;
+}
+
+.floating-parent .right-button{
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	padding-top: 7px;
+	color: white;
+	background-color: seagreen;
+	border-radius: 30px;
+	float: right;
+	margin: 0 auto;
+	margin-top: 40px;
+	cursor: pointer;
+	box-shadow: 0 -2px 3px -1px green;
+}
+
+.right-button:hover{
+	background-color: darkseagreen;
+	color: white;
 }
 
 .Welcoming{
@@ -370,11 +408,11 @@
 }
 
 .SGMainPost::-webkit-scrollbar{
-	width: 5px;
+	width: 8px;
 }
 
 .SGMainPost::-webkit-scrollbar-track{
-	background: hsl(120 75% 50% / 1);
+	background: lightgray;
 }
 
 .SGMainPost::-webkit-scrollbar-thumb{
@@ -382,7 +420,7 @@
 	border-radius: 20px;
 }
 
-.SGMainPost::-webkit-scrollbar-hover{
+.SGMainPost::-webkit-scrollbar-thumb:hover{
 	background: hsl(120 100% 10% / 1);
 }
 
