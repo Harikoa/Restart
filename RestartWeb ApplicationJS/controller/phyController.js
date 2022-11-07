@@ -145,6 +145,7 @@ const sgAction = async(req,res)=>{
             var members = data.Members
             var index = members.indexOf(pid)
             members.splice(index,1)
+            console.log("HELLO")
             await firestore.collection('Support Groups').doc(id).update({Members:members})
             res.json({msg:"Success"})
         })
@@ -324,10 +325,56 @@ const createSG = async(req,res)=>{
     data.Members = []
     data.creatorEmail = auth.currentUser.uid
     data.dateCreated = new Date()
+    var id 
     await firestore.collection("Support Groups").add(data)
-    res.redirect("/phy/SGList?panel=1")
+    .then((doc)=>{
+       id = doc.id
+    })
+    res.redirect("/phy/sg?panel=1&id=" + id)
     }
 
+}
+const getSGMembers = async(req,res)=>{
+    var members = []
+    var mem = []
+    var non = []
+    var id = req.query.id
+    await firestore.collection("Support Groups").doc(id).get()
+    .then((snap)=>{
+
+       members = snap.data().Members
+    })
+    await firestore.collection("Accounts").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data=doc.data()
+            if(data.role=="patient"|| data.role=="alumni")
+            {
+            if(members.includes(data.id))
+                mem.push(data)
+            else
+                non.push(data)
+            }
+        })
+    })
+    res.json({mem:mem,non:non})
+}
+const getPosts = async(req,res)=>{
+    var id = req.query.id
+    var posts=[]
+    await firestore.collection("Support Groups").doc(id).collection("Post").where("reported","==",false).get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.id=doc.id
+            data.date = data.datePosted.toDate().toLocaleString()
+            posts.push(data)
+        })
+    })
+    posts.sort((a,b)=>{
+        return new Date(a.date) - new Date(b.date)
+    })
+    res.json({posts:posts})
 }
 module.exports ={
     getConnectedPatients,
@@ -350,5 +397,7 @@ module.exports ={
     makeAssessment,
     getMessages,
     getSGList,
-    createSG
+    createSG,
+    getSGMembers,
+    getPosts
 }
