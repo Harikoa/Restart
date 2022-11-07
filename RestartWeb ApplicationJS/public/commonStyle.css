@@ -37,7 +37,6 @@
 
 .inputComment{
 	resize: none;
-	transition: all 2;
 	width: 500px;
 	border-radius: 20px;
 	padding: 5px;
@@ -434,6 +433,7 @@
 
 .table{
 	cursor: pointer;
+	text-align: left;
 }
 
 .navbar{
