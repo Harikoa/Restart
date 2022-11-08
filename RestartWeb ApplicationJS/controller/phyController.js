@@ -376,6 +376,59 @@ const getPosts = async(req,res)=>{
     })
     res.json({posts:posts})
 }
+
+const getContent = async(req,res)=>{
+
+    var data = req.query
+    var post
+    var comments=[]
+    await firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.id)
+    .get()
+    .then((snap)=>{
+        var data = snap.data()
+        data.date = data.datePosted.toDate().toLocaleString()
+        post = data
+    })
+    await firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.id).collection("Comments")
+    .where('reported',"==",false)
+    .get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            data.date = data.datePosted.toDate().toLocaleString()
+            comments.push(data)
+        })
+    })
+    comments.sort((a,b)=>{
+        return new Date(a.date) - new Date(b.date)
+    })
+    res.json({post:post,comments:comments})
+}
+
+const newComment = async(req,res)=>{
+    var query = req.query
+    var data=req.body
+    data.datePosted=new Date()
+    data.userID= auth.currentUser.uid
+    await firestore.collection("Accounts").doc(data.userID).get()
+    .then((snap)=>{
+        data.nickName = snap.data().nickname
+    })
+    data.reported=false
+    data.resolved=false
+ 
+    await firestore.collection("Support Groups").doc(query.sgid).collection("Post").doc(query.id)
+    .collection("Comments")
+    .add(data)
+    .then(()=>{
+        res.json({msg:"SUCCESS"})
+    })
+    .catch(()=>{
+
+        res.json({msg:"FAILED!"})
+    })
+    
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -399,5 +452,8 @@ module.exports ={
     getSGList,
     createSG,
     getSGMembers,
-    getPosts
+    getPosts,
+    getContent,
+    newComment
+    
 }
