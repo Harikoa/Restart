@@ -126,8 +126,6 @@
 	transition: .4s;
 }
 
-
-
 .reportPostBtn{
 	background-color: transparent;
 	border-radius: 12px;
@@ -138,19 +136,6 @@
 
 .reportPostBtn:hover{
 	box-shadow: red 0 0 10px 2px;
-	transition: .4s;
-	cursor: pointer;
-}
-
-.reportBtn{
-	background-color: transparent;
-	border-radius: 12px;
-	border: 0.5px solid black;
-	padding: 5px;
-}
-
-.reportBtn:hover{
-	box-shadow: orange 0 0 10px 2px;
 	transition: .4s;
 	cursor: pointer;
 }
