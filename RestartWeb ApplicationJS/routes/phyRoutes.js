@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const firebase = require("../config")
-const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages, getSGList, createSG, getSGMembers, getPosts, getContent, newComment}  = require("../controller/phyController")
+const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages, getSGList, createSG, getSGMembers, getPosts, getContent, newComment, createPost, getData}  = require("../controller/phyController")
 router.get("/",(req,res)=>{
     if(firebase.auth().currentUser==null)
     {
@@ -82,4 +82,15 @@ router.get("/specificPost",(req,res)=>{
 })
 router.post("/specificPost",getContent)
 router.post("/newComment",newComment)
+router.get("/create",async(req,res)=>{
+    var id = req.query.sgid
+    var title = ""
+    await firebase.firestore().collection("Support Groups").doc(id).get()
+    .then((snap)=>{
+        title = snap.data().Title
+    })
+    res.render("../htmlFiles/createPostSG",{title:title})
+})
+router.post("/create",createPost)
+router.post("/getData",getData)
 module.exports=router

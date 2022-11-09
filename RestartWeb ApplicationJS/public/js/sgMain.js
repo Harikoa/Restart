@@ -74,5 +74,11 @@ function goTo(id,sgid)
 {
 window.location.href="/phy/specificPost?id="+id+"&sgid="+sgid
 }
+
+function create()
+{
+    var sgid = getParameterByName('id')
+    window.location.href="/phy/create?sgid="+sgid
+}
 getPosts()
 getMembers()
