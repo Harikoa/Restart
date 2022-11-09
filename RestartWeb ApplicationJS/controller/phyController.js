@@ -145,7 +145,7 @@ const sgAction = async(req,res)=>{
             var members = data.Members
             var index = members.indexOf(pid)
             members.splice(index,1)
-            console.log("HELLO")
+            
             await firestore.collection('Support Groups').doc(id).update({Members:members})
             res.json({msg:"Success"})
         })
@@ -429,6 +429,79 @@ const newComment = async(req,res)=>{
     })
     
 }
+
+const createPost = async(req,res)=>{
+    var data= req.body
+    data.userID = auth.currentUser.uid
+    data.datePosted = new Date()
+    data.reported = false
+    data.resolved = false
+    data.sgid = req.query.sgid
+    await firestore.collection("Accounts").doc(data.userID).get()
+    .then((snap)=>{
+        data.userNickname=snap.data().nickname
+    })
+    await firestore.collection("Support Groups").doc(req.query.sgid).collection("Post")
+    .add(data)
+    .then(()=>{
+        res.json({bool:true})
+    })
+    .catch((e)=>{
+        console.log(e.message)
+        res.json({bool:false})
+    })
+}
+
+const getData= async(req,res)=>{
+    var id =req.query.id
+    var vsad=0
+    var sad =0
+    var neutral =0
+    var happy =0
+    var vhappy=0
+    var totalJournals =0
+    var intensity=0
+    var freq=0
+    var length =0
+    var number=0
+    await firestore.collection("Accounts").doc(id).collection("Journal").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            if(data.mood=='Very Sad')
+            vsad++
+            if(data.mood=='Sad')
+            sad++
+            if(data.mood=='Neutral')
+            neutral++
+            if(data.mood=='Happy')
+            happy++
+            if(data.mood=='Very Happy')
+            vhappy++
+            intensity+=data.substanceIntensity
+            freq+=data.substanceFrequency
+            length+=data.substanceLength
+            number+=data.substanceNumber
+            totalJournals++
+        })
+    })
+    intensity=intensity/totalJournals
+    freq=freq/totalJournals
+    length=length/totalJournals
+    number=number/totalJournals
+    var MoodxValues=["Very Sad","Sad","Neutral","Happy","Very Happy"]
+    var MoodyValues=[vsad,sad,neutral,happy,vhappy]
+    var UrgexValues = ["Intensity","Frequency","Length"]
+    var UrgeyValues = [intensity,freq,length]
+
+    res.json({
+        MoodX:MoodxValues,
+        MoodY:MoodyValues,
+        UrgeX:UrgexValues,
+        UrgeY:UrgeyValues,
+        UrgeNum:number
+    })
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -454,6 +527,7 @@ module.exports ={
     getSGMembers,
     getPosts,
     getContent,
-    newComment
-    
+    newComment,
+    createPost,
+    getData   
 }

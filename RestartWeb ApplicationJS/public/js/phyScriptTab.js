@@ -407,3 +407,76 @@ function drugSubPanel(panelIndex){
     }
         }
     
+async function getData()
+    {
+        var id = getParameterByName('id')
+        var journalSum= document.querySelector(".jSum")
+        await fetch("/phy/getJournal?id=" + id)
+        .then(async(res)=>{
+            var data= await res.json()
+       
+            for(var x of data.journals)
+            {
+                journalSum.insertAdjacentHTML("afterend",
+                "<h3><b>" + x.date + "</b></h3><p>Mood: " + x.mood + "</p><p>Substance Frequency: " + x.substanceFrequency + 
+                "</p><p>Substance Intensity: " + x.substanceIntensity + "<p>Substance Length: " + x.substanceLength + "<p>Substance Number: " + x.substanceNumber + 
+                "</p>"
+                
+                )
+            }
+            
+        })
+        await fetch("/phy/getData?id="+id,{
+            method:"POST"
+        }).then(async(res)=>{
+            var data =await res.json()
+            console.log(data)
+           new Chart("moodChart",{
+            type:"bar",
+            data:{
+            labels:data.MoodX,
+            datasets:[{
+                backgroundColor:"green",
+                data:data.MoodY
+            }]
+            },  options:{ 
+                legend:false,
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                    beginAtZero:true,
+                      stepSize: 1
+                    }
+                  }]
+                }
+              }
+           })//mood Chart
+           new Chart("urgeChart",{
+            type:"bar",
+            data:{
+            labels:data.UrgeX,
+            datasets:[{
+                backgroundColor:"green",
+                data:data.UrgeY
+            }]
+            },  options:{ 
+                legend:false,
+                scales:{
+                    yAxes:[{
+                       ticks:{
+                        beginAtZero:true
+                       }
+                    }]}
+                
+              }
+           })//Urge Chart
+           var moodChart = document.getElementById("moodChart")
+           for(var ctr=0;ctr<5;ctr++)
+           moodChart.insertAdjacentHTML("afterend",
+           "<p>Total " + data.MoodX[ctr] + ": " + data.MoodY[ctr] + "</p>"
+           )
+           var urgeChart = document.getElementById("urgeChart")
+           
+        })
+    }
+getData()
