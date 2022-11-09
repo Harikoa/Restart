@@ -411,7 +411,7 @@ async function getData()
     {
         var id = getParameterByName('id')
         var journalSum= document.querySelector(".jSum")
-        await fetch("/phy/getJournal?id=" + id)
+        fetch("/phy/getJournal?id=" + id)
         .then(async(res)=>{
             var data= await res.json()
        
@@ -426,7 +426,7 @@ async function getData()
             }
             
         })
-        await fetch("/phy/getData?id="+id,{
+        fetch("/phy/getData?id="+id,{
             method:"POST"
         }).then(async(res)=>{
             var data =await res.json()
@@ -471,12 +471,53 @@ async function getData()
               }
            })//Urge Chart
            var moodChart = document.getElementById("moodChart")
-           for(var ctr=0;ctr<5;ctr++)
+           var urgeChart = document.getElementById("urgeChart")
+           for(var ctr=0;ctr<5;ctr++){
            moodChart.insertAdjacentHTML("afterend",
            "<p>Total " + data.MoodX[ctr] + ": " + data.MoodY[ctr] + "</p>"
            )
-           var urgeChart = document.getElementById("urgeChart")
-           
+            if(ctr<4)
+            {
+            if(ctr<3)
+            urgeChart.insertAdjacentHTML("afterend","<p>Average " + data.UrgeX[ctr] + ": " + data.UrgeY[ctr] + "</p>")
+            }
+            else
+            urgeChart.insertAdjacentHTML("afterend","<p>Average Number" + ": " + data.UrgeNum+ "</p>")
+           }
+        })//mood and urge data
+
+     fetch("/phy/phq9?id=" + id,{
+            method:"POST"
+         })
+        .then(async(res)=>{
+            var data =await res.json()
+            var xlabel = ["Little Interest","Feeling Down","Trouble Falling asleep","Feeling Tired","Poor Appetite","Feeling Bad", "Trouble Concentrating","Moving or speaking slowly","Suicidal Thoughts"]
+            var chart = document.getElementById("phq9Chart")
+            new Chart("phq9Chart",{
+                type:"bar",
+                data:{
+                labels:xlabel,
+                datasets:[{
+                    backgroundColor:"green",
+                    data:data.phq9
+                }]
+                },  options:{ 
+                    legend:false,
+                    scales:{
+                        yAxes:[{
+                           ticks:{
+                            beginAtZero:true
+                           }
+                        }]}
+                    
+                  }
+               })
+               for(var x =8;x>=0;x--)
+               chart.insertAdjacentHTML("afterend",
+               "<p>" + xlabel[x] + " : " + data.phq9[x] + "</p>"
+               )
+               chart.insertAdjacentHTML("afterend","<p>Average Scores: </p>")
         })
+        
     }
 getData()

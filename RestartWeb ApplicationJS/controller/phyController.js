@@ -485,10 +485,10 @@ const getData= async(req,res)=>{
             totalJournals++
         })
     })
-    intensity=intensity/totalJournals
-    freq=freq/totalJournals
-    length=length/totalJournals
-    number=number/totalJournals
+    intensity=(intensity/totalJournals).toFixed(2)
+    freq=(freq/totalJournals).toFixed(2)
+    length=(length/totalJournals).toFixed(2)
+    number=(number/totalJournals).toFixed(2)
     var MoodxValues=["Very Sad","Sad","Neutral","Happy","Very Happy"]
     var MoodyValues=[vsad,sad,neutral,happy,vhappy]
     var UrgexValues = ["Intensity","Frequency","Length"]
@@ -501,6 +501,36 @@ const getData= async(req,res)=>{
         UrgeY:UrgeyValues,
         UrgeNum:number
     })
+}
+const getPHQ9 = async(req,res)=>{
+    var phq9=[0,0,0,0,0,0,0,0,0]
+
+    await firestore.collection("Accounts").doc(req.query.id).collection("Assessment")
+    .get()
+    .then((snap)=>{
+        var ctr=0
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            phq9[0]+=data.phq1
+            phq9[1]+=data.phq2
+            phq9[2]+=data.phq3
+            phq9[3]+=data.phq4
+            phq9[4]+=data.phq5
+            phq9[5]+=data.phq6
+            phq9[6]+=data.phq7
+            phq9[7]+=data.phq8
+            phq9[8]+=data.phq9 
+            ctr++
+        })
+    if(ctr>0)
+      for(var x = 0;x<9;x++)
+      {  
+        phq9[x] = phq9[x]/ctr.toFixed(2)
+      }
+      console.log(phq9)
+        
+    })
+    res.json({phq9:phq9})
 }
 module.exports ={
     getConnectedPatients,
@@ -529,5 +559,6 @@ module.exports ={
     getContent,
     newComment,
     createPost,
-    getData   
+    getData,
+    getPHQ9
 }
