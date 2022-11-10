@@ -27,7 +27,7 @@ async function getContent()
         for(var x of data.comments)
         {
             commentHolder.insertAdjacentHTML("afterbegin",
-            '<div class="col-10"><div class="commentBox"><h5><b>@' + x.nickName + '</b></h5>' +
+            '<div class="col-10"><h4><b>Comments:</b></h4><div class="commentBox"><h5><b>@' + x.nickName + '</b><img class="reportPostBtn" src="../public/reportBtn.png" onclick=""></h5>' +
             '<h6 class="SGMainComment">' + x.commentContent + '</h6><h6>Date posted: ' + x.date + '</h6></div></div>'
             )
         }

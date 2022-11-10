@@ -64,7 +64,7 @@ async function getPosts()
         console.log(data)
         for(var x of data.posts){
             post.insertAdjacentHTML("afterbegin",
-            '<div class="formDesign formAlign" onclick="goTo(\'' + x.id + '\',\'' + x.sgid +'\')"><h3 style="text-align: center;"><b>' + x.title + '</b></h3>'+ 
+            '<div class="formDesign formAlign newPosts" onclick="goTo(\'' + x.id + '\',\'' + x.sgid +'\')"><h3 style="text-align: center;"><b>' + x.title + '</b></h3>'+ 
             '<div class="SGMainPost"><h4>By ' + x.userNickname + '</h4><h4>Posted on: ' + x.date +'</div></div>'
             )
         }
