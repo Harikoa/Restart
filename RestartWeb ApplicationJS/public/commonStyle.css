@@ -108,6 +108,44 @@
 }	
 */
 
+.jrnlDataSpace{
+
+	max-height: 650px;
+	overflow-y: auto;
+}
+
+.jrnlDataSpace::-webkit-scrollbar{
+	width: 8px;
+}
+
+.jrnlDataSpace::-webkit-scrollbar-track{
+	background: lightgray;
+}
+
+.jrnlDataSpace::-webkit-scrollbar-thumb{
+	background: hsl(120 100% 20% / 1);
+	border-radius: 20px;
+}
+
+.jrnlDataSpace::-webkit-scrollbar-thumb:hover{
+	background: hsl(120 100% 10% / 1);
+}
+
+.jrnlDatas{
+	border: 3px solid darkcyan;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+
+.dataTitle{
+	margin-left: 80px;
+}
+
+.exportBtn{
+	float: right;
+}
+
 .container i{
 	font-size: 40px;
 	cursor: pointer;

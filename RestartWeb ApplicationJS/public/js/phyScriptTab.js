@@ -418,9 +418,9 @@ async function getData()
             for(var x of data.journals)
             {
                 journalSum.insertAdjacentHTML("afterend",
-                "<h3><b>" + x.date + "</b></h3><p>Mood: " + x.mood + "</p><p>Substance Frequency: " + x.substanceFrequency + 
+                "<div class='jrnlDatas'><h3><b>" + x.date + "</b></h3><p>Mood: " + x.mood + "</p><p>Substance Frequency: " + x.substanceFrequency + 
                 "</p><p>Substance Intensity: " + x.substanceIntensity + "<p>Substance Length: " + x.substanceLength + "<p>Substance Number: " + x.substanceNumber + 
-                "</p>"
+                "</p></div>"
                 
                 )
             }
@@ -516,7 +516,7 @@ async function getData()
                chart.insertAdjacentHTML("afterend",
                "<p>" + xlabel[x] + " : " + data.phq9[x] + "</p>"
                )
-               chart.insertAdjacentHTML("afterend","<p>Average Scores: </p>")
+               chart.insertAdjacentHTML("afterend","<h3 class='mt-3'><b>Average Scores: </b></h3>")
         })
         
     }
