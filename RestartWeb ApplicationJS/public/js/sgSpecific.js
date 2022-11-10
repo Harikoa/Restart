@@ -27,7 +27,8 @@ async function getContent()
         for(var x of data.comments)
         {
             commentHolder.insertAdjacentHTML("afterbegin",
-            '<div class="col-10"><h4><b>Comments:</b></h4><div class="commentBox"><h5><b>@' + x.nickName + '</b><img class="reportPostBtn" src="../public/reportBtn.png" onclick=""></h5>' +
+            '<div class="col-10"><h4><b>Comments:</b></h4><div class="commentBox"><h5><b>@' + x.nickName + '</b><img class="reportPostBtn" src="../public/reportBtn.png" onclick="ReportComment(\'' + 
+             x.id + '\')"></h5>' +
             '<h6 class="SGMainComment">' + x.commentContent + '</h6><h6>Date posted: ' + x.date + '</h6></div></div>'
             )
         }
@@ -55,4 +56,46 @@ document.getElementById("newPost").addEventListener('submit',async e=>{
     })
     
 })
+
+async function ReportComment(commentId)
+{
+    var id = getParameterByName('id')
+    var sgid = getParameterByName('sgid')
+    await fetch("/phy/reportComment",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({id:id,sgid:sgid,commentId,commentId})
+    })
+    .then(async(res)=>{
+        var data = await res.json()
+        alert(data.msg)
+        window.location.reload()
+    })
+}
+function reportPost()
+{
+    var id = getParameterByName('id')
+    var sgid = getParameterByName('sgid')
+    fetch("/phy/reportPost",{
+        method:"POST",
+        headers:{"Content-Type": "application/json"},
+        body:JSON.stringify({id:id,sgid:sgid})
+    }).then(async(res)=>{
+        var data = await res.json()
+        console.log(data.bool)
+        console.log(typeof data.bool)
+        if(data.bool)
+        {
+            alert(data.msg)
+            window.location.href="/phy/sg?id="+sgid
+        }
+        else
+        {
+            alert(data.msg)
+        }
+    })
+}
+
 getContent()

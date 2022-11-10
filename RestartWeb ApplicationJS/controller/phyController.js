@@ -395,6 +395,7 @@ const getContent = async(req,res)=>{
     .then((snap)=>{
         snap.forEach((doc)=>{
             var data = doc.data()
+            data.id=doc.id
             data.date = data.datePosted.toDate().toLocaleString()
             comments.push(data)
         })
@@ -532,6 +533,34 @@ const getPHQ9 = async(req,res)=>{
     })
     res.json({phq9:phq9})
 }
+const reportComment = async(req,res)=>{
+    var data = req.body
+    firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.id).collection("Comments").doc(data.commentId)
+    .update({
+        reported:true,
+        resolved:false
+    })
+    .then(()=>{
+        res.json({msg:"Comment Reported"})
+    })
+    .catch(()=>{
+        res.json({msg:"Error! Try Again"})
+    })
+}
+const reportPost = (req,res)=>{
+    var data =req.body
+    firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.id)
+    .update({
+        reported:true,
+        resolved:false
+    })
+    .then(()=>{
+        res.json({msg:"Post Reported!",bool:true})
+    })
+    .catch(()=>{
+        res.json({msg:"Error! Try again!",bool:false})
+    })
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -560,5 +589,7 @@ module.exports ={
     newComment,
     createPost,
     getData,
-    getPHQ9
+    getPHQ9,
+    reportComment,
+    reportPost
 }
