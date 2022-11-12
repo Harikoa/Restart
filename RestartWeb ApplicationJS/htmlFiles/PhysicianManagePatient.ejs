@@ -270,7 +270,7 @@
                             <div class="rowDesign">
                                 <div class="row jrnlDataSpace">
                                     <div class="col-sm-12">
-                                        <h1 class="jSum"><b class="dataTitle">Journal Summary</b><button class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                        <h1 class="jSum"><b class="dataTitle">Journal Summary</b><button onclick="exportData()" class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +283,7 @@
                             <div class="rowDesign">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h1><b class="dataTitle">Mood Data</b><button class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                        <h1><b class="dataTitle">Mood Data</b><button  onclick="exportData()"  class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
                                         <canvas id="moodChart" style="width:100%;max-width:600px;display:inline;"></canvas>
                                     </div>
                                 </div>
@@ -297,7 +297,7 @@
                         <div class="rowDesign">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h1><b class="dataTitle">Urge Data</b><button class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                    <h1><b class="dataTitle">Urge Data</b><button  onclick="exportData()"  class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
                                     <canvas id="urgeChart" style="width:100%;max-width:800px;display:inline;"></canvas>
                                 </div>
                             </div>
@@ -311,7 +311,7 @@
                         <div class="rowDesign">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h1><b class="dataTitle">Phq9 Data</b><button class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                    <h1><b class="dataTitle">Phq9 Data</b><button  onclick="exportData()"  class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
                                     <canvas id="phq9Chart" style="width:100%;max-width:800px;display:inline;"></canvas>
                                 </div>
                             </div>
@@ -396,7 +396,6 @@
     </div>
 
 </div>
-
 
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">

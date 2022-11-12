@@ -2,6 +2,9 @@ const e = require("express")
 const firebase = require("../config")
 const firestore = firebase.firestore()
 const auth = firebase.auth()
+const chartJS = require("chart.js")
+const pdfdoc = require("pdfkit")
+const fs=require("fs")
 const getConnectedPatients = async(req,res)=>{
     const id =await auth.currentUser.uid
     var patients = []
@@ -527,9 +530,7 @@ const getPHQ9 = async(req,res)=>{
       for(var x = 0;x<9;x++)
       {  
         phq9[x] = phq9[x]/ctr.toFixed(2)
-      }
-      console.log(phq9)
-        
+      }     
     })
     res.json({phq9:phq9})
 }
@@ -561,6 +562,177 @@ const reportPost = (req,res)=>{
         res.json({msg:"Error! Try again!",bool:false})
     })
 }
+const exportdata= async(req,res)=>{
+    var id = req.query.id
+    var doc = new pdfdoc()
+    res.setHeader('Content-Type','application/pdf')
+    doc.pipe(res)
+    await firestore.collection("Accounts").doc(id)
+    .get()
+    .then((snap)=>{
+        var data= snap.data()
+        doc.fontSize(20)
+            .text(data.firstName + " " + data.middleName + " " + data.lastName) 
+            .fontSize(12)
+            .moveDown()
+            .text("Contact: " + data.contact)
+            .moveDown()
+            .text("Substance Used: " + data.substance)
+            .moveDown()
+            .text("Birthday: " + data.bday)
+            .moveDown()
+            .text("Last Assessment: " + data.lastAssessment)
+            .moveDown()
+            .text("Email: " + data.email)
+            .moveDown().moveDown()
+    })
+    doc.fontSize(20)
+        .font('Helvetica-Bold')
+        .text("Journal Summary").moveDown()
+        
+    await firestore.collection("Accounts").doc(id).collection("Journal").get()
+    .then((snap)=>{
+        snap.forEach((docu)=>{
+            var data = docu.data()
+            doc.fontSize(14)
+            doc.font('Helvetica-Bold')
+                .text(data.date)
+                .moveDown()
+                .font('Helvetica')
+                .text("Mood: " + data.mood)
+                .moveDown()
+                .text("Intensity of Craving: " + data.substanceIntensity)
+                .moveDown()
+                .text("Frequency of Craving: " + data.substanceFrequency)
+                .moveDown()
+                .text("Length of Craving: " + data.substanceLength)
+                .moveDown()
+                .text("Number of occurence of Craving: " + data.substanceNumber)
+                .moveDown()
+        })
+    })
+    var vsad=0
+    var sad =0
+    var neutral =0
+    var happy =0
+    var vhappy=0
+    var totalJournals =0
+    var intensity=0
+    var freq=0
+    var length =0
+    var number=0
+    await firestore.collection("Accounts").doc(id).collection("Journal").get()
+    .then((snap)=>{
+        snap.forEach((doc)=>{
+            var data = doc.data()
+            if(data.mood=='Very Sad')
+            vsad++
+            if(data.mood=='Sad')
+            sad++
+            if(data.mood=='Neutral')
+            neutral++
+            if(data.mood=='Happy')
+            happy++
+            if(data.mood=='Very Happy')
+            vhappy++
+            intensity+=data.substanceIntensity
+            freq+=data.substanceFrequency
+            length+=data.substanceLength
+            number+=data.substanceNumber
+            totalJournals++
+        })
+    })
+    intensity=(intensity/totalJournals).toFixed(2)
+    freq=(freq/totalJournals).toFixed(2)
+    length=(length/totalJournals).toFixed(2)
+    number=(number/totalJournals).toFixed(2)
+    var MoodxValues=["Very Sad","Sad","Neutral","Happy","Very Happy"]
+    var MoodyValues=[vsad,sad,neutral,happy,vhappy]
+    var UrgexValues = ["Intensity","Frequency","Length"]
+    var UrgeyValues = [intensity,freq,length]
+    var data = req.body
+    doc.addPage() 
+    try{
+        doc.fontSize(20)
+        doc.font('Helvetica-Bold')
+        .text("Mood Data")
+        .moveDown()
+        doc.image(data.moodChart,{fit:[500,500]})
+        doc.moveDown()
+        for(var x=0;x<5;x++)
+        {
+            doc.font("Helvetica")
+            .fontSize(14)
+            .text("Total " + MoodxValues[x] + " Days: " + MoodyValues[x])
+            .moveDown()
+        }
+        doc.addPage()
+        doc.font('Helvetica-Bold')
+        .text("Substance Craving  Data")
+        .moveDown()
+        doc.image(data.urgeChart,{fit:[500,500]})
+        doc.moveDown()
+        for(var x=0;x<3;x++)
+        {
+            doc.font("Helvetica")
+            .fontSize(14)
+           .text("Average " + UrgexValues[x] + " of Substance Craving: " + UrgeyValues[x])
+            .moveDown()
+        }
+        doc.text("Average Number of times of Substance Craving: " + number)
+        doc.addPage()
+        var phq9=[0,0,0,0,0,0,0,0,0]
+        
+        await firestore.collection("Accounts").doc(req.query.id).collection("Assessment")
+        .get()
+        .then((snap)=>{
+            var ctr=0
+            snap.forEach((doc)=>{
+                var data = doc.data()
+                phq9[0]+=data.phq1
+                phq9[1]+=data.phq2
+                phq9[2]+=data.phq3
+                phq9[3]+=data.phq4
+                phq9[4]+=data.phq5
+                phq9[5]+=data.phq6
+                phq9[6]+=data.phq7
+                phq9[7]+=data.phq8
+                phq9[8]+=data.phq9 
+                ctr++
+            })
+        if(ctr>0)
+          for(var x = 0;x<9;x++)
+          {  
+            phq9[x] = phq9[x]/ctr.toFixed(2)
+          }     
+        })
+        var xlabel = ["Little Interest","Feeling Down","Trouble Falling asleep","Feeling Tired","Poor Appetite","Feeling Bad", "Trouble Concentrating","Moving or speaking slowly","Suicidal Thoughts"]
+        doc.fontSize(20)
+        doc.font('Helvetica-Bold')
+        .text("PHQ9 Data")
+        .moveDown()
+        .image(data.phq9chart,{
+            fit:[500,500]
+        })
+        .moveDown()
+        doc.fontSize(17)
+        doc.text("Average Scores",{align:"center"})
+        .moveDown()
+        .font("Helvetica")
+        .fontSize("14")
+        for(var x = 0;x<9;x++)
+        {
+            doc.text(xlabel[x] + " : " + phq9[x])
+            .moveDown()
+        }
+    }
+    catch(e){
+        console.log(e)
+    }
+  
+    doc.end()
+}
+
 module.exports ={
     getConnectedPatients,
     link,
@@ -591,5 +763,6 @@ module.exports ={
     getData,
     getPHQ9,
     reportComment,
-    reportPost
+    reportPost,
+    exportdata
 }

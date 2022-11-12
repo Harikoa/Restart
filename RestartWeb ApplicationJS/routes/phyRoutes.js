@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const firebase = require("../config")
-const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages, getSGList, createSG, getSGMembers, getPosts, getContent, newComment, createPost, getData, getPHQ9,reportComment, reportPost}  = require("../controller/phyController")
+const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages, getSGList, createSG, getSGMembers, getPosts, getContent, newComment, createPost, getData, getPHQ9,reportComment, reportPost, exportdata}  = require("../controller/phyController")
 router.get("/",(req,res)=>{
     if(firebase.auth().currentUser==null)
     {
@@ -96,4 +96,5 @@ router.post("/getData",getData)
 router.post("/phq9",getPHQ9)
 router.post("/reportComment",reportComment)
 router.post("/reportPost",reportPost)
+router.post("/exportData",exportdata) 
 module.exports=router

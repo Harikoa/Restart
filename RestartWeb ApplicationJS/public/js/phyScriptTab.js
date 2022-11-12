@@ -430,7 +430,7 @@ async function getData()
             method:"POST"
         }).then(async(res)=>{
             var data =await res.json()
-            console.log(data)
+            console.log(res)
            new Chart("moodChart",{
             type:"bar",
             data:{
@@ -521,3 +521,30 @@ async function getData()
         
     }
 getData()
+
+async function exportData()
+{
+    var id = getParameterByName("id")
+    var chart = await document.getElementById("moodChart").toDataURL()
+    var uchart = await document.getElementById("urgeChart").toDataURL()
+    var pchart = await document.getElementById("phq9Chart").toDataURL()
+    const form = document.createElement('form')
+    form.method="POST"
+    form.action="/phy/exportData?id="+id
+    chartField=document.createElement("input")
+    chartField.name="moodChart"
+    chartField.value=chart
+    form.appendChild(chartField)
+    chartField=document.createElement("input")
+    chartField.name="urgeChart"
+    chartField.value=uchart
+    form.appendChild(chartField)
+    chartField=document.createElement("input")
+    chartField.name="phq9chart"
+    chartField.value=pchart
+    form.appendChild(chartField)
+    document.body.appendChild(form)
+    form.submit()
+    
+    
+}
