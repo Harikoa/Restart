@@ -562,6 +562,22 @@
 	text-align: left;
 }
 
+.table tr:hover{
+	background-color: seagreen;
+	color: white;
+	transition: 0.4s;
+}
+
+.tableScroll{
+	max-height: 1200px;
+	overflow-y: auto;
+}
+
+.tableLinkScroll{
+	max-height: 800px;
+	overflow-y: auto;
+}
+
 .navbar{
 	padding: 10px;
 	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
