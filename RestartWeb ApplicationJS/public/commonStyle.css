@@ -6,7 +6,7 @@
 	-o-background-size: cover;
 	background-size: cover;
     font-family:'Courier New', Courier, monospace;
-    color:seagreen;
+    color: seagreen;
 }
 
 .scroll-bar{
@@ -217,6 +217,18 @@
 .error{
 	text-align: center;
 	color: red;
+}
+
+.frgtPassCncl{
+	border-radius: 30px;
+	font-size: 20px;
+	float: right;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.frgtPassMain{
+	margin-top: 15%;
 }
 
 .namePatient{
@@ -565,7 +577,7 @@
 .table tr:hover{
 	background-color: seagreen;
 	color: white;
-	transition: 0.4s;
+	transition: 0.2s;
 }
 
 .tableScroll{
