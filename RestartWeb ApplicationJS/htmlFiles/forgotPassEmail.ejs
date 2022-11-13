@@ -11,10 +11,10 @@
 
     <!--Primary Navbar-->
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-        <a href="/phy" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
+        <a href="/" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
         <div class="collapse navbar-collapse" id="navbarMenu">
         </div>
-        <button class="btn btn-danger frgtPassCncl">Cancel</button>
+       <a href="/"><button class="btn btn-danger frgtPassCncl">Cancel</button></a> 
     </nav>
 
     <div class="container frgtPassMain">
@@ -22,8 +22,10 @@
             <div class="col-5 ">
                 <div class="rowDesign ">
                     <h4><b>Input Email Address</b></h4>
-                    <input class="form-control" type="Email" placeholder="example@email.com"></input>
+                    <form action="/forgetSubmit" method="post">
+                    <input class="form-control" name="email" required type="Email" placeholder="example@gmail.com"></input>
                     <button class="form-control btn btn-success mt-4" type="submit">Submit</button>
+                </form>
                 </div>
             </div>
         </div>
