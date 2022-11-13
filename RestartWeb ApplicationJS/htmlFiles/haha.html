@@ -1,10 +1,452 @@
+<!DOCTYPE html>
 <html>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="../public/commonStyle.css">
+<script src="https://kit.fontawesome.com/4505ce12d2.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../public/commonStyle.css">
-    <body>
-        <div class="tooltip">HELP
-            <span class="tooltiptext">Tooltip textasdasd</span>
+    <head>
+        <meta charset="UTF-8">
+        <title>testing tabs</title>
+    </head>
+
+<body>
+
+    <!--Primary Navbar-->
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <a href="/phy" class="navbar-brand"><img width= "60px"; height="60px"; src="../public/logo.png"></a>
+        <h1 class="Welcoming">Welcome</h1>
+      
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-lable="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto text-center">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/phy">My Patients</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/phy/SGList">Support Groups</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/phy/selfHelp">Manage Self-Help</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/phy/messageList">Messages</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/phy/profile">My Profile</a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="/admin/signOut"><button class="btn btn-outline-danger">Logout</button></a>
+            </li>
+            
+        </ul>
         </div>
-    </body>
+    </nav>
+
+<!--Secondary Navbar-->
+<div class="tabContainer"><h2 class="namePatient border text-center border-5 bg-light border-success"><%=locals.whole%></h2>
+    <div class="buttonContainer">
+        
+        <button class="physNav" onclick="showPanel(0, '#')">Journal</button>
+        <button class="physNav" onclick="showPanel(1, '#')">Task</button>
+        <button class="physNav" onclick="showPanel(2, '#')">Patient's Support Group</button>
+        <button class="physNav" onclick="showPanel(3, '#')">Drug Test</button>
+        <button class="physNav" onclick="showPanel(4, '#')">Visualized Data</button>
+        <button class="physNav" onclick="showPanel(5, '#')">Evaluation</button>
+    </div>
+
+    <!--Journal-->
+    <div class="tabPanel">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <!--Journal Data-->
+                <div class="carousel-item active">
+                    <div class="container">
+                        
+                        <div class="row justify-content-center rowDesign mt-4"><h1><b>Journal Contents</b></h1>
+                            <div class="col-3">
+                                <div class="scroll-bar">
+                                    <div class="sidebar ">
+                                        <ul class="navbar-nav ms-auto text-center journalClass ">
+                                            
+                                
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class='col-9 journalContent'><i onclick="Toggle()" id="starBtn" class="fa-regular fa-star"></i>
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Mood Tracker Data-->
+                <div class="carousel-item">
+                    <div class="container">
+                        
+                        <div class="row justify-content-center rowDesign mt-4"><h1><b>Important Journals</b></h1>
+                            <div class="col-3">
+                                <div class="scroll-bar">
+                                    <div class="sidebar ">
+                                        <ul class="navbar-nav ms-auto text-center journalClass ">
+                                            
+                                
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class='col-9 journalContent'><i onclick="Toggle()" id="starBtn" class="fa-regular fa-star"></i>
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+        <script>
+            var starbtn = document.getElementById('starBtn');
+
+            function Toggle(){
+              if(starbtn.classList.contains("fa")){
+                starbtn.classList.remove("fa");
+                starbtn.classList.add("fas");
+
+            } else{
+                starbtn.classList.remove("fas");
+                starbtn.classList.add("fa");
+            }
+            }
+        </script>
+
+
+    </div>
+
+    <!--Tasks-->
+    <div class="tabPanel">
+        <div class="container-fluid mt-4">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="rowDesign"><h2><b>Pending Tasks</b></h2>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                    <div class="scroll-bar">
+                                        <div class="sidebar">
+                                            <ul class="navbar-nav ms-auto text-center taskPendingButton">
+                                            
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-9 journalContent taskPendingContent">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="rowDesign"><h2><b>Accomplished Tasks</b></h2>
+                        <div class="row">
+                        <div class="col-3">
+                            <div class="scroll-bar">
+                                <div class="sidebar">
+                                    <ul class="navbar-nav ms-auto text-center taskDoneButton">
+                                    
+                                    </ul>
+                                </div> 
+                            </div>
+                        </div>
+                    
+                        <div class="col-9 journalContent taskDoneContent">
+                         
+                        
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            
+        <div class="container">
+            <div class="row justify-content-center rowDesign">
+                <h1><b>Create Task</b></h1>
+                <div class="col-10 journalContent">
+                        <form class="form-group formAlign" method="post" action="/phy/createTask?id=<%=locals.id%>">
+                            <h4><b>Task Title</b><input class="form-control" id="tasktitle"name="title" required></h4>
+                            <h4><b>Task Description</b><textarea required class="taskDescription" name="taskDescription" rows="12"></textarea></h4>
+                            <h4><b>Task Deadline <input min="<%=new Date().toISOString().substring(0,10);%>"required name="taskDeadline" type="date"></b></h4>
+                            <p><button class="btn btn-success" type="submit">Submit</button></p>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--Support Group-->
+    <div class="tabPanel">
+        <div class="container-fluid mt-4">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="rowDesign">
+                        <h2><b>List of Patient's Support Groups</b></h2>
+                        <table id="table" class="table">
+                            <tr class="tableRow currentSupport">
+                                <th>Support Group Name</th>
+                                <th>Desciption</th>
+                                <th>Action</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="rowDesign">
+                        <h2><b>Other Support Groups</b></h2>
+                        <table id="table" class="table">
+                            <tr class="tableRow otherSupport">
+                                <th>Support group Name</th>
+                                <th>Desciption</th>
+                                <th>Action</th>
+                            </tr>
+                        </table>
+  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Drug Test-->
+    <div class="tabPanel">
+        <div class="container-fluid mt-8">
+            <div class="row justify-content-center">
+
+                <!--Peding Drug TEst-->
+                <div class="col-6">
+                    
+                    <div class="rowDesign"><h2><b>Pending Requests</b></h2>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="scroll-bar">
+                                    <div class="sidebar">
+                                        <h4><b>Pending Drug Tests</b></h4>
+                                        
+                                        <ul class="pendingDrug navbar-nav ms-auto text-center ">
+                                            
+                                        </ul>
+
+                                        <h4><b>Completed Drug Tests</b></h4>
+                                        <ul class="navbar-nav ms-auto text-center completeDrug">
+                                                    
+
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 journalContent drugContent">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>    
+        </div>
+
+        <div class="container">
+                <div class="row justify-content-center rowDesign">
+                    <h1><b>Create Drug Test Request</b></h1>
+                    <div class="col-9 journalContent">
+                            <form class="form-group formAlign" method="post" action="/phy/createDrugTest?id=<%=locals.id%>">
+                                <h4><b>Due Date</b><input min="<%=new Date().toISOString().substring(0,10);%>" class="form-control" name="deadline"id="tasktitle" type="date" required></h4>
+                                <p><button class="btn btn-success" type="submit">Create</button></p>
+                            </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!--Data-->
+    <div class="tabPanel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <!--Journal Data-->
+                <div class="carousel-item active">
+                        <div class="container mt-3">
+                            <div class="rowDesign">
+                                <div class="row jrnlDataSpace">
+                                    <div class="col-sm-12">
+                                        <h1 class="jSum"><b class="dataTitle">Journal Summary</b><button onclick="exportData()" class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <!--Mood Tracker Data-->
+                <div class="carousel-item">
+                        <div class="container mt-3">
+                            <div class="rowDesign">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1><b class="dataTitle">Mood Data</b><button  onclick="exportData()"  class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                        <canvas id="moodChart" style="width:100%;max-width:600px;display:inline;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <!--Urge Intensity Data-->
+                <div class="carousel-item">
+                    <div class="container mt-3">
+                        <div class="rowDesign">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h1><b class="dataTitle">Urge Data</b><button  onclick="exportData()"  class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                    <canvas id="urgeChart" style="width:100%;max-width:800px;display:inline;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--PHQ9 Data-->
+                <div class="carousel-item">
+                    <div class="container mt-3">
+                        <div class="rowDesign">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h1><b class="dataTitle">Phq9 Data</b><button  onclick="exportData()"  class="btn btn-outline-primary exportBtn">EXPORT</button></h1>
+                                    <canvas id="phq9Chart" style="width:100%;max-width:800px;display:inline;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+    <!--Evaluations-->
+    <div class="tabPanel">
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-6">
+                    <div class="rowDesign">
+                        <h2><b>Pending Evaluation</b>
+                            <span class="toRight" 
+                                data-bs-toggle="tooltip" 
+                                data-bs-placement="bottom" 
+                                data-bs-delay="100" 
+                                title="0 = Not At All | 
+                                1 = Several Days | 
+                                2 = More that half the days | 
+                                3 = Nearly Everyday">
+                                <img src="../public/question.png" width="40px" height="40px">
+                            </span>
+                        </h2>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                    <div class="scroll-bar">
+                                        <div class="sidebar">
+                                            <ul class="navbar-nav ms-auto text-center evalPendingButton">
+                                            
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="col-sm-9 journalContent evalPendingContent">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="rowDesign"><h2><b>Accomplished Evaluation</b></h2>
+                        <div class="row">
+                        <div class="col-3">
+                            <div class="scroll-bar">
+                                <div class="sidebar">
+                                    <ul class="navbar-nav ms-auto text-center evalDoneButton">
+                                    
+                                    </ul>
+                                </div> 
+                            </div>
+                        </div>
+                    
+                        <div class="col-9 journalContent evalDoneContent">
+                         
+                        
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+<script src="../public/js/phyScriptTab.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
 </html>
