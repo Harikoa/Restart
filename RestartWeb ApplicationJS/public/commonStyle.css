@@ -139,11 +139,12 @@
 
 
 .dataTitle{
-	margin-left: 80px;
+	margin-left: 20%;
 }
 
 .exportBtn{
 	float: right;
+	margin-right: 10%;
 }
 
 .container i{
