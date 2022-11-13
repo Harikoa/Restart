@@ -63,4 +63,15 @@ router.post("/",(req,res)=>{
     });
  
 })
+
+router.get("/forget",(req,res)=>{
+    res.render("../htmlFiles/forgotPassEmail")
+})
+router.post("/forgetSubmit",async(req,res)=>{
+    await auth.sendPasswordResetEmail(req.body.email)
+    .then(()=>{
+        res.send("<script>alert('Password Reset email sent');window.location.href='/'</script>")
+    })
+    
+})
 module.exports = router;
