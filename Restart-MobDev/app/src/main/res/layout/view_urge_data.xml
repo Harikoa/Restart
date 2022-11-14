@@ -100,7 +100,8 @@
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:background="@android:color/transparent"
-            android:text="Export" />
+            android:text="Export"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
