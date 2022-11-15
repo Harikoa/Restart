@@ -1,3 +1,5 @@
+
+
 var tabButtons = document.querySelectorAll(".tabContainer .buttonContainer button");
 var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
 
@@ -49,16 +51,41 @@ async function getJournal()
         ) 
         ctr--;
        })
+       var ctr = data.length-1;
        data.forEach((doc)=>{
+        console.log(doc)
+        var classImp = "fa"
+        if(doc.important)
+        classImp="fas"
         journalContents.insertAdjacentHTML("afterbegin",
-        "<div class='scroll-bar subPanel'><h3><b>"  + doc.date + "</b></h3><p>Mood: " + doc.mood + "</p><p>Substance Frequency: " + doc.substanceFrequency + 
+        "<div class='scroll-bar subPanel'><i onclick='toggle(" + ctr + ",\""+doc.id+"\")' class='fa-regular fa-star " + classImp + "'></i><h3><b>"  + doc.date + "</b></h3><p>Mood: " + doc.mood + "</p><p>Substance Frequency: " + doc.substanceFrequency + 
         "</p><p>Substance Intensity: " + doc.substanceIntensity + "<p>Substance Length: " + doc.substanceLength + "<p>Substance Number: " + doc.substanceNumber + 
         "</p><h4><b>Journal Contents</b></h4><p>" + doc.journalEntry + "</p></div>")
+        ctr--;
        })
     })
     subPanel(0,"#")
 }
-
+async function toggle(index,id)
+{
+    var pid = getParameterByName("id")
+    var star = document.querySelectorAll(".fa-regular")
+    if(star[index].classList.contains("fa"))
+    {
+        star[index].classList.add("fas")
+        star[index].classList.remove("fa")
+    }
+    else
+    {
+        star[index].classList.add("fa")
+        star[index].classList.remove("fas")
+    }
+    fetch("/phy/important?jid="+id +"&pid="+pid)
+    .then(async(res)=>{
+        var data =await res.json()
+        alert(data.msg)
+    })
+}
 async function getTasks()
 {
     var taskPbutton = document.querySelector(".taskPendingButton")
@@ -181,7 +208,7 @@ async function getEvaluations()
     await fetch("/phy/getEval?id="+id,{method:"POST"})
     .then(async(res)=>{
         var data = await res.json()
-        console.log(data)
+     
         var pending = data.notdone.length-1
         var done = data.done.length-1
         data.notdone.forEach((doc)=>{
@@ -315,7 +342,7 @@ function drugSubPanel(panelIndex){
     
     var buttons = document.querySelectorAll(".drugButton")
     var panels = document.querySelectorAll(".drugContents")
-    console.log(buttons.length)
+    
      if(buttons.length>0)  
     {
         buttons.forEach(function(node){
@@ -430,7 +457,6 @@ async function getData()
             method:"POST"
         }).then(async(res)=>{
             var data =await res.json()
-            console.log(res)
            new Chart("moodChart",{
             type:"bar",
             data:{
@@ -534,17 +560,93 @@ async function exportData()
     chartField=document.createElement("input")
     chartField.name="moodChart"
     chartField.value=chart
+    chartField.type="hidden"
     form.appendChild(chartField)
     chartField=document.createElement("input")
     chartField.name="urgeChart"
     chartField.value=uchart
+    chartField.type="hidden"
     form.appendChild(chartField)
     chartField=document.createElement("input")
     chartField.name="phq9chart"
     chartField.value=pchart
+    chartField.type="hidden"
     form.appendChild(chartField)
     document.body.appendChild(form)
     form.submit()
+}
+
+async function getImportant()
+{
+    var id = getParameterByName('id')
+    const socket =io("http://localhost:8080")
+    socket.emit("getImportant",id)
+    socket.on("importantJ",async(data)=>{
+        var list = document.querySelector(".Important")
+        var contentList = document.querySelector(".ImportantContent")
+        list.innerHTML=""
+        var ctr = data.important.length-1
+        data.important.forEach((doc)=>{
+            list.insertAdjacentHTML("afterbegin","<li ><button class='subImportantButton' onclick='subImportantPanel("+ ctr + ",\"#\")'>"+ doc.date + "</button></li>")
+            var classImp = "fa"
+            if(doc.important)
+            classImp="fas"
+            contentList.insertAdjacentHTML("afterbegin",
+            "<div class='scroll-bar subImportantPanel'><i onclick='toggleImportant(" + ctr + ",\""+doc.id+"\")' class='fa-regular fa-star importantToggle " + classImp + "'></i><h3><b>"  + doc.date + "</b></h3><p>Mood: " + doc.mood + "</p><p>Substance Frequency: " + doc.substanceFrequency + 
+            "</p><p>Substance Intensity: " + doc.substanceIntensity + "<p>Substance Length: " + doc.substanceLength + "<p>Substance Number: " + doc.substanceNumber + 
+            "</p><h4><b>Journal Contents</b></h4><p>" + doc.journalEntry + "</p></div>")
+            ctr--
+        })
+        subImportantPanel(0)    
+    })
+   
+}
+getImportant()
+
+function subImportantPanel(panelIndex){
+    var buttons = document.querySelectorAll(".subImportantButton")
+    var panels = document.querySelectorAll(".subImportantPanel")
+     if(buttons.length>0)  
+    {
+        buttons.forEach(function(node){
+            node.style.backgroundColor="";
+            node.style.borderRadius="50px";
+            node.style.paddingLeft="25%";
+            node.style.paddingRight="25%";
+            node.style.paddingTop="3%";
+            node.style.paddingBottom="3%";
+            node.style.marginBottom="5px";
+            node.style.fontSize="20px";
+            node.style.color="";
+        });
+        buttons[panelIndex].style.backgroundColor="forestgreen";
+        buttons[panelIndex].style.color="white";
+        panels.forEach(function(node) {
+            node.style.display="none";
     
-    
+        });
+        panels[panelIndex].style.display="block";
+        panels[panelIndex].style.backgroundColor="#";   
+    }
+    }
+
+    async function toggleImportant(index,id)
+{
+    var pid = getParameterByName("id")
+    var star = document.querySelectorAll(".importantToggle")
+    if(star[index].classList.contains("fa"))
+    {
+        star[index].classList.add("fas")
+        star[index].classList.remove("fa")
+    }
+    else
+    {
+        star[index].classList.add("fa")
+        star[index].classList.remove("fas")
+    }
+    fetch("/phy/important?jid="+id +"&pid="+pid)
+    .then(async(res)=>{
+        var data =await res.json()
+        alert(data.msg)
+    })
 }

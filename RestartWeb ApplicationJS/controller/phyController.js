@@ -60,7 +60,9 @@ const getJournal = async(req,res)=>{
     await firestore.collection("Accounts").doc(id).collection("Journal").get()
     .then(async(snap)=>{
         await snap.forEach((doc)=>{
-            journals.push(doc.data())
+            var data = doc.data()
+            data.id=doc.id
+            journals.push(data)
           
         })
         res.json({journals:journals})    
@@ -732,7 +734,25 @@ const exportdata= async(req,res)=>{
   
     doc.end()
 }
-
+const important = async(req,res)=>{
+    var data = req.query
+    var important = false
+    await firestore.collection("Accounts").doc(data.pid).collection("Journal").doc(data.jid)
+    .get()
+    .then((snap)=>{
+        important = snap.data().important
+    })
+    await firestore.collection("Accounts").doc(data.pid).collection("Journal").doc(data.jid)
+    .update({
+        important:!important
+    }).then(()=>{
+        res.json({msg:"SUCCESS"})
+    })
+    .catch(()=>{
+        res.json({msg:"FAILED"})
+    })
+    
+}
 module.exports ={
     getConnectedPatients,
     link,
@@ -764,5 +784,6 @@ module.exports ={
     getPHQ9,
     reportComment,
     reportPost,
-    exportdata
+    exportdata,
+    important
 }
