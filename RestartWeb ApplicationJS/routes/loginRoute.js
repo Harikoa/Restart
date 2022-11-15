@@ -72,6 +72,9 @@ router.post("/forgetSubmit",async(req,res)=>{
     .then(()=>{
         res.send("<script>alert('Password Reset email sent');window.location.href='/'</script>")
     })
+    .catch(()=>{
+        res.send("<script>alert('User not found!');window.location.href='/forget'</script>")
+    })
     
 })
 module.exports = router;
