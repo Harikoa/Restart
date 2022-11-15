@@ -137,6 +137,9 @@
 	margin-bottom: 10px;
 }
 
+.tabContainer .buttonContainer .fiveTabs{
+	width: 20%;
+}
 
 .dataTitle{
 	margin-left: 20%;

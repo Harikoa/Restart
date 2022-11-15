@@ -53,10 +53,12 @@
 <!--Secondary Navbar-->
 <div class="tabContainer"><h3 class="namePatient border text-center border-3 bg-light border-success">ALUMNI</h3>
     <div class="buttonContainer">
-        <button onclick="showPanel(0, '#')">Create Alumni Account</button>
-        <button onclick="showPanel(1, '#')">Edit Alumni Account</button>
-        <button onclick="showPanel(2, '#')">Delete Alumni Account</button>
-        <button onclick="showPanel(3, '#')">Suspend Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(0, '#')">Create Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(1, '#')">Edit Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(2, '#')">Delete Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(3, '#')">Suspend Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(4, '#')">Deactivation Requests</button>
+
     </div>
 
     <!--Create Account-->
@@ -249,6 +251,31 @@
             </div>
         </div>
     </div>
+
+    <!--Deactivation Requests-->
+    <div class="tabPanel">
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="rowDesign">
+                        <h1><b>Deactivation Requests</b></h1>
+                    </div>
+                </div>
+                
+                <!--Repeat-->
+                <div class="col-10">
+                    <div class="formDesign">
+                        <h3><b>@User Nickname</b></h3>
+                        <h5>I am requesting to deactivate my account</h5>
+                        <button class="btn btn-primary" type="">Deactivate</button>
+                        <button class="btn btn-warning" type="">Ignore</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
