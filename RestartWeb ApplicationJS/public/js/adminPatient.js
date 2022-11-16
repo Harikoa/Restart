@@ -116,7 +116,7 @@ async function activateReq(bool,email,id)
         var data = await response.json()
         console.log(data)
         alert(data.msg)
-        window.location.href="/admin/alumni?panel=4"
+        window.location.href="/admin?panel=4"
     })
  
 }
