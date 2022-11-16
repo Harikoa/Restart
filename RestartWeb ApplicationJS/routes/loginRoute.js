@@ -26,7 +26,7 @@ router.get("/",(req,res)=>
             }
             else if(data.role=="physician")
             {
-                res.redirect('/physician')
+                res.redirect('/phy')
             }});
     }
 })
@@ -45,7 +45,7 @@ router.post("/",(req,res)=>{
             }
             else if(data.role=="physician")
             {
-                res.redirect('/physician')
+                res.redirect('/phy')
             }
             else{
                 auth.signOut()
@@ -62,5 +62,19 @@ router.post("/",(req,res)=>{
      res.redirect('/?type=inv')
     });
  
+})
+
+router.get("/forget",(req,res)=>{
+    res.render("../htmlFiles/forgotPassEmail")
+})
+router.post("/forgetSubmit",async(req,res)=>{
+    await auth.sendPasswordResetEmail(req.body.email)
+    .then(()=>{
+        res.send("<script>alert('Password Reset email sent');window.location.href='/'</script>")
+    })
+    .catch(()=>{
+        res.send("<script>alert('User not found!');window.location.href='/forget'</script>")
+    })
+    
 })
 module.exports = router;

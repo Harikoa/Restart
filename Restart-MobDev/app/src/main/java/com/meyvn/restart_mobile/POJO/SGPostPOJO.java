@@ -6,7 +6,7 @@ public class SGPostPOJO {
     private String userID,Title, Content,postID,SGID,userNickname;
     private Date datePosted;
     private boolean isReported;
-
+    private boolean resolved;
     public String getUserID() {
         return userID;
     }
@@ -69,5 +69,13 @@ public class SGPostPOJO {
 
     public void setUserNickname(String userNickname) {
         this.userNickname = userNickname;
+    }
+
+    public boolean isResolved() {
+        return resolved;
+    }
+
+    public void setResolved(boolean resolved) {
+        this.resolved = resolved;
     }
 }

@@ -31,7 +31,7 @@
                 </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="/sg">Manage Forums</a>
+                <a class="nav-link" href="/admin/sg">Manage Forums</a>
             </li>
             
             <li class="nav-item">
@@ -53,16 +53,18 @@
 <!--Secondary Navbar-->
 <div class="tabContainer"><h3 class="namePatient border text-center border-3 bg-light border-success">ALUMNI</h3>
     <div class="buttonContainer">
-        <button onclick="showPanel(0, '#')">Create Alumni Account</button>
-        <button onclick="showPanel(1, '#')">Edit Alumni Account</button>
-        <button onclick="showPanel(2, '#')">Delete Alumni Account</button>
-        <button onclick="showPanel(3, '#')">Suspend Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(0, '#')">Create Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(1, '#')">Edit Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(2, '#')">Delete Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(3, '#')">Suspend Alumni Account</button>
+        <button class="fiveTabs" onclick="showPanel(4, '#')">Deactivation Requests</button>
+
     </div>
 
     <!--Create Account-->
     <div class="tabPanel">
         
-        <div class="container mt-5">
+        <div class="container mt-3">
             <div class="row justify-content-center">
                 <h4><%=locals.msg%></h4>
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
@@ -93,11 +95,11 @@
 
     <!--Edit Account-->
     <div class="tabPanel">
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-3">
             <div class="row justify-content-center">
     
                 <div class="col-sm-9">
-                <div class="formDesign">
+                <div class="formDesign tableScroll">
                     <div>
                         <h1><b>List of Alumni</b></h1>
                         <table id="tableEdit" class="table">
@@ -154,11 +156,11 @@
 
     <!--Delete Account-->
     <div class="tabPanel">
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-3">
             <div class="row justify-content-center">
     
                 <div class="col-sm-9">
-                <div class="formDesign">
+                <div class="formDesign tableScroll">
                     <div>
                         <h1><b>List of Alumni</b></h1>
                         <table id="table" class="table">
@@ -197,11 +199,11 @@
 
     <!--Suspend Account-->
     <div class="tabPanel">
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-3">
             <div class="row justify-content-center">
     
                 <div class="col-sm-9">
-                <div class="formDesign">
+                <div class="formDesign tableScroll">
                     <div>
                         <h1><b>List of Alumni</b></h1>
                         <table id="table" class="table suspend">
@@ -249,6 +251,26 @@
             </div>
         </div>
     </div>
+
+    <!--Deactivation Requests-->
+    <div class="tabPanel">
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="rowDesign">
+                        <h1><b>Deactivation Requests</b></h1>
+                    </div>
+                </div>
+                
+                <!--Repeat-->
+                <div class="col-10 deacRepeat">
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

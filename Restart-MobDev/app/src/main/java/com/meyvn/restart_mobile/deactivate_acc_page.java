@@ -52,15 +52,33 @@ public class deactivate_acc_page extends AppCompatActivity {
                                     pojo.setFinished(false);
                                     pojo.setUserID(Login.authACC);
                                     pojo.setDateRequested(new Date());
-                                    fs.add(pojo)
-                                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                    pojo.setRole(Login.storedAcc.getRole());
+                                    fs.whereEqualTo("userID",auth.getCurrentUser().getUid())
+                                            .whereEqualTo("finished",false)
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                                 @Override
-                                                public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                    Toast.makeText(getApplicationContext(), "Request submitted", Toast.LENGTH_LONG).show();
-                                                    finish();
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if(task.isSuccessful())
+                                                {
+                                                    QuerySnapshot qs = task.getResult();
+                                                    if(qs.getDocuments().isEmpty())
+                                                    {
+                                                        fs.add(pojo)
+                                                                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                                        Toast.makeText(getApplicationContext(), "Request submitted", Toast.LENGTH_LONG).show();
+                                                                        finish();
+                                                                    }
+                                                                })
+                                                        ;
+                                                    }
+                                                    else
+                                                        Toast.makeText(getApplicationContext(),"You have existing request!",Toast.LENGTH_LONG).show();
                                                 }
-                                            })
-                                    ;
+                                                }
+                                            });
                                 } else
                                     Toast.makeText(getApplicationContext(), "WRONG PASSWORD", Toast.LENGTH_LONG).show();
                             }

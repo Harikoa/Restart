@@ -1,11 +1,14 @@
 {
   "dependencies": {
     "@types/node": "^18.8.5",
+    "chart.js": "^3.9.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "firebase": "^8.10.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "pdfkit": "^0.13.0",
+    "socket.io": "^4.5.3"
   },
   "name": "restartwebapp",
   "version": "1.0.0",

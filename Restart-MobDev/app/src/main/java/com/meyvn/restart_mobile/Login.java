@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,14 +41,23 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(auth.getCurrentUser()!=null) {
+            checkNotif();
             getAcc(auth.getCurrentUser().getUid());
         }
         else {
             setContentView(R.layout.login);
+            TextView forgotPass = findViewById(R.id.forgotPass);
             EditText email = findViewById(R.id.EmailAddress);
             EditText password = findViewById(R.id.Password);
             Button submit = findViewById(R.id.SignInButton);
             FirebaseFirestore db = FirebaseFirestore.getInstance();
+            forgotPass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getApplicationContext(),ForgotPassword.class);
+                    startActivity(i);
+                }
+            });
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -59,6 +69,7 @@ public class Login extends AppCompatActivity {
                                    if(task.isSuccessful())
                                    {
                                        String UID = task.getResult().getUser().getUid();
+                                       checkNotif();
                                        getAcc(UID);
                                    }
                                    else
@@ -84,6 +95,7 @@ public class Login extends AppCompatActivity {
 
     public void checkNotif()
     {
+        System.out.println("HELLO");
         PeriodicWorkRequest prd = new PeriodicWorkRequest.Builder(notificationWorker.class,1, TimeUnit.DAYS)
                 .build()
                 ;

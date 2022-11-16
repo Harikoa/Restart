@@ -71,6 +71,7 @@ public class view_specific_post extends AppCompatActivity implements commentRecy
                     poj.setCommentContent(comment.getText().toString().trim());
                     poj.setNickName(Login.storedAcc.getNickname());
                     poj.setUserID(Login.authACC);
+                    poj.setResolved(false);
                     poj.setReported(false);
                     FirebaseFirestore.getInstance().collection("Support Groups").document(pojo.getSGID()).collection("Post")
                             .document(pojo.getPostID()).collection("Comments").add(poj)
@@ -137,7 +138,7 @@ public class view_specific_post extends AppCompatActivity implements commentRecy
                 if(i == DialogInterface.BUTTON_POSITIVE)
                 {
                     FirebaseFirestore.getInstance().collection("Support Groups").document(pojo.getSGID()).collection("Post")
-                            .document(pojo.getPostID()).update("reported",true)
+                            .document(pojo.getPostID()).update("reported",true,"resolved",false)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -170,7 +171,7 @@ public class view_specific_post extends AppCompatActivity implements commentRecy
           if(i==DialogInterface.BUTTON_POSITIVE){
               FirebaseFirestore.getInstance().collection("Support Groups").document(pojo.getSGID()).collection("Post")
                       .document(pojo.getPostID()).collection("Comments").document(array.get(position).getCommentID())
-                      .update("reported",true)
+                      .update("reported",true,"resolved",false)
                       .addOnCompleteListener(new OnCompleteListener<Void>() {
                           @Override
                           public void onComplete(@NonNull Task<Void> task) {

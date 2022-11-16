@@ -5,7 +5,7 @@ import java.util.Date;
 public class commentPOJO {
     String userID, commentContent,nickName,commentID;
     Date datePosted;
-
+    boolean resolved;
     boolean isReported;
 
     public String getUserID() {
@@ -54,5 +54,13 @@ public class commentPOJO {
 
     public void setCommentID(String commentID) {
         this.commentID = commentID;
+    }
+
+    public boolean isResolved() {
+        return resolved;
+    }
+
+    public void setResolved(boolean resolved) {
+        this.resolved = resolved;
     }
 }

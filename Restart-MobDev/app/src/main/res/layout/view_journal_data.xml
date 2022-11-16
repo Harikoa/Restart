@@ -101,7 +101,8 @@
             android:layout_gravity="end"
             android:background="@android:color/transparent"
             android:text="Export"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout

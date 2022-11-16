@@ -156,7 +156,9 @@ const editAcc = async (req,res)=>{
  
 }
         
-const activate = async (bool,email)=>{
+const activate = async (req,res)=>{
+    var bool = req.query.bool
+    var email = req.query.email
     if(bool=="true")
     bool = true
     else
@@ -169,11 +171,11 @@ const activate = async (bool,email)=>{
                 activated:bool
             })  
         })
-        return {msg:"Success"}
+       res.json({msg:"SUCCESS"})
     })
     .catch((e)=>{
         console.log(e.message)
-        return {msg:"Failed!"}
+        res.json({msg:"FAILED"})
     })
 }
        
@@ -390,6 +392,189 @@ const activate = async (bool,email)=>{
         }
         res.send("")
        }
+
+       const getResolved = async(req,res)=>{
+        var posts = []
+        var comments = []
+        await firestore.collection("Support Groups").get()
+        .then(async(snap)=>{
+            for(var docz of snap.docs)
+            {
+                await docz.ref.collection("Post")
+                .get()
+                .then(async(snaps)=>{
+                    
+                    for (var docs of snaps.docs)
+                    {
+                        if(docs.data().reported==true&& docs.data().resolved==false)
+                        {
+                            var post= docs.data()
+                            post.id=docs.id
+                        posts.push(post)
+                        }
+                        await docs.ref.collection("Comments").where("reported","==",true)
+                        .where("resolved","==",false)
+                        .get()
+                        .then(async(snap)=>{
+                            for(var doc of snap.docs)
+                            {
+                                var comm = doc.data()
+                                comm.postID = docs.id
+                                comm.sgid=docs.data().sgid
+                                comm.id =doc.id
+                               comments.push(comm)
+                            }
+                        })
+                        
+                    }
+                })
+            }
+          
+        })
+       res.json({posts: posts,comments:comments})
+       }
+
+
+       const resolve = async(req,res)=>{
+        var data = req.query
+        var rep = true
+        if(data.action=="ignore")
+            rep=false
+        
+        console.log(data)
+        if(data.type=="comment")
+        {
+           await firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.postid)
+           .collection("Comments").doc(data.commentid.trim()).update({
+            resolved:true,
+            reported:rep
+           })
+           .then(async (snap)=>{
+            await res.json({message:"SUCCESS!"})
+           })
+           .catch(async(e)=>{
+            await res.json({message:"Failed!"})
+            console.log(e.message)
+           })
+        }
+        else if(data.type=="post")
+        {
+            console.log(data.postid)
+            await firestore.collection("Support Groups").doc(data.sgid).collection("Post").doc(data.postid).update({
+             resolved:true,
+             reported:rep
+            })
+            .then(async (snap)=>{
+             await res.json({message:"SUCCESS!"})
+            })
+            .catch(async(e)=>{
+             await res.json({message:"Failed!"})
+             console.log(e.message)
+            })
+        }
+       
+       }
+
+       const getUnresolved = async(req,res)=>{
+        var posts = []
+        var comments = []
+        await firestore.collection("Support Groups").get()
+        .then(async(snap)=>{
+            for(var docz of snap.docs)
+            {
+                await docz.ref.collection("Post")
+                .get()
+                .then(async(snaps)=>{
+                    
+                    for (var docs of snaps.docs)
+                    {
+                        if(docs.data().resolved==true)
+                        {
+                            var post= docs.data()
+                            post.id=docs.id
+                        posts.push(post)
+                        }
+                        await docs.ref.collection("Comments")
+                        .where("resolved","==",true)
+                        .get()
+                        .then(async(snap)=>{
+                            for(var doc of snap.docs)
+                            {
+                                var comm = doc.data()
+                                comm.postID = docs.id
+                                comm.sgid=docs.data().sgid
+                                comm.id =doc.id
+                               comments.push(comm)
+                            }
+                        })
+                        
+                    }
+                })
+            }
+          
+        })
+       res.json({posts: posts,comments:comments})
+       }
+
+    const getDeactivateReq = async(req,res)=>{
+        var accountLists =[]
+        var patientlist = []
+        var alumnilist = []
+        await firestore.collection("Accounts").get()
+        .then((snap)=>{
+            snap.forEach((doc)=>{
+                var data = doc.data()
+                data.id = doc.id
+                accountLists.push(data)
+            })
+        })
+        await firestore.collection("AccountDeactivation")
+        .where("finished","==",false)
+        .get()
+        .then((snap)=>{
+                snap.forEach((doc)=>{
+                    var data = doc.data()
+                    accountLists.forEach((xd)=>{
+                        if(data.userID == xd.id)
+                        {
+                           data.nickname =  xd.nickname
+                           data.firstName = xd.firstName
+                           data.lastName = xd.lastName
+                        }
+                    })
+                    data.id = doc.id
+                    if(data.role=="patient")
+                    patientlist.push(data)
+                    else
+                    alumnilist.push(data)
+                })
+        })
+        res.json({patient:patientlist,alumni:alumnilist})
+    }
+    const activateReq = async (req,res)=>{
+        var bool = req.query.bool
+        var email = req.query.email
+        var id = req.query.id
+        console.log("HELLO")
+        console.log(req.query)
+        if(bool=="true")
+        bool = false
+        else
+        bool = true
+        await firestore.collection("AccountDeactivation").doc(id)
+        .update({finished:true})
+        await firestore.collection("Accounts").doc(email).update({
+            activated:bool
+        })
+        .then(()=>{
+            
+           res.json({msg:"SUCCESS"})
+        })
+        .catch((e)=>{
+            console.log(e.message)
+            res.json({msg:"FAILED"})
+        })
+    }
 module.exports = {
     addAcc,
     getAllAcc,
@@ -401,5 +586,10 @@ module.exports = {
     link,
     getAlumniLinked,
     getPhyLinked,
-    unlink
+    unlink,
+    getResolved,
+    resolve,
+    getUnresolved,
+    getDeactivateReq,
+    activateReq
 }

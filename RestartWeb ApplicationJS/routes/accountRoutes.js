@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink,getResolved,resolve,getUnresolved, getDeactivateReq, activateReq} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
@@ -26,18 +26,12 @@ router.get("/getTable",async (req,res)=>{
     res.json({accounts:await getAllAcc(role)})
 })
 
-router.get("/activate",async(req,res)=>{
-    var bool = req.query.bool
-    var email = req.query.email
-    console.log("HELLO")
-    await activate(bool,email)
-
-})
+router.get("/activate",activate)
 router.get("/signOut",signOut)
 router.post("/suspend",suspend)
 router.post("/create",addAcc)
 router.post('/edit',editAcc)
-
+router.get("/activateReq",activateReq)
 router.get("/physician/",(req,res)=>{
     if(firebase.auth().currentUser==null)
     {
@@ -104,4 +98,12 @@ router.get('/fetchProfile',profile)
 router.post('/link',link)
 router.get('/alumnilink',getAlumniLinked)
 router.get('/phylink',getPhyLinked)
+router.get("/sg",(req,res)=>{
+    res.render("../htmlFiles/SGreported")
+})
+router.get("/sg/action",resolve)
+router.get("/sg/resolved",getResolved)
+router.get("/sg/unresolved",getUnresolved)
+router.get("/deacRequest",getDeactivateReq)
+
 module.exports = router
