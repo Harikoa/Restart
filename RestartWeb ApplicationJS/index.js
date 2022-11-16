@@ -84,4 +84,4 @@ socket.on("connection",sckt=>{
         }) 
     })
 })
-console.log("ELPPPPPPPPP")
+console.log(server.address())
