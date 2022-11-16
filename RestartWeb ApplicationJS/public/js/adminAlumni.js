@@ -88,5 +88,21 @@ async function activate(bool,email)
     })
     window.location.href="/admin/alumni?panel=2"
 }
+
+function getDeacRequest()
+{
+    var container = document.querySelector(".deacRepeat")
+    fetch("/admin/deacRequest")
+    .then(async(res)=>{
+        var data = await res.json()
+        data.alumni.forEach((doc)=>{
+            container.insertAdjacentHTML("afterbegin",
+            '<div class="formDesign"><h5>' + doc.firstName + " " + doc.lastName + "a.k.a " + doc.nickname + '</h5><button class="btn btn-primary" type="">Deactivate</button><button class="btn btn-warning" type="">Ignore</button></div>'
+            )
+        })
+    
+    })
+}
+getDeacRequest()
 table()
 

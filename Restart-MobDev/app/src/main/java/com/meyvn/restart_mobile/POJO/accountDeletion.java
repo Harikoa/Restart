@@ -6,7 +6,7 @@ public class accountDeletion {
     private String userID;
     private Date  dateRequested;
     private boolean finished;
-
+    private String role;
 
     public String getUserID() {
         return userID;
@@ -30,5 +30,13 @@ public class accountDeletion {
 
     public void setFinished(boolean finished) {
         this.finished = finished;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

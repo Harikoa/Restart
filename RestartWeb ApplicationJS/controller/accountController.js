@@ -513,6 +513,41 @@ const activate = async (bool,email)=>{
         })
        res.json({posts: posts,comments:comments})
        }
+
+    const getDeactivateReq = async(req,res)=>{
+        var accountLists =[]
+        var patientlist = []
+        var alumnilist = []
+        await firestore.collection("Accounts").get()
+        .then((snap)=>{
+            snap.forEach((doc)=>{
+                var data = doc.data()
+                data.id = doc.id
+                accountLists.push(data)
+            })
+        })
+        await firestore.collection("AccountDeactivation").get()
+        .then((snap)=>{
+                snap.forEach((doc)=>{
+                    var data = doc.data()
+                    accountLists.forEach((xd)=>{
+                        if(data.userID == xd.id)
+                        {
+                           data.nickname =  xd.nickname
+                           data.firstName = xd.firstName
+                           data.lastName = xd.lastName
+                          
+                        }
+                    })
+                    data.id = doc.id
+                    if(data.role=="patient")
+                    patientlist.push(data)
+                    else
+                    alumnilist.push
+                })
+        })
+        res.json({patient:patientlist,alumni:alumnilist})
+    }
 module.exports = {
     addAcc,
     getAllAcc,
@@ -527,5 +562,6 @@ module.exports = {
     unlink,
     getResolved,
     resolve,
-    getUnresolved
+    getUnresolved,
+    getDeactivateReq
 }

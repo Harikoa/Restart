@@ -52,6 +52,7 @@ public class deactivate_acc_page extends AppCompatActivity {
                                     pojo.setFinished(false);
                                     pojo.setUserID(Login.authACC);
                                     pojo.setDateRequested(new Date());
+                                    pojo.setRole(Login.storedAcc.getRole());
                                     fs.whereEqualTo("userID",auth.getCurrentUser().getUid())
                                             .whereEqualTo("finished",false)
                                             .get()

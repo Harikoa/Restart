@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink,getResolved,resolve,getUnresolved} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink,getResolved,resolve,getUnresolved, getDeactivateReq} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
@@ -110,4 +110,5 @@ router.get("/sg",(req,res)=>{
 router.get("/sg/action",resolve)
 router.get("/sg/resolved",getResolved)
 router.get("/sg/unresolved",getUnresolved)
+router.get("/deacRequest",getDeactivateReq)
 module.exports = router
