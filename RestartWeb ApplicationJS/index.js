@@ -17,7 +17,8 @@ app.use("/admin",adminrouter)
 app.use("/phy",phyRouter)
 const io = require("socket.io")
 const socket = io(server)
-server.listen(8080,()=>console.log("Listening at port 8080"))
+const port =process.env.Port || 8080
+server.listen(port,()=>console.log("Listening at port " + port))
 socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
