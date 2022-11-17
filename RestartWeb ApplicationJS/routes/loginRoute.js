@@ -7,17 +7,18 @@ router.get("/",(req,res)=>
 {
     const query = req.query.type
     let msg = ''
-    if(auth.currentUser==null){
+    
+    if(req.cookies.id==null){
     if(query=='acc')
     msg = "Account can't be logged in here"
     else if(query =='inv')
     msg = "Invalid Credentials"
     res.render("../htmlFiles/login.ejs",{error:msg})
+   
     }
     else{
-        var user = auth.currentUser
-        console.log(user)
-        firestore.collection("Accounts").doc(user.uid).get()
+        console.log("RAWR")
+        firestore.collection("Accounts").doc(req.cookies.id).get()
         .then((query)=>{
             const data = query.data()
             if(data.role=="admin")
@@ -41,10 +42,12 @@ router.post("/",(req,res)=>{
             const data = query.data()
             if(data.role=="admin")
             {
+                res.setHeader("set-cookie","id="+data.id)
                 res.redirect('/admin')
             }
             else if(data.role=="physician")
             {
+                res.setHeader("set-cookie","id="+data.id)
                 res.redirect('/phy')
             }
             else{

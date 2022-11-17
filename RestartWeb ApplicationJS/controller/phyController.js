@@ -6,7 +6,7 @@ const chartJS = require("chart.js")
 const pdfdoc = require("pdfkit")
 const fs=require("fs")
 const getConnectedPatients = async(req,res)=>{
-    const id =await auth.currentUser.uid
+    const id = req.cookies.id
     var patients = []
     await firestore.collection("PhyLink").where("phy","==",id)
     .get()
@@ -37,7 +37,7 @@ const getConnectedPatients = async(req,res)=>{
 
 const link = async(req,res)=>{
     var pid = req.query.id 
-    var id = await auth.currentUser.uid
+    var id = req.cookies.id
     var msg = ""
     await firestore.collection("PhyLink").add({
     patient:pid,
@@ -293,7 +293,7 @@ const makeAssessment = async(req,res)=>{
 }
 const getMessages = async(req,res)=>{
     var name = ""
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
    
         res.redirect('/')
@@ -321,14 +321,14 @@ const getSGList = async (req,res)=>{
     res.json({list:sglists})
 }
 const createSG = async(req,res)=>{
-    if(auth.currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect("/")
     }
     else{
     var data = req.body
     data.Members = []
-    data.creatorEmail = auth.currentUser.uid
+    data.creatorEmail = req.cookies.id
     data.dateCreated = new Date()
     var id 
     await firestore.collection("Support Groups").add(data)
@@ -415,7 +415,7 @@ const newComment = async(req,res)=>{
     var query = req.query
     var data=req.body
     data.datePosted=new Date()
-    data.userID= auth.currentUser.uid
+    data.userID= req.cookies.id
     await firestore.collection("Accounts").doc(data.userID).get()
     .then((snap)=>{
         data.nickName = snap.data().nickname
@@ -438,7 +438,7 @@ const newComment = async(req,res)=>{
 
 const createPost = async(req,res)=>{
     var data= req.body
-    data.userID = auth.currentUser.uid
+    data.userID = req.cookies.id
     data.datePosted = new Date()
     data.reported = false
     data.resolved = false

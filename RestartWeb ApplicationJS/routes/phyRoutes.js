@@ -3,7 +3,7 @@ const router = express.Router()
 const firebase = require("../config")
 const {getConnectedPatients,link,getJournal,createTask,createDrugTest,getTasks,getSGs,sgAction,getDrugTest,drugAssess,getMotiv,addQuote,deleteQuote,addActivity,getAct,deleteAct, getEval, makeAssessment, getMessages, getSGList, createSG, getSGMembers, getPosts, getContent, newComment, createPost, getData, getPHQ9,reportComment, reportPost, exportdata, important}  = require("../controller/phyController")
 router.get("/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -53,7 +53,7 @@ router.post("/deleteAct",deleteAct)
 router.post("/getEval",getEval)
 router.post("/makeAssessment",makeAssessment)
 router.get("/messageList",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }

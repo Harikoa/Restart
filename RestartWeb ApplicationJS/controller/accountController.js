@@ -197,13 +197,13 @@ const activate = async (req,res)=>{
 
     const signOut = async(req,res)=>{
         await auth.signOut()
-        .then(()=>{
-            res.redirect("/")
-        })
+        res.clearCookie("id")
+        res.redirect("/")
+    
     }
 
     const profile = async(req,res)=>{
-        var id = auth.currentUser.uid
+        var id = req.cookies.id
         await firestore.collection("Accounts").doc(id)
         .get()
         .then(async (doc)=>{

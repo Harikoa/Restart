@@ -6,7 +6,7 @@ const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../contro
 const firebase = require('../config.js')
 
 router.get("/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -33,7 +33,7 @@ router.post("/create",addAcc)
 router.post('/edit',editAcc)
 router.get("/activateReq",activateReq)
 router.get("/physician/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -47,7 +47,7 @@ router.post("/physician/create",addAccPhy)
 router.post('/physician/edit',editAccPhy)
 
 router.get("/alumni/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -61,7 +61,7 @@ router.post("/alumni/create",addAccAl)
 router.post('/alumni/edit',editAccAl)
 
 router.get("/profile",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     res.redirect('/')
     else
     {
