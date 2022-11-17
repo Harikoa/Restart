@@ -78,7 +78,7 @@ router.get("/SG",async(req,res)=>{
 router.post("/getMembers",getSGMembers)
 router.post("/getPosts",getPosts)
 router.get("/specificPost",(req,res)=>{
-    res.render("../htmlFIles/PhySGSpecificPost")
+    res.render("../htmlFiles/PhySGSpecificPost")
 })
 router.post("/specificPost",getContent)
 router.post("/newComment",newComment)
