@@ -7,7 +7,9 @@ const adminrouter = require("./routes/accountRoutes")
 const loginrouter = require("./routes/loginRoute")
 const phyRouter = require("./routes/phyRoutes")
 const http =require("http")
+const cookieParser = require("cookie-parser")
 const server = http.createServer(app)
+app.use(cookieParser())
 app.use('/public',express.static("public"))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -15,6 +17,7 @@ app.use(cors())
 app.use("/",loginrouter)
 app.use("/admin",adminrouter)
 app.use("/phy",phyRouter)
+
 const io = require("socket.io")
 const socket = io(server)
 const port =process.env.Port || 8080
@@ -23,7 +26,7 @@ socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
         const auth = firebase.auth()
-        const phyid = auth.currentUser.uid
+        const phyid = req.cookies.id
         ptid = id
         
         await firestore.collection("Chat")
@@ -59,7 +62,7 @@ socket.on("connection",sckt=>{
     })
     sckt.on('send-chat-message',async msg=>{
         const auth = firebase.auth()
-        const phyid = auth.currentUser.uid
+        const phyid = req.cookies.id
         await firebase.firestore().collection('Chat').add({
              date:new Date(),
              msgContent:msg.message,
@@ -84,4 +87,3 @@ socket.on("connection",sckt=>{
         }) 
     })
 })
-console.log(server.address())
