@@ -26,8 +26,8 @@ socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
         const auth = firebase.auth()
-        const phyid = req.cookies.id
-        ptid = id
+        const phyid = id.currentUser.substring(3)
+        ptid = id.id
         
         await firestore.collection("Chat")
         .onSnapshot(async(snap)=>{
@@ -62,7 +62,7 @@ socket.on("connection",sckt=>{
     })
     sckt.on('send-chat-message',async msg=>{
         const auth = firebase.auth()
-        const phyid = req.cookies.id
+        const phyid = msg.currentUser.substring(3)
         await firebase.firestore().collection('Chat').add({
              date:new Date(),
              msgContent:msg.message,

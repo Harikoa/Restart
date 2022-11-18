@@ -579,8 +579,8 @@ async function exportData()
 async function getImportant()
 {
     var id = getParameterByName('id')
-    const socket =io("https://restart-app.onrender.com:8080")
-    socket.emit("getImportant",id)
+    const socket =io("https://restart-app.onrender.com")
+    socket.emit("getImportant",{id:id,currentUser:document.cookie})
     socket.on("importantJ",async(data)=>{
         var list = document.querySelector(".Important")
         var contentList = document.querySelector(".ImportantContent")
