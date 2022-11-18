@@ -73,8 +73,7 @@ socket.on("connection",sckt=>{
         sckt.emit("get-messages",msg.id)
     })
     sckt.on("getImportant",async(id)=>{
-    
-        await firebase.firestore().collection("Accounts").doc(id).collection("Journal")
+        await firebase.firestore().collection("Accounts").doc(id.id).collection("Journal")
         .where("important","==",true)
         .onSnapshot((snap)=>{
             var journals = []
