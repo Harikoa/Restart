@@ -10,8 +10,8 @@ const phyRouter = require("./routes/phyRoutes")
 const https =require("https")
 const cookieParser = require("cookie-parser")
 var options = {
-    key: fs.readFileSync('./CA.key'),
-    cert: fs.readFileSync('./CA.pem')
+    key: fs.readFileSync('./localhost.decrypted.key'),
+    cert: fs.readFileSync('./localhost.crt')
   }
 const server = https.createServer(options,app)
 app.use(cookieParser())
