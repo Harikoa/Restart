@@ -25,7 +25,7 @@ app.use("/phy",phyRouter)
 
 const io = require("socket.io")
 const socket = io(server)
-server.listen(1028,()=>console.log("Listening at port " + 1028))
+server.listen(8080,()=>console.log("Listening at port " + 8080))
 socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
