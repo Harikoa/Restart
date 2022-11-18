@@ -1,14 +1,19 @@
 const express = require("express")
 const cors = require('cors')
 const app = express()
+const fs=require("fs")
 app.set('view engine', 'ejs');
 const firebase = require("./config")
 const adminrouter = require("./routes/accountRoutes")
 const loginrouter = require("./routes/loginRoute")
 const phyRouter = require("./routes/phyRoutes")
-const http =require("http")
+const https =require("https")
 const cookieParser = require("cookie-parser")
-const server = http.createServer(app)
+var options = {
+    key: fs.readFileSync('./localhost.decrypted.key'),
+    cert: fs.readFileSync('./localhost.crt')
+  }
+const server = https.createServer(options,app)
 app.use(cookieParser())
 app.use('/public',express.static("public"))
 app.use(express.urlencoded({extended:true}))
@@ -20,15 +25,15 @@ app.use("/phy",phyRouter)
 
 const io = require("socket.io")
 const socket = io(server)
-const port =process.env.Port || 8080
-server.listen(port,()=>console.log("Listening at port " + port))
+server.listen(443,()=>console.log("Listening at port " + 443))
 socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
         const auth = firebase.auth()
-        const phyid = req.cookies.id
-        ptid = id
-        
+        const phyid = id.currentUser.substring(3)
+        ptid = id.id
+        console.log(id.id)
+        console.log(id.currentUser.substring(3))
         await firestore.collection("Chat")
         .onSnapshot(async(snap)=>{
             var msgs=[]
@@ -62,7 +67,8 @@ socket.on("connection",sckt=>{
     })
     sckt.on('send-chat-message',async msg=>{
         const auth = firebase.auth()
-        const phyid = req.cookies.id
+        const phyid = msg.currentUser.substring(3)
+       
         await firebase.firestore().collection('Chat').add({
              date:new Date(),
              msgContent:msg.message,
