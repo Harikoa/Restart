@@ -12,7 +12,7 @@ async function getMessages()
 {
    
     var id = getParameterByName("id")
-    const socket =io("https://localhost:443")
+    const socket =io("https://localhost:1028")
     socket.emit("get-messages",{id:id,
         currentUser:document.cookie
     })
@@ -42,7 +42,7 @@ async function getMessages()
 function send()
 {
     const id = getParameterByName("id")
-    const socket =io("https://localhost:443")
+    const socket =io("https://localhost:1028")
     var inputBox = document.getElementById("inputChat")
     var message = inputBox.value
     inputBox.value=""
