@@ -12,7 +12,7 @@ async function getMessages()
 {
    
     var id = getParameterByName("id")
-    const socket =io("http://localhost:8080")
+    const socket =io("https://restart-app.onrender.com")
     socket.emit("get-messages",{id:id,currentUser:document.cookie})
     socket.on('chat',data=>{
         msg.innerHTML=""
@@ -40,7 +40,7 @@ async function getMessages()
 function send()
 {
     const id = getParameterByName("id")
-    const socket =io("http://localhost:8080")
+    const socket =io("https://restart-app.onrender.com")
     var inputBox = document.getElementById("inputChat")
     var message = inputBox.value
     inputBox.value=""
