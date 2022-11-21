@@ -301,9 +301,14 @@ const activate = async (req,res)=>{
                     data.allname = al.data().lastName
                     data.alemail=al.data().email
                 })
-                
+               
                 linked.push(data)
             }
+        })
+        linked.sort((a,b)=>{
+            a=a.ptlname 
+            b=b.ptlname
+            return (a > b) ? -1 : (a < b) ? 1 : 0;
         })
         await res.json({accs:linked})
        }
@@ -333,6 +338,11 @@ const activate = async (req,res)=>{
                 
                 linked.push(data)
             }
+        })
+        linked.sort((a,b)=>{
+            a=a.ptlname 
+            b=b.ptlname
+            return (a > b) ? -1 : (a < b) ? 1 : 0;
         })
         await res.json({accs:linked})
        }
