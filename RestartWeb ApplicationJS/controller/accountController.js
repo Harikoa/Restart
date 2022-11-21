@@ -192,7 +192,7 @@ const activate = async (req,res)=>{
             })
             
         })
-        res.redirect("admin/?panel=3")
+        res.redirect("/admin/?panel=3")
     }
 
     const signOut = async(req,res)=>{
