@@ -80,4 +80,7 @@ router.post("/forgetSubmit",async(req,res)=>{
     })
     
 })
+router.get("/loaderio-322c621dc0ff9caa1e5a59123b757b8e",(req,res)=>{
+    res.send("loaderio-322c621dc0ff9caa1e5a59123b757b8e")
+})
 module.exports = router;
