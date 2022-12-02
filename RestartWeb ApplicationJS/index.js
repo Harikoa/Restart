@@ -7,7 +7,9 @@ const adminrouter = require("./routes/accountRoutes")
 const loginrouter = require("./routes/loginRoute")
 const phyRouter = require("./routes/phyRoutes")
 const http =require("http")
+const cookieParser = require("cookie-parser")
 const server = http.createServer(app)
+app.use(cookieParser())
 app.use('/public',express.static("public"))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -15,15 +17,17 @@ app.use(cors())
 app.use("/",loginrouter)
 app.use("/admin",adminrouter)
 app.use("/phy",phyRouter)
+
 const io = require("socket.io")
 const socket = io(server)
-server.listen(8080,()=>console.log("Listening at port 8080"))
+const port =process.env.Port || 8080
+server.listen(port,()=>console.log("Listening at port " + port))
 socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
         const auth = firebase.auth()
-        const phyid = auth.currentUser.uid
-        ptid = id
+        const phyid = id.currentUser.substring(3)
+        ptid = id.id
         
         await firestore.collection("Chat")
         .onSnapshot(async(snap)=>{
@@ -58,7 +62,7 @@ socket.on("connection",sckt=>{
     })
     sckt.on('send-chat-message',async msg=>{
         const auth = firebase.auth()
-        const phyid = auth.currentUser.uid
+        const phyid = msg.currentUser.substring(3)
         await firebase.firestore().collection('Chat').add({
              date:new Date(),
              msgContent:msg.message,
@@ -69,8 +73,7 @@ socket.on("connection",sckt=>{
         sckt.emit("get-messages",msg.id)
     })
     sckt.on("getImportant",async(id)=>{
-    
-        await firebase.firestore().collection("Accounts").doc(id).collection("Journal")
+        await firebase.firestore().collection("Accounts").doc(id.id).collection("Journal")
         .where("important","==",true)
         .onSnapshot((snap)=>{
             var journals = []

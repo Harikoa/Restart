@@ -91,3 +91,33 @@ async function activate(bool,email)
 }
 table()
 
+function getDeacRequest()
+{
+    var container = document.querySelector(".deacRepeat")
+    fetch("/admin/deacRequest")
+    .then(async(res)=>{
+        var data = await res.json()
+        console.log(data)
+        data.patient.forEach((doc)=>{
+            container.insertAdjacentHTML("afterbegin",
+            '<div class="formDesign"><h5>' + doc.firstName + " " + doc.lastName + " a.k.a " + doc.nickname + '</h5><button onclick="activateReq(true,\'' + doc.userID + '\',\'' + 
+            doc.id + '\')" class="btn btn-primary" type="">Deactivate</button><button onclick="activateReq(false,\'' + doc.userID + '\',\'' + doc.id + '\')" class="btn btn-warning" type="">Ignore</button></div>'
+            )
+        })
+    
+    })
+}
+getDeacRequest()
+async function activateReq(bool,email,id)
+{
+    
+    fetch("/admin/activateReq?bool=" + bool + "&email=" + email + "&id=" + id)
+    .then(async(response)=>{
+        var data = await response.json()
+        console.log(data)
+        alert(data.msg)
+        window.location.href="/admin?panel=4"
+    })
+ 
+}
+

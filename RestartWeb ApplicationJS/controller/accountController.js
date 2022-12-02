@@ -156,7 +156,9 @@ const editAcc = async (req,res)=>{
  
 }
         
-const activate = async (bool,email)=>{
+const activate = async (req,res)=>{
+    var bool = req.query.bool
+    var email = req.query.email
     if(bool=="true")
     bool = true
     else
@@ -169,11 +171,11 @@ const activate = async (bool,email)=>{
                 activated:bool
             })  
         })
-        return {msg:"Success"}
+       res.json({msg:"SUCCESS"})
     })
     .catch((e)=>{
         console.log(e.message)
-        return {msg:"Failed!"}
+        res.json({msg:"FAILED"})
     })
 }
        
@@ -190,18 +192,18 @@ const activate = async (bool,email)=>{
             })
             
         })
-        res.redirect("admin/?panel=3")
+        res.redirect("/admin/?panel=3")
     }
 
     const signOut = async(req,res)=>{
         await auth.signOut()
-        .then(()=>{
-            res.redirect("/")
-        })
+        res.clearCookie("id")
+        res.redirect("/")
+    
     }
 
     const profile = async(req,res)=>{
-        var id = auth.currentUser.uid
+        var id = req.cookies.id
         await firestore.collection("Accounts").doc(id)
         .get()
         .then(async (doc)=>{
@@ -299,9 +301,14 @@ const activate = async (bool,email)=>{
                     data.allname = al.data().lastName
                     data.alemail=al.data().email
                 })
-                
+               
                 linked.push(data)
             }
+        })
+        linked.sort((a,b)=>{
+            a=a.ptlname 
+            b=b.ptlname
+            return (a > b) ? -1 : (a < b) ? 1 : 0;
         })
         await res.json({accs:linked})
        }
@@ -331,6 +338,11 @@ const activate = async (bool,email)=>{
                 
                 linked.push(data)
             }
+        })
+        linked.sort((a,b)=>{
+            a=a.ptlname 
+            b=b.ptlname
+            return (a > b) ? -1 : (a < b) ? 1 : 0;
         })
         await res.json({accs:linked})
        }
@@ -526,7 +538,9 @@ const activate = async (bool,email)=>{
                 accountLists.push(data)
             })
         })
-        await firestore.collection("AccountDeactivation").get()
+        await firestore.collection("AccountDeactivation")
+        .where("finished","==",false)
+        .get()
         .then((snap)=>{
                 snap.forEach((doc)=>{
                     var data = doc.data()
@@ -536,17 +550,40 @@ const activate = async (bool,email)=>{
                            data.nickname =  xd.nickname
                            data.firstName = xd.firstName
                            data.lastName = xd.lastName
-                          
                         }
                     })
                     data.id = doc.id
                     if(data.role=="patient")
                     patientlist.push(data)
                     else
-                    alumnilist.push
+                    alumnilist.push(data)
                 })
         })
         res.json({patient:patientlist,alumni:alumnilist})
+    }
+    const activateReq = async (req,res)=>{
+        var bool = req.query.bool
+        var email = req.query.email
+        var id = req.query.id
+        console.log("HELLO")
+        console.log(req.query)
+        if(bool=="true")
+        bool = false
+        else
+        bool = true
+        await firestore.collection("AccountDeactivation").doc(id)
+        .update({finished:true})
+        await firestore.collection("Accounts").doc(email).update({
+            activated:bool
+        })
+        .then(()=>{
+            
+           res.json({msg:"SUCCESS"})
+        })
+        .catch((e)=>{
+            console.log(e.message)
+            res.json({msg:"FAILED"})
+        })
     }
 module.exports = {
     addAcc,
@@ -563,5 +600,6 @@ module.exports = {
     getResolved,
     resolve,
     getUnresolved,
-    getDeactivateReq
+    getDeactivateReq,
+    activateReq
 }

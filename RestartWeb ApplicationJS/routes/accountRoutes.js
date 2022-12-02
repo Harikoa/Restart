@@ -1,12 +1,12 @@
 const express = require("express")
 const router = express.Router()
-const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink,getResolved,resolve,getUnresolved, getDeactivateReq} = require("../controller/accountController")
+const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniLinked,getPhyLinked,unlink,getResolved,resolve,getUnresolved, getDeactivateReq, activateReq} = require("../controller/accountController")
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
 
 router.get("/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -26,20 +26,14 @@ router.get("/getTable",async (req,res)=>{
     res.json({accounts:await getAllAcc(role)})
 })
 
-router.get("/activate",async(req,res)=>{
-    var bool = req.query.bool
-    var email = req.query.email
-    console.log("HELLO")
-    await activate(bool,email)
-
-})
+router.get("/activate",activate)
 router.get("/signOut",signOut)
 router.post("/suspend",suspend)
 router.post("/create",addAcc)
 router.post('/edit',editAcc)
-
+router.get("/activateReq",activateReq)
 router.get("/physician/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -53,7 +47,7 @@ router.post("/physician/create",addAccPhy)
 router.post('/physician/edit',editAccPhy)
 
 router.get("/alumni/",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     {
         res.redirect('/')
     }
@@ -67,7 +61,7 @@ router.post("/alumni/create",addAccAl)
 router.post('/alumni/edit',editAccAl)
 
 router.get("/profile",(req,res)=>{
-    if(firebase.auth().currentUser==null)
+    if(req.cookies.id==null)
     res.redirect('/')
     else
     {
@@ -111,4 +105,5 @@ router.get("/sg/action",resolve)
 router.get("/sg/resolved",getResolved)
 router.get("/sg/unresolved",getUnresolved)
 router.get("/deacRequest",getDeactivateReq)
+
 module.exports = router
