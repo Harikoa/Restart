@@ -18,6 +18,15 @@
 	background-color: white;
 }
 
+.editButtons{
+	width: 45%;
+	margin-left: 25px;
+	left: 50%;
+	right: 50%;
+	font-size: 20px;
+	font-weight: bold;
+}
+
 .rowDesign{	
 	background-color: #e8fff2;
 	box-shadow: 0px 0px 20px seagreen;
