@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require('cors')
+var cron = require('node-cron');
 const app = express()
 app.set('view engine', 'ejs');
 const firebase = require("./config")
@@ -86,3 +87,7 @@ socket.on("connection",sckt=>{
         }) 
     })
 })
+
+cron.schedule("*/10 * * * * *",()=>{
+    console.log(new Date().toTimeString())
+}).start()
