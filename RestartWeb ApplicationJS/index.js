@@ -22,7 +22,7 @@ app.use("/phy",phyRouter)
 const io = require("socket.io")
 const socket = io(server)
 const port =process.env.Port || 8080
-server.listen(port,()=>console.log("Listening at port " + port + new Date().toTimeString()))
+server.listen(port,()=>console.log("Listening at port " + port))
 socket.on("connection",sckt=>{
     sckt.on("get-messages",async(id)=>{
         const firestore=firebase.firestore()
@@ -88,6 +88,9 @@ socket.on("connection",sckt=>{
     })
 })
 
-cron.schedule("*/10 * * * * *",()=>{
-    console.log(new Date().toTimeString())
+cron.schedule("*/2 * * * * *",async()=>{
+    var date = new Date().getTime()
+    var pst = new Date(date + 8 * 60 * 60 * 1000)
+    console.log("updated" + pst.toTimeString())
+    
 }).start()
