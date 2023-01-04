@@ -3,6 +3,7 @@ const router = express.Router()
 const firebase  = require("../config")
 const auth = firebase.auth()
 const firestore = firebase.firestore()
+const mailer = require("nodemailer")
 router.get("/",(req,res)=>
 {
     const query = req.query.type
@@ -37,6 +38,10 @@ router.post("/",(req,res)=>{
     const email = req.body.email
     const pw = req.body.pw
     auth.signInWithEmailAndPassword(email, pw).then((user)=>{
+        firestore.collection("AccTries").doc(email).delete()
+        .then(()=>{
+            console.log("Prev Tries deleted Successfully!")
+        })
         firestore.collection("Accounts").doc(user.user.uid).get()
         .then((query)=>{
             const data = query.data()
@@ -61,7 +66,54 @@ router.post("/",(req,res)=>{
         console.log("Successful Login!")
     })
     .catch((e)=>{
-        console.log(e.message)
+        console.log(e.code)
+        if(e.code=="auth/wrong-password")
+        {
+            firestore.collection("AccTries").doc(email).get()
+            .then((query)=>{
+                if(query.exists)
+               {
+                var tries = query.data().numTries
+                tries++
+                query.ref.update({
+                    numTries:tries
+                })
+                if(tries>=3)
+                    {
+                        var transport = mailer.createTransport({
+                            service:"gmail",
+                            auth:{
+                                user:"restart.meyvn@gmail.com",
+                                pass:"iherharqhocouqkz"
+                            }
+                        });
+                        var content = {
+                            from: 'restart.meyvn@gmail.com',
+                            to: email,
+                            subject: 'Someone tried to access your account!',
+                            text: "Someone has tried to access your Restart Account! They have tried " + tries + " times!"
+                        }
+                        transport.sendMail(content,(e,i)=>{
+                            if(e){
+                                console.log(e)
+                            }
+                            else{
+                                console.log('Email sent: ' + i.response);
+                            }
+                        })
+                    }
+              
+            
+                
+               }
+               else
+               {
+                firestore.collection("AccTries").doc(email).set({
+                    numTries:1
+                })
+               }
+            })
+        }
      res.redirect('/?type=inv')
     });
  

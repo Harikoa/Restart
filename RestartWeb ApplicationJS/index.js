@@ -87,10 +87,3 @@ socket.on("connection",sckt=>{
         }) 
     })
 })
-
-cron.schedule("*/2 * * * * *",async()=>{
-    var date = new Date().getTime()
-    var pst = new Date(date + 8 * 60 * 60 * 1000)
-    console.log("updated" + pst.toTimeString())
-    
-}).start()
