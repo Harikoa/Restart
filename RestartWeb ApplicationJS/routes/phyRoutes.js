@@ -44,6 +44,11 @@ router.post("/drugAssess",drugAssess)
 router.get("/selfHelp",(req,res)=>{
     res.render("../htmlFiles/PhysicianSelfHelp")
 })
+
+router.get("/bukTask",(req,res)=>{
+    res.render("../htmlFiles/bulkTask")
+})
+
 router.post("/getMotiv",getMotiv)
 router.post("/newQuote",addQuote)
 router.post("/deleteQuote",deleteQuote)
