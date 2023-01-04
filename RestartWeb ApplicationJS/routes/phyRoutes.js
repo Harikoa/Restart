@@ -45,7 +45,7 @@ router.get("/selfHelp",(req,res)=>{
     res.render("../htmlFiles/PhysicianSelfHelp")
 })
 
-router.get("/bukTask",(req,res)=>{
+router.get("/bulkTask",(req,res)=>{
     res.render("../htmlFiles/bulkTask")
 })
 
