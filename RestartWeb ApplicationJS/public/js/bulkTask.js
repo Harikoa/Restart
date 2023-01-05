@@ -12,14 +12,6 @@ async function getConnectedPatients()
             "</td><td>" + pt.nickname + "</td><td>" + pt.email + "</td></tr>"
             )
         }
-        for(var pt of data.unconnected)
-        {
-            master.insertAdjacentHTML("afterend",
-            "<tr><td>" + pt.lastName + "</td><td>" + pt.firstName + "</td><td>" + pt.contact + 
-            "</td><td>" + pt.nickname + "</td><td>" + pt.email + "</td><td><button onclick='link(\"" + 
-            pt.id + "\")' class='actBtn'>Link</button></td></tr>"
-            )
-        }
     })
     
 }
