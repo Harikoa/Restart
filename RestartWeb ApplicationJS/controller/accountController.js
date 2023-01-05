@@ -50,6 +50,12 @@ const accConverter = {
 const addAcc = async(req,res)=>
 {
     const data = req.body;
+    var regexp = /[a-zA-Z `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g
+    if(regexp.test(data.contact))
+        {
+            res.send("<script>alert('Please input a proper contact');window.location.href='/admin'</script>")
+        }
+    else{
     await auth.createUserWithEmailAndPassword(data.email,data.pw)
     .then((userCred)=>{
         
@@ -80,7 +86,7 @@ const addAcc = async(req,res)=>
     {
         res.redirect('/admin?type=email')
     })
-
+    }
 }
 
 const getAllAcc = async function(role){      
@@ -134,8 +140,12 @@ const getAllAcc = async function(role){
 
 const editAcc = async (req,res)=>{
     const data = req.body
-    var pw = data.pw
-  
+    var regexp = /[a-zA-Z `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g
+    if(regexp.test(data.contact))
+        {
+            res.send("<script>alert('Please input a proper contact');window.location.href='/admin?panel=1'</script>")
+        }
+    else{
     await firestore.collection("Accounts").where('email',"==", data.email)
     .get()
     .then((dozc)=>{
@@ -153,7 +163,7 @@ const editAcc = async (req,res)=>{
     .catch((e)=>{
         console.log(e.message)
     })
- 
+}
 }
         
 const activate = async (req,res)=>{

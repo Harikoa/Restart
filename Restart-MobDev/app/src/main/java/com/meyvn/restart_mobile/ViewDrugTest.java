@@ -54,7 +54,7 @@ public class ViewDrugTest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent();
-                i.setType("image/*");
+                i.setType("image/jpeg");
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(i,1);
 
