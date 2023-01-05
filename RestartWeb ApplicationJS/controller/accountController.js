@@ -50,7 +50,7 @@ const accConverter = {
 const addAcc = async(req,res)=>
 {
     const data = req.body;
-    var regexp = /[a-zA-Z `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g
+    var regexp = /[a-zA-Z `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
     if(regexp.test(data.contact))
         {
             res.send("<script>alert('Please input a proper contact');window.location.href='/admin'</script>")
@@ -140,7 +140,7 @@ const getAllAcc = async function(role){
 
 const editAcc = async (req,res)=>{
     const data = req.body
-    var regexp = /[a-zA-Z `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g
+    var regexp = /[a-zA-Z `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
     if(regexp.test(data.contact))
         {
             res.send("<script>alert('Please input a proper contact');window.location.href='/admin?panel=1'</script>")
