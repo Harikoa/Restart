@@ -73,7 +73,7 @@
                     
                     <div>
                         <h2 style="text-align: center;"><b>Patients</b></h2>
-                        <table id="table" class="table">
+                        <table id="table" class="table paginate">
                             <tr class="connected">
                                 <th>Selector</th>
                                 <th>Last Name</th>
@@ -82,25 +82,12 @@
                                 <th>Nickname</th>
                                 <th>Email</th>
                                 </tr>
+                                
                         </table>
                     </div>
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                              <span class="sr-only">Previous</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                              <span class="sr-only">Next</span>
-                            </a>
-                          </li>
+                        <ul class="pagination justify-content-center side">
+                        
                         </ul>
                       </nav>
                 </div>
@@ -111,7 +98,7 @@
         </div>
     </div>
 
-   
+    <script src="../public/js/pagination.js"></script>
     <script src="../public/js/bulkTask.js"></script>
     <script src="../public/js/filter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

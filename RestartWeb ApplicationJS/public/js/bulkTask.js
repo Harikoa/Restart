@@ -13,7 +13,7 @@ async function getConnectedPatients()
             )
         }
     })
-    
+    paginateTable()
 }
 
 
