@@ -52,7 +52,7 @@ await fetch('/admin/getTable?role=physician')
             ctr++
        
     }
-    
+    paginateTable()
 })
     
 var table =document.querySelector(".table")

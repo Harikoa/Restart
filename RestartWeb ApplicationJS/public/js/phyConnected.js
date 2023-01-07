@@ -21,7 +21,8 @@ async function getConnectedPatients()
             )
         }
     })
-    
+
+    paginateTable();
 }
 
 

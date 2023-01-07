@@ -38,6 +38,7 @@ async function getActivities()
             "<tr><td>" + doc.activityTitle + "</td><td>" + doc.venue + "</td><td>" + doc.weather + "</td><td><button onclick='deleteAct(\"" + doc.id + "\")' class='deacBtn'>Delete</button></tr>")
         })
     })
+    paginateTable()
 }
 async function deleteAct(id)
 {

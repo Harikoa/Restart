@@ -14,7 +14,7 @@ async function getConnectedPatients()
         }
         $('#bulkTable').DataTable();
     })
-    
+    paginateTable()
 }
 
 

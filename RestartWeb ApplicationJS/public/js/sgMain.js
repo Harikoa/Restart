@@ -14,7 +14,7 @@ function getParameterByName(name, url = window.location.href) {
 async function getMembers()
 {
     var id =getParameterByName('id')
-    fetch("/phy/getMembers?id="+id,{
+   await  fetch("/phy/getMembers?id="+id,{
         method:"POST"
     })
     .then(async(res)=>{
@@ -32,6 +32,7 @@ async function getMembers()
             )
         }
     })
+    paginateTable()
 }
 
 async function link(id,bool)
@@ -69,6 +70,7 @@ async function getPosts()
             )
         }
     })
+    paginateTableDiv()
 }
 function goTo(id,sgid)
 {
