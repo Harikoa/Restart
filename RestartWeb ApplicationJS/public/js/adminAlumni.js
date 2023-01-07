@@ -28,11 +28,13 @@ await fetch('/admin/getTable?role=alumni')
             {
                 
                 data.accounts.forEach((acc)=>{
+                    var checked = ""
+                    if(acc.activated)
+                    checked = "checked"
                     root.insertAdjacentHTML("afterend","<tr class='accRow'><td class='accounts'>" +
                     acc.lastName +"</td><td class='accounts'>" + acc.firstName + "</td><td class='accounts'>" + 
-                    acc.middleName + "</td><td class='accounts'>"+ acc.nickname + "</td><td class='accounts'>" + acc.email +  "</td><td class='accounts'>" +
-                    acc.activated + "</td><td class='accounts'><button class='actBtn' onclick='activate(true,\""+ acc.email + "\")'>Activate</button><button class='deacBtn' onclick='activate(false,\""+ acc.email + 
-                    "\")'>Deactivate</button>" + "</td></tr>"
+                    acc.middleName + "</td><td class='accounts'>"+ acc.nickname + "</td><td class='accounts'>" + acc.email +  "</td><td class='accounts'><label class='switch'><input onclick=\"activate(this,'" + acc.email + "')\"type='checkbox'" + checked + "><span class='slider round'></span></label>" +
+                    "</td></tr>"
                     ) 
                   
                 })
@@ -82,11 +84,10 @@ for(var x = 0;x<suspend.rows.length;x++)
 
 async function activate(bool,email)
 {
-    fetch("/admin/activate?bool=" + bool + "&email=" + email)
+    fetch("/admin/activate?bool=" + bool.checked + "&email=" + email)
     .then(async(response)=>{
-        var data = await response.json()
+        var data =await response.json()
         alert(data.msg)
-        window.location.href="/admin/alumni?panel=2"
     })
  
 }
