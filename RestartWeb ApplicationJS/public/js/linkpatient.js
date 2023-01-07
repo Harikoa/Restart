@@ -79,6 +79,7 @@ async function updateLinkp2p()
     }
     clickable()
     })
+    paginateTable()
 }
 function clickable()
 {

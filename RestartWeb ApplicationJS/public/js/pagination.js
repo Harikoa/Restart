@@ -14,12 +14,14 @@ function paginateTable()
             }
         tables[z].rows[x].classList.add("x"+y)
     }
+   
     change(prevY,z)
     for(var num = 1;prevY<=y;num++){
      
     side[z].insertAdjacentHTML("beforeend",'<li class="page-item"><button class="page-link" onclick="change(' + prevY + ','+ z+ ')">' + num + '</button></li>')
     prevY++
     }
+    y++
     }//tables
 
 }

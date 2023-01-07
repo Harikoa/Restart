@@ -52,7 +52,7 @@ await fetch('/admin/getTable?role=alumni')
             ctr++
        
     }
-    
+    paginateTable()
 })
     
 var table =document.querySelector(".table")

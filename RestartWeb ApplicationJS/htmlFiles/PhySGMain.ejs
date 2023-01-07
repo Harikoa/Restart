@@ -74,11 +74,18 @@
             <h1 class="rowDesign" style="text-align: center;"><b><%=locals.Title%></b></h1>
     
             <div class="row justify-content-center">
-                <div class="col-10 post">
+                <div class="col-10 post paginateDiv">
                     <!--Repeat-->
               
                     
                 </div><!--end-->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center sideDiv">
+                
+                   
+                      
+                    </ul>
+                  </nav>
             </div>
         </div>
 
@@ -93,7 +100,7 @@
                     <div class="col-6">
                         <div class="rowDesign">
                             <h2><b>Members</b></h2>
-                            <table id="table" class="table">
+                            <table id="table" class="table paginate">
                                 <tr class="tableRow mem">
                                     <th>Last Name</th>
                                     <th>First Name</th>
@@ -102,13 +109,18 @@
                                     <th>Action</th>
                                 </tr>
                             </table>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination side justify-content-center">
+                                
+                                </ul>
+                              </nav>
                         </div>
                     </div>
 
                     <div class="col-6">
                         <div class="rowDesign">
                             <h2><b>Non-Members</b></h2>
-                            <table id="table" class="table">
+                            <table id="table" class="table paginate">
                                 <tr class="tableRow non">
                                     <th>Last Name</th>
                                     <th>First Name</th>
@@ -117,7 +129,11 @@
                                     <th>Action</th>
                                 </tr>
                             </table>
-    
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination side justify-content-center">
+                                
+                                </ul>
+                              </nav>
                         </div>
                     </div>
                 </div>
@@ -126,10 +142,11 @@
     </div>
 
     </div>
-
-
+<script src="../public/js/pagination.js"></script>
+<script src="../public/js/paginationDiv.js"></script>
 <script src="../public/scriptTab.js"></script>
 <script src="../public/js/sgMain.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
