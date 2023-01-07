@@ -12,6 +12,7 @@ async function getConnectedPatients()
             "</td><td>" + pt.nickname + "</td><td>" + pt.email + "</td></tr>"
             )
         }
+        $('#bulkTable').DataTable();
     })
     
 }

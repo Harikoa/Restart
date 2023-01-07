@@ -208,6 +208,12 @@
 	transition: .4s;
 }
 
+.fa-triangle-exclamation{
+	color: red;
+	transition: .4s;
+}
+
+
 .floating-parent{
 	top: 20%;
 	right: 70px;

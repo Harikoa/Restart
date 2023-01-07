@@ -5,6 +5,7 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
 <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+<script src="https://kit.fontawesome.com/4505ce12d2.js" crossorigin="anonymous"></script>
 
     <head>
         <meta charset="UTF-8">
@@ -70,6 +71,7 @@
                             <h1><b>Connected Patients</b></h1>
                             <table id="table" class="table">
                                 <tr class="connected">
+                                    <th></th>
                                     <th>Last Name</th>
                                     <th>First Name</th>
                                     <th>Middle Name</th>
@@ -109,8 +111,7 @@
                     <div class="formDesign">
                         <div class="row">
                             <div>
-                                <h2><b>Query Patients</b></h2>
-                              
+                                <h2><b>Query Patients</b></h2>     
                                     <p>First Name <input class="form-control" id="fname0" name = "firstname"></p>
                                     <p>Last Name <input class="form-control" id="lname0" name = "lastname" ></p>
                                     <p><button class="form-control btn btn-outline-success" onclick="search(0)" >Search</button></p>
@@ -128,7 +129,7 @@
     <div class="tabPanel">
         <div class="container-fluid mt-1">
             <div class="row justify-content-center">
-
+                
                 <div class="col-sm-9">
                     <div class="formDesign">
                         <div>
