@@ -77,6 +77,7 @@ FirebaseAuth auth = FirebaseAuth.getInstance();
                             System.out.println("Task unsuccessful");
                     }
                 });
+        
         System.out.println("Notification success");
         return Result.success();
     }

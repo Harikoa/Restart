@@ -103,4 +103,25 @@ router.post("/reportComment",reportComment)
 router.post("/reportPost",reportPost)
 router.post("/exportData",exportdata) 
 router.get("/important",important)
+router.post("/bulkTask",(req,res)=>{
+    
+    firebase.firestore().collection("Accounts").where("id","in",req.body.checked)
+    .get()
+    .then((query)=>{
+        query.forEach((doc)=>{
+            doc.ref.collection("Task").add({
+                "title":req.body.title,
+                "taskDescription":req.body.desc,
+                "taskDeadline":req.body.deadline,
+                "complete":false,
+                "taskDate":new Date().toISOString().substring(0,10)
+            })
+        })
+        res.send("SUCCESS")
+    })
+    .catch((e)=>{
+        console.log(e)
+        res.send("FAILED")
+    })
+})
 module.exports=router

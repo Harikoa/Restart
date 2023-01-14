@@ -9,7 +9,7 @@ async function getConnectedPatients()
         {
             connected.insertAdjacentHTML("afterend",
             "<tr onclick='goTo(\""+pt.id+ "\")'><td>" + pt.lastName + "</td><td>" + pt.firstName + "</td><td>" + pt.middleName + "</td><td>" + pt.contact + 
-            "</td><td>" + pt.birthDay + "</td><td>" + pt.nickname + "</td><td>" + pt.substanceUsed + "</td><td>" + pt.email + "</td></tr>"
+            "</td><td>" + pt.birthDay + "</td><td>" + pt.nickname + "</td><td>" + pt.substanceUsed + "</td><td>" + pt.email + '</td><td>' + pt.journal +'</td></tr>'
             )
         }
         for(var pt of data.unconnected)
@@ -41,4 +41,5 @@ async function link(id)
         window.location.href="/phy/?panel=1"
     })
 }
+
 

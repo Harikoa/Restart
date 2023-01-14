@@ -61,9 +61,11 @@
             <div class="col-sm-6">
                 <div class="rowDesign">
                     <h2 style="text-align: center;"><b>Task Creator</b></h2>
-                    <p><h5><b>Task Title</b></h5><input class="form-control" type="text" placeholder="Title"></p>
-                    <p><h5><b>Task Description</b></h5><textarea required class="taskDescription" name="" rows="12"></textarea></h4>
-                    <button class="form-control btn btn-success">Create</button>
+                    <h4><b>Task Deadline <input id="deadline" min="<%=new Date().toISOString().substring(0,10);%>"required name="taskDeadline" type="date"></b></h4>
+                    <p><h5><b>Task Title</b></h5><input id="title"class="form-control" name="taskTitle" type="text" placeholder="Title"></p>
+                    <p><h5><b>Task Description</b></h5><textarea id="description" required class="taskDescription" name="taskDescription" rows="12"></textarea></h4>
+                    <button class="form-control btn btn-success" onclick="submit()">Create</button>
+                    
                 </div>
 
             </div>
@@ -84,16 +86,10 @@
                                 </tr>
                                 
                         </table>
-                        <span><i class="fa-solid fa-triangle-exclamation"></i> </span>
+                    
+                       
 
-
-
-                        <span type="" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="This patient is non compliant">
-                            <span><i class="fa-solid fa-triangle-exclamation"></i></span>
-                        </span>
-
-                        
-                            <span class="tooltipText"></span>
+                     
                             
                         
                     </div>

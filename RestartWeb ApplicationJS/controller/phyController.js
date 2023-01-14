@@ -19,13 +19,38 @@ const getConnectedPatients = async(req,res)=>{
     var json =[]
     var unconnect=[]
     await firestore.collection("Accounts").get()
-    .then((snap)=>{
-        snap.forEach((docs)=>{
-            if(patients.includes(docs.id))
-                json.push(docs.data())      
-            else if(docs.data().role =="patient")
-                unconnect.push(docs.data())
-        })
+    .then(async(snap)=>{
+        for(var x =0; x<snap.docs.length;x++)
+        {
+            var docs = await snap.docs[x].data()
+            if(patients.includes(docs.id)){
+                
+            await firestore.collection("Accounts").doc(docs.id).collection("Journal").orderBy("date","desc").limit(1)
+            .get()
+            .then(async(qry)=>{
+                if(qry.docs[0]!=null)
+                    {
+                       var data = await qry.docs[0].data()
+                       var date = new Date(data.date)
+                       var diff = new Date() - date
+                       var days = Math.ceil(diff/(1000*60*60*24)) -1
+                       if(days>3)
+                        docs.journal = '<span type="" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="This patient is non compliant"><span><i class="fa-solid fa-triangle-exclamation"></i></span></span>'
+                        else
+                        docs.journal = ''
+                    }
+                    else
+                        docs.journal = '<span type="" class="" data-bs-toggle="tooltip" data-bs-placement="top" title="This patient is non compliant"><span><i class="fa-solid fa-triangle-exclamation"></i></span></span>'
+                
+            })
+            json.push(docs)      
+            }
+          else if(docs.role =="patient")
+            unconnect.push(docs)
+        }
+        
+        
+        
     })
     .catch((e)=>{
         console.log(e.message)
