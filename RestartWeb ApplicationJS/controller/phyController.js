@@ -168,15 +168,20 @@ const sgAction = async(req,res)=>{
     var id =req.body.id
     var link =req.body.bool
     var pid = req.body.pid
+   
     if(!link){
         await firestore.collection("Support Groups").doc(id).get()
         .then(async(snap)=>{
             var data = snap.data()
             var members = data.Members
+            var newmem = data.newmem
             var index = members.indexOf(pid)
+            var nindex = newmem.indexOf(pid)
             members.splice(index,1)
-            
-            await firestore.collection('Support Groups').doc(id).update({Members:members})
+            newmem.splice(nindex,1)
+            await firestore.collection('Support Groups').doc(id).update({Members:members,"newmem":newmem})
+
+      
             res.json({msg:"Success"})
         })
         .catch((e)=>{
@@ -189,10 +194,15 @@ const sgAction = async(req,res)=>{
             var data= snap.data()
             var members = data.Members
             members.push(pid)
-            await firestore.collection("Support Groups").doc(id).update({Members:members})
+            var newmem = data.newmem
+            newmem.push(pid)
+          
+            await firestore.collection("Support Groups").doc(id).update({Members:members,"newmem":newmem})
+            
             res.json({msg:"Success"})
         })
         .catch((e)=>{
+            console.log(e.message)
             res.json({msg:"FAILED"})
         })
     }
@@ -355,6 +365,7 @@ const createSG = async(req,res)=>{
     data.Members = []
     data.creatorEmail = req.cookies.id
     data.dateCreated = new Date()
+    data.newmem=[]
     var id 
     await firestore.collection("Support Groups").add(data)
     .then((doc)=>{

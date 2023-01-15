@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.meyvn.restart_mobile.Login;
 import com.meyvn.restart_mobile.POJO.SG_Model;
 import com.meyvn.restart_mobile.POJO.ViewTaskPojo;
 import com.meyvn.restart_mobile.R;
@@ -38,6 +39,8 @@ public class SG_Adapter extends RecyclerView.Adapter<SG_Adapter.MySGHolder> {
     public void onBindViewHolder(@NonNull SG_Adapter.MySGHolder holder, int position) {
         SG_Model pojo = list.get(position);
         holder.title.setText(pojo.getTitle());
+        if(pojo.getNewmem().contains(Login.authACC))
+            holder.itemView.setBo
 
     }
 
