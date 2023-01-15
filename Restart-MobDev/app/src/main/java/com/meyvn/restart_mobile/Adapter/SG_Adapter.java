@@ -1,6 +1,7 @@
 package com.meyvn.restart_mobile.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,9 @@ public class SG_Adapter extends RecyclerView.Adapter<SG_Adapter.MySGHolder> {
     public void onBindViewHolder(@NonNull SG_Adapter.MySGHolder holder, int position) {
         SG_Model pojo = list.get(position);
         holder.title.setText(pojo.getTitle());
+
         if(pojo.getNewmem().contains(Login.authACC))
-            holder.itemView.setBo
+            holder.itemView.setBackground(ctx.getDrawable(R.drawable.bordered));
 
     }
 
