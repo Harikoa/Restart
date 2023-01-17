@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="10dp"
-            android:background="@drawable/bordered"
+            android:background="@drawable/redborder"
             android:padding="22dp"
             android:textAlignment="center"
             android:textColor="#000000"

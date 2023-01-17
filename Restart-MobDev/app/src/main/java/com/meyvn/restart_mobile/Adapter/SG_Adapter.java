@@ -29,6 +29,15 @@ public class SG_Adapter extends RecyclerView.Adapter<SG_Adapter.MySGHolder> {
         this.rc = rc;
     }
 
+        public void clear() {
+        int size = list.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                list.remove(0);
+            }
+            notifyItemRangeRemoved(0, size);
+        }
+    }
     @NonNull
     @Override
     public SG_Adapter.MySGHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,7 +51,7 @@ public class SG_Adapter extends RecyclerView.Adapter<SG_Adapter.MySGHolder> {
         holder.title.setText(pojo.getTitle());
 
         if(pojo.getNewmem().contains(Login.authACC))
-            holder.itemView.setBackground(ctx.getDrawable(R.drawable.bordered));
+            holder.title.setBackground(ctx.getDrawable(R.drawable.sg_new_mem));
 
     }
 
@@ -69,4 +78,5 @@ public class SG_Adapter extends RecyclerView.Adapter<SG_Adapter.MySGHolder> {
             });
         }
     }
+
 }
