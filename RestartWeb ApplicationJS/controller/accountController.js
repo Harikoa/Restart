@@ -169,16 +169,20 @@ const editAcc = async (req,res)=>{
 const activate = async (req,res)=>{
     var bool = req.query.bool
     var email = req.query.email
+    var dt = ""
     if(bool=="true")
     bool = true
     else
     bool = false
+    if(!bool)
+    dt=new Date().toISOString().substring(0,10)
     await firestore.collection("Accounts").where('email','==',email)
     .get()
     .then((doc)=>{
         doc.forEach(async(snap)=>{
             await snap.ref.update({
-                activated:bool
+                activated:bool,
+                deactivateDate:dt
             })  
         })
        res.json({msg:"SUCCESS"})

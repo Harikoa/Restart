@@ -87,3 +87,15 @@ socket.on("connection",sckt=>{
         }) 
     })
 })
+
+cron.schedule("*/1 * * * *",()=>{
+    firebase.firestore().collection("Accounts").where("activated","==",false)
+    .get()
+    .then(async(res)=>{
+        res.forEach(async(doc)=>{
+            console.log(await doc.data())
+            
+        })
+       
+    })
+})
