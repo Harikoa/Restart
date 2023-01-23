@@ -2,7 +2,6 @@ const e = require("express")
 const firebase = require("../config")
 const firestore = firebase.firestore()
 const auth = firebase.auth()
-const chartJS = require("chart.js")
 const pdfdoc = require("pdfkit")
 const fs=require("fs")
 const getConnectedPatients = async(req,res)=>{
