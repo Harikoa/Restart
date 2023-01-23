@@ -101,6 +101,11 @@ router.get('/phylink',getPhyLinked)
 router.get("/sg",(req,res)=>{
     res.render("../htmlFiles/SGreported")
 })
+
+router.get("/archive",(req,res)=>{
+    res.render("../htmlFiles/ArchivePage")
+})
+
 router.get("/sg/action",resolve)
 router.get("/sg/resolved",getResolved)
 router.get("/sg/unresolved",getUnresolved)
