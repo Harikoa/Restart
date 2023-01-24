@@ -4,7 +4,7 @@ const {addAcc,getAllAcc,editAcc,activate,suspend,signOut,profile,link,getAlumniL
 const {addAccPhy,getAllAccPhy,editAccPhy,activatePhy,suspendPhy} = require("../controller/adminControllerPhysician")
 const {addAccAl,getAllAccAl,editAccAl,activateAl,suspendAl} = require("../controller/adminControllerAlumni")
 const firebase = require('../config.js')
-
+const fs = require("fs")
 router.get("/",(req,res)=>{
     if(req.cookies.id==null)
     {
@@ -104,11 +104,23 @@ router.get("/sg",(req,res)=>{
 
 router.get("/archive",(req,res)=>{
     res.render("../htmlFiles/ArchivePage")
+    
 })
 
 router.get("/sg/action",resolve)
 router.get("/sg/resolved",getResolved)
 router.get("/sg/unresolved",getUnresolved)
 router.get("/deacRequest",getDeactivateReq)
+router.post("/archiveGetData",async(req,res)=>{
+   fs.readdir('./archive',(err,files)=>{
+    res.json({files:files})
+   })
 
+})
+router.get("/archiveGetFile",(req,res)=>{
+    fs.readFile("./archive/"+req.query.id,(err,file)=>{
+        res.setHeader('Content-Type','application/pdf')
+        res.send(file)
+    })
+})
 module.exports = router

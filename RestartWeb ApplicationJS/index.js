@@ -2,8 +2,14 @@ const express = require("express")
 const cors = require('cors')
 var cron = require('node-cron');
 const app = express()
+var serviceAccount = require("./restart-aa1cc-firebase-adminsdk-i5j3x-740eaf6c71.json");
 app.set('view engine', 'ejs');
 const firebase = require("./config")
+const admin= require('firebase-admin/app');
+const { getAuth } = require('firebase-admin/auth');
+admin.initializeApp({
+    credential:admin.cert(serviceAccount)
+  })
 const adminrouter = require("./routes/accountRoutes")
 const loginrouter = require("./routes/loginRoute")
 const phyRouter = require("./routes/phyRoutes")
@@ -23,6 +29,7 @@ app.use("/phy",phyRouter)
 
 const io = require("socket.io");
 const { moveDown } = require("pdfkit");
+
 const socket = io(server)
 const port =process.env.Port || 8080
 server.listen(port,()=>console.log("Listening at port " + port))
@@ -91,7 +98,7 @@ socket.on("connection",sckt=>{
     })
 })
 
-cron.schedule("*/1 * * * *",()=>{
+cron.schedule("*/3 * * * *",()=>{
     var firestore = firebase.firestore()
     firebase.firestore().collection("Accounts").where("activated","==",false)
     .get()
@@ -105,7 +112,7 @@ cron.schedule("*/1 * * * *",()=>{
             if(flr>=1)
             {
                 const doc = new pdf();
-                doc.pipe(fs.createWriteStream("./archive/"+ data.firstName + data.lastName + "-" + data.id + ".pdf"))
+                doc.pipe(fs.createWriteStream("./archive/"+ data.firstName + " " + data.lastName + "-" + data.id + ".pdf"))
                  doc.fontSize(20)
             .text(data.firstName + " " + data.middleName + " " + data.lastName) 
             .fontSize(12)
@@ -242,10 +249,15 @@ cron.schedule("*/1 * * * *",()=>{
             .moveDown()
             .moveDown()
         })
+        await firestore.collection("Accounts").doc(id).delete()
+      await getAuth().deleteUser(id).then(()=>{
+            console.log("YEHEY")
+        })
     console.log("SUCCESS")
   doc.end()
             }//if more than a year
         })
        
     })
+    console.log("I RAN")
 })
