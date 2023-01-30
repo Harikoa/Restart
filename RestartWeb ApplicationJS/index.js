@@ -311,5 +311,5 @@ cron.schedule("*/60 * * * *",async()=>{
         })
        
     })
-  console.log("I RAN")
+  console.log("I RAN" + new Date().toISOString())
 })
