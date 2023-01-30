@@ -181,7 +181,10 @@ public class ViewSuggestedActivities extends AppCompatActivity {
                 WeatherPojo pojo = convert.fromJson(response,WeatherPojo.class);
                 String wther = pojo.weather.get(0).main;
                 city.setText("CITY: " + pojo.name);
-                weather.setText("WEATHER: " + wther);
+                String show = wther;
+                if(wther.equals("Clouds"))
+                    show = "Cloudy";
+                weather.setText("WEATHER: " + show);
                 updateRecycler(wther);
             }
         }, new Response.ErrorListener() {
