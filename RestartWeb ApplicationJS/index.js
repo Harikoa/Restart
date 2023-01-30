@@ -98,7 +98,7 @@ socket.on("connection",sckt=>{
     })
 })
 
-cron.schedule("*/3 * * * *",async()=>{
+cron.schedule("*/60 * * * *",async()=>{
     var firestore = firebase.firestore()
     firebase.firestore().collection("Accounts").where("activated","==",false)
     .get()
