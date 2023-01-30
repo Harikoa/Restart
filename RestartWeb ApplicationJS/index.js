@@ -98,7 +98,7 @@ socket.on("connection",sckt=>{
     })
 })
 
-cron.schedule("*/3 * * * *",()=>{
+cron.schedule("*/3 * * * *",async()=>{
     var firestore = firebase.firestore()
     firebase.firestore().collection("Accounts").where("activated","==",false)
     .get()
@@ -252,12 +252,64 @@ cron.schedule("*/3 * * * *",()=>{
         await firestore.collection("Accounts").doc(id).delete()
       await getAuth().deleteUser(id).then(()=>{
             console.log("YEHEY")
+            
         })
+       if(data.role=="patient")
+       {
+        await firestore.collection("PhyLink").where("patient","==",id)
+        .get()
+        .then((snap)=>{
+            snap.forEach(async(dc)=>{
+                await dc.ref.delete()
+            })
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+        await firestore.collection("AlumniLink").where("patient","==",id)
+        .get()
+        .then((snap)=>{
+            snap.forEach(async(dc)=>{
+                await dc.ref.delete()
+            })
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+       }//patient
+       else if(data.role=="alumni")
+       {
+        await firestore.collection("AlumniLink").where("al","==",id)
+        .get()
+        .then((snap)=>{
+            snap.forEach(async(dc)=>{
+                await dc.ref.delete()
+            })
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+       }
+       else if(data.role == "physician")
+       {
+        await firestore.collection("PhyLink").where("phy","==",id)
+        .get()
+        .then((snap)=>{
+            snap.forEach(async(dc)=>{
+                await dc.ref.delete()
+            })
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+       }
     console.log("SUCCESS")
   doc.end()
             }//if more than a year
+
+           
         })
        
     })
-    console.log("I RAN")
+  console.log("I RAN")
 })

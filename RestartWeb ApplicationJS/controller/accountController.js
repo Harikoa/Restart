@@ -303,17 +303,30 @@ const activate = async (req,res)=>{
              await firestore.collection("Accounts").doc(data.patient)
                 .get()
                 .then((pt)=>{
+                    if(pt.exists)
+                    {
                     data.ptfname = pt.data().firstName
                     data.ptlname = pt.data().lastName
                     data.ptemail=pt.data().email
-                })
+                    }
+                    else{
+                        doc.ref.delete()
+                    }
+                }
+                )
                 
               await firestore.collection("Accounts").doc(data.al)
                 .get()
                 .then((al)=>{
+                    if(al.exists)
+                    {
                     data.alfname = al.data().firstName
                     data.allname = al.data().lastName
                     data.alemail=al.data().email
+                    }
+                    else{
+                        doc.ref.delete()
+                    }
                 })
                
                 linked.push(data)
@@ -337,17 +350,27 @@ const activate = async (req,res)=>{
              await firestore.collection("Accounts").doc(data.patient)
                 .get()
                 .then((pt)=>{
+                    if(pt.exists)
+                    {
                     data.ptfname = pt.data().firstName
                     data.ptlname = pt.data().lastName
                     data.ptemail=pt.data().email
+                    }
+                    else
+                    doc.ref.delete()
                 })
                 
               await firestore.collection("Accounts").doc(data.phy)
                 .get()
                 .then((al)=>{
+                    if(al.exists)
+                    {
                     data.alfname = al.data().firstName
                     data.allname = al.data().lastName
                     data.alemail=al.data().email
+                    }
+                    else
+                    doc.ref.delete()
                 })
                 
                 linked.push(data)
