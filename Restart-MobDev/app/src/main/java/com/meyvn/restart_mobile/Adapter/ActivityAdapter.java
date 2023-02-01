@@ -37,7 +37,10 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyActi
         ActivityPojo pojo = list.get(position);
         holder.title.setText(pojo.getActivityTitle());
         holder.venue.setText(pojo.getVenue());
-        holder.weather.setText(pojo.getWeather());
+        String weather= pojo.getWeather();
+        if(weather.equals("Clouds"))
+            weather = "Cloudy";
+        holder.weather.setText(weather);
 
     }
 
