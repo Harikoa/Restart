@@ -46,7 +46,7 @@ router.get("/selfHelp",(req,res)=>{
 })
 
 router.get("/bulkTask",(req,res)=>{
-    res.render("../htmlFiles/bulkTask")
+    res.render("../htmlFiles/BulkTask")
 })
 
 router.post("/getMotiv",getMotiv)
